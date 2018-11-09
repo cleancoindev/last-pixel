@@ -24,15 +24,14 @@ contract LastPixel {
     uint public timeBank = 0;
     uint public colorBank = 0;
     
-    constructor(address _proxyRegistryAddress) public {
-        
+    constructor(address _pixelTokenAddr, address _colorTokenAddr) public {
         masterAddr = msg.sender;
         lastPainter = msg.sender;
-        pixelTokenAddr = new PixelToken(_proxyRegistryAddress);
-        colorTokenAddr = new ColorToken(_proxyRegistryAddress);
-        
+        pixelTokenAddr = PixelToken(_pixelTokenAddr);
+        colorTokenAddr = ColorToken(_colorTokenAddr);
+        colorPaintedAmt[0] = 10000;
     }
-    
+
     function buyPixel() public payable {
         require(pixelTotalSupplied < 10000);
         require(msg.value >= 0.1 ether);
@@ -44,7 +43,7 @@ contract LastPixel {
         // send dividends
         masterAddr.transfer(msg.value);
     }
-    
+
     function buyColor() public payable {
         require(colorTotalSupplied < 8);
         require(msg.value >= 100 ether);
@@ -59,28 +58,65 @@ contract LastPixel {
         // send dividends
         masterAddr.transfer(msg.value);
     }
-    
-    function paint(uint x, uint y, uint colorId) public payable {
-        require(x >= 1 && x <= 100);
-        require(y >= 1 && y <= 100);
-        require(colorId >= 1 && colorId <= colorTotalSupplied);
-        
-        // update price
+
+    function updatePaintPrice(uint colorId) private {
         if (colorTotalPainted[colorId] > 10000 * colorGeneration[colorId]) {
             colorGeneration[colorId] += 1;
             colorPaintPrice[colorId] *= 105;
             colorPaintPrice[colorId] /= 100;
         }
+    }
+
+    function updatePixelColor(uint pixelId, uint colorId) private {
+        colorPaintedAmt[pixelColors[pixelId]] -= 1;
+        pixelColors[pixelId] = colorId;
+        colorPaintedAmt[colorId] += 1;
+        colorTotalPainted[colorId] += 1;
+    }
+
+    //----------------TODO-----------------
+    // bank distribution
+    function processColorBankWinner(uint colorId) private {
+        if (colorPaintedAmt[colorId] == 10000) {
+            msg.sender.transfer(colorBank);
+            for (uint i = 1; i <= 10000; i++) {
+                pixelColors[i] = 0;
+            }
+            for (i = 1; i <= colorTotalSupplied; i++) {
+                colorPaintedAmt[i] = 0;
+            }
+            colorBank = 0;
+        }
+    }
+
+    function processTimeBankWinner() private {
+        if (lastTimeStamp == 0) {
+            lastTimeStamp = now;
+        } else if (now - lastTimeStamp >= 900) {
+            lastPainter.transfer(timeBank);
+            timeBank = 0;
+        }
+    }
+
+    function paint(uint x, uint y, uint colorId) public payable {
+        require(x >= 1 && x <= 100);
+        require(y >= 1 && y <= 100);
+        require(colorId >= 1 && colorId <= colorTotalSupplied);
+        
+        updatePaintPrice(colorId);
 
         require(msg.value == colorPaintPrice[colorId]);
         
         // get pixel id from x and y
         uint pixelId = (x - 1) * 100 + y;
         
+        // get pixel owner
         address pixelOwner = masterAddr;
         if (pixelSupplied[pixelId]) {
             pixelOwner = pixelTokenAddr.ownerOf(pixelId);
         }
+
+        // get color owner
         address colorOwner = colorTokenAddr.ownerOf(colorId);
         
         // send dividends
@@ -92,34 +128,12 @@ contract LastPixel {
         timeBank += msg.value * 2 / 5;
         colorBank += msg.value * 2 / 5;
         
-        // update pixel colors
-        colorPaintedAmt[pixelColors[pixelId]] -= 1;
-        pixelColors[pixelId] = colorId;
-        colorPaintedAmt[colorId] += 1;
-        colorTotalPainted[colorId] += 1;
+        processColorBankWinner(colorId);
         
-        // check color winner
-        if (colorPaintedAmt[colorId] == 10000) {
-            msg.sender.transfer(colorBank);
-            for (uint i = 1; i <= 10000; i++) {
-                pixelColors[i] = 0;
-            }
-            for (i = 1; i <= colorTotalSupplied; i++) {
-                colorPaintedAmt[i] = 0;
-            }
-            colorBank = 0;
-        }
-        
-        // check time winner
-        if (lastTimeStamp == 0) {
-            lastTimeStamp = now;
-        } else if (now - lastTimeStamp >= 900) {
-            lastPainter.transfer(timeBank);
-            timeBank = 0;
-        }
+        processTimeBankWinner();
         
         lastTimeStamp = now;
         lastPainter = msg.sender;
     }
-    
+
 }
