@@ -1,115 +1,198 @@
 pragma solidity ^0.4.24;
 import "openzeppelin-solidity/math/SafeMath.sol";
-import "./tokens/Pixel.sol";
 
 contract Game {
+
     using SafeMath for uint;
-    
-    mapping (uint => uint) public pixelToColor; // цвет клетки
-    mapping (uint => uint) public pixelToOldColor; // предыдущий цвет клетки
+
     uint totalColors = 9; // сколько всего цветов. Изначально = 9, 0 = бесцветный
-    mapping (uint => uint) public colorIdToPaintedPixelsAmount; //маппинг цвета на количество клеток закрашенных этим цветом
-    mapping (address => uint) public withdrawalBalances; //балансы доступные для вывода (накопленный пассивный доход)
-    uint public colorBank; //банк цвета
-    uint public timeBank; //банк времени
-    uint public dividendsBank; //банк дивидендов - общих пассивных доходов
-    uint public lastPaintTime; //время самой последней закраски игрового поля
-    address public lastPainter; //  последний закрасивший пользователь 
-    uint public winnerColor; //цвет который выиграл (заполнились все пиксели данным цветом) //изначально =0, поэтому нужно проверить не помешает ли это
+    uint public currentRound = 1; 
+    uint public currentTime;
+    uint dividendsTime = 3 days; // время через которое можно запрашивать пассивный доход
+
+    mapping (address => uint) addressToLastWithdrawalTime; // время последнего вывода пассивного дохода для адреса для любого раунда
+    mapping (uint => uint) public totalPaintsForRound; //сколько всего было разукрашиваний в этом раунде любым цветом
+    mapping (uint => mapping (uint => uint)) public pixelToColorForRound; // цвет клетки
+    mapping (uint => mapping (uint => uint)) public pixelToOldColorForRound; // предыдущий цвет клетки
+    mapping (uint => mapping (uint => uint)) public colorToPaintedPixelsAmountForRound; //маппинг цвета на количество клеток закрашенных этим цветом
+    mapping (address => uint) public withdrawalBalances; //балансы доступные для вывода (накопленный пассивный доход за все раунды)
+    mapping (uint => uint) public colorBankForRound; //банк цвета
+    mapping (uint => uint) public timeBankForRound; //банк времени
+    //mapping (uint => uint) public dividendsBankForRound; //банк дивидендов - общих пассивных доходов
+    uint public dividendsBank;
+    mapping (uint => uint) public lastPaintTimeForRound; //время самой последней закраски игрового поля
+    mapping (uint => address) public lastPainterForRound; //  последний закрасивший пользователь 
+    mapping (uint => uint) public winnerColorForRound; //цвет который выиграл (заполнились все пиксели данным цветом) 
+    mapping (uint => mapping (uint => uint)) public colorToTotalPaintsForRound; //значение общего количества разукрашиваний данным цветом (для всего раунда)
+    mapping(uint => uint) public startedTimeForRound;
+    mapping(uint => uint) public finishedTimeForRound;
     
-    function setHardcodedValues() external payable {
-        colorIdToPaintedPixelsAmount[1] = 9998; //hardcode
-        colorBank = 0.4 ether;
+    //1//
+    mapping (uint => mapping(uint => mapping (address => uint))) public colorToAddressToTotalCounterForRound; // счетчик общего количества закрашенных конкретным цветом клеток для пользователя
+                                                                                                  //напр. Всего красную краску Боб использовал 89 раз
+    mapping(uint => mapping (address => uint)) public addressToTotalCounterForRound; // счетчик общего кол-ва закрашиваний любым цветом для адреса за этот                                                                              
+                                                                                      
+    //2//                                                                                         
+    mapping (uint => mapping(address => mapping (uint => mapping (uint => uint)))) public addressToColorToCounterToTimestampForRound; //адрес => цвет краски => счетчик => метка времени
+                                                                                      //напр. Боб использовал зеленую краску в 65-ый раз на 165934 блоке
+                                                                            
+    mapping(uint=>mapping(address=>mapping(uint=>uint))) public addressToCounterToTimestampForRound; 
+                                                                                      
+    mapping(address => mapping(uint => bool)) public isPrizeDistributedForRound;
+    
+    mapping (address => uint) public lastPlayedRound; //последний раунд в котором юзер принимал участие
+    
+    //3////счетчик разукрашиваний ..
+    mapping(uint=>mapping(address=>mapping(uint=>mapping(uint=>uint)))) public addressToColorToTimestampToCounterForRound;
+    mapping(uint=>mapping(address=>mapping(uint=>uint))) public addressToTimestampToCounterForRound;
+    
+    mapping(uint => mapping(address => uint)) public addressToColorBankPrizeForRound;
+    mapping(uint => mapping(address => uint)) public addressToTimeBankPrizeForRound;
+    mapping(address => uint) public addressToColorBankPrizeTotal;
+    mapping(address => uint) public addressToTimeBankPrizeTotal;
+    
+    function getPixelColor(uint _pixel) external view returns (uint) {
+        return pixelToColorForRound[currentRound][_pixel];
     }
     
-    function paint(uint _pixelId, uint _colorId) external payable {
-        require(_pixelId != 0, "The pixel with id = 0 does not exist...");
-        require(msg.value == 10 finney, "This function call costs 0.01 eth..."); //0.01 ETH
-        require(_colorId != 0, "You cannot paint to transparent color.."); //нельзя перекрасить в бесцветный
-        require(pixelToOldColor[_pixelId] != _colorId, "Cannot paint to the same color as it was"); //cannot paint pixel to the same coloe twice
+    function setHardcodedValues() external payable {
+        //colorToPaintedPixelsAmountForRound[currentRound][1] = 9998; //hardcode
+        timeBankForRound[currentRound] = 0.2 ether;
+        //lastPaintTime = now - 25 minutes;
+        currentTime = now;
+    }   
+    
+    function newGame() external { //вызывается после розыгрыша банка времени
+        timeBankForRound[currentRound] = 5 ether;//hardcode for testing
+        currentRound++;
+        lastPaintTimeForRound[currentRound] = 0;
+        currentTime = now;
+        //dividendsBankForRound[currentRound] += timeBankForRound[currentRound - 1].mul(90).div(100);//wrong
+        timeBankForRound[currentRound] = timeBankForRound[currentRound - 1].div(10);
         
-        if (now - lastPaintTime > 20 minutes) {
-            timeBank = timeBank.div(10);
-            newGame(); //обнуляет все счетчики, заполняет краски и клетки
+    }
+    
+    function getCurTime() external view  returns (uint) {
+        return now;
+    }
+    
+    function paint(uint _pixel, uint _color) external payable {
+        require(_pixel != 0, "The pixel with id = 0 does not exist...");
+        //require(msg.value == 10 finney, "This function call costs 0.01 eth..."); //0.01 ETH
+        require(_color != 0, "You cannot paint to transparent color.."); //нельзя перекрасить в бесцветный
+        require(pixelToColorForRound[currentRound][_pixel] != _color, "Cannot paint to the same color as it was"); //cannot paint pixel to the same coloe twice
+        currentTime = now;   
+        
+        if (now - lastPaintTimeForRound[currentRound] > 4 minutes && lastPaintTimeForRound[currentRound] != 0) {
+            
+            lastPainterForRound[currentRound].transfer(timeBankForRound[currentRound].mul(45).div(100));
             distributeTimeBank();
             msg.sender.transfer(msg.value); //возвращаем средства пользователя назад, так как этот раунд закончился
         }
-        colorBank = colorBank.add(4 finney);
-        timeBank = timeBank.add(4 finney);
-        dividendsBank = dividendsBank.add(2 finney); //увеличиваем значение суммы дивидендов для выплаты пассивного дохода
-        
-        uint oldColorId = pixelToColor[_pixelId];
-        
-        pixelToColor[_pixelId] = _colorId; //перекрашиваем в новый цвет
-        pixelToOldColor[_pixelId] = oldColorId; //cохраняем предыдущий цвет в маппинге
-        lastPaintTime = now; //время последней раскраски во всем игровом поле
-        lastPainter = msg.sender; // самый последний разукрасивший участник на всем игромвом поле
-        
-        if (colorIdToPaintedPixelsAmount[oldColorId] > 0) //если счетчик старого цвета положительный, уменьшаем его значение
-            colorIdToPaintedPixelsAmount[oldColorId] = colorIdToPaintedPixelsAmount[oldColorId].sub(1); 
-        colorIdToPaintedPixelsAmount[_colorId] = colorIdToPaintedPixelsAmount[_colorId].add(1); //при каждой раскраске клетки, увеличиваем счетчик цвета
-
-        //счетчик общего количества закрашенных конкретным цветом клеток для пользователя
-        uint totalCounterForUser = colorIdToAddressToTotalCounter[_colorId][msg.sender]; 
-        totalCounterForUser = totalCounterForUser.add(1); //увеличиваем счетчик количества закрашенных конкретным цветом клеток для пользователя
-        colorIdToAddressToTotalCounter[_colorId][msg.sender] = totalCounterForUser; //обновляем значения общего кол-ва закрашенных пользователем данным цветом клеток
-        addressToColorIdToCounterToTimestamp[msg.sender][_colorId][totalCounterForUser] = now;
-        colorIdToTotalPaints[_colorId] = colorIdToTotalPaints[_colorId].add(1); //увеличиваем значение общего количества разукрашиваний данным цветом (для всего раунда)
-        
-        if (colorIdToPaintedPixelsAmount[_colorId] == 10000) { //если все поле (10000 пикселей) заполнилось одним цветом
-            winnerColor = _colorId;
-            lastPainter.transfer(colorBank.mul(50).div(100)); //перевести половину банка цвета последнему закрасившему
-            colorIdToPaintedPixelsAmount[_colorId] = 0;//сбросить количество клеток закрашенных этим цветом на бесцветный - работает неправильно
-            colorBank = 0 ether;
-            //обнулить все pixelToColor[_pixelId] либо создать новый маппинг
+        else {
+            colorBankForRound[currentRound] = colorBankForRound[currentRound].add(4 finney);
+            timeBankForRound[currentRound] = timeBankForRound[currentRound].add(4 finney);
+            dividendsBank = dividendsBank.add(2 finney); //увеличиваем значение суммы дивидендов для выплаты пассивного дохода
+            
+            uint oldColor = pixelToColorForRound[currentRound][_pixel];
+            
+            pixelToColorForRound[currentRound][_pixel] = _color; //перекрашиваем в новый цвет
+            pixelToOldColorForRound[currentRound][_pixel] = oldColor; //cохраняем предыдущий цвет в маппинге
+            lastPaintTimeForRound[currentRound] = now; //время последней раскраски во всем игровом поле
+            lastPainterForRound[currentRound] = msg.sender; // самый последний разукрасивший участник на всем игромвом поле
+            totalPaintsForRound[currentRound] = totalPaintsForRound[currentRound].add(1); //
+            if (colorToPaintedPixelsAmountForRound[currentRound][oldColor] > 0) //если счетчик старого цвета положительный, уменьшаем его значение
+                colorToPaintedPixelsAmountForRound[currentRound][oldColor] = colorToPaintedPixelsAmountForRound[currentRound][oldColor].sub(1); 
+            colorToPaintedPixelsAmountForRound[currentRound][_color] = colorToPaintedPixelsAmountForRound[currentRound][_color].add(1); //при каждой раскраске клетки, увеличиваем счетчик цвета
+    
+            //счетчик общего количества закрашенных конкретным цветом клеток для пользователя
+            uint totalCounterToColorForUser = colorToAddressToTotalCounterForRound[currentRound][_color][msg.sender]; 
+            totalCounterToColorForUser = totalCounterToColorForUser.add(1); //увеличиваем счетчик количества закрашенных конкретным цветом клеток для пользователя
+            colorToAddressToTotalCounterForRound[currentRound][_color][msg.sender] = totalCounterToColorForUser; //обновляем значения общего кол-ва закрашенных пользователем данным цветом клеток
+            
+            //счетчик общего количества закрашенных любым цветом клеток для пользователя
+            uint totalCounterForUserForRound = addressToTotalCounterForRound[currentRound][msg.sender]; //для любого цвета
+            totalCounterForUserForRound = totalCounterForUserForRound.add(1); //увеличиваем счетчик количества закрашенных любым цветом клеток для пользователя
+            addressToTotalCounterForRound[currentRound][msg.sender] = totalCounterForUserForRound;
+            
+            addressToColorToCounterToTimestampForRound[currentRound][msg.sender][_color][totalCounterToColorForUser] = now;
+            addressToCounterToTimestampForRound[currentRound][msg.sender][totalCounterForUserForRound] = now;
+            
+            addressToColorToTimestampToCounterForRound[currentRound][msg.sender][_color][now]++;
+            addressToTimestampToCounterForRound[currentRound][msg.sender][now]++;
+            
+            colorToTotalPaintsForRound[currentRound][_color] = colorToTotalPaintsForRound[currentRound][_color].add(1); //увеличиваем значение общего количества разукрашиваний данным цветом (для всего раунда)
+            totalPaintsForRound[currentRound]++;
+            lastPlayedRound[msg.sender] = currentRound;
+            
+            if (colorToPaintedPixelsAmountForRound[currentRound][_color] == 10000) { //если все поле (10000 пикселей) заполнилось одним цветом
+                
+                startedTimeForRound[currentRound] = now - 24 hours; //когда начался момент для сбора команды
+                finishedTimeForRound[currentRound] = now;
+                
+                winnerColorForRound[currentRound] = _color;
+                lastPainterForRound[currentRound].transfer(colorBankForRound[currentRound].mul(50).div(100));
+                distributeColorBank(); //разыгрываем банк цвета
+            }
+            
+            if (lastPlayedRound[msg.sender] !=  0 && isPrizeDistributedForRound[msg.sender][currentRound - 1] == false) {
+                distributeColorBankPrizeForLastPlayedRound();
+                distributeTimeBankPrizeForLastPlayedRound();
+            }                
         }
     }
     
-    mapping (uint => uint) public colorIdToTotalPaints; //значение общего количества разукрашиваний данным цветом (для всего раунда)
-    mapping (uint => mapping (address => uint)) public colorIdToAddressToTotalCounter; // счетчик общего количества закрашенных конкретным цветом клеток для пользователя
-                                                                                                  //напр. Всего красную краску Боб использовал 89 раз
-    
-    mapping (address => mapping (uint => mapping (uint => uint))) public addressToColorIdToCounterToTimestamp; //адрес => цвет краски => счетчик => метка времени
-                                                                                      //напр. Боб использовал зеленую краску в 65-ый раз на 165934 блоке
-    
-    function claimColorBankPrize() external { 
-        uint totalCounterForUser = colorIdToAddressToTotalCounter[winnerColor][msg.sender];
-        uint lastTimestamp = addressToColorIdToCounterToTimestamp[msg.sender][winnerColor][totalCounterForUser];
-        require(now - lastTimestamp <= 24 hours); // проверяем красил ли пользователь данным цветом в течение последних 24 часов
-        uint counter;
-        while ((now - lastTimestamp) <= 24 hours) {
-            counter.add(1); //инкрементируем
-            totalCounterForUser.sub(1); //декреминтируем 
-            lastTimestamp = addressToColorIdToCounterToTimestamp[msg.sender][winnerColor][totalCounterForUser]; // обновляем значение последней метки
-        }
-        uint amountToTransfer = counter.mul(colorBank).div(colorIdToTotalPaints[winnerColor]); //делить на общее число разукрашиваний этим цветом
-        msg.sender.transfer(amountToTransfer);
+    function distributeColorBankPrizeForLastPlayedRound() public { //for the last played round should not be public or check that winnercolor != 0, this causes error
+        require(lastPlayedRound[msg.sender] !=  0);
+        uint round = lastPlayedRound[msg.sender];
+        uint winnerColor = winnerColorForRound[round];
+        uint end = addressToColorToTimestampToCounterForRound[round][msg.sender][winnerColor][finishedTimeForRound[round]];
+        uint start = addressToColorToTimestampToCounterForRound[round][msg.sender][winnerColor][startedTimeForRound[round]];
+        uint counter = end - start;
+        addressToColorBankPrizeForRound[round][msg.sender] += counter.mul( colorBankForRound[round]).div(colorToTotalPaintsForRound[round][winnerColor]);
+        withdrawalBalances[msg.sender] += addressToColorBankPrizeForRound[round][msg.sender];
+        addressToColorBankPrizeTotal[msg.sender] += addressToColorBankPrizeForRound[round][msg.sender];
+        isPrizeDistributedForRound[msg.sender][round] = true;
+        
     }
     
-    function distributeTimeBank() private {
+     function distributeTimeBankPrizeForLastPlayedRound() public { //for the last played round should not be public or check that winnercolor != 0, this causes error
+        require(lastPlayedRound[msg.sender] !=  0);
+        uint round = lastPlayedRound[msg.sender];
+        uint end = addressToTimestampToCounterForRound[round][msg.sender][finishedTimeForRound[round]];
+        uint start = addressToTimestampToCounterForRound[round][msg.sender][startedTimeForRound[round]];
+        uint counter = end - start;
+        addressToTimeBankPrizeForRound[round][msg.sender] += counter.mul(timeBankForRound[round]).div(totalPaintsForRound[round]);
+        withdrawalBalances[msg.sender] += addressToTimeBankPrizeForRound[round][msg.sender];
+        addressToTimeBankPrizeTotal[msg.sender] += addressToTimeBankPrizeForRound[round][msg.sender];
+        isPrizeDistributedForRound[msg.sender][round] = true;
         
+    }
+    
+    function distributeColorBank() public { //should not be public
+        colorBankForRound[currentRound] = colorBankForRound[currentRound].mul(50).div(100); //осталось для распределения
+        timeBankForRound[currentRound + 1] = timeBankForRound[currentRound];
+        timeBankForRound[currentRound] = 0;
+        finishedTimeForRound[currentRound] = now;
+        currentRound = currentRound.add(1); 
+    }
+    
+    function distributeTimeBank() public  {
+        timeBankForRound[currentRound + 1] = timeBankForRound[currentRound].div(10); //переходит в след раунд
+        timeBankForRound[currentRound] = timeBankForRound[currentRound].mul(45).div(100); //осталось для распределения
+        colorBankForRound[currentRound + 1] = colorBankForRound[currentRound]; //банк цвета для след раунда
+        colorBankForRound[currentRound] = 0; //в этом раунде нужно обнулить
+        finishedTimeForRound[currentRound] = now;
+        currentRound = currentRound.add(1); 
     }
     
     function claimDividends() external canClaimDividends {
         require(withdrawalBalances[msg.sender] != 0);
         msg.sender.transfer(withdrawalBalances[msg.sender]);
         addressToLastWithdrawalTime[msg.sender] = now;
-    }
-    
-    function newGame() private {
-        //oldColorId = 0;
-        //о
-        /* 
-        бнулить все счетчики 
-        cоздать новый маппинг
-        Возможно имеет смысл для этого создать новый инстанс контракта игры и передать просто в банк времени и дивидендов значения со старой игры
-        
-        */
+        //hasWithdrawnOnRound[currentRound] = true;
     }
 
-    uint dividendsTime = 3 days; // время через которое можно запрашивать пассивный доход
-    mapping (address => uint) addressToLastWithdrawalTime; // время последнего вывода пассивного дохода для адреса
-    
     modifier canClaimDividends() {
         require(now - addressToLastWithdrawalTime[msg.sender] > dividendsTime);
         _;
@@ -123,5 +206,6 @@ contract Game {
     //     withdrawalBalances[referrer] += dividendsBank.mul(25).div(100);
         
     // }
+
     
 }
