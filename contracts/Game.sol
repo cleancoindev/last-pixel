@@ -50,6 +50,7 @@ contract Game {
     mapping(uint => mapping(address => uint)) public addressToTimeBankPrizeForRound;
     mapping(address => uint) public addressToColorBankPrizeTotal;
     mapping(address => uint) public addressToTimeBankPrizeTotal;
+    mapping (uint => address) public winnerOfRound;
     
     function getPixelColor(uint _pixel) external view returns (uint) {
         return pixelToColorForRound[currentRound][_pixel];
@@ -73,10 +74,11 @@ contract Game {
         require(pixelToColorForRound[currentRound][_pixel] != _color, "Cannot paint to the same color as it was"); //cannot paint pixel to the same coloe twice
         currentTime = now;   
         
-        if (now - lastPaintTimeForRound[currentRound] > 4 minutes && lastPaintTimeForRound[currentRound] != 0) { //в продакшене это будет 20 минут
-            startedTimeForRound[currentRound] = now - 24 hours; //когда начался момент для сбора команды
+        if (now - lastPaintTimeForRound[currentRound] > 1 minutes && lastPaintTimeForRound[currentRound] != 0) { //в продакшене это будет 20 минут
+            startedTimeForRound[currentRound] = now - 24 hours; //когда начался момент для сбора команды а не сам раунд
             finishedTimeForRound[currentRound] = now;
-            lastPainterForRound[currentRound].transfer(timeBankForRound[currentRound].mul(45).div(100));
+            winnerOfRound[currentRound] = lastPainterForRound[currentRound];
+            winnerOfRound[currentRound].transfer(timeBankForRound[currentRound].mul(45).div(100));
             distributeTimeBank();
             msg.sender.transfer(msg.value); //возвращаем средства пользователя назад, так как этот раунд закончился
         }
@@ -91,7 +93,7 @@ contract Game {
             pixelToOldColorForRound[currentRound][_pixel] = oldColor; //cохраняем предыдущий цвет в маппинге
             lastPaintTimeForRound[currentRound] = now; //время последней раскраски во всем игровом поле
             lastPainterForRound[currentRound] = msg.sender; // самый последний разукрасивший участник на всем игромвом поле
-            totalPaintsForRound[currentRound] = totalPaintsForRound[currentRound].add(1); //
+            
             if (colorToPaintedPixelsAmountForRound[currentRound][oldColor] > 0) //если счетчик старого цвета положительный, уменьшаем его значение
                 colorToPaintedPixelsAmountForRound[currentRound][oldColor] = colorToPaintedPixelsAmountForRound[currentRound][oldColor].sub(1); 
             colorToPaintedPixelsAmountForRound[currentRound][_color] = colorToPaintedPixelsAmountForRound[currentRound][_color].add(1); //при каждой раскраске клетки, увеличиваем счетчик цвета
@@ -109,11 +111,13 @@ contract Game {
             addressToColorToCounterToTimestampForRound[currentRound][msg.sender][_color][totalCounterToColorForUser] = now;
             addressToCounterToTimestampForRound[currentRound][msg.sender][totalCounterForUserForRound] = now;
             
+            
             addressToColorToTimestampToCounterForRound[currentRound][msg.sender][_color][now]++;
-            addressToTimestampToCounterForRound[currentRound][msg.sender][now]++;
+            addressToTimestampToCounterForRound[currentRound][msg.sender][now] = totalCounterForUserForRound;
+            
             
             colorToTotalPaintsForRound[currentRound][_color] = colorToTotalPaintsForRound[currentRound][_color].add(1); //увеличиваем значение общего количества разукрашиваний данным цветом (для всего раунда)
-            totalPaintsForRound[currentRound]++;
+            totalPaintsForRound[currentRound] = totalPaintsForRound[currentRound].add(1); //
             lastPlayedRound[msg.sender] = currentRound;
             
             if (colorToPaintedPixelsAmountForRound[currentRound][_color] == 10000) { //если все поле (10000 пикселей) заполнилось одним цветом
@@ -122,12 +126,13 @@ contract Game {
                 finishedTimeForRound[currentRound] = now;
                 
                 winnerColorForRound[currentRound] = _color;
-                lastPainterForRound[currentRound].transfer(colorBankForRound[currentRound].mul(50).div(100));
+                winnerOfRound[currentRound] = lastPainterForRound[currentRound];
+                winnerOfRound[currentRound].transfer(colorBankForRound[currentRound].mul(50).div(100));
                 distributeColorBank(); //разыгрываем банк цвета
             }
             
             if (lastPlayedRound[msg.sender] > 1 && isPrizeDistributedForRound[msg.sender][lastPlayedRound[msg.sender]] == false) {
-                distributeColorBankPrizeForLastPlayedRound();
+                //distributeColorBankPrizeForLastPlayedRound();
                 distributeTimeBankPrizeForLastPlayedRound();
             }                
         }
@@ -150,9 +155,17 @@ contract Game {
      function distributeTimeBankPrizeForLastPlayedRound() public { //for the last played round should not be public or check that winnercolor != 0, this causes error
         require(lastPlayedRound[msg.sender] > 0);
         uint round = lastPlayedRound[msg.sender];
-        uint end = addressToTimestampToCounterForRound[round][msg.sender][finishedTimeForRound[round]];
-        uint start = addressToTimestampToCounterForRound[round][msg.sender][startedTimeForRound[round]];
-        uint counter = end - start;
+        uint end = finishedTimeForRound[round];
+        uint start = startedTimeForRound[round];
+        uint counter;
+        
+        uint total = addressToTotalCounterForRound[round][msg.sender]; //20
+            for (uint i = total; i > 0; i--) {
+                uint timeStamp = addressToCounterToTimestampForRound[round][msg.sender][i];
+                if (timeStamp > start && timeStamp < end)
+                    counter++;
+            }
+            
         addressToTimeBankPrizeForRound[round][msg.sender] += counter.mul(timeBankForRound[round]).div(totalPaintsForRound[round]);
         withdrawalBalances[msg.sender] += addressToTimeBankPrizeForRound[round][msg.sender];
         addressToTimeBankPrizeTotal[msg.sender] += addressToTimeBankPrizeForRound[round][msg.sender];
