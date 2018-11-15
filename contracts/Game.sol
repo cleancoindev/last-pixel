@@ -52,6 +52,8 @@ contract Game {
     mapping(address => uint) public addressToTimeBankPrizeTotal;
     mapping (uint => address) public winnerOfRound;
     
+    mapping (uint => uint) public winnerBankForRound; //какой банк был разыгран в раунде
+    
     function getPixelColor(uint _pixel) external view returns (uint) {
         return pixelToColorForRound[currentRound][_pixel];
     }
@@ -79,6 +81,7 @@ contract Game {
             finishedTimeForRound[currentRound] = now;
             winnerOfRound[currentRound] = lastPainterForRound[currentRound];
             winnerOfRound[currentRound].transfer(timeBankForRound[currentRound].mul(45).div(100));
+            winnerBankForRound[currentRound] = 1; // 1=timeBank
             distributeTimeBank();
             msg.sender.transfer(msg.value); //возвращаем средства пользователя назад, так как этот раунд закончился
         }
@@ -128,38 +131,27 @@ contract Game {
                 winnerColorForRound[currentRound] = _color;
                 winnerOfRound[currentRound] = lastPainterForRound[currentRound];
                 winnerOfRound[currentRound].transfer(colorBankForRound[currentRound].mul(50).div(100));
+                winnerBankForRound[currentRound] = 2; //2=colorBank
                 distributeColorBank(); //разыгрываем банк цвета
             }
             
             if (lastPlayedRound[msg.sender] > 1 && isPrizeDistributedForRound[msg.sender][lastPlayedRound[msg.sender]] == false) {
-                //distributeColorBankPrizeForLastPlayedRound();
-                distributeTimeBankPrizeForLastPlayedRound();
+                if(winnerBankForRound[lastPlayedRound[msg.sender]] == 1) //1=timeBank
+                    distributeTimeBankPrizeForLastPlayedRound();
+                if(winnerBankForRound[lastPlayedRound[msg.sender]] == 2) //2=colorBank
+                    distributeColorBankPrizeForLastPlayedRound();
             }                
         }
     }
     
-    function distributeColorBankPrizeForLastPlayedRound() public { //for the last played round should not be public or check that winnercolor != 0, this causes error
-        require(lastPlayedRound[msg.sender] > 0);
-        uint round = lastPlayedRound[msg.sender];
-        uint winnerColor = winnerColorForRound[round];
-        uint end = addressToColorToTimestampToCounterForRound[round][msg.sender][winnerColor][finishedTimeForRound[round]];
-        uint start = addressToColorToTimestampToCounterForRound[round][msg.sender][winnerColor][startedTimeForRound[round]];
-        uint counter = end - start;
-        addressToColorBankPrizeForRound[round][msg.sender] += counter.mul( colorBankForRound[round]).div(colorToTotalPaintsForRound[round][winnerColor]);
-        withdrawalBalances[msg.sender] += addressToColorBankPrizeForRound[round][msg.sender];
-        addressToColorBankPrizeTotal[msg.sender] += addressToColorBankPrizeForRound[round][msg.sender];
-        isPrizeDistributedForRound[msg.sender][round] = true;
-        
-    }
-    
      function distributeTimeBankPrizeForLastPlayedRound() public { //for the last played round should not be public or check that winnercolor != 0, this causes error
-        require(lastPlayedRound[msg.sender] > 0);
         uint round = lastPlayedRound[msg.sender];
+        require(lastPlayedRound[msg.sender] > 0 && winnerBankForRound[round] == 1);
         uint end = finishedTimeForRound[round];
         uint start = startedTimeForRound[round];
         uint counter;
         
-        uint total = addressToTotalCounterForRound[round][msg.sender]; //20
+        uint total = addressToTotalCounterForRound[round][msg.sender]; 
             for (uint i = total; i > 0; i--) {
                 uint timeStamp = addressToCounterToTimestampForRound[round][msg.sender][i];
                 if (timeStamp > start && timeStamp < end)
@@ -169,6 +161,28 @@ contract Game {
         addressToTimeBankPrizeForRound[round][msg.sender] += counter.mul(timeBankForRound[round]).div(totalPaintsForRound[round]);
         withdrawalBalances[msg.sender] += addressToTimeBankPrizeForRound[round][msg.sender];
         addressToTimeBankPrizeTotal[msg.sender] += addressToTimeBankPrizeForRound[round][msg.sender];
+        isPrizeDistributedForRound[msg.sender][round] = true;
+        
+    }
+    
+    function distributeColorBankPrizeForLastPlayedRound() public { //for the last played round should not be public or check that winnercolor != 0, this causes error
+        uint round = lastPlayedRound[msg.sender];
+        require(lastPlayedRound[msg.sender] > 0 && winnerBankForRound[round] == 2);
+        uint winnerColor = winnerColorForRound[round];
+        uint end = finishedTimeForRound[round];
+        uint start = startedTimeForRound[round];
+        uint counter;
+        
+        uint total = colorToAddressToTotalCounterForRound[round][winnerColor][msg.sender]; 
+            for (uint i = total; i > 0; i--) {
+                uint timeStamp = addressToColorToCounterToTimestampForRound[round][msg.sender][winnerColor][i];
+                if (timeStamp > start && timeStamp < end)
+                    counter++;
+            }
+        
+        addressToColorBankPrizeForRound[round][msg.sender] += counter.mul( colorBankForRound[round]).div(colorToTotalPaintsForRound[round][winnerColor]);
+        withdrawalBalances[msg.sender] += addressToColorBankPrizeForRound[round][msg.sender];
+        addressToColorBankPrizeTotal[msg.sender] += addressToColorBankPrizeForRound[round][msg.sender];
         isPrizeDistributedForRound[msg.sender][round] = true;
         
     }
