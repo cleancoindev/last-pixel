@@ -143,7 +143,7 @@ contract Game is Ownable {
     function paint(uint _pixel, uint _color) external payable {
         
         //устанавливаем значения для краски в пуле и цену вызова функции paint
-        _setPaintsPool();
+        _fillPaintsPool();
         
         require(msg.value == callPrice, "Wrong call price...");
         require(_pixel != 0, "The pixel with id = 0 does not exist...");
@@ -478,7 +478,7 @@ contract Game is Ownable {
     }
     
     //функция пополнения пула краски
-    function _setPaintsPool() private {
+    function _fillPaintsPool() private {
         
         //если ни одна единица краски еще не потрачена
         if (totalPaintsForRound[currentRound] == 0) {
