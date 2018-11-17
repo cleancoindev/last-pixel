@@ -93,14 +93,14 @@ contract Game is Ownable {
     //время когда краска определенного поколения закончилась в пуле
     mapping (uint => uint) public paintGenToEndTime;
     
-    //текущее поколение краски которое расходуется в данный момент
-    uint public currentPaintGen;
-    
     //булевое значение - о том что, поколение краски началось
     mapping (uint => bool) public paintGenStarted;
     
     //цена поколения краски
     mapping (uint => uint) public paintGenToPrice;
+
+    //текущее поколение краски которое расходуется в данный момент
+    uint public currentPaintGen;
     
     //стоимость вызова функции paint
     uint public callPrice;
@@ -123,6 +123,7 @@ contract Game is Ownable {
     event DividendsWithdrawn(address indexed withdrawer, uint indexed currentBlock, uint indexed amount);
     event CallPriceUpdated(uint indexed newCallPrice);
     
+    //конструктор, задающий изначальные значения переменных
     constructor() public payable { 
         maxPaintsInPool = 10; //10000 in production
         currentRound = 1;
@@ -473,7 +474,11 @@ contract Game is Ownable {
 
     //функция обновления цены вызова функции закрашивания (paint)
     function _updateCallPrice() private {
+
+        //увеличиваем цену вызова на 5%
         callPrice = callPrice.mul(105).div(100);
+
+        //задаем цену для следнующего поколения краски
         paintGenToPrice[currentPaintGen + 1] = callPrice;
     }
     
@@ -502,6 +507,7 @@ contract Game is Ownable {
                 
                 //новое поколение создалось сейчас
                 paintGenToStartTime[nextPaintGen] = now; 
+
                 paintGenStarted[nextPaintGen] = true;
             }
             
@@ -514,6 +520,7 @@ contract Game is Ownable {
                 //вызываем ивент о том, что цена вызова функции paint обновлена
                 emit CallPriceUpdated(callPrice);
                 
+                //краска текущего поколения закончилась сейчас
                 paintGenToEndTime[currentPaintGen] = now;
 
                 //переходим на использование следующего поколения краски
