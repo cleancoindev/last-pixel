@@ -284,17 +284,21 @@ contract Game is Ownable {
         //функция не может быть вызвана, если баланс для вывода пользователя равен нулю
         require(withdrawalBalances[msg.sender] != 0, "Your withdrawal balance is zero...");
 
+        //Checks-Effects-Interactions pattern
+        uint withdrawalAmount = withdrawalBalances[msg.sender];
+
+        //обнуляем баланс для вывода для пользователя
+        withdrawalBalances[msg.sender] = 0;
+
         //перевести пользователю баланс для вывода
-        msg.sender.transfer(withdrawalBalances[msg.sender]);
+        msg.sender.transfer(withdrawalAmount);
         
         //устанавливаем время последнего вывода средств для пользователя
         addressToLastWithdrawalTime[msg.sender] = now;
         
         //вызываем ивент о том, что дивиденды выплачены (адрес, время вывода, количество вывода)
-        emit DividendsWithdrawn(msg.sender, now, withdrawalBalances[msg.sender]);
+        emit DividendsWithdrawn(msg.sender, now, withdrawalAmount);
         
-        //обнуляем баланс для вывода для пользователя
-        withdrawalBalances[msg.sender] = 0;
     }
 
     //нужно для тестирования, убрать в продакшене
@@ -390,9 +394,12 @@ contract Game is Ownable {
 
         //победитель текущего раунда - последний закрасивший пиксель пользователь за этот раунд
         winnerOfRound[currentRound] = lastPainterForRound[currentRound];
-
+        
+        //Checks-Effects-Interactions pattern
+        uint amountToTransfer = colorBankForRound[currentRound].mul(50).div(100);
+    
         //переводим 50% банка цвета победителю текущего раунда
-        winnerOfRound[currentRound].transfer(colorBankForRound[currentRound].mul(50).div(100));
+        winnerOfRound[currentRound].transfer(amountToTransfer);
                
         //разыгранный банк этого раунда = банк цвета (2)
         winnerBankForRound[currentRound] = 2;
@@ -424,9 +431,12 @@ contract Game is Ownable {
 
         //победитель текущего раунда - последний закрасивший пиксель пользователь за этот раунд
         winnerOfRound[currentRound] = lastPainterForRound[currentRound];
+        
+         //Checks-Effects-Interactions pattern
+        uint amountToTransfer = timeBankForRound[currentRound].mul(45).div(100);
 
         //переводим 45% банка времени победителю текущего раунда
-        winnerOfRound[currentRound].transfer(timeBankForRound[currentRound].mul(45).div(100));
+        winnerOfRound[currentRound].transfer(amountToTransfer);
                 
         //разыгранный банк этого раунда = банк времени (1)
         winnerBankForRound[currentRound] = 1; 
