@@ -1,8 +1,8 @@
 pragma solidity ^0.4.24;
-import "./RoundController.sol";
+import "./RoundDataHolder.sol";
 import "./SafeMath.sol";
 
-contract ColorBankDistributor is RoundController  {
+contract ColorBankDistributor is RoundDataHolder  {
     
     using SafeMath for uint;
     

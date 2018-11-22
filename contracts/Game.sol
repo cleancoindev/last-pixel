@@ -4,11 +4,11 @@ import "openzeppelin-solidity/ownership/Ownable.sol";
 import "./DividendsDistributor.sol";
 import "./TimeBankDistributor.sol";
 import "./ColorBankDistributor.sol";
-import "./RoundController.sol";
+import "./RoundDataHolder.sol";
 import "./PaintsPool.sol";
 import "./tokens/Color.sol";
 
-contract Game is Ownable, PaintsPool, RoundController, DividendsDistributor, TimeBankDistributor, ColorBankDistributor {
+contract Game is Ownable, PaintsPool, RoundDataHolder, DividendsDistributor, TimeBankDistributor, ColorBankDistributor {
 
     using SafeMath for uint;
     

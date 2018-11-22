@@ -1,6 +1,6 @@
 pragma solidity ^0.4.24;
 
-contract RoundController {
+contract RoundDataHolder {
     
     //сколько всего было разукрашиваний в этом раунде любым цветом
     mapping (uint => uint) public totalPaintsForRound; 
