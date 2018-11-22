@@ -1,6 +1,6 @@
 pragma solidity ^0.4.24;
-import "openzeppelin-solidity/token/ERC721/ERC721Full.sol";
-import "openzeppelin-solidity/ownership/Ownable.sol";
+import "node_modules/openzeppelin-solidity/contracts/token/ERC721/ERC721Full.sol";
+import "node_modules/openzeppelin-solidity/contracts/ownership/Ownable.sol";
 
 contract Color is ERC721, ERC721Metadata, ERC721Enumerable, Ownable {
     using SafeMath for uint;
