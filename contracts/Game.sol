@@ -6,9 +6,10 @@ import "./TimeBankDistributor.sol";
 import "./ColorBankDistributor.sol";
 import "./RoundDataHolder.sol";
 import "./PaintsPool.sol";
+import "./PaintDiscount.sol";
 import "./tokens/Color.sol";
 
-contract Game is Ownable, PaintsPool, RoundDataHolder, DividendsDistributor, TimeBankDistributor, ColorBankDistributor {
+contract Game is Ownable, PaintsPool, PaintDiscount, RoundDataHolder, DividendsDistributor, TimeBankDistributor, ColorBankDistributor, PaintDiscount {
 
     using SafeMath for uint;
     
@@ -53,7 +54,17 @@ contract Game is Ownable, PaintsPool, RoundDataHolder, DividendsDistributor, Tim
         //устанавливаем значения для краски в пуле и цену вызова функции paint
         _fillPaintsPool(_color);
         
-        require(msg.value == callPriceForColor[_color], "Wrong call price...");
+        //проверяем есть ли у пользователя скидка за покупку краски данным цветом
+        if (hasPaintDiscountForColor[_color][msg.sender] == true ) {
+            
+            //если да, то обновляем цену вызова функции paint с учетом скидки
+            uint discountCallPrice = callPriceForColor[_color].mul(100 - usersPaintDiscountForColor[_color][msg.sender].div(100));
+            require(msg.value == discountCallPrice , "Wrong call price...");
+        }
+            
+        else
+            require(msg.value == callPriceForColor[_color], "Wrong call price...");
+            
         require(_pixel != 0, "The pixel with id = 0 does not exist...");
         require(_color != 0, "You cannot paint to transparent color...");
         require(pixelToColorForRound[currentRound][_pixel] != _color, "This pixel is already of this color...");
@@ -161,6 +172,12 @@ contract Game is Ownable, PaintsPool, RoundDataHolder, DividendsDistributor, Tim
             
         //с каждым закрашиванием декреминтируем на 1 ед краски
         paintGenToAmountForColor[_color][currentPaintGenForColor[_color]] = paintGenToAmountForColor[_color][currentPaintGenForColor[_color]].sub(1);
+        
+        //сохраняем значение отраченных пользователем дляенег на покупку краски данного цвета
+        _setMoneySpentByUserForColor(_color);
+        
+        //сохраняем зачение скидки на покупку краски данного цвета для пользователя
+        _setUsersPaintDiscountForColor(_color);
     }
 
     //функция распределения ставки
