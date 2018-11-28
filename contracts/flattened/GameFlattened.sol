@@ -613,6 +613,7 @@ contract Game is Ownable, PaintsPool, PaintDiscount, RoundDataHolder, DividendsD
     //последний раунд в котором пользователь принимал участие (адрес => раунд)
     mapping (address => uint) public lastPlayedRound; 
 
+    //инстанс Цвета
     Color color;
     
     //ивенты
@@ -812,6 +813,7 @@ contract Game is Ownable, PaintsPool, PaintDiscount, RoundDataHolder, DividendsD
 
     }
     
+    //функция устанавливающая адрес задеплоенного контракта NFT Цвет
     function setColorInstanceAddress(address _deployed) external onlyOwner {
         color = Color(_deployed);
     }
