@@ -1,7 +1,6 @@
 {
   "name": "last-pixel",
   "version": "1.0.0",
-  "description": "",
   "main": "truffle-config.js",
   "directories": {
     "test": "test"
@@ -20,6 +19,9 @@
   },
   "homepage": "https://github.com/amiromayer/last-pixel#readme",
   "dependencies": {
-    "openzeppelin-solidity": "^2.0.0"
-  }
+    "openzeppelin-solidity": "^2.0.0",
+    "truffle-hdwallet-provider": "0.0.6"
+  },
+  "devDependencies": {},
+  "description": ""
 }

@@ -1,4 +1,4 @@
-var Square = artifacts.require("Square");
+var Game = artifacts.require("Game");
 module.exports = function(deployer) {
-  deployer.deploy(Square);
+  deployer.deploy(Game);
 };

@@ -1,5 +1,7 @@
 pragma solidity ^0.4.24;
 
+import "../node_modules/openzeppelin-solidity/contracts/math/SafeMath.sol";
+
 contract RoundDataHolder {
     
     //сколько всего было разукрашиваний в этом раунде любым цветом

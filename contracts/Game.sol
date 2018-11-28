@@ -1,20 +1,26 @@
 pragma solidity ^0.4.24;
 
-import "openzeppelin-solidity/ownership/Ownable.sol";
+import "../node_modules/openzeppelin-solidity/contracts/ownership/Ownable.sol";
 import "./DividendsDistributor.sol";
 import "./TimeBankDistributor.sol";
 import "./ColorBankDistributor.sol";
 import "./RoundDataHolder.sol";
 import "./PaintsPool.sol";
 import "./PaintDiscount.sol";
-import "./tokens/Color.sol";
 
-contract Game is Ownable, PaintsPool, PaintDiscount, RoundDataHolder, DividendsDistributor, TimeBankDistributor, ColorBankDistributor, PaintDiscount {
+interface Color {
+    function totalSupply() external view returns (uint);
+}
+
+contract Game is Ownable, PaintsPool, PaintDiscount, RoundDataHolder, DividendsDistributor, TimeBankDistributor, ColorBankDistributor {
 
     using SafeMath for uint;
     
     //последний раунд в котором пользователь принимал участие (адрес => раунд)
     mapping (address => uint) public lastPlayedRound; 
+
+    //инстанс Цвета
+    Color color;
     
     //ивенты
     event Paint(uint indexed pixelId, uint indexed colorId, address indexed painter);
@@ -22,7 +28,10 @@ contract Game is Ownable, PaintsPool, PaintDiscount, RoundDataHolder, DividendsD
     //конструктор, задающий изначальные значения переменных
     constructor() public payable { 
         
-        Color color = Color(0xa113b22d40dc1d5d086003c27a556e597f614e8b); //instance of deployed Color contract
+        color = Color(0x7899946bc29f3ab7443903bcc03e8a38407bb44a); //instance of deployed Color contract
+        
+        maxPaintsInPool = 100; //10000 in production
+        currentRound = 1;
         
         for (uint i = 1; i < color.totalSupply(); i++) {
             currentPaintGenForColor[i] = 1;
@@ -39,8 +48,6 @@ contract Game is Ownable, PaintsPool, PaintDiscount, RoundDataHolder, DividendsD
             paintGenToAmountForColor[i][currentPaintGenForColor[i]] = maxPaintsInPool;
         }
         
-        maxPaintsInPool = 10; //10000 in production
-        currentRound = 1;
     }
     
     //возвращает цвет пикселя в этом раунде
@@ -210,6 +217,11 @@ contract Game is Ownable, PaintsPool, PaintDiscount, RoundDataHolder, DividendsD
                 claimColorBankPrizeForLastPlayedRound();
         }      
 
+    }
+    
+    //функция устанавливающая адрес задеплоенного контракта NFT Цвет
+    function setColorInstanceAddress(address _deployed) external onlyOwner {
+        color = Color(_deployed);
     }
 
 }

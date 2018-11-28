@@ -1,5 +1,6 @@
 pragma solidity ^0.4.24;
-import "./Safemath.sol";
+
+import "../node_modules/openzeppelin-solidity/contracts/math/SafeMath.sol";
 
 contract PaintsPool  {
     
