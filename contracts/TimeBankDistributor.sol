@@ -1,4 +1,5 @@
 pragma solidity ^0.4.24;
+
 import "./RoundDataHolder.sol";
 
 contract TimeBankDistributor is RoundDataHolder {

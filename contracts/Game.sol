@@ -224,4 +224,32 @@ contract Game is Ownable, PaintsPool, PaintDiscount, RoundDataHolder, DividendsD
         color = Color(_deployed);
     }
 
+    //функция отображающая потенциальный выигрыш пользователя для заданного цвета за текущий раунд
+    function showPotentialPrizeForColor(uint _color) external view returns (uint) {
+
+        //время завершения сбора команды приза для раунда
+        uint end = now;
+
+        //время начала сбора команды приза для раунда
+        uint start = now - 24 hours;
+
+        //cчетчик количества закрашиваний
+        uint counter;
+        
+        //счетчик общего количества закрашиваний выигрышным цветом для пользователя за раунд     
+        uint total = colorToAddressToTotalCounterForRound[currentRound][_color][msg.sender]; 
+
+         //считаем сколько закрашиваний выигрышным цветом произвел пользователь за последние 24 часа
+        for (uint i = total; i > 0; i--) {
+            uint timeStamp = addressToColorToCounterToTimestampForRound[currentRound][msg.sender][_color][i];
+            if (timeStamp > start && timeStamp <= end)
+                counter = counter.add(1);
+        }
+        
+        //потенциальный выигрыш за текущий раунд
+        uint potentialPrizeForColor = counter.mul(colorBankToColorForRound[currentRound][_color]).div(colorToTotalPaintsForRound[currentRound][_color]);
+        
+        return potentialPrizeForColor;
+    }
+
 }

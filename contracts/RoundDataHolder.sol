@@ -19,6 +19,9 @@ contract RoundDataHolder {
     //банк цвета за раунд (раунд => банк цвета)
     mapping (uint => uint) public colorBankForRound; 
 
+    //банк цвета для отдельного цвета за раунд (раунд => цвет => банк цвета)
+    mapping (uint => mapping (uint => uint)) public colorBankToColorForRound; 
+
     //банк времени за раунд (раунд => банк времени)
     mapping (uint => uint) public timeBankForRound; 
     
