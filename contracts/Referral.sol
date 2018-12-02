@@ -33,25 +33,24 @@ contract Referral {
     //счетчик уникальных пользователей
     uint public uniqueUsersCount;
     
-    //функция регистрации пользователя с реферальной ссылкой рефера
-    function registerWithRefLink(string _refLink) isValidRefLink(_refLink) external {
-        require(isRegisteredUser[msg.sender] != true, "You are already registered");
-        bytes32 refLink = toBytes32(_refLink);
-        require(refLinkExists[refLink], "Invalid referral link");
-        uniqueUsersCount = uniqueUsersCount.add(1);
-        newUserToCounter[msg.sender] = uniqueUsersCount;
-        address referrer = refLinkToUser[refLink];
-        referralToReferrer[msg.sender] = referrer;
-        isRegisteredUser[msg.sender] = true;
-        hasReferrer[msg.sender] = true;
-    }
-    
-    //функция регистрации пользователя без реферальной ссылки рефера
-    function register() external  {
-        require(isRegisteredUser[msg.sender] != true, "You are already registered");
-        uniqueUsersCount = uniqueUsersCount.add(1);
-        newUserToCounter[msg.sender] = uniqueUsersCount;
-        isRegisteredUser[msg.sender] = true;
+    function paint(string _refLink) {
+        
+        //если пользователь еще не зарегистрирован
+        if (isRegisteredUser[msg.sender] != true) {
+            
+            bytes32 refLink = toBytes32(_refLink);
+            
+            //если такая реф ссылка действительно существует 
+            if (refLinkExists[refLink]) { 
+                address referrer = refLinkToUser[refLink];
+                referralToReferrer[msg.sender] = referrer;
+                hasReferrer[msg.sender] = true;
+            }
+            
+            uniqueUsersCount = uniqueUsersCount.add(1);
+            newUserToCounter[msg.sender] = uniqueUsersCount;
+            isRegisteredUser[msg.sender] = true;
+        }
     }
     
     //функция для покупки реферальной ссылки для пользователя (длина в диапазоне от 4 до 8 символов)
@@ -87,6 +86,6 @@ contract Referral {
         }
     
         return _stringBytes;
-    }   
+    }
 
 }
