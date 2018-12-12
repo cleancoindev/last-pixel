@@ -24,7 +24,7 @@ contract GameMult is Ownable, TimeBankDistributor, ColorBankDistributor, PaintsP
     mapping (address => bool) public isRegistered;
     
     //ивенты
-    event Paint(uint indexed pixelId, uint indexed colorId, address indexed painter);
+    event Paint(uint indexed pixelId, uint  colorId, address indexed painter, uint indexed round);
    
     //конструктор, задающий изначальные значения переменных
     constructor() public payable { 
@@ -219,7 +219,7 @@ contract GameMult is Ownable, TimeBankDistributor, ColorBankDistributor, PaintsP
         lastPaintedPixelForRound[currentRound] = _pixel;
         
         //ивент - закрашивание пикселя (пиксель, цвет, закрасивший пользователь)
-        emit Paint(_pixel, _color, msg.sender);    
+        emit Paint(_pixel, _color, msg.sender, currentRound);    
             
         //проверяем не закрасилось ли все игровое поле данным цветом для розыгрыша банка цвета
         if (colorToPaintedPixelsAmountForRound[currentRound][_color] == 10000) {
