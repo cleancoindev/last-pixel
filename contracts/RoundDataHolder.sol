@@ -31,6 +31,9 @@ contract RoundDataHolder {
     //последний закрасивший любой пиксель пользователь за раунд (раунд => адрес)
     mapping (uint => address) public lastPainterForRound; 
 
+    //последний разукрашенный пиксель за раунд
+    mapping (uint => uint) public lastPaintedPixelForRound;
+
     //цвет который выиграл (которым заполнились все пиксели) за раунд (раунд => цвет) 
     mapping (uint => uint) public winnerColorForRound; 
 
@@ -42,18 +45,38 @@ contract RoundDataHolder {
 
     //время завершения команды банка за раунд (раунд => время)
     mapping(uint => uint) public teamEndedTimeForRound;
-    
+
+    /*
     //счетчик общего количества закрашенных конкретным цветом клеток для пользователя за раунд (раунд => цвет => адрес => количество клеток)
     mapping (uint => mapping(uint => mapping (address => uint))) public colorToAddressToTotalCounterForRound; 
+    */
 
+    //счетчик общего количества закрашенных конкретным цветом клеток для пользователя (цвет => адрес => количество клеток)
+    mapping(uint => mapping (address => uint)) public colorToUserToTotalCounter; 
+
+    /*
     //счетчик общего количества закрашиваний любым цветом для пользователя за раунд (раунд => адрес => количество клеток)                                                                        
     mapping(uint => mapping (address => uint)) public addressToTotalCounterForRound;
+    */
 
+    //счетчик общего количества закрашиваний любым цветом для пользователя(адрес => количество клеток)                                                                        
+    mapping (address => uint) public userToTotalCounter;
+
+    /*
     //время использования краски определенного цвета в n-ый по счету раз для пользователя за раунд (адрес => цвет краски => счетчик => метка времени)                                                                                      
     mapping (uint => mapping(address => mapping (uint => mapping (uint => uint)))) public addressToColorToCounterToTimestampForRound; 
-                                                                            
+    */
+
+    //время использования краски определенного цвета в n-ый по счету раз для пользователя за раунд (адрес => цвет краски => счетчик => метка времени)                                                                                      
+    mapping(address => mapping (uint => mapping (uint => uint))) public userToColorToCounterToTimestamp;             
+
+    /*
     //время использования краски любого цвета в n-ый по счету раз для пользователя за раунд (адрес => счетчик => метка времени)                                                                    
     mapping(uint=>mapping(address=>mapping(uint=>uint))) public addressToCounterToTimestampForRound; 
+    */
+
+    //время использования краски любого цвета в n-ый по счету раз для пользователя(адрес => счетчик => метка времени)                                                                    
+    mapping(address => mapping(uint => uint)) public userToCounterToTimestamp; 
 
     //булевое значение проверяет получил ли пользователь приз банка за раунд (адрес => раунд => булевое значение)                                                                            
     mapping(address => mapping(uint => bool)) public isPrizeDistributedForRound;
@@ -69,6 +92,9 @@ contract RoundDataHolder {
 
     //банк который был разыгран в раунде (раунд => разыгранный банк) (1 = банк времени, 2 = банк цвета)
     mapping (uint => uint) public winnerBankForRound; 
+
+    //маппинг о том принимал ли участие в каком либо раунде пользователь
+    mapping (uint => mapping (address => bool)) public hasTakenPartInRound;
 
     //последний раунд в котором пользователь принимал участие (адрес => раунд)
     mapping (address => uint) public lastPlayedRound; 

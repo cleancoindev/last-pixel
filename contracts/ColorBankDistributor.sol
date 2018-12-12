@@ -39,7 +39,7 @@ contract ColorBankDistributor is RoundDataHolder  {
          //считаем сколько закрашиваний выигрышным цветом произвел пользователь за последние 24 часа
         for (uint i = total; i > 0; i--) {
             uint timeStamp = addressToColorToCounterToTimestampForRound[round][msg.sender][winnerColor][i];
-            if (timeStamp > start && timeStamp <= end)
+            if (timeStamp >= start && timeStamp <= end)
                 counter = counter.add(1);
         }
 

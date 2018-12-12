@@ -22,7 +22,7 @@ contract PaintDiscount  {
         usersPaintDiscountForColor[_color][msg.sender] = moneySpentByUserForColor[_color][msg.sender] / 1 ether;
         
         //максимальная скидка может равняться 10%
-        if (moneySpentByUserForColor[_color][msg.sender] > 10 ether)
+        if (moneySpentByUserForColor[_color][msg.sender] >= 10 ether)
             usersPaintDiscountForColor[_color][msg.sender] = 10;
         
     }

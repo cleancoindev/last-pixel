@@ -1,4 +1,10 @@
 var Game = artifacts.require("Game");
-module.exports = function(deployer) {
-  deployer.deploy(Game);
+var GameMock = artifacts.require("GameMock");
+
+module.exports = async function(deployer) {
+  deployer.deploy(Game, { gas: 6500000 });
+  deployer.deploy(GameMock, {
+    gas: 6700000,
+    value: web3.toWei(10)
+  });
 };
