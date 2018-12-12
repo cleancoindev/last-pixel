@@ -2,8 +2,9 @@ pragma solidity ^0.4.24;
 
 import "../node_modules/openzeppelin-solidity/contracts/math/SafeMath.sol";
 import "./IColor.sol";
+import "./Roles.sol";
 
-contract DividendsDistributor {
+contract DividendsDistributor is Roles {
     
     using SafeMath for uint;
     
@@ -31,36 +32,64 @@ contract DividendsDistributor {
     //банк пассивных доходов
     uint public dividendsBank;
     
-    event DividendsWithdrawn(address indexed withdrawer, uint indexed currentBlock, uint indexed amount);
-    
-    //функция запроса вывода дивидендов (пассивного дохода)
-    function claimDividends() external {
+    event DividendsWithdrawn(address indexed withdrawer, uint indexed currentTime, uint indexed amount);
+    event DividendsClaimed(address indexed claimer, uint indexed currentTime);
 
+    struct Claim {
+        uint id;
+        address claimer;
+        bool isResolved;
+        uint timestamp;
+    }
+
+    uint public claimId;
+    Claim[] public claims;
+
+  
+    function claimDividends() external {
         //функция не может быть вызвана, если баланс для вывода пользователя равен нулю
         require(withdrawalBalances[msg.sender] != 0, "Your withdrawal balance is zero...");
+        
+        Claim memory c;
+        c.id = claimId;
+        c.claimer = msg.sender;
+        c.isResolved = false;
+        c.timestamp = now;
+        claims.push(c);
+        claimId = claimId.add(1);
+        
+        emit DividendsClaimed(msg.sender, now);
+    }
+
+    function approveClaim(uint _claimId) public onlyAdmin() {
+        
+        Claim storage claim = claims[_claimId];
+        
+        require(!claim.isResolved);
+        
+        address claimer = claim.claimer;
 
         //Checks-Effects-Interactions pattern
-        uint withdrawalAmount = withdrawalBalances[msg.sender];
+        uint withdrawalAmount = withdrawalBalances[claimer];
 
         //обнуляем баланс для вывода для пользователя
-        withdrawalBalances[msg.sender] = 0;
+        withdrawalBalances[claimer] = 0;
 
         //перевести пользователю баланс для вывода
-        msg.sender.transfer(withdrawalAmount);
+        claimer.transfer(withdrawalAmount);
         
         //устанавливаем время последнего вывода средств для пользователя
-        addressToLastWithdrawalTime[msg.sender] = now;
-        
-        //вызываем ивент о том, что дивиденды выплачены (адрес, время вывода, количество вывода)
-        emit DividendsWithdrawn(msg.sender, now, withdrawalAmount);
-        
+        addressToLastWithdrawalTime[claimer] = now;
+        emit DividendsWithdrawn(claimer, now, withdrawalAmount);
+
+        claim.isResolved = true;
     }
 
      // захардкоженные адреса для тестирования функции claimDividens()
     // в продакшене это будут адреса бенефециариев Цветов и Пикселей : withdrawalBalances[ownerOf(_pixel)], withdrawalBalances[ownerOf(_color)]
     //address public ownerOfColor = 0xf106a93c5ca900bfae6345b61fcfae9d75cb031d;
     address public ownerOfPixel = 0xca35b7d915458ef540ade6068dfe2f44e8fa733c;
-    address public founders = 0x5ac77c56772a1819663ae375c9a2da2de34307ef;
+    address public founders = 0x3e4d187df7d8a0820eaf4174d17b160157610912;
    
     //функция распределения дивидендов (пассивных доходов) - будет работать после подключения инстансов контрактов Цвета и Пикселя
     function _distributeDividends(uint _color) internal {
