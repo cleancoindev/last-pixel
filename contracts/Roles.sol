@@ -1,5 +1,5 @@
 pragma solidity ^0.4.24;
-import "https://github.com/OpenZeppelin/openzeppelin-solidity/contracts/ownership/Ownable.sol";
+import "../node_modules/openzeppelin-solidity/contracts/ownership/Ownable.sol";
 
 
 contract Roles is Ownable {
@@ -10,7 +10,7 @@ contract Roles is Ownable {
         isAdmin[msg.sender] = true;
     }
     
-    function addAdmin(address _new) onlyOwner() {
+    function addAdmin(address _new) external onlyOwner() {
         isAdmin[_new] = true;
     }
     
@@ -19,7 +19,7 @@ contract Roles is Ownable {
         _;
     }
     
-    function removeAdmin(address _admin) onlyOwner() {
+    function removeAdmin(address _admin) external onlyOwner() {
         isAdmin[_admin] = false;
     }
 }
