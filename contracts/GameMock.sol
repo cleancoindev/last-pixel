@@ -1,7 +1,9 @@
 pragma solidity ^0.4.24;
+
 import "./Game.sol";
 
 contract GameMock is Game {
+
     constructor() payable {
         maxPaintsInPool = 100; //10000 in production
         currentRound = 1;

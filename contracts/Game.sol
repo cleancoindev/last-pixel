@@ -10,7 +10,7 @@ import "./PaintsPool.sol";
 import "./PaintDiscount.sol";
 import "./IColor.sol";
 
-contract GameMult is Ownable, TimeBankDistributor, ColorBankDistributor, PaintsPool, PaintDiscount, DividendsDistributor  {
+contract Game is Ownable, TimeBankDistributor, ColorBankDistributor, PaintsPool, PaintDiscount, DividendsDistributor  {
 
     using SafeMath for uint;
     

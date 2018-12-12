@@ -19,7 +19,7 @@ contract ColorBankDistributor is RoundDataHolder  {
         uint round = lastPlayedRound[msg.sender];
 
         //функция может быть вызвана только если в последнем раунде был разыгран банк цвета
-        require(lastPlayedRound[msg.sender] > 0 && winnerBankForRound[round] == 2, "Bank of color was not played in your last round...");
+       require(lastPlayedRound[msg.sender] > 1 && winnerBankForRound[round] == 2, "Bank of color was not played in your last round...");
 
         //выигрышый цвет за последний раунд в котором пользователь принимал участие
         uint winnerColor = winnerColorForRound[round];
@@ -28,17 +28,27 @@ contract ColorBankDistributor is RoundDataHolder  {
         uint end = teamEndedTimeForRound[round];
 
         //время начала сбора команды приза для раунда
-        uint start = teamStartedTimeForRound[round];
+        uint start;
+
+        if (lastPlayedRound[msg.sender] > 1 && winnerBankForRound[round - 1] == 1)
+            start = end - 24 hours;
+        else 
+            start = teamStartedTimeForRound[round];
 
         //cчетчик количества закрашиваний
         uint counter;
+
         
         //счетчик общего количества закрашиваний выигрышным цветом для пользователя за раунд     
-        uint total = colorToAddressToTotalCounterForRound[round][winnerColor][msg.sender]; 
+        //uint total = colorToAddressToTotalCounterForRound[round][winnerColor][msg.sender]; 
+
+        //счетчик общего количества закрашиваний выигрышным цветом для пользователя
+        uint total = colorToUserToTotalCounter[winnerColor][msg.sender];
 
          //считаем сколько закрашиваний выигрышным цветом произвел пользователь за последние 24 часа
         for (uint i = total; i > 0; i--) {
-            uint timeStamp = addressToColorToCounterToTimestampForRound[round][msg.sender][winnerColor][i];
+            //uint timeStamp = addressToColorToCounterToTimestampForRound[round][msg.sender][winnerColor][i];
+            uint timeStamp = userToColorToCounterToTimestamp[msg.sender][winnerColor][i];
             if (timeStamp >= start && timeStamp <= end)
                 counter = counter.add(1);
         }

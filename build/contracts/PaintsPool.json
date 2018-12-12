@@ -206,14 +206,14 @@
     "absolutePath": "/Users/Amir/last-pixel-contracts/contracts/PaintsPool.sol",
     "exportedSymbols": {
       "PaintsPool": [
-        2087
+        2334
       ]
     },
-    "id": 2088,
+    "id": 2335,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 1884,
+        "id": 2131,
         "literals": [
           "solidity",
           "^",
@@ -226,10 +226,10 @@
       {
         "absolutePath": "/Users/Amir/last-pixel-contracts/node_modules/openzeppelin-solidity/contracts/math/SafeMath.sol",
         "file": "../node_modules/openzeppelin-solidity/contracts/math/SafeMath.sol",
-        "id": 1885,
+        "id": 2132,
         "nodeType": "ImportDirective",
-        "scope": 2088,
-        "sourceUnit": 2640,
+        "scope": 2335,
+        "sourceUnit": 3067,
         "src": "26:75:6",
         "symbolAliases": [],
         "unitAlias": ""
@@ -240,31 +240,31 @@
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": true,
-        "id": 2087,
+        "id": 2334,
         "linearizedBaseContracts": [
-          2087
+          2334
         ],
         "name": "PaintsPool",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
-            "id": 1888,
+            "id": 2135,
             "libraryName": {
               "contractScope": null,
-              "id": 1886,
+              "id": 2133,
               "name": "SafeMath",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 2639,
+              "referencedDeclaration": 3066,
               "src": "141:8:6",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_SafeMath_$2639",
+                "typeIdentifier": "t_contract$_SafeMath_$3066",
                 "typeString": "library SafeMath"
               }
             },
             "nodeType": "UsingForDirective",
             "src": "135:24:6",
             "typeName": {
-              "id": 1887,
+              "id": 2134,
               "name": "uint",
               "nodeType": "ElementaryTypeName",
               "src": "154:4:6",
@@ -276,10 +276,10 @@
           },
           {
             "constant": false,
-            "id": 1892,
+            "id": 2139,
             "name": "totalPaintsForRound",
             "nodeType": "VariableDeclaration",
-            "scope": 2087,
+            "scope": 2334,
             "src": "169:49:6",
             "stateVariable": true,
             "storageLocation": "default",
@@ -288,9 +288,9 @@
               "typeString": "mapping(uint256 => uint256)"
             },
             "typeName": {
-              "id": 1891,
+              "id": 2138,
               "keyType": {
-                "id": 1889,
+                "id": 2136,
                 "name": "uint",
                 "nodeType": "ElementaryTypeName",
                 "src": "178:4:6",
@@ -306,7 +306,7 @@
                 "typeString": "mapping(uint256 => uint256)"
               },
               "valueType": {
-                "id": 1890,
+                "id": 2137,
                 "name": "uint",
                 "nodeType": "ElementaryTypeName",
                 "src": "186:4:6",
@@ -321,10 +321,10 @@
           },
           {
             "constant": false,
-            "id": 1898,
+            "id": 2145,
             "name": "paintGenToAmountForColor",
             "nodeType": "VariableDeclaration",
-            "scope": 2087,
+            "scope": 2334,
             "src": "303:72:6",
             "stateVariable": true,
             "storageLocation": "default",
@@ -333,9 +333,9 @@
               "typeString": "mapping(uint256 => mapping(uint256 => uint256))"
             },
             "typeName": {
-              "id": 1897,
+              "id": 2144,
               "keyType": {
-                "id": 1893,
+                "id": 2140,
                 "name": "uint",
                 "nodeType": "ElementaryTypeName",
                 "src": "312:4:6",
@@ -351,9 +351,9 @@
                 "typeString": "mapping(uint256 => mapping(uint256 => uint256))"
               },
               "valueType": {
-                "id": 1896,
+                "id": 2143,
                 "keyType": {
-                  "id": 1894,
+                  "id": 2141,
                   "name": "uint",
                   "nodeType": "ElementaryTypeName",
                   "src": "329:4:6",
@@ -369,7 +369,7 @@
                   "typeString": "mapping(uint256 => uint256)"
                 },
                 "valueType": {
-                  "id": 1895,
+                  "id": 2142,
                   "name": "uint",
                   "nodeType": "ElementaryTypeName",
                   "src": "337:4:6",
@@ -385,10 +385,10 @@
           },
           {
             "constant": false,
-            "id": 1904,
+            "id": 2151,
             "name": "paintGenToStartTimeForColor",
             "nodeType": "VariableDeclaration",
-            "scope": 2087,
+            "scope": 2334,
             "src": "504:75:6",
             "stateVariable": true,
             "storageLocation": "default",
@@ -397,9 +397,9 @@
               "typeString": "mapping(uint256 => mapping(uint256 => uint256))"
             },
             "typeName": {
-              "id": 1903,
+              "id": 2150,
               "keyType": {
-                "id": 1899,
+                "id": 2146,
                 "name": "uint",
                 "nodeType": "ElementaryTypeName",
                 "src": "513:4:6",
@@ -415,9 +415,9 @@
                 "typeString": "mapping(uint256 => mapping(uint256 => uint256))"
               },
               "valueType": {
-                "id": 1902,
+                "id": 2149,
                 "keyType": {
-                  "id": 1900,
+                  "id": 2147,
                   "name": "uint",
                   "nodeType": "ElementaryTypeName",
                   "src": "530:4:6",
@@ -433,7 +433,7 @@
                   "typeString": "mapping(uint256 => uint256)"
                 },
                 "valueType": {
-                  "id": 1901,
+                  "id": 2148,
                   "name": "uint",
                   "nodeType": "ElementaryTypeName",
                   "src": "538:4:6",
@@ -449,10 +449,10 @@
           },
           {
             "constant": false,
-            "id": 1910,
+            "id": 2157,
             "name": "paintGenToEndTimeForColor",
             "nodeType": "VariableDeclaration",
-            "scope": 2087,
+            "scope": 2334,
             "src": "712:73:6",
             "stateVariable": true,
             "storageLocation": "default",
@@ -461,9 +461,9 @@
               "typeString": "mapping(uint256 => mapping(uint256 => uint256))"
             },
             "typeName": {
-              "id": 1909,
+              "id": 2156,
               "keyType": {
-                "id": 1905,
+                "id": 2152,
                 "name": "uint",
                 "nodeType": "ElementaryTypeName",
                 "src": "721:4:6",
@@ -479,9 +479,9 @@
                 "typeString": "mapping(uint256 => mapping(uint256 => uint256))"
               },
               "valueType": {
-                "id": 1908,
+                "id": 2155,
                 "keyType": {
-                  "id": 1906,
+                  "id": 2153,
                   "name": "uint",
                   "nodeType": "ElementaryTypeName",
                   "src": "738:4:6",
@@ -497,7 +497,7 @@
                   "typeString": "mapping(uint256 => uint256)"
                 },
                 "valueType": {
-                  "id": 1907,
+                  "id": 2154,
                   "name": "uint",
                   "nodeType": "ElementaryTypeName",
                   "src": "746:4:6",
@@ -513,10 +513,10 @@
           },
           {
             "constant": false,
-            "id": 1916,
+            "id": 2163,
             "name": "paintGenStartedForColor",
             "nodeType": "VariableDeclaration",
-            "scope": 2087,
+            "scope": 2334,
             "src": "903:71:6",
             "stateVariable": true,
             "storageLocation": "default",
@@ -525,9 +525,9 @@
               "typeString": "mapping(uint256 => mapping(uint256 => bool))"
             },
             "typeName": {
-              "id": 1915,
+              "id": 2162,
               "keyType": {
-                "id": 1911,
+                "id": 2158,
                 "name": "uint",
                 "nodeType": "ElementaryTypeName",
                 "src": "912:4:6",
@@ -543,9 +543,9 @@
                 "typeString": "mapping(uint256 => mapping(uint256 => bool))"
               },
               "valueType": {
-                "id": 1914,
+                "id": 2161,
                 "keyType": {
-                  "id": 1912,
+                  "id": 2159,
                   "name": "uint",
                   "nodeType": "ElementaryTypeName",
                   "src": "929:4:6",
@@ -561,7 +561,7 @@
                   "typeString": "mapping(uint256 => bool)"
                 },
                 "valueType": {
-                  "id": 1913,
+                  "id": 2160,
                   "name": "bool",
                   "nodeType": "ElementaryTypeName",
                   "src": "937:4:6",
@@ -577,10 +577,10 @@
           },
           {
             "constant": false,
-            "id": 1920,
+            "id": 2167,
             "name": "currentPaintGenForColor",
             "nodeType": "VariableDeclaration",
-            "scope": 2087,
+            "scope": 2334,
             "src": "1101:53:6",
             "stateVariable": true,
             "storageLocation": "default",
@@ -589,9 +589,9 @@
               "typeString": "mapping(uint256 => uint256)"
             },
             "typeName": {
-              "id": 1919,
+              "id": 2166,
               "keyType": {
-                "id": 1917,
+                "id": 2164,
                 "name": "uint",
                 "nodeType": "ElementaryTypeName",
                 "src": "1110:4:6",
@@ -607,7 +607,7 @@
                 "typeString": "mapping(uint256 => uint256)"
               },
               "valueType": {
-                "id": 1918,
+                "id": 2165,
                 "name": "uint",
                 "nodeType": "ElementaryTypeName",
                 "src": "1118:4:6",
@@ -622,10 +622,10 @@
           },
           {
             "constant": false,
-            "id": 1924,
+            "id": 2171,
             "name": "callPriceForColor",
             "nodeType": "VariableDeclaration",
-            "scope": 2087,
+            "scope": 2334,
             "src": "1224:47:6",
             "stateVariable": true,
             "storageLocation": "default",
@@ -634,9 +634,9 @@
               "typeString": "mapping(uint256 => uint256)"
             },
             "typeName": {
-              "id": 1923,
+              "id": 2170,
               "keyType": {
-                "id": 1921,
+                "id": 2168,
                 "name": "uint",
                 "nodeType": "ElementaryTypeName",
                 "src": "1233:4:6",
@@ -652,7 +652,7 @@
                 "typeString": "mapping(uint256 => uint256)"
               },
               "valueType": {
-                "id": 1922,
+                "id": 2169,
                 "name": "uint",
                 "nodeType": "ElementaryTypeName",
                 "src": "1241:4:6",
@@ -667,10 +667,10 @@
           },
           {
             "constant": false,
-            "id": 1928,
+            "id": 2175,
             "name": "nextCallPriceForColor",
             "nodeType": "VariableDeclaration",
-            "scope": 2087,
+            "scope": 2334,
             "src": "1362:51:6",
             "stateVariable": true,
             "storageLocation": "default",
@@ -679,9 +679,9 @@
               "typeString": "mapping(uint256 => uint256)"
             },
             "typeName": {
-              "id": 1927,
+              "id": 2174,
               "keyType": {
-                "id": 1925,
+                "id": 2172,
                 "name": "uint",
                 "nodeType": "ElementaryTypeName",
                 "src": "1371:4:6",
@@ -697,7 +697,7 @@
                 "typeString": "mapping(uint256 => uint256)"
               },
               "valueType": {
-                "id": 1926,
+                "id": 2173,
                 "name": "uint",
                 "nodeType": "ElementaryTypeName",
                 "src": "1379:4:6",
@@ -712,10 +712,10 @@
           },
           {
             "constant": false,
-            "id": 1930,
+            "id": 2177,
             "name": "maxPaintsInPool",
             "nodeType": "VariableDeclaration",
-            "scope": 2087,
+            "scope": 2334,
             "src": "1508:27:6",
             "stateVariable": true,
             "storageLocation": "default",
@@ -724,7 +724,7 @@
               "typeString": "uint256"
             },
             "typeName": {
-              "id": 1929,
+              "id": 2176,
               "name": "uint",
               "nodeType": "ElementaryTypeName",
               "src": "1508:4:6",
@@ -739,20 +739,20 @@
           {
             "anonymous": false,
             "documentation": null,
-            "id": 1934,
+            "id": 2181,
             "name": "CallPriceUpdated",
             "nodeType": "EventDefinition",
             "parameters": {
-              "id": 1933,
+              "id": 2180,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1932,
+                  "id": 2179,
                   "indexed": true,
                   "name": "newCallPrice",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1934,
+                  "scope": 2181,
                   "src": "1569:25:6",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -761,7 +761,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1931,
+                    "id": 2178,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
                     "src": "1569:4:6",
@@ -780,14 +780,14 @@
           },
           {
             "body": {
-              "id": 1959,
+              "id": 2206,
               "nodeType": "Block",
               "src": "1761:420:6",
               "statements": [
                 {
                   "expression": {
                     "argumentTypes": null,
-                    "id": 1951,
+                    "id": 2198,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -796,25 +796,25 @@
                       "argumentTypes": null,
                       "baseExpression": {
                         "argumentTypes": null,
-                        "id": 1939,
+                        "id": 2186,
                         "name": "nextCallPriceForColor",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 1928,
+                        "referencedDeclaration": 2175,
                         "src": "1914:21:6",
                         "typeDescriptions": {
                           "typeIdentifier": "t_mapping$_t_uint256_$_t_uint256_$",
                           "typeString": "mapping(uint256 => uint256)"
                         }
                       },
-                      "id": 1941,
+                      "id": 2188,
                       "indexExpression": {
                         "argumentTypes": null,
-                        "id": 1940,
+                        "id": 2187,
                         "name": "_color",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 1936,
+                        "referencedDeclaration": 2183,
                         "src": "1936:6:6",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint256",
@@ -840,7 +840,7 @@
                         {
                           "argumentTypes": null,
                           "hexValue": "313030",
-                          "id": 1949,
+                          "id": 2196,
                           "isConstant": false,
                           "isLValue": false,
                           "isPure": true,
@@ -869,7 +869,7 @@
                             {
                               "argumentTypes": null,
                               "hexValue": "313035",
-                              "id": 1946,
+                              "id": 2193,
                               "isConstant": false,
                               "isLValue": false,
                               "isPure": true,
@@ -896,25 +896,25 @@
                               "argumentTypes": null,
                               "baseExpression": {
                                 "argumentTypes": null,
-                                "id": 1942,
+                                "id": 2189,
                                 "name": "callPriceForColor",
                                 "nodeType": "Identifier",
                                 "overloadedDeclarations": [],
-                                "referencedDeclaration": 1924,
+                                "referencedDeclaration": 2171,
                                 "src": "1946:17:6",
                                 "typeDescriptions": {
                                   "typeIdentifier": "t_mapping$_t_uint256_$_t_uint256_$",
                                   "typeString": "mapping(uint256 => uint256)"
                                 }
                               },
-                              "id": 1944,
+                              "id": 2191,
                               "indexExpression": {
                                 "argumentTypes": null,
-                                "id": 1943,
+                                "id": 2190,
                                 "name": "_color",
                                 "nodeType": "Identifier",
                                 "overloadedDeclarations": [],
-                                "referencedDeclaration": 1936,
+                                "referencedDeclaration": 2183,
                                 "src": "1964:6:6",
                                 "typeDescriptions": {
                                   "typeIdentifier": "t_uint256",
@@ -932,21 +932,21 @@
                                 "typeString": "uint256"
                               }
                             },
-                            "id": 1945,
+                            "id": 2192,
                             "isConstant": false,
                             "isLValue": false,
                             "isPure": false,
                             "lValueRequested": false,
                             "memberName": "mul",
                             "nodeType": "MemberAccess",
-                            "referencedDeclaration": 2546,
+                            "referencedDeclaration": 2973,
                             "src": "1946:29:6",
                             "typeDescriptions": {
                               "typeIdentifier": "t_function_internal_pure$_t_uint256_$_t_uint256_$returns$_t_uint256_$bound_to$_t_uint256_$",
                               "typeString": "function (uint256,uint256) pure returns (uint256)"
                             }
                           },
-                          "id": 1947,
+                          "id": 2194,
                           "isConstant": false,
                           "isLValue": false,
                           "isPure": false,
@@ -960,21 +960,21 @@
                             "typeString": "uint256"
                           }
                         },
-                        "id": 1948,
+                        "id": 2195,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": false,
                         "lValueRequested": false,
                         "memberName": "div",
                         "nodeType": "MemberAccess",
-                        "referencedDeclaration": 2570,
+                        "referencedDeclaration": 2997,
                         "src": "1946:38:6",
                         "typeDescriptions": {
                           "typeIdentifier": "t_function_internal_pure$_t_uint256_$_t_uint256_$returns$_t_uint256_$bound_to$_t_uint256_$",
                           "typeString": "function (uint256,uint256) pure returns (uint256)"
                         }
                       },
-                      "id": 1950,
+                      "id": 2197,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
@@ -994,7 +994,7 @@
                       "typeString": "uint256"
                     }
                   },
-                  "id": 1952,
+                  "id": 2199,
                   "nodeType": "ExpressionStatement",
                   "src": "1914:75:6"
                 },
@@ -1006,25 +1006,25 @@
                         "argumentTypes": null,
                         "baseExpression": {
                           "argumentTypes": null,
-                          "id": 1954,
+                          "id": 2201,
                           "name": "callPriceForColor",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 1924,
+                          "referencedDeclaration": 2171,
                           "src": "2148:17:6",
                           "typeDescriptions": {
                             "typeIdentifier": "t_mapping$_t_uint256_$_t_uint256_$",
                             "typeString": "mapping(uint256 => uint256)"
                           }
                         },
-                        "id": 1956,
+                        "id": 2203,
                         "indexExpression": {
                           "argumentTypes": null,
-                          "id": 1955,
+                          "id": 2202,
                           "name": "_color",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 1936,
+                          "referencedDeclaration": 2183,
                           "src": "2166:6:6",
                           "typeDescriptions": {
                             "typeIdentifier": "t_uint256",
@@ -1050,18 +1050,18 @@
                           "typeString": "uint256"
                         }
                       ],
-                      "id": 1953,
+                      "id": 2200,
                       "name": "CallPriceUpdated",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 1934,
+                      "referencedDeclaration": 2181,
                       "src": "2131:16:6",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_event_nonpayable$_t_uint256_$returns$__$",
                         "typeString": "function (uint256)"
                       }
                     },
-                    "id": 1957,
+                    "id": 2204,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -1075,14 +1075,14 @@
                       "typeString": "tuple()"
                     }
                   },
-                  "id": 1958,
+                  "id": 2205,
                   "nodeType": "EmitStatement",
                   "src": "2126:48:6"
                 }
               ]
             },
             "documentation": null,
-            "id": 1960,
+            "id": 2207,
             "implemented": true,
             "isConstructor": false,
             "isDeclaredConst": false,
@@ -1090,15 +1090,15 @@
             "name": "_updateCallPrice",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1937,
+              "id": 2184,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1936,
+                  "id": 2183,
                   "name": "_color",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1960,
+                  "scope": 2207,
                   "src": "1740:11:6",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1107,7 +1107,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1935,
+                    "id": 2182,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
                     "src": "1740:4:6",
@@ -1124,12 +1124,12 @@
             },
             "payable": false,
             "returnParameters": {
-              "id": 1938,
+              "id": 2185,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "1761:0:6"
             },
-            "scope": 2087,
+            "scope": 2334,
             "src": "1714:467:6",
             "stateMutability": "nonpayable",
             "superFunction": null,
@@ -1137,7 +1137,7 @@
           },
           {
             "body": {
-              "id": 2085,
+              "id": 2332,
               "nodeType": "Block",
               "src": "2302:2478:6",
               "statements": [
@@ -1148,7 +1148,7 @@
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
                     },
-                    "id": 1977,
+                    "id": 2224,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -1159,18 +1159,18 @@
                         "typeIdentifier": "t_uint256",
                         "typeString": "uint256"
                       },
-                      "id": 1975,
+                      "id": 2222,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
                       "lValueRequested": false,
                       "leftExpression": {
                         "argumentTypes": null,
-                        "id": 1965,
+                        "id": 2212,
                         "name": "now",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 2765,
+                        "referencedDeclaration": 3192,
                         "src": "2432:3:6",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint256",
@@ -1185,25 +1185,25 @@
                           "argumentTypes": null,
                           "baseExpression": {
                             "argumentTypes": null,
-                            "id": 1966,
+                            "id": 2213,
                             "name": "paintGenToEndTimeForColor",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 1910,
+                            "referencedDeclaration": 2157,
                             "src": "2438:25:6",
                             "typeDescriptions": {
                               "typeIdentifier": "t_mapping$_t_uint256_$_t_mapping$_t_uint256_$_t_uint256_$_$",
                               "typeString": "mapping(uint256 => mapping(uint256 => uint256))"
                             }
                           },
-                          "id": 1968,
+                          "id": 2215,
                           "indexExpression": {
                             "argumentTypes": null,
-                            "id": 1967,
+                            "id": 2214,
                             "name": "_color",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 1962,
+                            "referencedDeclaration": 2209,
                             "src": "2464:6:6",
                             "typeDescriptions": {
                               "typeIdentifier": "t_uint256",
@@ -1221,14 +1221,14 @@
                             "typeString": "mapping(uint256 => uint256)"
                           }
                         },
-                        "id": 1974,
+                        "id": 2221,
                         "indexExpression": {
                           "argumentTypes": null,
                           "commonType": {
                             "typeIdentifier": "t_uint256",
                             "typeString": "uint256"
                           },
-                          "id": 1973,
+                          "id": 2220,
                           "isConstant": false,
                           "isLValue": false,
                           "isPure": false,
@@ -1237,25 +1237,25 @@
                             "argumentTypes": null,
                             "baseExpression": {
                               "argumentTypes": null,
-                              "id": 1969,
+                              "id": 2216,
                               "name": "currentPaintGenForColor",
                               "nodeType": "Identifier",
                               "overloadedDeclarations": [],
-                              "referencedDeclaration": 1920,
+                              "referencedDeclaration": 2167,
                               "src": "2472:23:6",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_mapping$_t_uint256_$_t_uint256_$",
                                 "typeString": "mapping(uint256 => uint256)"
                               }
                             },
-                            "id": 1971,
+                            "id": 2218,
                             "indexExpression": {
                               "argumentTypes": null,
-                              "id": 1970,
+                              "id": 2217,
                               "name": "_color",
                               "nodeType": "Identifier",
                               "overloadedDeclarations": [],
-                              "referencedDeclaration": 1962,
+                              "referencedDeclaration": 2209,
                               "src": "2496:6:6",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_uint256",
@@ -1278,7 +1278,7 @@
                           "rightExpression": {
                             "argumentTypes": null,
                             "hexValue": "31",
-                            "id": 1972,
+                            "id": 2219,
                             "isConstant": false,
                             "isLValue": false,
                             "isPure": true,
@@ -1321,7 +1321,7 @@
                     "rightExpression": {
                       "argumentTypes": null,
                       "hexValue": "312e35",
-                      "id": 1976,
+                      "id": 2223,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": true,
@@ -1343,25 +1343,25 @@
                     }
                   },
                   "falseBody": null,
-                  "id": 2084,
+                  "id": 2331,
                   "nodeType": "IfStatement",
                   "src": "2428:2346:6",
                   "trueBody": {
-                    "id": 2083,
+                    "id": 2330,
                     "nodeType": "Block",
                     "src": "2525:2249:6",
                     "statements": [
                       {
                         "assignments": [
-                          1979
+                          2226
                         ],
                         "declarations": [
                           {
                             "constant": false,
-                            "id": 1979,
+                            "id": 2226,
                             "name": "paintsRemain",
                             "nodeType": "VariableDeclaration",
-                            "scope": 2086,
+                            "scope": 2333,
                             "src": "2634:17:6",
                             "stateVariable": false,
                             "storageLocation": "default",
@@ -1370,7 +1370,7 @@
                               "typeString": "uint256"
                             },
                             "typeName": {
-                              "id": 1978,
+                              "id": 2225,
                               "name": "uint",
                               "nodeType": "ElementaryTypeName",
                               "src": "2634:4:6",
@@ -1383,32 +1383,32 @@
                             "visibility": "internal"
                           }
                         ],
-                        "id": 1987,
+                        "id": 2234,
                         "initialValue": {
                           "argumentTypes": null,
                           "baseExpression": {
                             "argumentTypes": null,
                             "baseExpression": {
                               "argumentTypes": null,
-                              "id": 1980,
+                              "id": 2227,
                               "name": "paintGenToAmountForColor",
                               "nodeType": "Identifier",
                               "overloadedDeclarations": [],
-                              "referencedDeclaration": 1898,
+                              "referencedDeclaration": 2145,
                               "src": "2654:24:6",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_mapping$_t_uint256_$_t_mapping$_t_uint256_$_t_uint256_$_$",
                                 "typeString": "mapping(uint256 => mapping(uint256 => uint256))"
                               }
                             },
-                            "id": 1982,
+                            "id": 2229,
                             "indexExpression": {
                               "argumentTypes": null,
-                              "id": 1981,
+                              "id": 2228,
                               "name": "_color",
                               "nodeType": "Identifier",
                               "overloadedDeclarations": [],
-                              "referencedDeclaration": 1962,
+                              "referencedDeclaration": 2209,
                               "src": "2679:6:6",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_uint256",
@@ -1426,30 +1426,30 @@
                               "typeString": "mapping(uint256 => uint256)"
                             }
                           },
-                          "id": 1986,
+                          "id": 2233,
                           "indexExpression": {
                             "argumentTypes": null,
                             "baseExpression": {
                               "argumentTypes": null,
-                              "id": 1983,
+                              "id": 2230,
                               "name": "currentPaintGenForColor",
                               "nodeType": "Identifier",
                               "overloadedDeclarations": [],
-                              "referencedDeclaration": 1920,
+                              "referencedDeclaration": 2167,
                               "src": "2687:23:6",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_mapping$_t_uint256_$_t_uint256_$",
                                 "typeString": "mapping(uint256 => uint256)"
                               }
                             },
-                            "id": 1985,
+                            "id": 2232,
                             "indexExpression": {
                               "argumentTypes": null,
-                              "id": 1984,
+                              "id": 2231,
                               "name": "_color",
                               "nodeType": "Identifier",
                               "overloadedDeclarations": [],
-                              "referencedDeclaration": 1962,
+                              "referencedDeclaration": 2209,
                               "src": "2711:6:6",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_uint256",
@@ -1483,15 +1483,15 @@
                       },
                       {
                         "assignments": [
-                          1989
+                          2236
                         ],
                         "declarations": [
                           {
                             "constant": false,
-                            "id": 1989,
+                            "id": 2236,
                             "name": "nextPaintGen",
                             "nodeType": "VariableDeclaration",
-                            "scope": 2086,
+                            "scope": 2333,
                             "src": "2812:17:6",
                             "stateVariable": false,
                             "storageLocation": "default",
@@ -1500,7 +1500,7 @@
                               "typeString": "uint256"
                             },
                             "typeName": {
-                              "id": 1988,
+                              "id": 2235,
                               "name": "uint",
                               "nodeType": "ElementaryTypeName",
                               "src": "2812:4:6",
@@ -1513,14 +1513,14 @@
                             "visibility": "internal"
                           }
                         ],
-                        "id": 1996,
+                        "id": 2243,
                         "initialValue": {
                           "argumentTypes": null,
                           "arguments": [
                             {
                               "argumentTypes": null,
                               "hexValue": "31",
-                              "id": 1994,
+                              "id": 2241,
                               "isConstant": false,
                               "isLValue": false,
                               "isPure": true,
@@ -1547,25 +1547,25 @@
                               "argumentTypes": null,
                               "baseExpression": {
                                 "argumentTypes": null,
-                                "id": 1990,
+                                "id": 2237,
                                 "name": "currentPaintGenForColor",
                                 "nodeType": "Identifier",
                                 "overloadedDeclarations": [],
-                                "referencedDeclaration": 1920,
+                                "referencedDeclaration": 2167,
                                 "src": "2832:23:6",
                                 "typeDescriptions": {
                                   "typeIdentifier": "t_mapping$_t_uint256_$_t_uint256_$",
                                   "typeString": "mapping(uint256 => uint256)"
                                 }
                               },
-                              "id": 1992,
+                              "id": 2239,
                               "indexExpression": {
                                 "argumentTypes": null,
-                                "id": 1991,
+                                "id": 2238,
                                 "name": "_color",
                                 "nodeType": "Identifier",
                                 "overloadedDeclarations": [],
-                                "referencedDeclaration": 1962,
+                                "referencedDeclaration": 2209,
                                 "src": "2856:6:6",
                                 "typeDescriptions": {
                                   "typeIdentifier": "t_uint256",
@@ -1583,21 +1583,21 @@
                                 "typeString": "uint256"
                               }
                             },
-                            "id": 1993,
+                            "id": 2240,
                             "isConstant": false,
                             "isLValue": false,
                             "isPure": false,
                             "lValueRequested": false,
                             "memberName": "add",
                             "nodeType": "MemberAccess",
-                            "referencedDeclaration": 2618,
+                            "referencedDeclaration": 3045,
                             "src": "2832:35:6",
                             "typeDescriptions": {
                               "typeIdentifier": "t_function_internal_pure$_t_uint256_$_t_uint256_$returns$_t_uint256_$bound_to$_t_uint256_$",
                               "typeString": "function (uint256,uint256) pure returns (uint256)"
                             }
                           },
-                          "id": 1995,
+                          "id": 2242,
                           "isConstant": false,
                           "isLValue": false,
                           "isPure": false,
@@ -1621,7 +1621,7 @@
                             "typeIdentifier": "t_bool",
                             "typeString": "bool"
                           },
-                          "id": 2003,
+                          "id": 2250,
                           "isConstant": false,
                           "isLValue": false,
                           "isPure": false,
@@ -1632,25 +1632,25 @@
                               "argumentTypes": null,
                               "baseExpression": {
                                 "argumentTypes": null,
-                                "id": 1997,
+                                "id": 2244,
                                 "name": "paintGenStartedForColor",
                                 "nodeType": "Identifier",
                                 "overloadedDeclarations": [],
-                                "referencedDeclaration": 1916,
+                                "referencedDeclaration": 2163,
                                 "src": "3050:23:6",
                                 "typeDescriptions": {
                                   "typeIdentifier": "t_mapping$_t_uint256_$_t_mapping$_t_uint256_$_t_bool_$_$",
                                   "typeString": "mapping(uint256 => mapping(uint256 => bool))"
                                 }
                               },
-                              "id": 1999,
+                              "id": 2246,
                               "indexExpression": {
                                 "argumentTypes": null,
-                                "id": 1998,
+                                "id": 2245,
                                 "name": "_color",
                                 "nodeType": "Identifier",
                                 "overloadedDeclarations": [],
-                                "referencedDeclaration": 1962,
+                                "referencedDeclaration": 2209,
                                 "src": "3074:6:6",
                                 "typeDescriptions": {
                                   "typeIdentifier": "t_uint256",
@@ -1668,14 +1668,14 @@
                                 "typeString": "mapping(uint256 => bool)"
                               }
                             },
-                            "id": 2001,
+                            "id": 2248,
                             "indexExpression": {
                               "argumentTypes": null,
-                              "id": 2000,
+                              "id": 2247,
                               "name": "nextPaintGen",
                               "nodeType": "Identifier",
                               "overloadedDeclarations": [],
-                              "referencedDeclaration": 1989,
+                              "referencedDeclaration": 2236,
                               "src": "3082:12:6",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_uint256",
@@ -1698,7 +1698,7 @@
                           "rightExpression": {
                             "argumentTypes": null,
                             "hexValue": "66616c7365",
-                            "id": 2002,
+                            "id": 2249,
                             "isConstant": false,
                             "isLValue": false,
                             "isPure": true,
@@ -1720,18 +1720,18 @@
                           }
                         },
                         "falseBody": null,
-                        "id": 2032,
+                        "id": 2279,
                         "nodeType": "IfStatement",
                         "src": "3046:573:6",
                         "trueBody": {
-                          "id": 2031,
+                          "id": 2278,
                           "nodeType": "Block",
                           "src": "3106:513:6",
                           "statements": [
                             {
                               "expression": {
                                 "argumentTypes": null,
-                                "id": 2013,
+                                "id": 2260,
                                 "isConstant": false,
                                 "isLValue": false,
                                 "isPure": false,
@@ -1742,25 +1742,25 @@
                                     "argumentTypes": null,
                                     "baseExpression": {
                                       "argumentTypes": null,
-                                      "id": 2004,
+                                      "id": 2251,
                                       "name": "paintGenToAmountForColor",
                                       "nodeType": "Identifier",
                                       "overloadedDeclarations": [],
-                                      "referencedDeclaration": 1898,
+                                      "referencedDeclaration": 2145,
                                       "src": "3279:24:6",
                                       "typeDescriptions": {
                                         "typeIdentifier": "t_mapping$_t_uint256_$_t_mapping$_t_uint256_$_t_uint256_$_$",
                                         "typeString": "mapping(uint256 => mapping(uint256 => uint256))"
                                       }
                                     },
-                                    "id": 2007,
+                                    "id": 2254,
                                     "indexExpression": {
                                       "argumentTypes": null,
-                                      "id": 2005,
+                                      "id": 2252,
                                       "name": "_color",
                                       "nodeType": "Identifier",
                                       "overloadedDeclarations": [],
-                                      "referencedDeclaration": 1962,
+                                      "referencedDeclaration": 2209,
                                       "src": "3304:6:6",
                                       "typeDescriptions": {
                                         "typeIdentifier": "t_uint256",
@@ -1778,14 +1778,14 @@
                                       "typeString": "mapping(uint256 => uint256)"
                                     }
                                   },
-                                  "id": 2008,
+                                  "id": 2255,
                                   "indexExpression": {
                                     "argumentTypes": null,
-                                    "id": 2006,
+                                    "id": 2253,
                                     "name": "nextPaintGen",
                                     "nodeType": "Identifier",
                                     "overloadedDeclarations": [],
-                                    "referencedDeclaration": 1989,
+                                    "referencedDeclaration": 2236,
                                     "src": "3312:12:6",
                                     "typeDescriptions": {
                                       "typeIdentifier": "t_uint256",
@@ -1810,11 +1810,11 @@
                                   "arguments": [
                                     {
                                       "argumentTypes": null,
-                                      "id": 2011,
+                                      "id": 2258,
                                       "name": "paintsRemain",
                                       "nodeType": "Identifier",
                                       "overloadedDeclarations": [],
-                                      "referencedDeclaration": 1979,
+                                      "referencedDeclaration": 2226,
                                       "src": "3348:12:6",
                                       "typeDescriptions": {
                                         "typeIdentifier": "t_uint256",
@@ -1831,32 +1831,32 @@
                                     ],
                                     "expression": {
                                       "argumentTypes": null,
-                                      "id": 2009,
+                                      "id": 2256,
                                       "name": "maxPaintsInPool",
                                       "nodeType": "Identifier",
                                       "overloadedDeclarations": [],
-                                      "referencedDeclaration": 1930,
+                                      "referencedDeclaration": 2177,
                                       "src": "3328:15:6",
                                       "typeDescriptions": {
                                         "typeIdentifier": "t_uint256",
                                         "typeString": "uint256"
                                       }
                                     },
-                                    "id": 2010,
+                                    "id": 2257,
                                     "isConstant": false,
                                     "isLValue": false,
                                     "isPure": false,
                                     "lValueRequested": false,
                                     "memberName": "sub",
                                     "nodeType": "MemberAccess",
-                                    "referencedDeclaration": 2594,
+                                    "referencedDeclaration": 3021,
                                     "src": "3328:19:6",
                                     "typeDescriptions": {
                                       "typeIdentifier": "t_function_internal_pure$_t_uint256_$_t_uint256_$returns$_t_uint256_$bound_to$_t_uint256_$",
                                       "typeString": "function (uint256,uint256) pure returns (uint256)"
                                     }
                                   },
-                                  "id": 2012,
+                                  "id": 2259,
                                   "isConstant": false,
                                   "isLValue": false,
                                   "isPure": false,
@@ -1876,14 +1876,14 @@
                                   "typeString": "uint256"
                                 }
                               },
-                              "id": 2014,
+                              "id": 2261,
                               "nodeType": "ExpressionStatement",
                               "src": "3279:82:6"
                             },
                             {
                               "expression": {
                                 "argumentTypes": null,
-                                "id": 2021,
+                                "id": 2268,
                                 "isConstant": false,
                                 "isLValue": false,
                                 "isPure": false,
@@ -1894,25 +1894,25 @@
                                     "argumentTypes": null,
                                     "baseExpression": {
                                       "argumentTypes": null,
-                                      "id": 2015,
+                                      "id": 2262,
                                       "name": "paintGenToStartTimeForColor",
                                       "nodeType": "Identifier",
                                       "overloadedDeclarations": [],
-                                      "referencedDeclaration": 1904,
+                                      "referencedDeclaration": 2151,
                                       "src": "3477:27:6",
                                       "typeDescriptions": {
                                         "typeIdentifier": "t_mapping$_t_uint256_$_t_mapping$_t_uint256_$_t_uint256_$_$",
                                         "typeString": "mapping(uint256 => mapping(uint256 => uint256))"
                                       }
                                     },
-                                    "id": 2018,
+                                    "id": 2265,
                                     "indexExpression": {
                                       "argumentTypes": null,
-                                      "id": 2016,
+                                      "id": 2263,
                                       "name": "_color",
                                       "nodeType": "Identifier",
                                       "overloadedDeclarations": [],
-                                      "referencedDeclaration": 1962,
+                                      "referencedDeclaration": 2209,
                                       "src": "3505:6:6",
                                       "typeDescriptions": {
                                         "typeIdentifier": "t_uint256",
@@ -1930,14 +1930,14 @@
                                       "typeString": "mapping(uint256 => uint256)"
                                     }
                                   },
-                                  "id": 2019,
+                                  "id": 2266,
                                   "indexExpression": {
                                     "argumentTypes": null,
-                                    "id": 2017,
+                                    "id": 2264,
                                     "name": "nextPaintGen",
                                     "nodeType": "Identifier",
                                     "overloadedDeclarations": [],
-                                    "referencedDeclaration": 1989,
+                                    "referencedDeclaration": 2236,
                                     "src": "3513:12:6",
                                     "typeDescriptions": {
                                       "typeIdentifier": "t_uint256",
@@ -1959,11 +1959,11 @@
                                 "operator": "=",
                                 "rightHandSide": {
                                   "argumentTypes": null,
-                                  "id": 2020,
+                                  "id": 2267,
                                   "name": "now",
                                   "nodeType": "Identifier",
                                   "overloadedDeclarations": [],
-                                  "referencedDeclaration": 2765,
+                                  "referencedDeclaration": 3192,
                                   "src": "3529:3:6",
                                   "typeDescriptions": {
                                     "typeIdentifier": "t_uint256",
@@ -1976,14 +1976,14 @@
                                   "typeString": "uint256"
                                 }
                               },
-                              "id": 2022,
+                              "id": 2269,
                               "nodeType": "ExpressionStatement",
                               "src": "3477:55:6"
                             },
                             {
                               "expression": {
                                 "argumentTypes": null,
-                                "id": 2029,
+                                "id": 2276,
                                 "isConstant": false,
                                 "isLValue": false,
                                 "isPure": false,
@@ -1994,25 +1994,25 @@
                                     "argumentTypes": null,
                                     "baseExpression": {
                                       "argumentTypes": null,
-                                      "id": 2023,
+                                      "id": 2270,
                                       "name": "paintGenStartedForColor",
                                       "nodeType": "Identifier",
                                       "overloadedDeclarations": [],
-                                      "referencedDeclaration": 1916,
+                                      "referencedDeclaration": 2163,
                                       "src": "3552:23:6",
                                       "typeDescriptions": {
                                         "typeIdentifier": "t_mapping$_t_uint256_$_t_mapping$_t_uint256_$_t_bool_$_$",
                                         "typeString": "mapping(uint256 => mapping(uint256 => bool))"
                                       }
                                     },
-                                    "id": 2026,
+                                    "id": 2273,
                                     "indexExpression": {
                                       "argumentTypes": null,
-                                      "id": 2024,
+                                      "id": 2271,
                                       "name": "_color",
                                       "nodeType": "Identifier",
                                       "overloadedDeclarations": [],
-                                      "referencedDeclaration": 1962,
+                                      "referencedDeclaration": 2209,
                                       "src": "3576:6:6",
                                       "typeDescriptions": {
                                         "typeIdentifier": "t_uint256",
@@ -2030,14 +2030,14 @@
                                       "typeString": "mapping(uint256 => bool)"
                                     }
                                   },
-                                  "id": 2027,
+                                  "id": 2274,
                                   "indexExpression": {
                                     "argumentTypes": null,
-                                    "id": 2025,
+                                    "id": 2272,
                                     "name": "nextPaintGen",
                                     "nodeType": "Identifier",
                                     "overloadedDeclarations": [],
-                                    "referencedDeclaration": 1989,
+                                    "referencedDeclaration": 2236,
                                     "src": "3584:12:6",
                                     "typeDescriptions": {
                                       "typeIdentifier": "t_uint256",
@@ -2060,7 +2060,7 @@
                                 "rightHandSide": {
                                   "argumentTypes": null,
                                   "hexValue": "74727565",
-                                  "id": 2028,
+                                  "id": 2275,
                                   "isConstant": false,
                                   "isLValue": false,
                                   "isPure": true,
@@ -2081,7 +2081,7 @@
                                   "typeString": "bool"
                                 }
                               },
-                              "id": 2030,
+                              "id": 2277,
                               "nodeType": "ExpressionStatement",
                               "src": "3552:52:6"
                             }
@@ -2095,7 +2095,7 @@
                             "typeIdentifier": "t_uint256",
                             "typeString": "uint256"
                           },
-                          "id": 2041,
+                          "id": 2288,
                           "isConstant": false,
                           "isLValue": false,
                           "isPure": false,
@@ -2106,25 +2106,25 @@
                               "argumentTypes": null,
                               "baseExpression": {
                                 "argumentTypes": null,
-                                "id": 2033,
+                                "id": 2280,
                                 "name": "paintGenToAmountForColor",
                                 "nodeType": "Identifier",
                                 "overloadedDeclarations": [],
-                                "referencedDeclaration": 1898,
+                                "referencedDeclaration": 2145,
                                 "src": "3649:24:6",
                                 "typeDescriptions": {
                                   "typeIdentifier": "t_mapping$_t_uint256_$_t_mapping$_t_uint256_$_t_uint256_$_$",
                                   "typeString": "mapping(uint256 => mapping(uint256 => uint256))"
                                 }
                               },
-                              "id": 2035,
+                              "id": 2282,
                               "indexExpression": {
                                 "argumentTypes": null,
-                                "id": 2034,
+                                "id": 2281,
                                 "name": "_color",
                                 "nodeType": "Identifier",
                                 "overloadedDeclarations": [],
-                                "referencedDeclaration": 1962,
+                                "referencedDeclaration": 2209,
                                 "src": "3674:6:6",
                                 "typeDescriptions": {
                                   "typeIdentifier": "t_uint256",
@@ -2142,30 +2142,30 @@
                                 "typeString": "mapping(uint256 => uint256)"
                               }
                             },
-                            "id": 2039,
+                            "id": 2286,
                             "indexExpression": {
                               "argumentTypes": null,
                               "baseExpression": {
                                 "argumentTypes": null,
-                                "id": 2036,
+                                "id": 2283,
                                 "name": "currentPaintGenForColor",
                                 "nodeType": "Identifier",
                                 "overloadedDeclarations": [],
-                                "referencedDeclaration": 1920,
+                                "referencedDeclaration": 2167,
                                 "src": "3682:23:6",
                                 "typeDescriptions": {
                                   "typeIdentifier": "t_mapping$_t_uint256_$_t_uint256_$",
                                   "typeString": "mapping(uint256 => uint256)"
                                 }
                               },
-                              "id": 2038,
+                              "id": 2285,
                               "indexExpression": {
                                 "argumentTypes": null,
-                                "id": 2037,
+                                "id": 2284,
                                 "name": "_color",
                                 "nodeType": "Identifier",
                                 "overloadedDeclarations": [],
-                                "referencedDeclaration": 1962,
+                                "referencedDeclaration": 2209,
                                 "src": "3706:6:6",
                                 "typeDescriptions": {
                                   "typeIdentifier": "t_uint256",
@@ -2199,7 +2199,7 @@
                           "rightExpression": {
                             "argumentTypes": null,
                             "hexValue": "31",
-                            "id": 2040,
+                            "id": 2287,
                             "isConstant": false,
                             "isLValue": false,
                             "isPure": true,
@@ -2221,11 +2221,11 @@
                           }
                         },
                         "falseBody": null,
-                        "id": 2057,
+                        "id": 2304,
                         "nodeType": "IfStatement",
                         "src": "3645:499:6",
                         "trueBody": {
-                          "id": 2056,
+                          "id": 2303,
                           "nodeType": "Block",
                           "src": "3721:423:6",
                           "statements": [
@@ -2235,11 +2235,11 @@
                                 "arguments": [
                                   {
                                     "argumentTypes": null,
-                                    "id": 2043,
+                                    "id": 2290,
                                     "name": "_color",
                                     "nodeType": "Identifier",
                                     "overloadedDeclarations": [],
-                                    "referencedDeclaration": 1962,
+                                    "referencedDeclaration": 2209,
                                     "src": "3912:6:6",
                                     "typeDescriptions": {
                                       "typeIdentifier": "t_uint256",
@@ -2254,18 +2254,18 @@
                                       "typeString": "uint256"
                                     }
                                   ],
-                                  "id": 2042,
+                                  "id": 2289,
                                   "name": "_updateCallPrice",
                                   "nodeType": "Identifier",
                                   "overloadedDeclarations": [],
-                                  "referencedDeclaration": 1960,
+                                  "referencedDeclaration": 2207,
                                   "src": "3895:16:6",
                                   "typeDescriptions": {
                                     "typeIdentifier": "t_function_internal_nonpayable$_t_uint256_$returns$__$",
                                     "typeString": "function (uint256)"
                                   }
                                 },
-                                "id": 2044,
+                                "id": 2291,
                                 "isConstant": false,
                                 "isLValue": false,
                                 "isPure": false,
@@ -2279,14 +2279,14 @@
                                   "typeString": "tuple()"
                                 }
                               },
-                              "id": 2045,
+                              "id": 2292,
                               "nodeType": "ExpressionStatement",
                               "src": "3895:24:6"
                             },
                             {
                               "expression": {
                                 "argumentTypes": null,
-                                "id": 2054,
+                                "id": 2301,
                                 "isConstant": false,
                                 "isLValue": false,
                                 "isPure": false,
@@ -2297,25 +2297,25 @@
                                     "argumentTypes": null,
                                     "baseExpression": {
                                       "argumentTypes": null,
-                                      "id": 2046,
+                                      "id": 2293,
                                       "name": "paintGenToEndTimeForColor",
                                       "nodeType": "Identifier",
                                       "overloadedDeclarations": [],
-                                      "referencedDeclaration": 1910,
+                                      "referencedDeclaration": 2157,
                                       "src": "4057:25:6",
                                       "typeDescriptions": {
                                         "typeIdentifier": "t_mapping$_t_uint256_$_t_mapping$_t_uint256_$_t_uint256_$_$",
                                         "typeString": "mapping(uint256 => mapping(uint256 => uint256))"
                                       }
                                     },
-                                    "id": 2051,
+                                    "id": 2298,
                                     "indexExpression": {
                                       "argumentTypes": null,
-                                      "id": 2047,
+                                      "id": 2294,
                                       "name": "_color",
                                       "nodeType": "Identifier",
                                       "overloadedDeclarations": [],
-                                      "referencedDeclaration": 1962,
+                                      "referencedDeclaration": 2209,
                                       "src": "4083:6:6",
                                       "typeDescriptions": {
                                         "typeIdentifier": "t_uint256",
@@ -2333,30 +2333,30 @@
                                       "typeString": "mapping(uint256 => uint256)"
                                     }
                                   },
-                                  "id": 2052,
+                                  "id": 2299,
                                   "indexExpression": {
                                     "argumentTypes": null,
                                     "baseExpression": {
                                       "argumentTypes": null,
-                                      "id": 2048,
+                                      "id": 2295,
                                       "name": "currentPaintGenForColor",
                                       "nodeType": "Identifier",
                                       "overloadedDeclarations": [],
-                                      "referencedDeclaration": 1920,
+                                      "referencedDeclaration": 2167,
                                       "src": "4091:23:6",
                                       "typeDescriptions": {
                                         "typeIdentifier": "t_mapping$_t_uint256_$_t_uint256_$",
                                         "typeString": "mapping(uint256 => uint256)"
                                       }
                                     },
-                                    "id": 2050,
+                                    "id": 2297,
                                     "indexExpression": {
                                       "argumentTypes": null,
-                                      "id": 2049,
+                                      "id": 2296,
                                       "name": "_color",
                                       "nodeType": "Identifier",
                                       "overloadedDeclarations": [],
-                                      "referencedDeclaration": 1962,
+                                      "referencedDeclaration": 2209,
                                       "src": "4115:6:6",
                                       "typeDescriptions": {
                                         "typeIdentifier": "t_uint256",
@@ -2389,11 +2389,11 @@
                                 "operator": "=",
                                 "rightHandSide": {
                                   "argumentTypes": null,
-                                  "id": 2053,
+                                  "id": 2300,
                                   "name": "now",
                                   "nodeType": "Identifier",
                                   "overloadedDeclarations": [],
-                                  "referencedDeclaration": 2765,
+                                  "referencedDeclaration": 3192,
                                   "src": "4126:3:6",
                                   "typeDescriptions": {
                                     "typeIdentifier": "t_uint256",
@@ -2406,7 +2406,7 @@
                                   "typeString": "uint256"
                                 }
                               },
-                              "id": 2055,
+                              "id": 2302,
                               "nodeType": "ExpressionStatement",
                               "src": "4057:72:6"
                             }
@@ -2420,7 +2420,7 @@
                             "typeIdentifier": "t_uint256",
                             "typeString": "uint256"
                           },
-                          "id": 2066,
+                          "id": 2313,
                           "isConstant": false,
                           "isLValue": false,
                           "isPure": false,
@@ -2431,25 +2431,25 @@
                               "argumentTypes": null,
                               "baseExpression": {
                                 "argumentTypes": null,
-                                "id": 2058,
+                                "id": 2305,
                                 "name": "paintGenToAmountForColor",
                                 "nodeType": "Identifier",
                                 "overloadedDeclarations": [],
-                                "referencedDeclaration": 1898,
+                                "referencedDeclaration": 2145,
                                 "src": "4282:24:6",
                                 "typeDescriptions": {
                                   "typeIdentifier": "t_mapping$_t_uint256_$_t_mapping$_t_uint256_$_t_uint256_$_$",
                                   "typeString": "mapping(uint256 => mapping(uint256 => uint256))"
                                 }
                               },
-                              "id": 2060,
+                              "id": 2307,
                               "indexExpression": {
                                 "argumentTypes": null,
-                                "id": 2059,
+                                "id": 2306,
                                 "name": "_color",
                                 "nodeType": "Identifier",
                                 "overloadedDeclarations": [],
-                                "referencedDeclaration": 1962,
+                                "referencedDeclaration": 2209,
                                 "src": "4307:6:6",
                                 "typeDescriptions": {
                                   "typeIdentifier": "t_uint256",
@@ -2467,30 +2467,30 @@
                                 "typeString": "mapping(uint256 => uint256)"
                               }
                             },
-                            "id": 2064,
+                            "id": 2311,
                             "indexExpression": {
                               "argumentTypes": null,
                               "baseExpression": {
                                 "argumentTypes": null,
-                                "id": 2061,
+                                "id": 2308,
                                 "name": "currentPaintGenForColor",
                                 "nodeType": "Identifier",
                                 "overloadedDeclarations": [],
-                                "referencedDeclaration": 1920,
+                                "referencedDeclaration": 2167,
                                 "src": "4315:23:6",
                                 "typeDescriptions": {
                                   "typeIdentifier": "t_mapping$_t_uint256_$_t_uint256_$",
                                   "typeString": "mapping(uint256 => uint256)"
                                 }
                               },
-                              "id": 2063,
+                              "id": 2310,
                               "indexExpression": {
                                 "argumentTypes": null,
-                                "id": 2062,
+                                "id": 2309,
                                 "name": "_color",
                                 "nodeType": "Identifier",
                                 "overloadedDeclarations": [],
-                                "referencedDeclaration": 1962,
+                                "referencedDeclaration": 2209,
                                 "src": "4339:6:6",
                                 "typeDescriptions": {
                                   "typeIdentifier": "t_uint256",
@@ -2524,7 +2524,7 @@
                           "rightExpression": {
                             "argumentTypes": null,
                             "hexValue": "30",
-                            "id": 2065,
+                            "id": 2312,
                             "isConstant": false,
                             "isLValue": false,
                             "isPure": true,
@@ -2546,18 +2546,18 @@
                           }
                         },
                         "falseBody": null,
-                        "id": 2082,
+                        "id": 2329,
                         "nodeType": "IfStatement",
                         "src": "4278:486:6",
                         "trueBody": {
-                          "id": 2081,
+                          "id": 2328,
                           "nodeType": "Block",
                           "src": "4354:410:6",
                           "statements": [
                             {
                               "expression": {
                                 "argumentTypes": null,
-                                "id": 2073,
+                                "id": 2320,
                                 "isConstant": false,
                                 "isLValue": false,
                                 "isPure": false,
@@ -2566,25 +2566,25 @@
                                   "argumentTypes": null,
                                   "baseExpression": {
                                     "argumentTypes": null,
-                                    "id": 2067,
+                                    "id": 2314,
                                     "name": "callPriceForColor",
                                     "nodeType": "Identifier",
                                     "overloadedDeclarations": [],
-                                    "referencedDeclaration": 1924,
+                                    "referencedDeclaration": 2171,
                                     "src": "4505:17:6",
                                     "typeDescriptions": {
                                       "typeIdentifier": "t_mapping$_t_uint256_$_t_uint256_$",
                                       "typeString": "mapping(uint256 => uint256)"
                                     }
                                   },
-                                  "id": 2069,
+                                  "id": 2316,
                                   "indexExpression": {
                                     "argumentTypes": null,
-                                    "id": 2068,
+                                    "id": 2315,
                                     "name": "_color",
                                     "nodeType": "Identifier",
                                     "overloadedDeclarations": [],
-                                    "referencedDeclaration": 1962,
+                                    "referencedDeclaration": 2209,
                                     "src": "4523:6:6",
                                     "typeDescriptions": {
                                       "typeIdentifier": "t_uint256",
@@ -2608,25 +2608,25 @@
                                   "argumentTypes": null,
                                   "baseExpression": {
                                     "argumentTypes": null,
-                                    "id": 2070,
+                                    "id": 2317,
                                     "name": "nextCallPriceForColor",
                                     "nodeType": "Identifier",
                                     "overloadedDeclarations": [],
-                                    "referencedDeclaration": 1928,
+                                    "referencedDeclaration": 2175,
                                     "src": "4533:21:6",
                                     "typeDescriptions": {
                                       "typeIdentifier": "t_mapping$_t_uint256_$_t_uint256_$",
                                       "typeString": "mapping(uint256 => uint256)"
                                     }
                                   },
-                                  "id": 2072,
+                                  "id": 2319,
                                   "indexExpression": {
                                     "argumentTypes": null,
-                                    "id": 2071,
+                                    "id": 2318,
                                     "name": "_color",
                                     "nodeType": "Identifier",
                                     "overloadedDeclarations": [],
-                                    "referencedDeclaration": 1962,
+                                    "referencedDeclaration": 2209,
                                     "src": "4555:6:6",
                                     "typeDescriptions": {
                                       "typeIdentifier": "t_uint256",
@@ -2650,14 +2650,14 @@
                                   "typeString": "uint256"
                                 }
                               },
-                              "id": 2074,
+                              "id": 2321,
                               "nodeType": "ExpressionStatement",
                               "src": "4505:57:6"
                             },
                             {
                               "expression": {
                                 "argumentTypes": null,
-                                "id": 2079,
+                                "id": 2326,
                                 "isConstant": false,
                                 "isLValue": false,
                                 "isPure": false,
@@ -2666,25 +2666,25 @@
                                   "argumentTypes": null,
                                   "baseExpression": {
                                     "argumentTypes": null,
-                                    "id": 2075,
+                                    "id": 2322,
                                     "name": "currentPaintGenForColor",
                                     "nodeType": "Identifier",
                                     "overloadedDeclarations": [],
-                                    "referencedDeclaration": 1920,
+                                    "referencedDeclaration": 2167,
                                     "src": "4703:23:6",
                                     "typeDescriptions": {
                                       "typeIdentifier": "t_mapping$_t_uint256_$_t_uint256_$",
                                       "typeString": "mapping(uint256 => uint256)"
                                     }
                                   },
-                                  "id": 2077,
+                                  "id": 2324,
                                   "indexExpression": {
                                     "argumentTypes": null,
-                                    "id": 2076,
+                                    "id": 2323,
                                     "name": "_color",
                                     "nodeType": "Identifier",
                                     "overloadedDeclarations": [],
-                                    "referencedDeclaration": 1962,
+                                    "referencedDeclaration": 2209,
                                     "src": "4727:6:6",
                                     "typeDescriptions": {
                                       "typeIdentifier": "t_uint256",
@@ -2706,11 +2706,11 @@
                                 "operator": "=",
                                 "rightHandSide": {
                                   "argumentTypes": null,
-                                  "id": 2078,
+                                  "id": 2325,
                                   "name": "nextPaintGen",
                                   "nodeType": "Identifier",
                                   "overloadedDeclarations": [],
-                                  "referencedDeclaration": 1989,
+                                  "referencedDeclaration": 2236,
                                   "src": "4737:12:6",
                                   "typeDescriptions": {
                                     "typeIdentifier": "t_uint256",
@@ -2723,7 +2723,7 @@
                                   "typeString": "uint256"
                                 }
                               },
-                              "id": 2080,
+                              "id": 2327,
                               "nodeType": "ExpressionStatement",
                               "src": "4703:46:6"
                             }
@@ -2736,7 +2736,7 @@
               ]
             },
             "documentation": null,
-            "id": 2086,
+            "id": 2333,
             "implemented": true,
             "isConstructor": false,
             "isDeclaredConst": false,
@@ -2744,15 +2744,15 @@
             "name": "_fillPaintsPool",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1963,
+              "id": 2210,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1962,
+                  "id": 2209,
                   "name": "_color",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2086,
+                  "scope": 2333,
                   "src": "2280:11:6",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -2761,7 +2761,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1961,
+                    "id": 2208,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
                     "src": "2280:4:6",
@@ -2778,19 +2778,19 @@
             },
             "payable": false,
             "returnParameters": {
-              "id": 1964,
+              "id": 2211,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "2302:0:6"
             },
-            "scope": 2087,
+            "scope": 2334,
             "src": "2255:2525:6",
             "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "internal"
           }
         ],
-        "scope": 2088,
+        "scope": 2335,
         "src": "103:4679:6"
       }
     ],
@@ -2800,14 +2800,14 @@
     "absolutePath": "/Users/Amir/last-pixel-contracts/contracts/PaintsPool.sol",
     "exportedSymbols": {
       "PaintsPool": [
-        2087
+        2334
       ]
     },
-    "id": 2088,
+    "id": 2335,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 1884,
+        "id": 2131,
         "literals": [
           "solidity",
           "^",
@@ -2820,10 +2820,10 @@
       {
         "absolutePath": "/Users/Amir/last-pixel-contracts/node_modules/openzeppelin-solidity/contracts/math/SafeMath.sol",
         "file": "../node_modules/openzeppelin-solidity/contracts/math/SafeMath.sol",
-        "id": 1885,
+        "id": 2132,
         "nodeType": "ImportDirective",
-        "scope": 2088,
-        "sourceUnit": 2640,
+        "scope": 2335,
+        "sourceUnit": 3067,
         "src": "26:75:6",
         "symbolAliases": [],
         "unitAlias": ""
@@ -2834,31 +2834,31 @@
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": true,
-        "id": 2087,
+        "id": 2334,
         "linearizedBaseContracts": [
-          2087
+          2334
         ],
         "name": "PaintsPool",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
-            "id": 1888,
+            "id": 2135,
             "libraryName": {
               "contractScope": null,
-              "id": 1886,
+              "id": 2133,
               "name": "SafeMath",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 2639,
+              "referencedDeclaration": 3066,
               "src": "141:8:6",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_SafeMath_$2639",
+                "typeIdentifier": "t_contract$_SafeMath_$3066",
                 "typeString": "library SafeMath"
               }
             },
             "nodeType": "UsingForDirective",
             "src": "135:24:6",
             "typeName": {
-              "id": 1887,
+              "id": 2134,
               "name": "uint",
               "nodeType": "ElementaryTypeName",
               "src": "154:4:6",
@@ -2870,10 +2870,10 @@
           },
           {
             "constant": false,
-            "id": 1892,
+            "id": 2139,
             "name": "totalPaintsForRound",
             "nodeType": "VariableDeclaration",
-            "scope": 2087,
+            "scope": 2334,
             "src": "169:49:6",
             "stateVariable": true,
             "storageLocation": "default",
@@ -2882,9 +2882,9 @@
               "typeString": "mapping(uint256 => uint256)"
             },
             "typeName": {
-              "id": 1891,
+              "id": 2138,
               "keyType": {
-                "id": 1889,
+                "id": 2136,
                 "name": "uint",
                 "nodeType": "ElementaryTypeName",
                 "src": "178:4:6",
@@ -2900,7 +2900,7 @@
                 "typeString": "mapping(uint256 => uint256)"
               },
               "valueType": {
-                "id": 1890,
+                "id": 2137,
                 "name": "uint",
                 "nodeType": "ElementaryTypeName",
                 "src": "186:4:6",
@@ -2915,10 +2915,10 @@
           },
           {
             "constant": false,
-            "id": 1898,
+            "id": 2145,
             "name": "paintGenToAmountForColor",
             "nodeType": "VariableDeclaration",
-            "scope": 2087,
+            "scope": 2334,
             "src": "303:72:6",
             "stateVariable": true,
             "storageLocation": "default",
@@ -2927,9 +2927,9 @@
               "typeString": "mapping(uint256 => mapping(uint256 => uint256))"
             },
             "typeName": {
-              "id": 1897,
+              "id": 2144,
               "keyType": {
-                "id": 1893,
+                "id": 2140,
                 "name": "uint",
                 "nodeType": "ElementaryTypeName",
                 "src": "312:4:6",
@@ -2945,9 +2945,9 @@
                 "typeString": "mapping(uint256 => mapping(uint256 => uint256))"
               },
               "valueType": {
-                "id": 1896,
+                "id": 2143,
                 "keyType": {
-                  "id": 1894,
+                  "id": 2141,
                   "name": "uint",
                   "nodeType": "ElementaryTypeName",
                   "src": "329:4:6",
@@ -2963,7 +2963,7 @@
                   "typeString": "mapping(uint256 => uint256)"
                 },
                 "valueType": {
-                  "id": 1895,
+                  "id": 2142,
                   "name": "uint",
                   "nodeType": "ElementaryTypeName",
                   "src": "337:4:6",
@@ -2979,10 +2979,10 @@
           },
           {
             "constant": false,
-            "id": 1904,
+            "id": 2151,
             "name": "paintGenToStartTimeForColor",
             "nodeType": "VariableDeclaration",
-            "scope": 2087,
+            "scope": 2334,
             "src": "504:75:6",
             "stateVariable": true,
             "storageLocation": "default",
@@ -2991,9 +2991,9 @@
               "typeString": "mapping(uint256 => mapping(uint256 => uint256))"
             },
             "typeName": {
-              "id": 1903,
+              "id": 2150,
               "keyType": {
-                "id": 1899,
+                "id": 2146,
                 "name": "uint",
                 "nodeType": "ElementaryTypeName",
                 "src": "513:4:6",
@@ -3009,9 +3009,9 @@
                 "typeString": "mapping(uint256 => mapping(uint256 => uint256))"
               },
               "valueType": {
-                "id": 1902,
+                "id": 2149,
                 "keyType": {
-                  "id": 1900,
+                  "id": 2147,
                   "name": "uint",
                   "nodeType": "ElementaryTypeName",
                   "src": "530:4:6",
@@ -3027,7 +3027,7 @@
                   "typeString": "mapping(uint256 => uint256)"
                 },
                 "valueType": {
-                  "id": 1901,
+                  "id": 2148,
                   "name": "uint",
                   "nodeType": "ElementaryTypeName",
                   "src": "538:4:6",
@@ -3043,10 +3043,10 @@
           },
           {
             "constant": false,
-            "id": 1910,
+            "id": 2157,
             "name": "paintGenToEndTimeForColor",
             "nodeType": "VariableDeclaration",
-            "scope": 2087,
+            "scope": 2334,
             "src": "712:73:6",
             "stateVariable": true,
             "storageLocation": "default",
@@ -3055,9 +3055,9 @@
               "typeString": "mapping(uint256 => mapping(uint256 => uint256))"
             },
             "typeName": {
-              "id": 1909,
+              "id": 2156,
               "keyType": {
-                "id": 1905,
+                "id": 2152,
                 "name": "uint",
                 "nodeType": "ElementaryTypeName",
                 "src": "721:4:6",
@@ -3073,9 +3073,9 @@
                 "typeString": "mapping(uint256 => mapping(uint256 => uint256))"
               },
               "valueType": {
-                "id": 1908,
+                "id": 2155,
                 "keyType": {
-                  "id": 1906,
+                  "id": 2153,
                   "name": "uint",
                   "nodeType": "ElementaryTypeName",
                   "src": "738:4:6",
@@ -3091,7 +3091,7 @@
                   "typeString": "mapping(uint256 => uint256)"
                 },
                 "valueType": {
-                  "id": 1907,
+                  "id": 2154,
                   "name": "uint",
                   "nodeType": "ElementaryTypeName",
                   "src": "746:4:6",
@@ -3107,10 +3107,10 @@
           },
           {
             "constant": false,
-            "id": 1916,
+            "id": 2163,
             "name": "paintGenStartedForColor",
             "nodeType": "VariableDeclaration",
-            "scope": 2087,
+            "scope": 2334,
             "src": "903:71:6",
             "stateVariable": true,
             "storageLocation": "default",
@@ -3119,9 +3119,9 @@
               "typeString": "mapping(uint256 => mapping(uint256 => bool))"
             },
             "typeName": {
-              "id": 1915,
+              "id": 2162,
               "keyType": {
-                "id": 1911,
+                "id": 2158,
                 "name": "uint",
                 "nodeType": "ElementaryTypeName",
                 "src": "912:4:6",
@@ -3137,9 +3137,9 @@
                 "typeString": "mapping(uint256 => mapping(uint256 => bool))"
               },
               "valueType": {
-                "id": 1914,
+                "id": 2161,
                 "keyType": {
-                  "id": 1912,
+                  "id": 2159,
                   "name": "uint",
                   "nodeType": "ElementaryTypeName",
                   "src": "929:4:6",
@@ -3155,7 +3155,7 @@
                   "typeString": "mapping(uint256 => bool)"
                 },
                 "valueType": {
-                  "id": 1913,
+                  "id": 2160,
                   "name": "bool",
                   "nodeType": "ElementaryTypeName",
                   "src": "937:4:6",
@@ -3171,10 +3171,10 @@
           },
           {
             "constant": false,
-            "id": 1920,
+            "id": 2167,
             "name": "currentPaintGenForColor",
             "nodeType": "VariableDeclaration",
-            "scope": 2087,
+            "scope": 2334,
             "src": "1101:53:6",
             "stateVariable": true,
             "storageLocation": "default",
@@ -3183,9 +3183,9 @@
               "typeString": "mapping(uint256 => uint256)"
             },
             "typeName": {
-              "id": 1919,
+              "id": 2166,
               "keyType": {
-                "id": 1917,
+                "id": 2164,
                 "name": "uint",
                 "nodeType": "ElementaryTypeName",
                 "src": "1110:4:6",
@@ -3201,7 +3201,7 @@
                 "typeString": "mapping(uint256 => uint256)"
               },
               "valueType": {
-                "id": 1918,
+                "id": 2165,
                 "name": "uint",
                 "nodeType": "ElementaryTypeName",
                 "src": "1118:4:6",
@@ -3216,10 +3216,10 @@
           },
           {
             "constant": false,
-            "id": 1924,
+            "id": 2171,
             "name": "callPriceForColor",
             "nodeType": "VariableDeclaration",
-            "scope": 2087,
+            "scope": 2334,
             "src": "1224:47:6",
             "stateVariable": true,
             "storageLocation": "default",
@@ -3228,9 +3228,9 @@
               "typeString": "mapping(uint256 => uint256)"
             },
             "typeName": {
-              "id": 1923,
+              "id": 2170,
               "keyType": {
-                "id": 1921,
+                "id": 2168,
                 "name": "uint",
                 "nodeType": "ElementaryTypeName",
                 "src": "1233:4:6",
@@ -3246,7 +3246,7 @@
                 "typeString": "mapping(uint256 => uint256)"
               },
               "valueType": {
-                "id": 1922,
+                "id": 2169,
                 "name": "uint",
                 "nodeType": "ElementaryTypeName",
                 "src": "1241:4:6",
@@ -3261,10 +3261,10 @@
           },
           {
             "constant": false,
-            "id": 1928,
+            "id": 2175,
             "name": "nextCallPriceForColor",
             "nodeType": "VariableDeclaration",
-            "scope": 2087,
+            "scope": 2334,
             "src": "1362:51:6",
             "stateVariable": true,
             "storageLocation": "default",
@@ -3273,9 +3273,9 @@
               "typeString": "mapping(uint256 => uint256)"
             },
             "typeName": {
-              "id": 1927,
+              "id": 2174,
               "keyType": {
-                "id": 1925,
+                "id": 2172,
                 "name": "uint",
                 "nodeType": "ElementaryTypeName",
                 "src": "1371:4:6",
@@ -3291,7 +3291,7 @@
                 "typeString": "mapping(uint256 => uint256)"
               },
               "valueType": {
-                "id": 1926,
+                "id": 2173,
                 "name": "uint",
                 "nodeType": "ElementaryTypeName",
                 "src": "1379:4:6",
@@ -3306,10 +3306,10 @@
           },
           {
             "constant": false,
-            "id": 1930,
+            "id": 2177,
             "name": "maxPaintsInPool",
             "nodeType": "VariableDeclaration",
-            "scope": 2087,
+            "scope": 2334,
             "src": "1508:27:6",
             "stateVariable": true,
             "storageLocation": "default",
@@ -3318,7 +3318,7 @@
               "typeString": "uint256"
             },
             "typeName": {
-              "id": 1929,
+              "id": 2176,
               "name": "uint",
               "nodeType": "ElementaryTypeName",
               "src": "1508:4:6",
@@ -3333,20 +3333,20 @@
           {
             "anonymous": false,
             "documentation": null,
-            "id": 1934,
+            "id": 2181,
             "name": "CallPriceUpdated",
             "nodeType": "EventDefinition",
             "parameters": {
-              "id": 1933,
+              "id": 2180,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1932,
+                  "id": 2179,
                   "indexed": true,
                   "name": "newCallPrice",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1934,
+                  "scope": 2181,
                   "src": "1569:25:6",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -3355,7 +3355,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1931,
+                    "id": 2178,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
                     "src": "1569:4:6",
@@ -3374,14 +3374,14 @@
           },
           {
             "body": {
-              "id": 1959,
+              "id": 2206,
               "nodeType": "Block",
               "src": "1761:420:6",
               "statements": [
                 {
                   "expression": {
                     "argumentTypes": null,
-                    "id": 1951,
+                    "id": 2198,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -3390,25 +3390,25 @@
                       "argumentTypes": null,
                       "baseExpression": {
                         "argumentTypes": null,
-                        "id": 1939,
+                        "id": 2186,
                         "name": "nextCallPriceForColor",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 1928,
+                        "referencedDeclaration": 2175,
                         "src": "1914:21:6",
                         "typeDescriptions": {
                           "typeIdentifier": "t_mapping$_t_uint256_$_t_uint256_$",
                           "typeString": "mapping(uint256 => uint256)"
                         }
                       },
-                      "id": 1941,
+                      "id": 2188,
                       "indexExpression": {
                         "argumentTypes": null,
-                        "id": 1940,
+                        "id": 2187,
                         "name": "_color",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 1936,
+                        "referencedDeclaration": 2183,
                         "src": "1936:6:6",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint256",
@@ -3434,7 +3434,7 @@
                         {
                           "argumentTypes": null,
                           "hexValue": "313030",
-                          "id": 1949,
+                          "id": 2196,
                           "isConstant": false,
                           "isLValue": false,
                           "isPure": true,
@@ -3463,7 +3463,7 @@
                             {
                               "argumentTypes": null,
                               "hexValue": "313035",
-                              "id": 1946,
+                              "id": 2193,
                               "isConstant": false,
                               "isLValue": false,
                               "isPure": true,
@@ -3490,25 +3490,25 @@
                               "argumentTypes": null,
                               "baseExpression": {
                                 "argumentTypes": null,
-                                "id": 1942,
+                                "id": 2189,
                                 "name": "callPriceForColor",
                                 "nodeType": "Identifier",
                                 "overloadedDeclarations": [],
-                                "referencedDeclaration": 1924,
+                                "referencedDeclaration": 2171,
                                 "src": "1946:17:6",
                                 "typeDescriptions": {
                                   "typeIdentifier": "t_mapping$_t_uint256_$_t_uint256_$",
                                   "typeString": "mapping(uint256 => uint256)"
                                 }
                               },
-                              "id": 1944,
+                              "id": 2191,
                               "indexExpression": {
                                 "argumentTypes": null,
-                                "id": 1943,
+                                "id": 2190,
                                 "name": "_color",
                                 "nodeType": "Identifier",
                                 "overloadedDeclarations": [],
-                                "referencedDeclaration": 1936,
+                                "referencedDeclaration": 2183,
                                 "src": "1964:6:6",
                                 "typeDescriptions": {
                                   "typeIdentifier": "t_uint256",
@@ -3526,21 +3526,21 @@
                                 "typeString": "uint256"
                               }
                             },
-                            "id": 1945,
+                            "id": 2192,
                             "isConstant": false,
                             "isLValue": false,
                             "isPure": false,
                             "lValueRequested": false,
                             "memberName": "mul",
                             "nodeType": "MemberAccess",
-                            "referencedDeclaration": 2546,
+                            "referencedDeclaration": 2973,
                             "src": "1946:29:6",
                             "typeDescriptions": {
                               "typeIdentifier": "t_function_internal_pure$_t_uint256_$_t_uint256_$returns$_t_uint256_$bound_to$_t_uint256_$",
                               "typeString": "function (uint256,uint256) pure returns (uint256)"
                             }
                           },
-                          "id": 1947,
+                          "id": 2194,
                           "isConstant": false,
                           "isLValue": false,
                           "isPure": false,
@@ -3554,21 +3554,21 @@
                             "typeString": "uint256"
                           }
                         },
-                        "id": 1948,
+                        "id": 2195,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": false,
                         "lValueRequested": false,
                         "memberName": "div",
                         "nodeType": "MemberAccess",
-                        "referencedDeclaration": 2570,
+                        "referencedDeclaration": 2997,
                         "src": "1946:38:6",
                         "typeDescriptions": {
                           "typeIdentifier": "t_function_internal_pure$_t_uint256_$_t_uint256_$returns$_t_uint256_$bound_to$_t_uint256_$",
                           "typeString": "function (uint256,uint256) pure returns (uint256)"
                         }
                       },
-                      "id": 1950,
+                      "id": 2197,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
@@ -3588,7 +3588,7 @@
                       "typeString": "uint256"
                     }
                   },
-                  "id": 1952,
+                  "id": 2199,
                   "nodeType": "ExpressionStatement",
                   "src": "1914:75:6"
                 },
@@ -3600,25 +3600,25 @@
                         "argumentTypes": null,
                         "baseExpression": {
                           "argumentTypes": null,
-                          "id": 1954,
+                          "id": 2201,
                           "name": "callPriceForColor",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 1924,
+                          "referencedDeclaration": 2171,
                           "src": "2148:17:6",
                           "typeDescriptions": {
                             "typeIdentifier": "t_mapping$_t_uint256_$_t_uint256_$",
                             "typeString": "mapping(uint256 => uint256)"
                           }
                         },
-                        "id": 1956,
+                        "id": 2203,
                         "indexExpression": {
                           "argumentTypes": null,
-                          "id": 1955,
+                          "id": 2202,
                           "name": "_color",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 1936,
+                          "referencedDeclaration": 2183,
                           "src": "2166:6:6",
                           "typeDescriptions": {
                             "typeIdentifier": "t_uint256",
@@ -3644,18 +3644,18 @@
                           "typeString": "uint256"
                         }
                       ],
-                      "id": 1953,
+                      "id": 2200,
                       "name": "CallPriceUpdated",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 1934,
+                      "referencedDeclaration": 2181,
                       "src": "2131:16:6",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_event_nonpayable$_t_uint256_$returns$__$",
                         "typeString": "function (uint256)"
                       }
                     },
-                    "id": 1957,
+                    "id": 2204,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -3669,14 +3669,14 @@
                       "typeString": "tuple()"
                     }
                   },
-                  "id": 1958,
+                  "id": 2205,
                   "nodeType": "EmitStatement",
                   "src": "2126:48:6"
                 }
               ]
             },
             "documentation": null,
-            "id": 1960,
+            "id": 2207,
             "implemented": true,
             "isConstructor": false,
             "isDeclaredConst": false,
@@ -3684,15 +3684,15 @@
             "name": "_updateCallPrice",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1937,
+              "id": 2184,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1936,
+                  "id": 2183,
                   "name": "_color",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1960,
+                  "scope": 2207,
                   "src": "1740:11:6",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -3701,7 +3701,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1935,
+                    "id": 2182,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
                     "src": "1740:4:6",
@@ -3718,12 +3718,12 @@
             },
             "payable": false,
             "returnParameters": {
-              "id": 1938,
+              "id": 2185,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "1761:0:6"
             },
-            "scope": 2087,
+            "scope": 2334,
             "src": "1714:467:6",
             "stateMutability": "nonpayable",
             "superFunction": null,
@@ -3731,7 +3731,7 @@
           },
           {
             "body": {
-              "id": 2085,
+              "id": 2332,
               "nodeType": "Block",
               "src": "2302:2478:6",
               "statements": [
@@ -3742,7 +3742,7 @@
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
                     },
-                    "id": 1977,
+                    "id": 2224,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -3753,18 +3753,18 @@
                         "typeIdentifier": "t_uint256",
                         "typeString": "uint256"
                       },
-                      "id": 1975,
+                      "id": 2222,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
                       "lValueRequested": false,
                       "leftExpression": {
                         "argumentTypes": null,
-                        "id": 1965,
+                        "id": 2212,
                         "name": "now",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 2765,
+                        "referencedDeclaration": 3192,
                         "src": "2432:3:6",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint256",
@@ -3779,25 +3779,25 @@
                           "argumentTypes": null,
                           "baseExpression": {
                             "argumentTypes": null,
-                            "id": 1966,
+                            "id": 2213,
                             "name": "paintGenToEndTimeForColor",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 1910,
+                            "referencedDeclaration": 2157,
                             "src": "2438:25:6",
                             "typeDescriptions": {
                               "typeIdentifier": "t_mapping$_t_uint256_$_t_mapping$_t_uint256_$_t_uint256_$_$",
                               "typeString": "mapping(uint256 => mapping(uint256 => uint256))"
                             }
                           },
-                          "id": 1968,
+                          "id": 2215,
                           "indexExpression": {
                             "argumentTypes": null,
-                            "id": 1967,
+                            "id": 2214,
                             "name": "_color",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 1962,
+                            "referencedDeclaration": 2209,
                             "src": "2464:6:6",
                             "typeDescriptions": {
                               "typeIdentifier": "t_uint256",
@@ -3815,14 +3815,14 @@
                             "typeString": "mapping(uint256 => uint256)"
                           }
                         },
-                        "id": 1974,
+                        "id": 2221,
                         "indexExpression": {
                           "argumentTypes": null,
                           "commonType": {
                             "typeIdentifier": "t_uint256",
                             "typeString": "uint256"
                           },
-                          "id": 1973,
+                          "id": 2220,
                           "isConstant": false,
                           "isLValue": false,
                           "isPure": false,
@@ -3831,25 +3831,25 @@
                             "argumentTypes": null,
                             "baseExpression": {
                               "argumentTypes": null,
-                              "id": 1969,
+                              "id": 2216,
                               "name": "currentPaintGenForColor",
                               "nodeType": "Identifier",
                               "overloadedDeclarations": [],
-                              "referencedDeclaration": 1920,
+                              "referencedDeclaration": 2167,
                               "src": "2472:23:6",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_mapping$_t_uint256_$_t_uint256_$",
                                 "typeString": "mapping(uint256 => uint256)"
                               }
                             },
-                            "id": 1971,
+                            "id": 2218,
                             "indexExpression": {
                               "argumentTypes": null,
-                              "id": 1970,
+                              "id": 2217,
                               "name": "_color",
                               "nodeType": "Identifier",
                               "overloadedDeclarations": [],
-                              "referencedDeclaration": 1962,
+                              "referencedDeclaration": 2209,
                               "src": "2496:6:6",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_uint256",
@@ -3872,7 +3872,7 @@
                           "rightExpression": {
                             "argumentTypes": null,
                             "hexValue": "31",
-                            "id": 1972,
+                            "id": 2219,
                             "isConstant": false,
                             "isLValue": false,
                             "isPure": true,
@@ -3915,7 +3915,7 @@
                     "rightExpression": {
                       "argumentTypes": null,
                       "hexValue": "312e35",
-                      "id": 1976,
+                      "id": 2223,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": true,
@@ -3937,25 +3937,25 @@
                     }
                   },
                   "falseBody": null,
-                  "id": 2084,
+                  "id": 2331,
                   "nodeType": "IfStatement",
                   "src": "2428:2346:6",
                   "trueBody": {
-                    "id": 2083,
+                    "id": 2330,
                     "nodeType": "Block",
                     "src": "2525:2249:6",
                     "statements": [
                       {
                         "assignments": [
-                          1979
+                          2226
                         ],
                         "declarations": [
                           {
                             "constant": false,
-                            "id": 1979,
+                            "id": 2226,
                             "name": "paintsRemain",
                             "nodeType": "VariableDeclaration",
-                            "scope": 2086,
+                            "scope": 2333,
                             "src": "2634:17:6",
                             "stateVariable": false,
                             "storageLocation": "default",
@@ -3964,7 +3964,7 @@
                               "typeString": "uint256"
                             },
                             "typeName": {
-                              "id": 1978,
+                              "id": 2225,
                               "name": "uint",
                               "nodeType": "ElementaryTypeName",
                               "src": "2634:4:6",
@@ -3977,32 +3977,32 @@
                             "visibility": "internal"
                           }
                         ],
-                        "id": 1987,
+                        "id": 2234,
                         "initialValue": {
                           "argumentTypes": null,
                           "baseExpression": {
                             "argumentTypes": null,
                             "baseExpression": {
                               "argumentTypes": null,
-                              "id": 1980,
+                              "id": 2227,
                               "name": "paintGenToAmountForColor",
                               "nodeType": "Identifier",
                               "overloadedDeclarations": [],
-                              "referencedDeclaration": 1898,
+                              "referencedDeclaration": 2145,
                               "src": "2654:24:6",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_mapping$_t_uint256_$_t_mapping$_t_uint256_$_t_uint256_$_$",
                                 "typeString": "mapping(uint256 => mapping(uint256 => uint256))"
                               }
                             },
-                            "id": 1982,
+                            "id": 2229,
                             "indexExpression": {
                               "argumentTypes": null,
-                              "id": 1981,
+                              "id": 2228,
                               "name": "_color",
                               "nodeType": "Identifier",
                               "overloadedDeclarations": [],
-                              "referencedDeclaration": 1962,
+                              "referencedDeclaration": 2209,
                               "src": "2679:6:6",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_uint256",
@@ -4020,30 +4020,30 @@
                               "typeString": "mapping(uint256 => uint256)"
                             }
                           },
-                          "id": 1986,
+                          "id": 2233,
                           "indexExpression": {
                             "argumentTypes": null,
                             "baseExpression": {
                               "argumentTypes": null,
-                              "id": 1983,
+                              "id": 2230,
                               "name": "currentPaintGenForColor",
                               "nodeType": "Identifier",
                               "overloadedDeclarations": [],
-                              "referencedDeclaration": 1920,
+                              "referencedDeclaration": 2167,
                               "src": "2687:23:6",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_mapping$_t_uint256_$_t_uint256_$",
                                 "typeString": "mapping(uint256 => uint256)"
                               }
                             },
-                            "id": 1985,
+                            "id": 2232,
                             "indexExpression": {
                               "argumentTypes": null,
-                              "id": 1984,
+                              "id": 2231,
                               "name": "_color",
                               "nodeType": "Identifier",
                               "overloadedDeclarations": [],
-                              "referencedDeclaration": 1962,
+                              "referencedDeclaration": 2209,
                               "src": "2711:6:6",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_uint256",
@@ -4077,15 +4077,15 @@
                       },
                       {
                         "assignments": [
-                          1989
+                          2236
                         ],
                         "declarations": [
                           {
                             "constant": false,
-                            "id": 1989,
+                            "id": 2236,
                             "name": "nextPaintGen",
                             "nodeType": "VariableDeclaration",
-                            "scope": 2086,
+                            "scope": 2333,
                             "src": "2812:17:6",
                             "stateVariable": false,
                             "storageLocation": "default",
@@ -4094,7 +4094,7 @@
                               "typeString": "uint256"
                             },
                             "typeName": {
-                              "id": 1988,
+                              "id": 2235,
                               "name": "uint",
                               "nodeType": "ElementaryTypeName",
                               "src": "2812:4:6",
@@ -4107,14 +4107,14 @@
                             "visibility": "internal"
                           }
                         ],
-                        "id": 1996,
+                        "id": 2243,
                         "initialValue": {
                           "argumentTypes": null,
                           "arguments": [
                             {
                               "argumentTypes": null,
                               "hexValue": "31",
-                              "id": 1994,
+                              "id": 2241,
                               "isConstant": false,
                               "isLValue": false,
                               "isPure": true,
@@ -4141,25 +4141,25 @@
                               "argumentTypes": null,
                               "baseExpression": {
                                 "argumentTypes": null,
-                                "id": 1990,
+                                "id": 2237,
                                 "name": "currentPaintGenForColor",
                                 "nodeType": "Identifier",
                                 "overloadedDeclarations": [],
-                                "referencedDeclaration": 1920,
+                                "referencedDeclaration": 2167,
                                 "src": "2832:23:6",
                                 "typeDescriptions": {
                                   "typeIdentifier": "t_mapping$_t_uint256_$_t_uint256_$",
                                   "typeString": "mapping(uint256 => uint256)"
                                 }
                               },
-                              "id": 1992,
+                              "id": 2239,
                               "indexExpression": {
                                 "argumentTypes": null,
-                                "id": 1991,
+                                "id": 2238,
                                 "name": "_color",
                                 "nodeType": "Identifier",
                                 "overloadedDeclarations": [],
-                                "referencedDeclaration": 1962,
+                                "referencedDeclaration": 2209,
                                 "src": "2856:6:6",
                                 "typeDescriptions": {
                                   "typeIdentifier": "t_uint256",
@@ -4177,21 +4177,21 @@
                                 "typeString": "uint256"
                               }
                             },
-                            "id": 1993,
+                            "id": 2240,
                             "isConstant": false,
                             "isLValue": false,
                             "isPure": false,
                             "lValueRequested": false,
                             "memberName": "add",
                             "nodeType": "MemberAccess",
-                            "referencedDeclaration": 2618,
+                            "referencedDeclaration": 3045,
                             "src": "2832:35:6",
                             "typeDescriptions": {
                               "typeIdentifier": "t_function_internal_pure$_t_uint256_$_t_uint256_$returns$_t_uint256_$bound_to$_t_uint256_$",
                               "typeString": "function (uint256,uint256) pure returns (uint256)"
                             }
                           },
-                          "id": 1995,
+                          "id": 2242,
                           "isConstant": false,
                           "isLValue": false,
                           "isPure": false,
@@ -4215,7 +4215,7 @@
                             "typeIdentifier": "t_bool",
                             "typeString": "bool"
                           },
-                          "id": 2003,
+                          "id": 2250,
                           "isConstant": false,
                           "isLValue": false,
                           "isPure": false,
@@ -4226,25 +4226,25 @@
                               "argumentTypes": null,
                               "baseExpression": {
                                 "argumentTypes": null,
-                                "id": 1997,
+                                "id": 2244,
                                 "name": "paintGenStartedForColor",
                                 "nodeType": "Identifier",
                                 "overloadedDeclarations": [],
-                                "referencedDeclaration": 1916,
+                                "referencedDeclaration": 2163,
                                 "src": "3050:23:6",
                                 "typeDescriptions": {
                                   "typeIdentifier": "t_mapping$_t_uint256_$_t_mapping$_t_uint256_$_t_bool_$_$",
                                   "typeString": "mapping(uint256 => mapping(uint256 => bool))"
                                 }
                               },
-                              "id": 1999,
+                              "id": 2246,
                               "indexExpression": {
                                 "argumentTypes": null,
-                                "id": 1998,
+                                "id": 2245,
                                 "name": "_color",
                                 "nodeType": "Identifier",
                                 "overloadedDeclarations": [],
-                                "referencedDeclaration": 1962,
+                                "referencedDeclaration": 2209,
                                 "src": "3074:6:6",
                                 "typeDescriptions": {
                                   "typeIdentifier": "t_uint256",
@@ -4262,14 +4262,14 @@
                                 "typeString": "mapping(uint256 => bool)"
                               }
                             },
-                            "id": 2001,
+                            "id": 2248,
                             "indexExpression": {
                               "argumentTypes": null,
-                              "id": 2000,
+                              "id": 2247,
                               "name": "nextPaintGen",
                               "nodeType": "Identifier",
                               "overloadedDeclarations": [],
-                              "referencedDeclaration": 1989,
+                              "referencedDeclaration": 2236,
                               "src": "3082:12:6",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_uint256",
@@ -4292,7 +4292,7 @@
                           "rightExpression": {
                             "argumentTypes": null,
                             "hexValue": "66616c7365",
-                            "id": 2002,
+                            "id": 2249,
                             "isConstant": false,
                             "isLValue": false,
                             "isPure": true,
@@ -4314,18 +4314,18 @@
                           }
                         },
                         "falseBody": null,
-                        "id": 2032,
+                        "id": 2279,
                         "nodeType": "IfStatement",
                         "src": "3046:573:6",
                         "trueBody": {
-                          "id": 2031,
+                          "id": 2278,
                           "nodeType": "Block",
                           "src": "3106:513:6",
                           "statements": [
                             {
                               "expression": {
                                 "argumentTypes": null,
-                                "id": 2013,
+                                "id": 2260,
                                 "isConstant": false,
                                 "isLValue": false,
                                 "isPure": false,
@@ -4336,25 +4336,25 @@
                                     "argumentTypes": null,
                                     "baseExpression": {
                                       "argumentTypes": null,
-                                      "id": 2004,
+                                      "id": 2251,
                                       "name": "paintGenToAmountForColor",
                                       "nodeType": "Identifier",
                                       "overloadedDeclarations": [],
-                                      "referencedDeclaration": 1898,
+                                      "referencedDeclaration": 2145,
                                       "src": "3279:24:6",
                                       "typeDescriptions": {
                                         "typeIdentifier": "t_mapping$_t_uint256_$_t_mapping$_t_uint256_$_t_uint256_$_$",
                                         "typeString": "mapping(uint256 => mapping(uint256 => uint256))"
                                       }
                                     },
-                                    "id": 2007,
+                                    "id": 2254,
                                     "indexExpression": {
                                       "argumentTypes": null,
-                                      "id": 2005,
+                                      "id": 2252,
                                       "name": "_color",
                                       "nodeType": "Identifier",
                                       "overloadedDeclarations": [],
-                                      "referencedDeclaration": 1962,
+                                      "referencedDeclaration": 2209,
                                       "src": "3304:6:6",
                                       "typeDescriptions": {
                                         "typeIdentifier": "t_uint256",
@@ -4372,14 +4372,14 @@
                                       "typeString": "mapping(uint256 => uint256)"
                                     }
                                   },
-                                  "id": 2008,
+                                  "id": 2255,
                                   "indexExpression": {
                                     "argumentTypes": null,
-                                    "id": 2006,
+                                    "id": 2253,
                                     "name": "nextPaintGen",
                                     "nodeType": "Identifier",
                                     "overloadedDeclarations": [],
-                                    "referencedDeclaration": 1989,
+                                    "referencedDeclaration": 2236,
                                     "src": "3312:12:6",
                                     "typeDescriptions": {
                                       "typeIdentifier": "t_uint256",
@@ -4404,11 +4404,11 @@
                                   "arguments": [
                                     {
                                       "argumentTypes": null,
-                                      "id": 2011,
+                                      "id": 2258,
                                       "name": "paintsRemain",
                                       "nodeType": "Identifier",
                                       "overloadedDeclarations": [],
-                                      "referencedDeclaration": 1979,
+                                      "referencedDeclaration": 2226,
                                       "src": "3348:12:6",
                                       "typeDescriptions": {
                                         "typeIdentifier": "t_uint256",
@@ -4425,32 +4425,32 @@
                                     ],
                                     "expression": {
                                       "argumentTypes": null,
-                                      "id": 2009,
+                                      "id": 2256,
                                       "name": "maxPaintsInPool",
                                       "nodeType": "Identifier",
                                       "overloadedDeclarations": [],
-                                      "referencedDeclaration": 1930,
+                                      "referencedDeclaration": 2177,
                                       "src": "3328:15:6",
                                       "typeDescriptions": {
                                         "typeIdentifier": "t_uint256",
                                         "typeString": "uint256"
                                       }
                                     },
-                                    "id": 2010,
+                                    "id": 2257,
                                     "isConstant": false,
                                     "isLValue": false,
                                     "isPure": false,
                                     "lValueRequested": false,
                                     "memberName": "sub",
                                     "nodeType": "MemberAccess",
-                                    "referencedDeclaration": 2594,
+                                    "referencedDeclaration": 3021,
                                     "src": "3328:19:6",
                                     "typeDescriptions": {
                                       "typeIdentifier": "t_function_internal_pure$_t_uint256_$_t_uint256_$returns$_t_uint256_$bound_to$_t_uint256_$",
                                       "typeString": "function (uint256,uint256) pure returns (uint256)"
                                     }
                                   },
-                                  "id": 2012,
+                                  "id": 2259,
                                   "isConstant": false,
                                   "isLValue": false,
                                   "isPure": false,
@@ -4470,14 +4470,14 @@
                                   "typeString": "uint256"
                                 }
                               },
-                              "id": 2014,
+                              "id": 2261,
                               "nodeType": "ExpressionStatement",
                               "src": "3279:82:6"
                             },
                             {
                               "expression": {
                                 "argumentTypes": null,
-                                "id": 2021,
+                                "id": 2268,
                                 "isConstant": false,
                                 "isLValue": false,
                                 "isPure": false,
@@ -4488,25 +4488,25 @@
                                     "argumentTypes": null,
                                     "baseExpression": {
                                       "argumentTypes": null,
-                                      "id": 2015,
+                                      "id": 2262,
                                       "name": "paintGenToStartTimeForColor",
                                       "nodeType": "Identifier",
                                       "overloadedDeclarations": [],
-                                      "referencedDeclaration": 1904,
+                                      "referencedDeclaration": 2151,
                                       "src": "3477:27:6",
                                       "typeDescriptions": {
                                         "typeIdentifier": "t_mapping$_t_uint256_$_t_mapping$_t_uint256_$_t_uint256_$_$",
                                         "typeString": "mapping(uint256 => mapping(uint256 => uint256))"
                                       }
                                     },
-                                    "id": 2018,
+                                    "id": 2265,
                                     "indexExpression": {
                                       "argumentTypes": null,
-                                      "id": 2016,
+                                      "id": 2263,
                                       "name": "_color",
                                       "nodeType": "Identifier",
                                       "overloadedDeclarations": [],
-                                      "referencedDeclaration": 1962,
+                                      "referencedDeclaration": 2209,
                                       "src": "3505:6:6",
                                       "typeDescriptions": {
                                         "typeIdentifier": "t_uint256",
@@ -4524,14 +4524,14 @@
                                       "typeString": "mapping(uint256 => uint256)"
                                     }
                                   },
-                                  "id": 2019,
+                                  "id": 2266,
                                   "indexExpression": {
                                     "argumentTypes": null,
-                                    "id": 2017,
+                                    "id": 2264,
                                     "name": "nextPaintGen",
                                     "nodeType": "Identifier",
                                     "overloadedDeclarations": [],
-                                    "referencedDeclaration": 1989,
+                                    "referencedDeclaration": 2236,
                                     "src": "3513:12:6",
                                     "typeDescriptions": {
                                       "typeIdentifier": "t_uint256",
@@ -4553,11 +4553,11 @@
                                 "operator": "=",
                                 "rightHandSide": {
                                   "argumentTypes": null,
-                                  "id": 2020,
+                                  "id": 2267,
                                   "name": "now",
                                   "nodeType": "Identifier",
                                   "overloadedDeclarations": [],
-                                  "referencedDeclaration": 2765,
+                                  "referencedDeclaration": 3192,
                                   "src": "3529:3:6",
                                   "typeDescriptions": {
                                     "typeIdentifier": "t_uint256",
@@ -4570,14 +4570,14 @@
                                   "typeString": "uint256"
                                 }
                               },
-                              "id": 2022,
+                              "id": 2269,
                               "nodeType": "ExpressionStatement",
                               "src": "3477:55:6"
                             },
                             {
                               "expression": {
                                 "argumentTypes": null,
-                                "id": 2029,
+                                "id": 2276,
                                 "isConstant": false,
                                 "isLValue": false,
                                 "isPure": false,
@@ -4588,25 +4588,25 @@
                                     "argumentTypes": null,
                                     "baseExpression": {
                                       "argumentTypes": null,
-                                      "id": 2023,
+                                      "id": 2270,
                                       "name": "paintGenStartedForColor",
                                       "nodeType": "Identifier",
                                       "overloadedDeclarations": [],
-                                      "referencedDeclaration": 1916,
+                                      "referencedDeclaration": 2163,
                                       "src": "3552:23:6",
                                       "typeDescriptions": {
                                         "typeIdentifier": "t_mapping$_t_uint256_$_t_mapping$_t_uint256_$_t_bool_$_$",
                                         "typeString": "mapping(uint256 => mapping(uint256 => bool))"
                                       }
                                     },
-                                    "id": 2026,
+                                    "id": 2273,
                                     "indexExpression": {
                                       "argumentTypes": null,
-                                      "id": 2024,
+                                      "id": 2271,
                                       "name": "_color",
                                       "nodeType": "Identifier",
                                       "overloadedDeclarations": [],
-                                      "referencedDeclaration": 1962,
+                                      "referencedDeclaration": 2209,
                                       "src": "3576:6:6",
                                       "typeDescriptions": {
                                         "typeIdentifier": "t_uint256",
@@ -4624,14 +4624,14 @@
                                       "typeString": "mapping(uint256 => bool)"
                                     }
                                   },
-                                  "id": 2027,
+                                  "id": 2274,
                                   "indexExpression": {
                                     "argumentTypes": null,
-                                    "id": 2025,
+                                    "id": 2272,
                                     "name": "nextPaintGen",
                                     "nodeType": "Identifier",
                                     "overloadedDeclarations": [],
-                                    "referencedDeclaration": 1989,
+                                    "referencedDeclaration": 2236,
                                     "src": "3584:12:6",
                                     "typeDescriptions": {
                                       "typeIdentifier": "t_uint256",
@@ -4654,7 +4654,7 @@
                                 "rightHandSide": {
                                   "argumentTypes": null,
                                   "hexValue": "74727565",
-                                  "id": 2028,
+                                  "id": 2275,
                                   "isConstant": false,
                                   "isLValue": false,
                                   "isPure": true,
@@ -4675,7 +4675,7 @@
                                   "typeString": "bool"
                                 }
                               },
-                              "id": 2030,
+                              "id": 2277,
                               "nodeType": "ExpressionStatement",
                               "src": "3552:52:6"
                             }
@@ -4689,7 +4689,7 @@
                             "typeIdentifier": "t_uint256",
                             "typeString": "uint256"
                           },
-                          "id": 2041,
+                          "id": 2288,
                           "isConstant": false,
                           "isLValue": false,
                           "isPure": false,
@@ -4700,25 +4700,25 @@
                               "argumentTypes": null,
                               "baseExpression": {
                                 "argumentTypes": null,
-                                "id": 2033,
+                                "id": 2280,
                                 "name": "paintGenToAmountForColor",
                                 "nodeType": "Identifier",
                                 "overloadedDeclarations": [],
-                                "referencedDeclaration": 1898,
+                                "referencedDeclaration": 2145,
                                 "src": "3649:24:6",
                                 "typeDescriptions": {
                                   "typeIdentifier": "t_mapping$_t_uint256_$_t_mapping$_t_uint256_$_t_uint256_$_$",
                                   "typeString": "mapping(uint256 => mapping(uint256 => uint256))"
                                 }
                               },
-                              "id": 2035,
+                              "id": 2282,
                               "indexExpression": {
                                 "argumentTypes": null,
-                                "id": 2034,
+                                "id": 2281,
                                 "name": "_color",
                                 "nodeType": "Identifier",
                                 "overloadedDeclarations": [],
-                                "referencedDeclaration": 1962,
+                                "referencedDeclaration": 2209,
                                 "src": "3674:6:6",
                                 "typeDescriptions": {
                                   "typeIdentifier": "t_uint256",
@@ -4736,30 +4736,30 @@
                                 "typeString": "mapping(uint256 => uint256)"
                               }
                             },
-                            "id": 2039,
+                            "id": 2286,
                             "indexExpression": {
                               "argumentTypes": null,
                               "baseExpression": {
                                 "argumentTypes": null,
-                                "id": 2036,
+                                "id": 2283,
                                 "name": "currentPaintGenForColor",
                                 "nodeType": "Identifier",
                                 "overloadedDeclarations": [],
-                                "referencedDeclaration": 1920,
+                                "referencedDeclaration": 2167,
                                 "src": "3682:23:6",
                                 "typeDescriptions": {
                                   "typeIdentifier": "t_mapping$_t_uint256_$_t_uint256_$",
                                   "typeString": "mapping(uint256 => uint256)"
                                 }
                               },
-                              "id": 2038,
+                              "id": 2285,
                               "indexExpression": {
                                 "argumentTypes": null,
-                                "id": 2037,
+                                "id": 2284,
                                 "name": "_color",
                                 "nodeType": "Identifier",
                                 "overloadedDeclarations": [],
-                                "referencedDeclaration": 1962,
+                                "referencedDeclaration": 2209,
                                 "src": "3706:6:6",
                                 "typeDescriptions": {
                                   "typeIdentifier": "t_uint256",
@@ -4793,7 +4793,7 @@
                           "rightExpression": {
                             "argumentTypes": null,
                             "hexValue": "31",
-                            "id": 2040,
+                            "id": 2287,
                             "isConstant": false,
                             "isLValue": false,
                             "isPure": true,
@@ -4815,11 +4815,11 @@
                           }
                         },
                         "falseBody": null,
-                        "id": 2057,
+                        "id": 2304,
                         "nodeType": "IfStatement",
                         "src": "3645:499:6",
                         "trueBody": {
-                          "id": 2056,
+                          "id": 2303,
                           "nodeType": "Block",
                           "src": "3721:423:6",
                           "statements": [
@@ -4829,11 +4829,11 @@
                                 "arguments": [
                                   {
                                     "argumentTypes": null,
-                                    "id": 2043,
+                                    "id": 2290,
                                     "name": "_color",
                                     "nodeType": "Identifier",
                                     "overloadedDeclarations": [],
-                                    "referencedDeclaration": 1962,
+                                    "referencedDeclaration": 2209,
                                     "src": "3912:6:6",
                                     "typeDescriptions": {
                                       "typeIdentifier": "t_uint256",
@@ -4848,18 +4848,18 @@
                                       "typeString": "uint256"
                                     }
                                   ],
-                                  "id": 2042,
+                                  "id": 2289,
                                   "name": "_updateCallPrice",
                                   "nodeType": "Identifier",
                                   "overloadedDeclarations": [],
-                                  "referencedDeclaration": 1960,
+                                  "referencedDeclaration": 2207,
                                   "src": "3895:16:6",
                                   "typeDescriptions": {
                                     "typeIdentifier": "t_function_internal_nonpayable$_t_uint256_$returns$__$",
                                     "typeString": "function (uint256)"
                                   }
                                 },
-                                "id": 2044,
+                                "id": 2291,
                                 "isConstant": false,
                                 "isLValue": false,
                                 "isPure": false,
@@ -4873,14 +4873,14 @@
                                   "typeString": "tuple()"
                                 }
                               },
-                              "id": 2045,
+                              "id": 2292,
                               "nodeType": "ExpressionStatement",
                               "src": "3895:24:6"
                             },
                             {
                               "expression": {
                                 "argumentTypes": null,
-                                "id": 2054,
+                                "id": 2301,
                                 "isConstant": false,
                                 "isLValue": false,
                                 "isPure": false,
@@ -4891,25 +4891,25 @@
                                     "argumentTypes": null,
                                     "baseExpression": {
                                       "argumentTypes": null,
-                                      "id": 2046,
+                                      "id": 2293,
                                       "name": "paintGenToEndTimeForColor",
                                       "nodeType": "Identifier",
                                       "overloadedDeclarations": [],
-                                      "referencedDeclaration": 1910,
+                                      "referencedDeclaration": 2157,
                                       "src": "4057:25:6",
                                       "typeDescriptions": {
                                         "typeIdentifier": "t_mapping$_t_uint256_$_t_mapping$_t_uint256_$_t_uint256_$_$",
                                         "typeString": "mapping(uint256 => mapping(uint256 => uint256))"
                                       }
                                     },
-                                    "id": 2051,
+                                    "id": 2298,
                                     "indexExpression": {
                                       "argumentTypes": null,
-                                      "id": 2047,
+                                      "id": 2294,
                                       "name": "_color",
                                       "nodeType": "Identifier",
                                       "overloadedDeclarations": [],
-                                      "referencedDeclaration": 1962,
+                                      "referencedDeclaration": 2209,
                                       "src": "4083:6:6",
                                       "typeDescriptions": {
                                         "typeIdentifier": "t_uint256",
@@ -4927,30 +4927,30 @@
                                       "typeString": "mapping(uint256 => uint256)"
                                     }
                                   },
-                                  "id": 2052,
+                                  "id": 2299,
                                   "indexExpression": {
                                     "argumentTypes": null,
                                     "baseExpression": {
                                       "argumentTypes": null,
-                                      "id": 2048,
+                                      "id": 2295,
                                       "name": "currentPaintGenForColor",
                                       "nodeType": "Identifier",
                                       "overloadedDeclarations": [],
-                                      "referencedDeclaration": 1920,
+                                      "referencedDeclaration": 2167,
                                       "src": "4091:23:6",
                                       "typeDescriptions": {
                                         "typeIdentifier": "t_mapping$_t_uint256_$_t_uint256_$",
                                         "typeString": "mapping(uint256 => uint256)"
                                       }
                                     },
-                                    "id": 2050,
+                                    "id": 2297,
                                     "indexExpression": {
                                       "argumentTypes": null,
-                                      "id": 2049,
+                                      "id": 2296,
                                       "name": "_color",
                                       "nodeType": "Identifier",
                                       "overloadedDeclarations": [],
-                                      "referencedDeclaration": 1962,
+                                      "referencedDeclaration": 2209,
                                       "src": "4115:6:6",
                                       "typeDescriptions": {
                                         "typeIdentifier": "t_uint256",
@@ -4983,11 +4983,11 @@
                                 "operator": "=",
                                 "rightHandSide": {
                                   "argumentTypes": null,
-                                  "id": 2053,
+                                  "id": 2300,
                                   "name": "now",
                                   "nodeType": "Identifier",
                                   "overloadedDeclarations": [],
-                                  "referencedDeclaration": 2765,
+                                  "referencedDeclaration": 3192,
                                   "src": "4126:3:6",
                                   "typeDescriptions": {
                                     "typeIdentifier": "t_uint256",
@@ -5000,7 +5000,7 @@
                                   "typeString": "uint256"
                                 }
                               },
-                              "id": 2055,
+                              "id": 2302,
                               "nodeType": "ExpressionStatement",
                               "src": "4057:72:6"
                             }
@@ -5014,7 +5014,7 @@
                             "typeIdentifier": "t_uint256",
                             "typeString": "uint256"
                           },
-                          "id": 2066,
+                          "id": 2313,
                           "isConstant": false,
                           "isLValue": false,
                           "isPure": false,
@@ -5025,25 +5025,25 @@
                               "argumentTypes": null,
                               "baseExpression": {
                                 "argumentTypes": null,
-                                "id": 2058,
+                                "id": 2305,
                                 "name": "paintGenToAmountForColor",
                                 "nodeType": "Identifier",
                                 "overloadedDeclarations": [],
-                                "referencedDeclaration": 1898,
+                                "referencedDeclaration": 2145,
                                 "src": "4282:24:6",
                                 "typeDescriptions": {
                                   "typeIdentifier": "t_mapping$_t_uint256_$_t_mapping$_t_uint256_$_t_uint256_$_$",
                                   "typeString": "mapping(uint256 => mapping(uint256 => uint256))"
                                 }
                               },
-                              "id": 2060,
+                              "id": 2307,
                               "indexExpression": {
                                 "argumentTypes": null,
-                                "id": 2059,
+                                "id": 2306,
                                 "name": "_color",
                                 "nodeType": "Identifier",
                                 "overloadedDeclarations": [],
-                                "referencedDeclaration": 1962,
+                                "referencedDeclaration": 2209,
                                 "src": "4307:6:6",
                                 "typeDescriptions": {
                                   "typeIdentifier": "t_uint256",
@@ -5061,30 +5061,30 @@
                                 "typeString": "mapping(uint256 => uint256)"
                               }
                             },
-                            "id": 2064,
+                            "id": 2311,
                             "indexExpression": {
                               "argumentTypes": null,
                               "baseExpression": {
                                 "argumentTypes": null,
-                                "id": 2061,
+                                "id": 2308,
                                 "name": "currentPaintGenForColor",
                                 "nodeType": "Identifier",
                                 "overloadedDeclarations": [],
-                                "referencedDeclaration": 1920,
+                                "referencedDeclaration": 2167,
                                 "src": "4315:23:6",
                                 "typeDescriptions": {
                                   "typeIdentifier": "t_mapping$_t_uint256_$_t_uint256_$",
                                   "typeString": "mapping(uint256 => uint256)"
                                 }
                               },
-                              "id": 2063,
+                              "id": 2310,
                               "indexExpression": {
                                 "argumentTypes": null,
-                                "id": 2062,
+                                "id": 2309,
                                 "name": "_color",
                                 "nodeType": "Identifier",
                                 "overloadedDeclarations": [],
-                                "referencedDeclaration": 1962,
+                                "referencedDeclaration": 2209,
                                 "src": "4339:6:6",
                                 "typeDescriptions": {
                                   "typeIdentifier": "t_uint256",
@@ -5118,7 +5118,7 @@
                           "rightExpression": {
                             "argumentTypes": null,
                             "hexValue": "30",
-                            "id": 2065,
+                            "id": 2312,
                             "isConstant": false,
                             "isLValue": false,
                             "isPure": true,
@@ -5140,18 +5140,18 @@
                           }
                         },
                         "falseBody": null,
-                        "id": 2082,
+                        "id": 2329,
                         "nodeType": "IfStatement",
                         "src": "4278:486:6",
                         "trueBody": {
-                          "id": 2081,
+                          "id": 2328,
                           "nodeType": "Block",
                           "src": "4354:410:6",
                           "statements": [
                             {
                               "expression": {
                                 "argumentTypes": null,
-                                "id": 2073,
+                                "id": 2320,
                                 "isConstant": false,
                                 "isLValue": false,
                                 "isPure": false,
@@ -5160,25 +5160,25 @@
                                   "argumentTypes": null,
                                   "baseExpression": {
                                     "argumentTypes": null,
-                                    "id": 2067,
+                                    "id": 2314,
                                     "name": "callPriceForColor",
                                     "nodeType": "Identifier",
                                     "overloadedDeclarations": [],
-                                    "referencedDeclaration": 1924,
+                                    "referencedDeclaration": 2171,
                                     "src": "4505:17:6",
                                     "typeDescriptions": {
                                       "typeIdentifier": "t_mapping$_t_uint256_$_t_uint256_$",
                                       "typeString": "mapping(uint256 => uint256)"
                                     }
                                   },
-                                  "id": 2069,
+                                  "id": 2316,
                                   "indexExpression": {
                                     "argumentTypes": null,
-                                    "id": 2068,
+                                    "id": 2315,
                                     "name": "_color",
                                     "nodeType": "Identifier",
                                     "overloadedDeclarations": [],
-                                    "referencedDeclaration": 1962,
+                                    "referencedDeclaration": 2209,
                                     "src": "4523:6:6",
                                     "typeDescriptions": {
                                       "typeIdentifier": "t_uint256",
@@ -5202,25 +5202,25 @@
                                   "argumentTypes": null,
                                   "baseExpression": {
                                     "argumentTypes": null,
-                                    "id": 2070,
+                                    "id": 2317,
                                     "name": "nextCallPriceForColor",
                                     "nodeType": "Identifier",
                                     "overloadedDeclarations": [],
-                                    "referencedDeclaration": 1928,
+                                    "referencedDeclaration": 2175,
                                     "src": "4533:21:6",
                                     "typeDescriptions": {
                                       "typeIdentifier": "t_mapping$_t_uint256_$_t_uint256_$",
                                       "typeString": "mapping(uint256 => uint256)"
                                     }
                                   },
-                                  "id": 2072,
+                                  "id": 2319,
                                   "indexExpression": {
                                     "argumentTypes": null,
-                                    "id": 2071,
+                                    "id": 2318,
                                     "name": "_color",
                                     "nodeType": "Identifier",
                                     "overloadedDeclarations": [],
-                                    "referencedDeclaration": 1962,
+                                    "referencedDeclaration": 2209,
                                     "src": "4555:6:6",
                                     "typeDescriptions": {
                                       "typeIdentifier": "t_uint256",
@@ -5244,14 +5244,14 @@
                                   "typeString": "uint256"
                                 }
                               },
-                              "id": 2074,
+                              "id": 2321,
                               "nodeType": "ExpressionStatement",
                               "src": "4505:57:6"
                             },
                             {
                               "expression": {
                                 "argumentTypes": null,
-                                "id": 2079,
+                                "id": 2326,
                                 "isConstant": false,
                                 "isLValue": false,
                                 "isPure": false,
@@ -5260,25 +5260,25 @@
                                   "argumentTypes": null,
                                   "baseExpression": {
                                     "argumentTypes": null,
-                                    "id": 2075,
+                                    "id": 2322,
                                     "name": "currentPaintGenForColor",
                                     "nodeType": "Identifier",
                                     "overloadedDeclarations": [],
-                                    "referencedDeclaration": 1920,
+                                    "referencedDeclaration": 2167,
                                     "src": "4703:23:6",
                                     "typeDescriptions": {
                                       "typeIdentifier": "t_mapping$_t_uint256_$_t_uint256_$",
                                       "typeString": "mapping(uint256 => uint256)"
                                     }
                                   },
-                                  "id": 2077,
+                                  "id": 2324,
                                   "indexExpression": {
                                     "argumentTypes": null,
-                                    "id": 2076,
+                                    "id": 2323,
                                     "name": "_color",
                                     "nodeType": "Identifier",
                                     "overloadedDeclarations": [],
-                                    "referencedDeclaration": 1962,
+                                    "referencedDeclaration": 2209,
                                     "src": "4727:6:6",
                                     "typeDescriptions": {
                                       "typeIdentifier": "t_uint256",
@@ -5300,11 +5300,11 @@
                                 "operator": "=",
                                 "rightHandSide": {
                                   "argumentTypes": null,
-                                  "id": 2078,
+                                  "id": 2325,
                                   "name": "nextPaintGen",
                                   "nodeType": "Identifier",
                                   "overloadedDeclarations": [],
-                                  "referencedDeclaration": 1989,
+                                  "referencedDeclaration": 2236,
                                   "src": "4737:12:6",
                                   "typeDescriptions": {
                                     "typeIdentifier": "t_uint256",
@@ -5317,7 +5317,7 @@
                                   "typeString": "uint256"
                                 }
                               },
-                              "id": 2080,
+                              "id": 2327,
                               "nodeType": "ExpressionStatement",
                               "src": "4703:46:6"
                             }
@@ -5330,7 +5330,7 @@
               ]
             },
             "documentation": null,
-            "id": 2086,
+            "id": 2333,
             "implemented": true,
             "isConstructor": false,
             "isDeclaredConst": false,
@@ -5338,15 +5338,15 @@
             "name": "_fillPaintsPool",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1963,
+              "id": 2210,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1962,
+                  "id": 2209,
                   "name": "_color",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2086,
+                  "scope": 2333,
                   "src": "2280:11:6",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -5355,7 +5355,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1961,
+                    "id": 2208,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
                     "src": "2280:4:6",
@@ -5372,19 +5372,19 @@
             },
             "payable": false,
             "returnParameters": {
-              "id": 1964,
+              "id": 2211,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "2302:0:6"
             },
-            "scope": 2087,
+            "scope": 2334,
             "src": "2255:2525:6",
             "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "internal"
           }
         ],
-        "scope": 2088,
+        "scope": 2335,
         "src": "103:4679:6"
       }
     ],
@@ -5396,5 +5396,5 @@
   },
   "networks": {},
   "schemaVersion": "2.0.1",
-  "updatedAt": "2018-12-07T04:37:56.817Z"
+  "updatedAt": "2018-12-12T15:29:52.882Z"
 }

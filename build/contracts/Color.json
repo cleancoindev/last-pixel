@@ -45,14 +45,14 @@
     "absolutePath": "/Users/Amir/last-pixel-contracts/contracts/IColor.sol",
     "exportedSymbols": {
       "Color": [
-        1783
+        2030
       ]
     },
-    "id": 1784,
+    "id": 2031,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 1770,
+        "id": 2017,
         "literals": [
           "solidity",
           "^",
@@ -68,9 +68,9 @@
         "contractKind": "interface",
         "documentation": null,
         "fullyImplemented": false,
-        "id": 1783,
+        "id": 2030,
         "linearizedBaseContracts": [
-          1783
+          2030
         ],
         "name": "Color",
         "nodeType": "ContractDefinition",
@@ -78,7 +78,7 @@
           {
             "body": null,
             "documentation": null,
-            "id": 1775,
+            "id": 2022,
             "implemented": false,
             "isConstructor": false,
             "isDeclaredConst": true,
@@ -86,22 +86,22 @@
             "name": "totalSupply",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1771,
+              "id": 2018,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "68:2:4"
             },
             "payable": false,
             "returnParameters": {
-              "id": 1774,
+              "id": 2021,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1773,
+                  "id": 2020,
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1775,
+                  "scope": 2022,
                   "src": "94:4:4",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -110,7 +110,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1772,
+                    "id": 2019,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
                     "src": "94:4:4",
@@ -125,7 +125,7 @@
               ],
               "src": "93:6:4"
             },
-            "scope": 1783,
+            "scope": 2030,
             "src": "48:52:4",
             "stateMutability": "view",
             "superFunction": null,
@@ -134,7 +134,7 @@
           {
             "body": null,
             "documentation": null,
-            "id": 1782,
+            "id": 2029,
             "implemented": false,
             "isConstructor": false,
             "isDeclaredConst": true,
@@ -142,15 +142,15 @@
             "name": "ownerOf",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1778,
+              "id": 2025,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1777,
+                  "id": 2024,
                   "name": "_tokenId",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1782,
+                  "scope": 2029,
                   "src": "122:13:4",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -159,7 +159,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1776,
+                    "id": 2023,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
                     "src": "122:4:4",
@@ -176,15 +176,15 @@
             },
             "payable": false,
             "returnParameters": {
-              "id": 1781,
+              "id": 2028,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1780,
+                  "id": 2027,
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1782,
+                  "scope": 2029,
                   "src": "160:7:4",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -193,7 +193,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 1779,
+                    "id": 2026,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "160:7:4",
@@ -208,14 +208,14 @@
               ],
               "src": "159:9:4"
             },
-            "scope": 1783,
+            "scope": 2030,
             "src": "105:64:4",
             "stateMutability": "view",
             "superFunction": null,
             "visibility": "external"
           }
         ],
-        "scope": 1784,
+        "scope": 2031,
         "src": "26:145:4"
       }
     ],
@@ -225,14 +225,14 @@
     "absolutePath": "/Users/Amir/last-pixel-contracts/contracts/IColor.sol",
     "exportedSymbols": {
       "Color": [
-        1783
+        2030
       ]
     },
-    "id": 1784,
+    "id": 2031,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 1770,
+        "id": 2017,
         "literals": [
           "solidity",
           "^",
@@ -248,9 +248,9 @@
         "contractKind": "interface",
         "documentation": null,
         "fullyImplemented": false,
-        "id": 1783,
+        "id": 2030,
         "linearizedBaseContracts": [
-          1783
+          2030
         ],
         "name": "Color",
         "nodeType": "ContractDefinition",
@@ -258,7 +258,7 @@
           {
             "body": null,
             "documentation": null,
-            "id": 1775,
+            "id": 2022,
             "implemented": false,
             "isConstructor": false,
             "isDeclaredConst": true,
@@ -266,22 +266,22 @@
             "name": "totalSupply",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1771,
+              "id": 2018,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "68:2:4"
             },
             "payable": false,
             "returnParameters": {
-              "id": 1774,
+              "id": 2021,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1773,
+                  "id": 2020,
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1775,
+                  "scope": 2022,
                   "src": "94:4:4",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -290,7 +290,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1772,
+                    "id": 2019,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
                     "src": "94:4:4",
@@ -305,7 +305,7 @@
               ],
               "src": "93:6:4"
             },
-            "scope": 1783,
+            "scope": 2030,
             "src": "48:52:4",
             "stateMutability": "view",
             "superFunction": null,
@@ -314,7 +314,7 @@
           {
             "body": null,
             "documentation": null,
-            "id": 1782,
+            "id": 2029,
             "implemented": false,
             "isConstructor": false,
             "isDeclaredConst": true,
@@ -322,15 +322,15 @@
             "name": "ownerOf",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1778,
+              "id": 2025,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1777,
+                  "id": 2024,
                   "name": "_tokenId",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1782,
+                  "scope": 2029,
                   "src": "122:13:4",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -339,7 +339,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1776,
+                    "id": 2023,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
                     "src": "122:4:4",
@@ -356,15 +356,15 @@
             },
             "payable": false,
             "returnParameters": {
-              "id": 1781,
+              "id": 2028,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1780,
+                  "id": 2027,
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1782,
+                  "scope": 2029,
                   "src": "160:7:4",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -373,7 +373,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 1779,
+                    "id": 2026,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "160:7:4",
@@ -388,14 +388,14 @@
               ],
               "src": "159:9:4"
             },
-            "scope": 1783,
+            "scope": 2030,
             "src": "105:64:4",
             "stateMutability": "view",
             "superFunction": null,
             "visibility": "external"
           }
         ],
-        "scope": 1784,
+        "scope": 2031,
         "src": "26:145:4"
       }
     ],
@@ -407,5 +407,5 @@
   },
   "networks": {},
   "schemaVersion": "2.0.1",
-  "updatedAt": "2018-12-07T04:37:56.772Z"
+  "updatedAt": "2018-12-12T15:29:52.846Z"
 }

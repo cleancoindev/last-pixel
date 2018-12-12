@@ -405,7 +405,7 @@ contract TimeBankDistributor is RoundDataHolder {
         uint round = lastPlayedRound[msg.sender];
 
         //функция может быть вызвана только если в последнем раунде был разыгран банк времени
-        require(lastPlayedRound[msg.sender] > 0 && winnerBankForRound[round] == 1, "Bank of time was not played in your last round...");
+        require(lastPlayedRound[msg.sender] > 1 && winnerBankForRound[round] == 1, "Bank of time was not played in your last round...");
         
         //время завершения сбора команды приза для раунда
         uint end = teamEndedTimeForRound[round];
@@ -416,12 +416,18 @@ contract TimeBankDistributor is RoundDataHolder {
         //cчетчик количества закрашиваний
         uint counter;
             
+    /*
         //счетчик общего количества закрашиваний любым цветом для пользователя за раунд     
         uint total = addressToTotalCounterForRound[round][msg.sender]; 
+    */
+
+        //счетчик общего количества закрашиваний любым цветом для пользователя    
+        uint total = userToTotalCounter[msg.sender]; 
 
         //считаем сколько закрашиваний ЛЮБЫМ цветом произвел пользователь за последние 24 часа
         for (uint i = total; i > 0; i--) {
-            uint timeStamp = addressToCounterToTimestampForRound[round][msg.sender][i];
+            //uint timeStamp = addressToCounterToTimestampForRound[round][msg.sender][i];
+            uint timeStamp = userToCounterToTimestamp[msg.sender][i];
             if (timeStamp >= start && timeStamp <= end) //т.к. (<= end), то последний закрасивший также принимает участие
                 counter++;
         }
@@ -475,9 +481,6 @@ contract TimeBankDistributor is RoundDataHolder {
         //в этом раунде банк цвета обнуляется
         colorBankForRound[currentRound] = 0; 
 
-        //возвращаем средства пользователя назад, так как этот раунд завершен и закрашивание не засчиталось
-        msg.sender.transfer(msg.value); 
-
         //ивент - был разыгран банк времени (победитель, раунд)
         emit TimeBankPlayed(winnerOfRound[currentRound], currentRound);
         
@@ -505,7 +508,7 @@ contract ColorBankDistributor is RoundDataHolder  {
         uint round = lastPlayedRound[msg.sender];
 
         //функция может быть вызвана только если в последнем раунде был разыгран банк цвета
-        require(lastPlayedRound[msg.sender] > 0 && winnerBankForRound[round] == 2, "Bank of color was not played in your last round...");
+       require(lastPlayedRound[msg.sender] > 1 && winnerBankForRound[round] == 2, "Bank of color was not played in your last round...");
 
         //выигрышый цвет за последний раунд в котором пользователь принимал участие
         uint winnerColor = winnerColorForRound[round];
@@ -514,17 +517,27 @@ contract ColorBankDistributor is RoundDataHolder  {
         uint end = teamEndedTimeForRound[round];
 
         //время начала сбора команды приза для раунда
-        uint start = teamStartedTimeForRound[round];
+        uint start;
+
+        if (lastPlayedRound[msg.sender] > 1 && winnerBankForRound[round - 1] == 1)
+            start = end - 24 hours;
+        else 
+            start = teamStartedTimeForRound[round];
 
         //cчетчик количества закрашиваний
         uint counter;
+
         
         //счетчик общего количества закрашиваний выигрышным цветом для пользователя за раунд     
-        uint total = colorToAddressToTotalCounterForRound[round][winnerColor][msg.sender]; 
+        //uint total = colorToAddressToTotalCounterForRound[round][winnerColor][msg.sender]; 
+
+        //счетчик общего количества закрашиваний выигрышным цветом для пользователя
+        uint total = colorToUserToTotalCounter[winnerColor][msg.sender];
 
          //считаем сколько закрашиваний выигрышным цветом произвел пользователь за последние 24 часа
         for (uint i = total; i > 0; i--) {
-            uint timeStamp = addressToColorToCounterToTimestampForRound[round][msg.sender][winnerColor][i];
+            //uint timeStamp = addressToColorToCounterToTimestampForRound[round][msg.sender][winnerColor][i];
+            uint timeStamp = userToColorToCounterToTimestamp[msg.sender][winnerColor][i];
             if (timeStamp >= start && timeStamp <= end)
                 counter = counter.add(1);
         }
@@ -715,7 +728,7 @@ contract PaintDiscount  {
 
 // File: contracts/Game.sol
 
-contract GameMult is Ownable, TimeBankDistributor, ColorBankDistributor, PaintsPool, PaintDiscount, DividendsDistributor  {
+contract Game is Ownable, TimeBankDistributor, ColorBankDistributor, PaintsPool, PaintDiscount, DividendsDistributor  {
 
     using SafeMath for uint;
     

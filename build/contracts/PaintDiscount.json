@@ -81,14 +81,14 @@
     "absolutePath": "/Users/Amir/last-pixel-contracts/contracts/PaintDiscount.sol",
     "exportedSymbols": {
       "PaintDiscount": [
-        1882
+        2129
       ]
     },
-    "id": 1883,
+    "id": 2130,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 1785,
+        "id": 2032,
         "literals": [
           "solidity",
           "^",
@@ -101,10 +101,10 @@
       {
         "absolutePath": "/Users/Amir/last-pixel-contracts/node_modules/openzeppelin-solidity/contracts/math/SafeMath.sol",
         "file": "../node_modules/openzeppelin-solidity/contracts/math/SafeMath.sol",
-        "id": 1786,
+        "id": 2033,
         "nodeType": "ImportDirective",
-        "scope": 1883,
-        "sourceUnit": 2640,
+        "scope": 2130,
+        "sourceUnit": 3067,
         "src": "26:75:5",
         "symbolAliases": [],
         "unitAlias": ""
@@ -115,31 +115,31 @@
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": true,
-        "id": 1882,
+        "id": 2129,
         "linearizedBaseContracts": [
-          1882
+          2129
         ],
         "name": "PaintDiscount",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
-            "id": 1789,
+            "id": 2036,
             "libraryName": {
               "contractScope": null,
-              "id": 1787,
+              "id": 2034,
               "name": "SafeMath",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 2639,
+              "referencedDeclaration": 3066,
               "src": "144:8:5",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_SafeMath_$2639",
+                "typeIdentifier": "t_contract$_SafeMath_$3066",
                 "typeString": "library SafeMath"
               }
             },
             "nodeType": "UsingForDirective",
             "src": "138:24:5",
             "typeName": {
-              "id": 1788,
+              "id": 2035,
               "name": "uint",
               "nodeType": "ElementaryTypeName",
               "src": "157:4:5",
@@ -151,10 +151,10 @@
           },
           {
             "constant": false,
-            "id": 1795,
+            "id": 2042,
             "name": "moneySpentByUserForColor",
             "nodeType": "VariableDeclaration",
-            "scope": 1882,
+            "scope": 2129,
             "src": "330:75:5",
             "stateVariable": true,
             "storageLocation": "default",
@@ -163,9 +163,9 @@
               "typeString": "mapping(uint256 => mapping(address => uint256))"
             },
             "typeName": {
-              "id": 1794,
+              "id": 2041,
               "keyType": {
-                "id": 1790,
+                "id": 2037,
                 "name": "uint",
                 "nodeType": "ElementaryTypeName",
                 "src": "339:4:5",
@@ -181,9 +181,9 @@
                 "typeString": "mapping(uint256 => mapping(address => uint256))"
               },
               "valueType": {
-                "id": 1793,
+                "id": 2040,
                 "keyType": {
-                  "id": 1791,
+                  "id": 2038,
                   "name": "address",
                   "nodeType": "ElementaryTypeName",
                   "src": "356:7:5",
@@ -199,7 +199,7 @@
                   "typeString": "mapping(address => uint256)"
                 },
                 "valueType": {
-                  "id": 1792,
+                  "id": 2039,
                   "name": "uint",
                   "nodeType": "ElementaryTypeName",
                   "src": "367:4:5",
@@ -215,10 +215,10 @@
           },
           {
             "constant": false,
-            "id": 1801,
+            "id": 2048,
             "name": "hasPaintDiscountForColor",
             "nodeType": "VariableDeclaration",
-            "scope": 1882,
+            "scope": 2129,
             "src": "642:75:5",
             "stateVariable": true,
             "storageLocation": "default",
@@ -227,9 +227,9 @@
               "typeString": "mapping(uint256 => mapping(address => bool))"
             },
             "typeName": {
-              "id": 1800,
+              "id": 2047,
               "keyType": {
-                "id": 1796,
+                "id": 2043,
                 "name": "uint",
                 "nodeType": "ElementaryTypeName",
                 "src": "651:4:5",
@@ -245,9 +245,9 @@
                 "typeString": "mapping(uint256 => mapping(address => bool))"
               },
               "valueType": {
-                "id": 1799,
+                "id": 2046,
                 "keyType": {
-                  "id": 1797,
+                  "id": 2044,
                   "name": "address",
                   "nodeType": "ElementaryTypeName",
                   "src": "668:7:5",
@@ -263,7 +263,7 @@
                   "typeString": "mapping(address => bool)"
                 },
                 "valueType": {
-                  "id": 1798,
+                  "id": 2045,
                   "name": "bool",
                   "nodeType": "ElementaryTypeName",
                   "src": "679:4:5",
@@ -279,10 +279,10 @@
           },
           {
             "constant": false,
-            "id": 1807,
+            "id": 2054,
             "name": "usersPaintDiscountForColor",
             "nodeType": "VariableDeclaration",
-            "scope": 1882,
+            "scope": 2129,
             "src": "867:77:5",
             "stateVariable": true,
             "storageLocation": "default",
@@ -291,9 +291,9 @@
               "typeString": "mapping(uint256 => mapping(address => uint256))"
             },
             "typeName": {
-              "id": 1806,
+              "id": 2053,
               "keyType": {
-                "id": 1802,
+                "id": 2049,
                 "name": "uint",
                 "nodeType": "ElementaryTypeName",
                 "src": "876:4:5",
@@ -309,9 +309,9 @@
                 "typeString": "mapping(uint256 => mapping(address => uint256))"
               },
               "valueType": {
-                "id": 1805,
+                "id": 2052,
                 "keyType": {
-                  "id": 1803,
+                  "id": 2050,
                   "name": "address",
                   "nodeType": "ElementaryTypeName",
                   "src": "893:7:5",
@@ -327,7 +327,7 @@
                   "typeString": "mapping(address => uint256)"
                 },
                 "valueType": {
-                  "id": 1804,
+                  "id": 2051,
                   "name": "uint",
                   "nodeType": "ElementaryTypeName",
                   "src": "904:4:5",
@@ -343,14 +343,14 @@
           },
           {
             "body": {
-              "id": 1846,
+              "id": 2093,
               "nodeType": "Block",
               "src": "1177:446:5",
               "statements": [
                 {
                   "expression": {
                     "argumentTypes": null,
-                    "id": 1826,
+                    "id": 2073,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -361,25 +361,25 @@
                         "argumentTypes": null,
                         "baseExpression": {
                           "argumentTypes": null,
-                          "id": 1812,
+                          "id": 2059,
                           "name": "usersPaintDiscountForColor",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 1807,
+                          "referencedDeclaration": 2054,
                           "src": "1278:26:5",
                           "typeDescriptions": {
                             "typeIdentifier": "t_mapping$_t_uint256_$_t_mapping$_t_address_$_t_uint256_$_$",
                             "typeString": "mapping(uint256 => mapping(address => uint256))"
                           }
                         },
-                        "id": 1816,
+                        "id": 2063,
                         "indexExpression": {
                           "argumentTypes": null,
-                          "id": 1813,
+                          "id": 2060,
                           "name": "_color",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 1809,
+                          "referencedDeclaration": 2056,
                           "src": "1305:6:5",
                           "typeDescriptions": {
                             "typeIdentifier": "t_uint256",
@@ -397,23 +397,23 @@
                           "typeString": "mapping(address => uint256)"
                         }
                       },
-                      "id": 1817,
+                      "id": 2064,
                       "indexExpression": {
                         "argumentTypes": null,
                         "expression": {
                           "argumentTypes": null,
-                          "id": 1814,
+                          "id": 2061,
                           "name": "msg",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 2763,
+                          "referencedDeclaration": 3190,
                           "src": "1313:3:5",
                           "typeDescriptions": {
                             "typeIdentifier": "t_magic_message",
                             "typeString": "msg"
                           }
                         },
-                        "id": 1815,
+                        "id": 2062,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": false,
@@ -446,7 +446,7 @@
                         "typeIdentifier": "t_uint256",
                         "typeString": "uint256"
                       },
-                      "id": 1825,
+                      "id": 2072,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
@@ -457,25 +457,25 @@
                           "argumentTypes": null,
                           "baseExpression": {
                             "argumentTypes": null,
-                            "id": 1818,
+                            "id": 2065,
                             "name": "moneySpentByUserForColor",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 1795,
+                            "referencedDeclaration": 2042,
                             "src": "1327:24:5",
                             "typeDescriptions": {
                               "typeIdentifier": "t_mapping$_t_uint256_$_t_mapping$_t_address_$_t_uint256_$_$",
                               "typeString": "mapping(uint256 => mapping(address => uint256))"
                             }
                           },
-                          "id": 1820,
+                          "id": 2067,
                           "indexExpression": {
                             "argumentTypes": null,
-                            "id": 1819,
+                            "id": 2066,
                             "name": "_color",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 1809,
+                            "referencedDeclaration": 2056,
                             "src": "1352:6:5",
                             "typeDescriptions": {
                               "typeIdentifier": "t_uint256",
@@ -493,23 +493,23 @@
                             "typeString": "mapping(address => uint256)"
                           }
                         },
-                        "id": 1823,
+                        "id": 2070,
                         "indexExpression": {
                           "argumentTypes": null,
                           "expression": {
                             "argumentTypes": null,
-                            "id": 1821,
+                            "id": 2068,
                             "name": "msg",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 2763,
+                            "referencedDeclaration": 3190,
                             "src": "1360:3:5",
                             "typeDescriptions": {
                               "typeIdentifier": "t_magic_message",
                               "typeString": "msg"
                             }
                           },
-                          "id": 1822,
+                          "id": 2069,
                           "isConstant": false,
                           "isLValue": false,
                           "isPure": false,
@@ -539,7 +539,7 @@
                       "rightExpression": {
                         "argumentTypes": null,
                         "hexValue": "31",
-                        "id": 1824,
+                        "id": 2071,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": true,
@@ -566,7 +566,7 @@
                       "typeString": "uint256"
                     }
                   },
-                  "id": 1827,
+                  "id": 2074,
                   "nodeType": "ExpressionStatement",
                   "src": "1278:103:5"
                 },
@@ -577,7 +577,7 @@
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
                     },
-                    "id": 1835,
+                    "id": 2082,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -588,25 +588,25 @@
                         "argumentTypes": null,
                         "baseExpression": {
                           "argumentTypes": null,
-                          "id": 1828,
+                          "id": 2075,
                           "name": "moneySpentByUserForColor",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 1795,
+                          "referencedDeclaration": 2042,
                           "src": "1486:24:5",
                           "typeDescriptions": {
                             "typeIdentifier": "t_mapping$_t_uint256_$_t_mapping$_t_address_$_t_uint256_$_$",
                             "typeString": "mapping(uint256 => mapping(address => uint256))"
                           }
                         },
-                        "id": 1830,
+                        "id": 2077,
                         "indexExpression": {
                           "argumentTypes": null,
-                          "id": 1829,
+                          "id": 2076,
                           "name": "_color",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 1809,
+                          "referencedDeclaration": 2056,
                           "src": "1511:6:5",
                           "typeDescriptions": {
                             "typeIdentifier": "t_uint256",
@@ -624,23 +624,23 @@
                           "typeString": "mapping(address => uint256)"
                         }
                       },
-                      "id": 1833,
+                      "id": 2080,
                       "indexExpression": {
                         "argumentTypes": null,
                         "expression": {
                           "argumentTypes": null,
-                          "id": 1831,
+                          "id": 2078,
                           "name": "msg",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 2763,
+                          "referencedDeclaration": 3190,
                           "src": "1519:3:5",
                           "typeDescriptions": {
                             "typeIdentifier": "t_magic_message",
                             "typeString": "msg"
                           }
                         },
-                        "id": 1832,
+                        "id": 2079,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": false,
@@ -670,7 +670,7 @@
                     "rightExpression": {
                       "argumentTypes": null,
                       "hexValue": "3130",
-                      "id": 1834,
+                      "id": 2081,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": true,
@@ -692,13 +692,13 @@
                     }
                   },
                   "falseBody": null,
-                  "id": 1845,
+                  "id": 2092,
                   "nodeType": "IfStatement",
                   "src": "1482:125:5",
                   "trueBody": {
                     "expression": {
                       "argumentTypes": null,
-                      "id": 1843,
+                      "id": 2090,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
@@ -709,25 +709,25 @@
                           "argumentTypes": null,
                           "baseExpression": {
                             "argumentTypes": null,
-                            "id": 1836,
+                            "id": 2083,
                             "name": "usersPaintDiscountForColor",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 1807,
+                            "referencedDeclaration": 2054,
                             "src": "1556:26:5",
                             "typeDescriptions": {
                               "typeIdentifier": "t_mapping$_t_uint256_$_t_mapping$_t_address_$_t_uint256_$_$",
                               "typeString": "mapping(uint256 => mapping(address => uint256))"
                             }
                           },
-                          "id": 1840,
+                          "id": 2087,
                           "indexExpression": {
                             "argumentTypes": null,
-                            "id": 1837,
+                            "id": 2084,
                             "name": "_color",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 1809,
+                            "referencedDeclaration": 2056,
                             "src": "1583:6:5",
                             "typeDescriptions": {
                               "typeIdentifier": "t_uint256",
@@ -745,23 +745,23 @@
                             "typeString": "mapping(address => uint256)"
                           }
                         },
-                        "id": 1841,
+                        "id": 2088,
                         "indexExpression": {
                           "argumentTypes": null,
                           "expression": {
                             "argumentTypes": null,
-                            "id": 1838,
+                            "id": 2085,
                             "name": "msg",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 2763,
+                            "referencedDeclaration": 3190,
                             "src": "1591:3:5",
                             "typeDescriptions": {
                               "typeIdentifier": "t_magic_message",
                               "typeString": "msg"
                             }
                           },
-                          "id": 1839,
+                          "id": 2086,
                           "isConstant": false,
                           "isLValue": false,
                           "isPure": false,
@@ -791,7 +791,7 @@
                       "rightHandSide": {
                         "argumentTypes": null,
                         "hexValue": "3130",
-                        "id": 1842,
+                        "id": 2089,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": true,
@@ -812,7 +812,7 @@
                         "typeString": "uint256"
                       }
                     },
-                    "id": 1844,
+                    "id": 2091,
                     "nodeType": "ExpressionStatement",
                     "src": "1556:51:5"
                   }
@@ -820,7 +820,7 @@
               ]
             },
             "documentation": null,
-            "id": 1847,
+            "id": 2094,
             "implemented": true,
             "isConstructor": false,
             "isDeclaredConst": false,
@@ -828,15 +828,15 @@
             "name": "_setUsersPaintDiscountForColor",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1810,
+              "id": 2057,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1809,
+                  "id": 2056,
                   "name": "_color",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1847,
+                  "scope": 2094,
                   "src": "1155:11:5",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -845,7 +845,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1808,
+                    "id": 2055,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
                     "src": "1155:4:5",
@@ -862,12 +862,12 @@
             },
             "payable": false,
             "returnParameters": {
-              "id": 1811,
+              "id": 2058,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "1177:0:5"
             },
-            "scope": 1882,
+            "scope": 2129,
             "src": "1115:508:5",
             "stateMutability": "nonpayable",
             "superFunction": null,
@@ -875,14 +875,14 @@
           },
           {
             "body": {
-              "id": 1880,
+              "id": 2127,
               "nodeType": "Block",
               "src": "1903:218:5",
               "statements": [
                 {
                   "expression": {
                     "argumentTypes": null,
-                    "id": 1860,
+                    "id": 2107,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -893,25 +893,25 @@
                         "argumentTypes": null,
                         "baseExpression": {
                           "argumentTypes": null,
-                          "id": 1852,
+                          "id": 2099,
                           "name": "moneySpentByUserForColor",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 1795,
+                          "referencedDeclaration": 2042,
                           "src": "1922:24:5",
                           "typeDescriptions": {
                             "typeIdentifier": "t_mapping$_t_uint256_$_t_mapping$_t_address_$_t_uint256_$_$",
                             "typeString": "mapping(uint256 => mapping(address => uint256))"
                           }
                         },
-                        "id": 1856,
+                        "id": 2103,
                         "indexExpression": {
                           "argumentTypes": null,
-                          "id": 1853,
+                          "id": 2100,
                           "name": "_color",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 1849,
+                          "referencedDeclaration": 2096,
                           "src": "1947:6:5",
                           "typeDescriptions": {
                             "typeIdentifier": "t_uint256",
@@ -929,23 +929,23 @@
                           "typeString": "mapping(address => uint256)"
                         }
                       },
-                      "id": 1857,
+                      "id": 2104,
                       "indexExpression": {
                         "argumentTypes": null,
                         "expression": {
                           "argumentTypes": null,
-                          "id": 1854,
+                          "id": 2101,
                           "name": "msg",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 2763,
+                          "referencedDeclaration": 3190,
                           "src": "1955:3:5",
                           "typeDescriptions": {
                             "typeIdentifier": "t_magic_message",
                             "typeString": "msg"
                           }
                         },
-                        "id": 1855,
+                        "id": 2102,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": false,
@@ -976,18 +976,18 @@
                       "argumentTypes": null,
                       "expression": {
                         "argumentTypes": null,
-                        "id": 1858,
+                        "id": 2105,
                         "name": "msg",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 2763,
+                        "referencedDeclaration": 3190,
                         "src": "1970:3:5",
                         "typeDescriptions": {
                           "typeIdentifier": "t_magic_message",
                           "typeString": "msg"
                         }
                       },
-                      "id": 1859,
+                      "id": 2106,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
@@ -1007,7 +1007,7 @@
                       "typeString": "uint256"
                     }
                   },
-                  "id": 1861,
+                  "id": 2108,
                   "nodeType": "ExpressionStatement",
                   "src": "1922:57:5"
                 },
@@ -1018,7 +1018,7 @@
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
                     },
-                    "id": 1869,
+                    "id": 2116,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -1029,25 +1029,25 @@
                         "argumentTypes": null,
                         "baseExpression": {
                           "argumentTypes": null,
-                          "id": 1862,
+                          "id": 2109,
                           "name": "moneySpentByUserForColor",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 1795,
+                          "referencedDeclaration": 2042,
                           "src": "1994:24:5",
                           "typeDescriptions": {
                             "typeIdentifier": "t_mapping$_t_uint256_$_t_mapping$_t_address_$_t_uint256_$_$",
                             "typeString": "mapping(uint256 => mapping(address => uint256))"
                           }
                         },
-                        "id": 1864,
+                        "id": 2111,
                         "indexExpression": {
                           "argumentTypes": null,
-                          "id": 1863,
+                          "id": 2110,
                           "name": "_color",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 1849,
+                          "referencedDeclaration": 2096,
                           "src": "2019:6:5",
                           "typeDescriptions": {
                             "typeIdentifier": "t_uint256",
@@ -1065,23 +1065,23 @@
                           "typeString": "mapping(address => uint256)"
                         }
                       },
-                      "id": 1867,
+                      "id": 2114,
                       "indexExpression": {
                         "argumentTypes": null,
                         "expression": {
                           "argumentTypes": null,
-                          "id": 1865,
+                          "id": 2112,
                           "name": "msg",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 2763,
+                          "referencedDeclaration": 3190,
                           "src": "2027:3:5",
                           "typeDescriptions": {
                             "typeIdentifier": "t_magic_message",
                             "typeString": "msg"
                           }
                         },
-                        "id": 1866,
+                        "id": 2113,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": false,
@@ -1111,7 +1111,7 @@
                     "rightExpression": {
                       "argumentTypes": null,
                       "hexValue": "31",
-                      "id": 1868,
+                      "id": 2115,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": true,
@@ -1133,13 +1133,13 @@
                     }
                   },
                   "falseBody": null,
-                  "id": 1879,
+                  "id": 2126,
                   "nodeType": "IfStatement",
                   "src": "1990:124:5",
                   "trueBody": {
                     "expression": {
                       "argumentTypes": null,
-                      "id": 1877,
+                      "id": 2124,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
@@ -1150,25 +1150,25 @@
                           "argumentTypes": null,
                           "baseExpression": {
                             "argumentTypes": null,
-                            "id": 1870,
+                            "id": 2117,
                             "name": "hasPaintDiscountForColor",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 1801,
+                            "referencedDeclaration": 2048,
                             "src": "2063:24:5",
                             "typeDescriptions": {
                               "typeIdentifier": "t_mapping$_t_uint256_$_t_mapping$_t_address_$_t_bool_$_$",
                               "typeString": "mapping(uint256 => mapping(address => bool))"
                             }
                           },
-                          "id": 1874,
+                          "id": 2121,
                           "indexExpression": {
                             "argumentTypes": null,
-                            "id": 1871,
+                            "id": 2118,
                             "name": "_color",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 1849,
+                            "referencedDeclaration": 2096,
                             "src": "2088:6:5",
                             "typeDescriptions": {
                               "typeIdentifier": "t_uint256",
@@ -1186,23 +1186,23 @@
                             "typeString": "mapping(address => bool)"
                           }
                         },
-                        "id": 1875,
+                        "id": 2122,
                         "indexExpression": {
                           "argumentTypes": null,
                           "expression": {
                             "argumentTypes": null,
-                            "id": 1872,
+                            "id": 2119,
                             "name": "msg",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 2763,
+                            "referencedDeclaration": 3190,
                             "src": "2096:3:5",
                             "typeDescriptions": {
                               "typeIdentifier": "t_magic_message",
                               "typeString": "msg"
                             }
                           },
-                          "id": 1873,
+                          "id": 2120,
                           "isConstant": false,
                           "isLValue": false,
                           "isPure": false,
@@ -1232,7 +1232,7 @@
                       "rightHandSide": {
                         "argumentTypes": null,
                         "hexValue": "74727565",
-                        "id": 1876,
+                        "id": 2123,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": true,
@@ -1253,7 +1253,7 @@
                         "typeString": "bool"
                       }
                     },
-                    "id": 1878,
+                    "id": 2125,
                     "nodeType": "ExpressionStatement",
                     "src": "2063:51:5"
                   }
@@ -1261,7 +1261,7 @@
               ]
             },
             "documentation": null,
-            "id": 1881,
+            "id": 2128,
             "implemented": true,
             "isConstructor": false,
             "isDeclaredConst": false,
@@ -1269,15 +1269,15 @@
             "name": "_setMoneySpentByUserForColor",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1850,
+              "id": 2097,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1849,
+                  "id": 2096,
                   "name": "_color",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1881,
+                  "scope": 2128,
                   "src": "1881:11:5",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1286,7 +1286,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1848,
+                    "id": 2095,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
                     "src": "1881:4:5",
@@ -1303,19 +1303,19 @@
             },
             "payable": false,
             "returnParameters": {
-              "id": 1851,
+              "id": 2098,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "1903:0:5"
             },
-            "scope": 1882,
+            "scope": 2129,
             "src": "1843:278:5",
             "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "internal"
           }
         ],
-        "scope": 1883,
+        "scope": 2130,
         "src": "103:2031:5"
       }
     ],
@@ -1325,14 +1325,14 @@
     "absolutePath": "/Users/Amir/last-pixel-contracts/contracts/PaintDiscount.sol",
     "exportedSymbols": {
       "PaintDiscount": [
-        1882
+        2129
       ]
     },
-    "id": 1883,
+    "id": 2130,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 1785,
+        "id": 2032,
         "literals": [
           "solidity",
           "^",
@@ -1345,10 +1345,10 @@
       {
         "absolutePath": "/Users/Amir/last-pixel-contracts/node_modules/openzeppelin-solidity/contracts/math/SafeMath.sol",
         "file": "../node_modules/openzeppelin-solidity/contracts/math/SafeMath.sol",
-        "id": 1786,
+        "id": 2033,
         "nodeType": "ImportDirective",
-        "scope": 1883,
-        "sourceUnit": 2640,
+        "scope": 2130,
+        "sourceUnit": 3067,
         "src": "26:75:5",
         "symbolAliases": [],
         "unitAlias": ""
@@ -1359,31 +1359,31 @@
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": true,
-        "id": 1882,
+        "id": 2129,
         "linearizedBaseContracts": [
-          1882
+          2129
         ],
         "name": "PaintDiscount",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
-            "id": 1789,
+            "id": 2036,
             "libraryName": {
               "contractScope": null,
-              "id": 1787,
+              "id": 2034,
               "name": "SafeMath",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 2639,
+              "referencedDeclaration": 3066,
               "src": "144:8:5",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_SafeMath_$2639",
+                "typeIdentifier": "t_contract$_SafeMath_$3066",
                 "typeString": "library SafeMath"
               }
             },
             "nodeType": "UsingForDirective",
             "src": "138:24:5",
             "typeName": {
-              "id": 1788,
+              "id": 2035,
               "name": "uint",
               "nodeType": "ElementaryTypeName",
               "src": "157:4:5",
@@ -1395,10 +1395,10 @@
           },
           {
             "constant": false,
-            "id": 1795,
+            "id": 2042,
             "name": "moneySpentByUserForColor",
             "nodeType": "VariableDeclaration",
-            "scope": 1882,
+            "scope": 2129,
             "src": "330:75:5",
             "stateVariable": true,
             "storageLocation": "default",
@@ -1407,9 +1407,9 @@
               "typeString": "mapping(uint256 => mapping(address => uint256))"
             },
             "typeName": {
-              "id": 1794,
+              "id": 2041,
               "keyType": {
-                "id": 1790,
+                "id": 2037,
                 "name": "uint",
                 "nodeType": "ElementaryTypeName",
                 "src": "339:4:5",
@@ -1425,9 +1425,9 @@
                 "typeString": "mapping(uint256 => mapping(address => uint256))"
               },
               "valueType": {
-                "id": 1793,
+                "id": 2040,
                 "keyType": {
-                  "id": 1791,
+                  "id": 2038,
                   "name": "address",
                   "nodeType": "ElementaryTypeName",
                   "src": "356:7:5",
@@ -1443,7 +1443,7 @@
                   "typeString": "mapping(address => uint256)"
                 },
                 "valueType": {
-                  "id": 1792,
+                  "id": 2039,
                   "name": "uint",
                   "nodeType": "ElementaryTypeName",
                   "src": "367:4:5",
@@ -1459,10 +1459,10 @@
           },
           {
             "constant": false,
-            "id": 1801,
+            "id": 2048,
             "name": "hasPaintDiscountForColor",
             "nodeType": "VariableDeclaration",
-            "scope": 1882,
+            "scope": 2129,
             "src": "642:75:5",
             "stateVariable": true,
             "storageLocation": "default",
@@ -1471,9 +1471,9 @@
               "typeString": "mapping(uint256 => mapping(address => bool))"
             },
             "typeName": {
-              "id": 1800,
+              "id": 2047,
               "keyType": {
-                "id": 1796,
+                "id": 2043,
                 "name": "uint",
                 "nodeType": "ElementaryTypeName",
                 "src": "651:4:5",
@@ -1489,9 +1489,9 @@
                 "typeString": "mapping(uint256 => mapping(address => bool))"
               },
               "valueType": {
-                "id": 1799,
+                "id": 2046,
                 "keyType": {
-                  "id": 1797,
+                  "id": 2044,
                   "name": "address",
                   "nodeType": "ElementaryTypeName",
                   "src": "668:7:5",
@@ -1507,7 +1507,7 @@
                   "typeString": "mapping(address => bool)"
                 },
                 "valueType": {
-                  "id": 1798,
+                  "id": 2045,
                   "name": "bool",
                   "nodeType": "ElementaryTypeName",
                   "src": "679:4:5",
@@ -1523,10 +1523,10 @@
           },
           {
             "constant": false,
-            "id": 1807,
+            "id": 2054,
             "name": "usersPaintDiscountForColor",
             "nodeType": "VariableDeclaration",
-            "scope": 1882,
+            "scope": 2129,
             "src": "867:77:5",
             "stateVariable": true,
             "storageLocation": "default",
@@ -1535,9 +1535,9 @@
               "typeString": "mapping(uint256 => mapping(address => uint256))"
             },
             "typeName": {
-              "id": 1806,
+              "id": 2053,
               "keyType": {
-                "id": 1802,
+                "id": 2049,
                 "name": "uint",
                 "nodeType": "ElementaryTypeName",
                 "src": "876:4:5",
@@ -1553,9 +1553,9 @@
                 "typeString": "mapping(uint256 => mapping(address => uint256))"
               },
               "valueType": {
-                "id": 1805,
+                "id": 2052,
                 "keyType": {
-                  "id": 1803,
+                  "id": 2050,
                   "name": "address",
                   "nodeType": "ElementaryTypeName",
                   "src": "893:7:5",
@@ -1571,7 +1571,7 @@
                   "typeString": "mapping(address => uint256)"
                 },
                 "valueType": {
-                  "id": 1804,
+                  "id": 2051,
                   "name": "uint",
                   "nodeType": "ElementaryTypeName",
                   "src": "904:4:5",
@@ -1587,14 +1587,14 @@
           },
           {
             "body": {
-              "id": 1846,
+              "id": 2093,
               "nodeType": "Block",
               "src": "1177:446:5",
               "statements": [
                 {
                   "expression": {
                     "argumentTypes": null,
-                    "id": 1826,
+                    "id": 2073,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -1605,25 +1605,25 @@
                         "argumentTypes": null,
                         "baseExpression": {
                           "argumentTypes": null,
-                          "id": 1812,
+                          "id": 2059,
                           "name": "usersPaintDiscountForColor",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 1807,
+                          "referencedDeclaration": 2054,
                           "src": "1278:26:5",
                           "typeDescriptions": {
                             "typeIdentifier": "t_mapping$_t_uint256_$_t_mapping$_t_address_$_t_uint256_$_$",
                             "typeString": "mapping(uint256 => mapping(address => uint256))"
                           }
                         },
-                        "id": 1816,
+                        "id": 2063,
                         "indexExpression": {
                           "argumentTypes": null,
-                          "id": 1813,
+                          "id": 2060,
                           "name": "_color",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 1809,
+                          "referencedDeclaration": 2056,
                           "src": "1305:6:5",
                           "typeDescriptions": {
                             "typeIdentifier": "t_uint256",
@@ -1641,23 +1641,23 @@
                           "typeString": "mapping(address => uint256)"
                         }
                       },
-                      "id": 1817,
+                      "id": 2064,
                       "indexExpression": {
                         "argumentTypes": null,
                         "expression": {
                           "argumentTypes": null,
-                          "id": 1814,
+                          "id": 2061,
                           "name": "msg",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 2763,
+                          "referencedDeclaration": 3190,
                           "src": "1313:3:5",
                           "typeDescriptions": {
                             "typeIdentifier": "t_magic_message",
                             "typeString": "msg"
                           }
                         },
-                        "id": 1815,
+                        "id": 2062,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": false,
@@ -1690,7 +1690,7 @@
                         "typeIdentifier": "t_uint256",
                         "typeString": "uint256"
                       },
-                      "id": 1825,
+                      "id": 2072,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
@@ -1701,25 +1701,25 @@
                           "argumentTypes": null,
                           "baseExpression": {
                             "argumentTypes": null,
-                            "id": 1818,
+                            "id": 2065,
                             "name": "moneySpentByUserForColor",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 1795,
+                            "referencedDeclaration": 2042,
                             "src": "1327:24:5",
                             "typeDescriptions": {
                               "typeIdentifier": "t_mapping$_t_uint256_$_t_mapping$_t_address_$_t_uint256_$_$",
                               "typeString": "mapping(uint256 => mapping(address => uint256))"
                             }
                           },
-                          "id": 1820,
+                          "id": 2067,
                           "indexExpression": {
                             "argumentTypes": null,
-                            "id": 1819,
+                            "id": 2066,
                             "name": "_color",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 1809,
+                            "referencedDeclaration": 2056,
                             "src": "1352:6:5",
                             "typeDescriptions": {
                               "typeIdentifier": "t_uint256",
@@ -1737,23 +1737,23 @@
                             "typeString": "mapping(address => uint256)"
                           }
                         },
-                        "id": 1823,
+                        "id": 2070,
                         "indexExpression": {
                           "argumentTypes": null,
                           "expression": {
                             "argumentTypes": null,
-                            "id": 1821,
+                            "id": 2068,
                             "name": "msg",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 2763,
+                            "referencedDeclaration": 3190,
                             "src": "1360:3:5",
                             "typeDescriptions": {
                               "typeIdentifier": "t_magic_message",
                               "typeString": "msg"
                             }
                           },
-                          "id": 1822,
+                          "id": 2069,
                           "isConstant": false,
                           "isLValue": false,
                           "isPure": false,
@@ -1783,7 +1783,7 @@
                       "rightExpression": {
                         "argumentTypes": null,
                         "hexValue": "31",
-                        "id": 1824,
+                        "id": 2071,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": true,
@@ -1810,7 +1810,7 @@
                       "typeString": "uint256"
                     }
                   },
-                  "id": 1827,
+                  "id": 2074,
                   "nodeType": "ExpressionStatement",
                   "src": "1278:103:5"
                 },
@@ -1821,7 +1821,7 @@
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
                     },
-                    "id": 1835,
+                    "id": 2082,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -1832,25 +1832,25 @@
                         "argumentTypes": null,
                         "baseExpression": {
                           "argumentTypes": null,
-                          "id": 1828,
+                          "id": 2075,
                           "name": "moneySpentByUserForColor",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 1795,
+                          "referencedDeclaration": 2042,
                           "src": "1486:24:5",
                           "typeDescriptions": {
                             "typeIdentifier": "t_mapping$_t_uint256_$_t_mapping$_t_address_$_t_uint256_$_$",
                             "typeString": "mapping(uint256 => mapping(address => uint256))"
                           }
                         },
-                        "id": 1830,
+                        "id": 2077,
                         "indexExpression": {
                           "argumentTypes": null,
-                          "id": 1829,
+                          "id": 2076,
                           "name": "_color",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 1809,
+                          "referencedDeclaration": 2056,
                           "src": "1511:6:5",
                           "typeDescriptions": {
                             "typeIdentifier": "t_uint256",
@@ -1868,23 +1868,23 @@
                           "typeString": "mapping(address => uint256)"
                         }
                       },
-                      "id": 1833,
+                      "id": 2080,
                       "indexExpression": {
                         "argumentTypes": null,
                         "expression": {
                           "argumentTypes": null,
-                          "id": 1831,
+                          "id": 2078,
                           "name": "msg",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 2763,
+                          "referencedDeclaration": 3190,
                           "src": "1519:3:5",
                           "typeDescriptions": {
                             "typeIdentifier": "t_magic_message",
                             "typeString": "msg"
                           }
                         },
-                        "id": 1832,
+                        "id": 2079,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": false,
@@ -1914,7 +1914,7 @@
                     "rightExpression": {
                       "argumentTypes": null,
                       "hexValue": "3130",
-                      "id": 1834,
+                      "id": 2081,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": true,
@@ -1936,13 +1936,13 @@
                     }
                   },
                   "falseBody": null,
-                  "id": 1845,
+                  "id": 2092,
                   "nodeType": "IfStatement",
                   "src": "1482:125:5",
                   "trueBody": {
                     "expression": {
                       "argumentTypes": null,
-                      "id": 1843,
+                      "id": 2090,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
@@ -1953,25 +1953,25 @@
                           "argumentTypes": null,
                           "baseExpression": {
                             "argumentTypes": null,
-                            "id": 1836,
+                            "id": 2083,
                             "name": "usersPaintDiscountForColor",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 1807,
+                            "referencedDeclaration": 2054,
                             "src": "1556:26:5",
                             "typeDescriptions": {
                               "typeIdentifier": "t_mapping$_t_uint256_$_t_mapping$_t_address_$_t_uint256_$_$",
                               "typeString": "mapping(uint256 => mapping(address => uint256))"
                             }
                           },
-                          "id": 1840,
+                          "id": 2087,
                           "indexExpression": {
                             "argumentTypes": null,
-                            "id": 1837,
+                            "id": 2084,
                             "name": "_color",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 1809,
+                            "referencedDeclaration": 2056,
                             "src": "1583:6:5",
                             "typeDescriptions": {
                               "typeIdentifier": "t_uint256",
@@ -1989,23 +1989,23 @@
                             "typeString": "mapping(address => uint256)"
                           }
                         },
-                        "id": 1841,
+                        "id": 2088,
                         "indexExpression": {
                           "argumentTypes": null,
                           "expression": {
                             "argumentTypes": null,
-                            "id": 1838,
+                            "id": 2085,
                             "name": "msg",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 2763,
+                            "referencedDeclaration": 3190,
                             "src": "1591:3:5",
                             "typeDescriptions": {
                               "typeIdentifier": "t_magic_message",
                               "typeString": "msg"
                             }
                           },
-                          "id": 1839,
+                          "id": 2086,
                           "isConstant": false,
                           "isLValue": false,
                           "isPure": false,
@@ -2035,7 +2035,7 @@
                       "rightHandSide": {
                         "argumentTypes": null,
                         "hexValue": "3130",
-                        "id": 1842,
+                        "id": 2089,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": true,
@@ -2056,7 +2056,7 @@
                         "typeString": "uint256"
                       }
                     },
-                    "id": 1844,
+                    "id": 2091,
                     "nodeType": "ExpressionStatement",
                     "src": "1556:51:5"
                   }
@@ -2064,7 +2064,7 @@
               ]
             },
             "documentation": null,
-            "id": 1847,
+            "id": 2094,
             "implemented": true,
             "isConstructor": false,
             "isDeclaredConst": false,
@@ -2072,15 +2072,15 @@
             "name": "_setUsersPaintDiscountForColor",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1810,
+              "id": 2057,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1809,
+                  "id": 2056,
                   "name": "_color",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1847,
+                  "scope": 2094,
                   "src": "1155:11:5",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -2089,7 +2089,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1808,
+                    "id": 2055,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
                     "src": "1155:4:5",
@@ -2106,12 +2106,12 @@
             },
             "payable": false,
             "returnParameters": {
-              "id": 1811,
+              "id": 2058,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "1177:0:5"
             },
-            "scope": 1882,
+            "scope": 2129,
             "src": "1115:508:5",
             "stateMutability": "nonpayable",
             "superFunction": null,
@@ -2119,14 +2119,14 @@
           },
           {
             "body": {
-              "id": 1880,
+              "id": 2127,
               "nodeType": "Block",
               "src": "1903:218:5",
               "statements": [
                 {
                   "expression": {
                     "argumentTypes": null,
-                    "id": 1860,
+                    "id": 2107,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -2137,25 +2137,25 @@
                         "argumentTypes": null,
                         "baseExpression": {
                           "argumentTypes": null,
-                          "id": 1852,
+                          "id": 2099,
                           "name": "moneySpentByUserForColor",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 1795,
+                          "referencedDeclaration": 2042,
                           "src": "1922:24:5",
                           "typeDescriptions": {
                             "typeIdentifier": "t_mapping$_t_uint256_$_t_mapping$_t_address_$_t_uint256_$_$",
                             "typeString": "mapping(uint256 => mapping(address => uint256))"
                           }
                         },
-                        "id": 1856,
+                        "id": 2103,
                         "indexExpression": {
                           "argumentTypes": null,
-                          "id": 1853,
+                          "id": 2100,
                           "name": "_color",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 1849,
+                          "referencedDeclaration": 2096,
                           "src": "1947:6:5",
                           "typeDescriptions": {
                             "typeIdentifier": "t_uint256",
@@ -2173,23 +2173,23 @@
                           "typeString": "mapping(address => uint256)"
                         }
                       },
-                      "id": 1857,
+                      "id": 2104,
                       "indexExpression": {
                         "argumentTypes": null,
                         "expression": {
                           "argumentTypes": null,
-                          "id": 1854,
+                          "id": 2101,
                           "name": "msg",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 2763,
+                          "referencedDeclaration": 3190,
                           "src": "1955:3:5",
                           "typeDescriptions": {
                             "typeIdentifier": "t_magic_message",
                             "typeString": "msg"
                           }
                         },
-                        "id": 1855,
+                        "id": 2102,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": false,
@@ -2220,18 +2220,18 @@
                       "argumentTypes": null,
                       "expression": {
                         "argumentTypes": null,
-                        "id": 1858,
+                        "id": 2105,
                         "name": "msg",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 2763,
+                        "referencedDeclaration": 3190,
                         "src": "1970:3:5",
                         "typeDescriptions": {
                           "typeIdentifier": "t_magic_message",
                           "typeString": "msg"
                         }
                       },
-                      "id": 1859,
+                      "id": 2106,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
@@ -2251,7 +2251,7 @@
                       "typeString": "uint256"
                     }
                   },
-                  "id": 1861,
+                  "id": 2108,
                   "nodeType": "ExpressionStatement",
                   "src": "1922:57:5"
                 },
@@ -2262,7 +2262,7 @@
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
                     },
-                    "id": 1869,
+                    "id": 2116,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -2273,25 +2273,25 @@
                         "argumentTypes": null,
                         "baseExpression": {
                           "argumentTypes": null,
-                          "id": 1862,
+                          "id": 2109,
                           "name": "moneySpentByUserForColor",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 1795,
+                          "referencedDeclaration": 2042,
                           "src": "1994:24:5",
                           "typeDescriptions": {
                             "typeIdentifier": "t_mapping$_t_uint256_$_t_mapping$_t_address_$_t_uint256_$_$",
                             "typeString": "mapping(uint256 => mapping(address => uint256))"
                           }
                         },
-                        "id": 1864,
+                        "id": 2111,
                         "indexExpression": {
                           "argumentTypes": null,
-                          "id": 1863,
+                          "id": 2110,
                           "name": "_color",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 1849,
+                          "referencedDeclaration": 2096,
                           "src": "2019:6:5",
                           "typeDescriptions": {
                             "typeIdentifier": "t_uint256",
@@ -2309,23 +2309,23 @@
                           "typeString": "mapping(address => uint256)"
                         }
                       },
-                      "id": 1867,
+                      "id": 2114,
                       "indexExpression": {
                         "argumentTypes": null,
                         "expression": {
                           "argumentTypes": null,
-                          "id": 1865,
+                          "id": 2112,
                           "name": "msg",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 2763,
+                          "referencedDeclaration": 3190,
                           "src": "2027:3:5",
                           "typeDescriptions": {
                             "typeIdentifier": "t_magic_message",
                             "typeString": "msg"
                           }
                         },
-                        "id": 1866,
+                        "id": 2113,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": false,
@@ -2355,7 +2355,7 @@
                     "rightExpression": {
                       "argumentTypes": null,
                       "hexValue": "31",
-                      "id": 1868,
+                      "id": 2115,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": true,
@@ -2377,13 +2377,13 @@
                     }
                   },
                   "falseBody": null,
-                  "id": 1879,
+                  "id": 2126,
                   "nodeType": "IfStatement",
                   "src": "1990:124:5",
                   "trueBody": {
                     "expression": {
                       "argumentTypes": null,
-                      "id": 1877,
+                      "id": 2124,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
@@ -2394,25 +2394,25 @@
                           "argumentTypes": null,
                           "baseExpression": {
                             "argumentTypes": null,
-                            "id": 1870,
+                            "id": 2117,
                             "name": "hasPaintDiscountForColor",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 1801,
+                            "referencedDeclaration": 2048,
                             "src": "2063:24:5",
                             "typeDescriptions": {
                               "typeIdentifier": "t_mapping$_t_uint256_$_t_mapping$_t_address_$_t_bool_$_$",
                               "typeString": "mapping(uint256 => mapping(address => bool))"
                             }
                           },
-                          "id": 1874,
+                          "id": 2121,
                           "indexExpression": {
                             "argumentTypes": null,
-                            "id": 1871,
+                            "id": 2118,
                             "name": "_color",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 1849,
+                            "referencedDeclaration": 2096,
                             "src": "2088:6:5",
                             "typeDescriptions": {
                               "typeIdentifier": "t_uint256",
@@ -2430,23 +2430,23 @@
                             "typeString": "mapping(address => bool)"
                           }
                         },
-                        "id": 1875,
+                        "id": 2122,
                         "indexExpression": {
                           "argumentTypes": null,
                           "expression": {
                             "argumentTypes": null,
-                            "id": 1872,
+                            "id": 2119,
                             "name": "msg",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 2763,
+                            "referencedDeclaration": 3190,
                             "src": "2096:3:5",
                             "typeDescriptions": {
                               "typeIdentifier": "t_magic_message",
                               "typeString": "msg"
                             }
                           },
-                          "id": 1873,
+                          "id": 2120,
                           "isConstant": false,
                           "isLValue": false,
                           "isPure": false,
@@ -2476,7 +2476,7 @@
                       "rightHandSide": {
                         "argumentTypes": null,
                         "hexValue": "74727565",
-                        "id": 1876,
+                        "id": 2123,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": true,
@@ -2497,7 +2497,7 @@
                         "typeString": "bool"
                       }
                     },
-                    "id": 1878,
+                    "id": 2125,
                     "nodeType": "ExpressionStatement",
                     "src": "2063:51:5"
                   }
@@ -2505,7 +2505,7 @@
               ]
             },
             "documentation": null,
-            "id": 1881,
+            "id": 2128,
             "implemented": true,
             "isConstructor": false,
             "isDeclaredConst": false,
@@ -2513,15 +2513,15 @@
             "name": "_setMoneySpentByUserForColor",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1850,
+              "id": 2097,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1849,
+                  "id": 2096,
                   "name": "_color",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1881,
+                  "scope": 2128,
                   "src": "1881:11:5",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -2530,7 +2530,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1848,
+                    "id": 2095,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
                     "src": "1881:4:5",
@@ -2547,19 +2547,19 @@
             },
             "payable": false,
             "returnParameters": {
-              "id": 1851,
+              "id": 2098,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "1903:0:5"
             },
-            "scope": 1882,
+            "scope": 2129,
             "src": "1843:278:5",
             "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "internal"
           }
         ],
-        "scope": 1883,
+        "scope": 2130,
         "src": "103:2031:5"
       }
     ],
@@ -2571,5 +2571,5 @@
   },
   "networks": {},
   "schemaVersion": "2.0.1",
-  "updatedAt": "2018-12-07T04:37:56.779Z"
+  "updatedAt": "2018-12-12T15:29:52.860Z"
 }

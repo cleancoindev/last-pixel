@@ -20,7 +20,7 @@ contract TimeBankDistributor is RoundDataHolder {
         uint round = lastPlayedRound[msg.sender];
 
         //функция может быть вызвана только если в последнем раунде был разыгран банк времени
-        require(lastPlayedRound[msg.sender] > 0 && winnerBankForRound[round] == 1, "Bank of time was not played in your last round...");
+        require(lastPlayedRound[msg.sender] > 1 && winnerBankForRound[round] == 1, "Bank of time was not played in your last round...");
         
         //время завершения сбора команды приза для раунда
         uint end = teamEndedTimeForRound[round];
@@ -31,12 +31,18 @@ contract TimeBankDistributor is RoundDataHolder {
         //cчетчик количества закрашиваний
         uint counter;
             
+    /*
         //счетчик общего количества закрашиваний любым цветом для пользователя за раунд     
         uint total = addressToTotalCounterForRound[round][msg.sender]; 
+    */
+
+        //счетчик общего количества закрашиваний любым цветом для пользователя    
+        uint total = userToTotalCounter[msg.sender]; 
 
         //считаем сколько закрашиваний ЛЮБЫМ цветом произвел пользователь за последние 24 часа
         for (uint i = total; i > 0; i--) {
-            uint timeStamp = addressToCounterToTimestampForRound[round][msg.sender][i];
+            //uint timeStamp = addressToCounterToTimestampForRound[round][msg.sender][i];
+            uint timeStamp = userToCounterToTimestamp[msg.sender][i];
             if (timeStamp >= start && timeStamp <= end) //т.к. (<= end), то последний закрасивший также принимает участие
                 counter++;
         }
@@ -89,9 +95,6 @@ contract TimeBankDistributor is RoundDataHolder {
 
         //в этом раунде банк цвета обнуляется
         colorBankForRound[currentRound] = 0; 
-
-        //возвращаем средства пользователя назад, так как этот раунд завершен и закрашивание не засчиталось
-        msg.sender.transfer(msg.value); 
 
         //ивент - был разыгран банк времени (победитель, раунд)
         emit TimeBankPlayed(winnerOfRound[currentRound], currentRound);
