@@ -16,18 +16,18 @@ contract("Color Bank Distribution Test", async accounts => {
 
     let currentRound = await gameMock.currentRound.call();
     console.log("Current round:", currentRound.toNumber());
-    let callPrice2 = await gameMock.callPriceForColor(2);
-    let callPrice3 = await gameMock.callPriceForColor(2);
+    let callPrice2 = await gameMock.estimateCallPrice([45], 2);
+    let callPrice3 = await gameMock.estimateCallPrice([46], 3);
 
     //пользователь сделал в этом раунде два закрашивания - оба не цветами победителями
-    await gameMock.paint(45, 3, { value: callPrice3, from: accounts[3] });
-    await gameMock.paint(46, 1, { value: callPrice3, from: accounts[3] });
+    await gameMock.paint([45], 3, { value: callPrice3, from: accounts[3] });
+    await gameMock.paint([46], 1, { value: callPrice3, from: accounts[3] });
 
     await gameMock.paint9998pixels(2, { from: user });
-    await gameMock.paint(1, 2, { value: callPrice2, from: user });
+    await gameMock.paint([1], 2, { value: callPrice2, from: user });
 
     let initialBalance = await web3.eth.getBalance(user);
-    let lastPaint = await gameMock.paint(2, 2, {
+    let lastPaint = await gameMock.paint([2], 2, {
       value: callPrice2,
       from: user
     });

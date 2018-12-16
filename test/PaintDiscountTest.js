@@ -25,10 +25,38 @@ contract("Paint Discount Test", async accounts => {
 
   it("User's paint discount for the 1st color should equal 1% after purchasing paints for 1 ETH", async () => {
     let color = 1;
-    for (i = 1; i <= 100; ++i) {
-      let callPrice = await game.callPriceForColor(color);
-      await game.paint(i, color, { value: callPrice });
+
+    //first 30 pixels
+    let pixels = [];
+    for (i = 1; i <= 30; ++i) {
+      pixels.push(i);
     }
+    let callPrice = await game.estimateCallPrice(pixels, color);
+    await game.paint(pixels, color, { value: callPrice });
+
+    //second 30 pixels
+    pixels = [];
+    for (i = 31; i <= 60; ++i) {
+      pixels.push(i);
+    }
+    callPrice = await game.estimateCallPrice(pixels, color);
+    await game.paint(pixels, color, { value: callPrice });
+
+    //pixels 60 - 90
+    pixels = [];
+    for (i = 61; i <= 90; ++i) {
+      pixels.push(i);
+    }
+    callPrice = await game.estimateCallPrice(pixels, color);
+    await game.paint(pixels, color, { value: callPrice });
+
+    //pixels 90 - 100
+    pixels = [];
+    for (i = 91; i <= 100; ++i) {
+      pixels.push(i);
+    }
+    callPrice = await game.estimateCallPrice(pixels, color);
+    await game.paint(pixels, color, { value: callPrice });
 
     let discount = await game.usersPaintDiscountForColor(color, accounts[0]);
 

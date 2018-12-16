@@ -4,6 +4,11 @@ const helper = require("./helpers/truffleTestHelper");
 let gameMock;
 let timeBankForRoundOne;
 let timeBankForRoundTwo;
+let callPrice;
+let user;
+let color;
+let pixels;
+let currentRound;
 
 contract("Time Bank Tests", async accounts => {
   //create new smart contract instance before each test method
@@ -12,14 +17,14 @@ contract("Time Bank Tests", async accounts => {
   });
 
   it("Winner should receive 45% of Time Bank", async () => {
-    let currentRound = await gameMock.currentRound.call();
+    currentRound = await gameMock.currentRound.call();
     console.log("Current round:", currentRound.toNumber());
 
     // 1st user paints 20 pixels with color 1
     for (i = 1; i <= 20; i++) {
-      let user = accounts[1];
-      let color = 1;
-      let callPrice = await gameMock.nextCallPriceForColor(color);
+      user = accounts[1];
+      color = 1;
+      callPrice = await gameMock.nextCallPriceForColor(color);
       await gameMock.paint(i, color, { value: callPrice, from: user });
       let pixelColor = await gameMock.pixelToColorForRound(currentRound, i);
       //console.log("User 1 is painting pixel", i, "with color 1");
@@ -28,9 +33,9 @@ contract("Time Bank Tests", async accounts => {
 
     // 2nd user paints next 20 pixels with color 2
     for (i = 21; i <= 40; i++) {
-      let user = accounts[2];
-      let color = 2;
-      let callPrice = await gameMock.nextCallPriceForColor(color);
+      user = accounts[2];
+      color = 2;
+      callPrice = await gameMock.nextCallPriceForColor(color);
       await gameMock.paint(i, color, { value: callPrice, from: user });
 
       //console.log("User 2 is painting pixel", i, "with color 2");

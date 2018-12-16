@@ -20,7 +20,7 @@ contract TimeBankDistributor is RoundDataHolder {
         uint round = lastPlayedRound[msg.sender];
 
         //функция может быть вызвана только если в последнем раунде был разыгран банк времени
-        require(lastPlayedRound[msg.sender] > 1 && winnerBankForRound[round] == 1, "Bank of time was not played in your last round...");
+        require(winnerBankForRound[round] == 1, "Bank of time was not played in your last round...");
         
         //время завершения сбора команды приза для раунда
         uint end = teamEndedTimeForRound[round];

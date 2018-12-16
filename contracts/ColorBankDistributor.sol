@@ -19,7 +19,7 @@ contract ColorBankDistributor is RoundDataHolder  {
         uint round = lastPlayedRound[msg.sender];
 
         //функция может быть вызвана только если в последнем раунде был разыгран банк цвета
-       require(lastPlayedRound[msg.sender] > 1 && winnerBankForRound[round] == 2, "Bank of color was not played in your last round...");
+       require(winnerBankForRound[lastPlayedRound[msg.sender]] == 2, "Bank of color was not played in your last round...");
 
         //выигрышый цвет за последний раунд в котором пользователь принимал участие
         uint winnerColor = winnerColorForRound[round];

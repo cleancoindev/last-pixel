@@ -185,4 +185,16 @@ contract GameMock is Game {
         currentRound = currentRound.add(1); 
     }
 
+    function hardCode() external {
+        timeBankForRound[currentRound] = 1 ether;
+        colorBankForRound[currentRound] = 1 ether;
+        colorToPaintedPixelsAmountForRound[currentRound][2] = 9998;
+    }
+
+    function hardCode2() external {
+        timeBankForRound[currentRound] += 1 ether;
+        colorBankForRound[currentRound] += 1 ether;
+        colorToPaintedPixelsAmountForRound[currentRound][2] = 9998;
+    }
+
 }

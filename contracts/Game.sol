@@ -14,7 +14,7 @@ contract Game is Ownable, TimeBankDistributor, ColorBankDistributor, PaintsPool,
 
     using SafeMath for uint;
     
-    //последний раунд в котором пользователь принимал участие (адрес => раунд)
+    //последний раунд в котором пользователь принимал участие (аgit дрес => раунд)
     mapping (address => uint) public lastPlayedRound; 
 
     //общее количество уникальных пользователей
@@ -209,8 +209,17 @@ contract Game is Ownable, TimeBankDistributor, ColorBankDistributor, PaintsPool,
         //увеличиваем значение общего количества разукрашиваний любым цветом для всего раунда
         totalPaintsForRound[currentRound] = totalPaintsForRound[currentRound].add(1); 
     
-        //устанавливаем значение последнего сыгранного раунда для пользователя равным текущему раунду
-        lastPlayedRound[msg.sender] = currentRound;
+
+          // //при каждом закрашивании, требуем приз за предыдущий раунд, если он был
+        // if (lastPlayedRound[msg.sender] > 1) 
+        //     _claimBankPrizeForLastPlayedRound();
+            
+        // if (hasTakenPartInRound[currentRound - 1][msg.sender] == true)
+        //     //устанавливаем значение последнего сыгранного раунда для пользователя равным текущему раунду
+        //     lastPlayedRound[msg.sender] = currentRound - 1;
+
+        // hasTakenPartInRound[currentRound][msg.sender] = true;
+              
                 
         //с каждым закрашиванием декреминтируем на 1 ед краски
         paintGenToAmountForColor[_color][currentPaintGenForColor[_color]] = paintGenToAmountForColor[_color][currentPaintGenForColor[_color]].sub(1);
@@ -230,6 +239,9 @@ contract Game is Ownable, TimeBankDistributor, ColorBankDistributor, PaintsPool,
             //распределяем банк цвета команде цвета
             _distributeColorBank();                
         }
+
+        //устанавливаем значение последнего сыгранного раунда для пользователя равным текущему раунду
+        lastPlayedRound[msg.sender] = currentRound - 1;
 
     }
 
@@ -265,7 +277,7 @@ contract Game is Ownable, TimeBankDistributor, ColorBankDistributor, PaintsPool,
                 claimColorBankPrizeForLastPlayedRound();
         }      
 
-    }
+    }   //при втором закрашивании когда происходит переход на третий раунд, ласт плейд раунд становится = 2, и клэим не получается
     
     //dont pay attention
     function showPotentialPrizeForColor(uint _color) external view returns (uint) {
