@@ -11,9 +11,12 @@ contract Referral {
     
     //пользователь имеет свою реферальную ссылку (аккредитованный для получения дивидендов рефера)
     mapping (address => bool) public hasRefLink;
-    
+
     //маппинг реферала к реферу
     mapping (address => address) public referralToReferrer;
+
+    //маппинг реферера к его рефералам
+    mapping (address => address[]) public referrerToReferrals;
     
     //маппинг пользователя на наличие рефера
     mapping (address => bool) public hasReferrer;
@@ -43,6 +46,7 @@ contract Referral {
             //если такая реф ссылка действительно существует 
             if (refLinkExists[refLink]) { 
                 address referrer = refLinkToUser[refLink];
+                referrerToReferrals[referrer].push(msg.sender);
                 referralToReferrer[msg.sender] = referrer;
                 hasReferrer[msg.sender] = true;
             }

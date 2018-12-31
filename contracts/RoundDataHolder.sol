@@ -102,4 +102,5 @@ contract RoundDataHolder {
     //текущий раунд
     uint public currentRound;
 
+
 }

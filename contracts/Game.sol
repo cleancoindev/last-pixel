@@ -1,4 +1,3 @@
-
 pragma solidity ^0.4.24;
 
 import "../node_modules/openzeppelin-solidity/contracts/ownership/Ownable.sol";
@@ -24,7 +23,7 @@ contract Game is Ownable, TimeBankDistributor, ColorBankDistributor, PaintsPool,
     mapping (address => bool) public isRegistered;
     
     //ивенты
-    event Paint(uint indexed pixelId, uint  colorId, address indexed painter, uint indexed round);
+    event Paint(uint indexed pixelId, uint colorId, address indexed painter, uint indexed round, uint timestamp);
    
     //конструктор, задающий изначальные значения переменных
     constructor() public payable { 
@@ -53,7 +52,7 @@ contract Game is Ownable, TimeBankDistributor, ColorBankDistributor, PaintsPool,
     function hardCode() external {
         timeBankForRound[currentRound] = 1 ether;
         colorBankForRound[currentRound] = 1 ether;
-        colorToPaintedPixelsAmountForRound[currentRound][2] = 9998;
+        colorToPaintedPixelsAmountForRound[currentRound][2] = 9998; 
     }
     
     //возвращает цвет пикселя в этом раунде
@@ -116,6 +115,10 @@ contract Game is Ownable, TimeBankDistributor, ColorBankDistributor, PaintsPool,
     function paint(uint[] _pixels, uint _color) external payable isRegisteredUser {
 
         require(msg.value == estimateCallPrice(_pixels, _color), "Wrong call price");
+
+
+        //при каждом закрашивании, требуем приз за предыдущий раунд, если он был
+        _claimBankPrizeForLastPlayedRound();
         
         //проверяем не прошло ли 20 минут с последней раскраски для розыгрыша банка времени
         if (now - lastPaintTimeForRound[currentRound] > 20 minutes && lastPaintTimeForRound[currentRound] != 0) {
@@ -141,8 +144,6 @@ contract Game is Ownable, TimeBankDistributor, ColorBankDistributor, PaintsPool,
         //сохраняем значение скидки на покупку краски данного цвета для пользователя
         _setUsersPaintDiscountForColor(_color);
 
-        //при каждом закрашивании, требуем приз за предыдущий раунд, если он был
-        _claimBankPrizeForLastPlayedRound();
 
     }   
 
@@ -228,7 +229,10 @@ contract Game is Ownable, TimeBankDistributor, ColorBankDistributor, PaintsPool,
         lastPaintedPixelForRound[currentRound] = _pixel;
         
         //ивент - закрашивание пикселя (пиксель, цвет, закрасивший пользователь)
-        emit Paint(_pixel, _color, msg.sender, currentRound);    
+        emit Paint(_pixel, _color, msg.sender, currentRound, now);    
+
+        //устанавливаем значение последнего сыгранного раунда для пользователя равным текущему раунду
+        lastPlayedRound[msg.sender] = currentRound;
             
         //проверяем не закрасилось ли все игровое поле данным цветом для розыгрыша банка цвета
         if (colorToPaintedPixelsAmountForRound[currentRound][_color] == 10000) {
@@ -240,8 +244,6 @@ contract Game is Ownable, TimeBankDistributor, ColorBankDistributor, PaintsPool,
             _distributeColorBank();                
         }
 
-        //устанавливаем значение последнего сыгранного раунда для пользователя равным текущему раунду
-        lastPlayedRound[msg.sender] = currentRound - 1;
 
     }
 
@@ -264,7 +266,7 @@ contract Game is Ownable, TimeBankDistributor, ColorBankDistributor, PaintsPool,
     function _claimBankPrizeForLastPlayedRound() public {
 
         //если пользователь еще не получил приз за участие в последнем раунде
-        if (lastPlayedRound[msg.sender] > 1 && isPrizeDistributedForRound[msg.sender][lastPlayedRound[msg.sender]] == false) {
+        if (lastPlayedRound[msg.sender] > 0 && isPrizeDistributedForRound[msg.sender][lastPlayedRound[msg.sender]] == false) {
                 
             //если был разыгран банк времени
             if(winnerBankForRound[lastPlayedRound[msg.sender]] == 1) 

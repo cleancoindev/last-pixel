@@ -32,8 +32,8 @@ contract DividendsDistributor is Roles {
     //банк пассивных доходов
     uint public dividendsBank;
     
-    event DividendsWithdrawn(address indexed withdrawer, uint indexed currentTime, uint indexed amount);
-    event DividendsClaimed(address indexed claimer, uint indexed currentTime);
+    event DividendsWithdrawn(address indexed withdrawer, uint indexed claimId, uint indexed amount);
+    event DividendsClaimed(address indexed claimer, uint indexed claimId, uint indexed currentTime);
 
     struct Claim {
         uint id;
@@ -49,16 +49,14 @@ contract DividendsDistributor is Roles {
     function claimDividends() external {
         //функция не может быть вызвана, если баланс для вывода пользователя равен нулю
         require(withdrawalBalances[msg.sender] != 0, "Your withdrawal balance is zero...");
-        
+        claimId = claimId.add(1);
         Claim memory c;
         c.id = claimId;
         c.claimer = msg.sender;
         c.isResolved = false;
         c.timestamp = now;
         claims.push(c);
-        claimId = claimId.add(1);
-        
-        emit DividendsClaimed(msg.sender, now);
+        emit DividendsClaimed(msg.sender, claimId, now);
     }
 
     function approveClaim(uint _claimId) public onlyAdmin() {
@@ -80,7 +78,7 @@ contract DividendsDistributor is Roles {
         
         //устанавливаем время последнего вывода средств для пользователя
         addressToLastWithdrawalTime[claimer] = now;
-        emit DividendsWithdrawn(claimer, now, withdrawalAmount);
+        emit DividendsWithdrawn(claimer, _claimId, withdrawalAmount);
 
         claim.isResolved = true;
     }

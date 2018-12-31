@@ -335,5 +335,15 @@ contract("Time Bank Tests", async accounts => {
       web3.fromWei(colorBank.toNumber())
     );
     console.log("\n================================================\n");
+
+    let prize1 = await gameMock.addressToColorBankPrizeForRound(1, user3);
+    let prize2 = await gameMock.addressToColorBankPrizeForRound(2, user3);
+    let prize3 = await gameMock.addressToColorBankPrizeForRound(3, user3);
+    let pri = await gameMock.addressToTimeBankPrizeTotal(user4);
+
+    console.log("\nPrize 1 round for user5:", +prize1);
+    console.log("\nPrize 2 round for user5:", +prize2);
+    console.log("\nPrize 3 round for user5:", +prize3);
+    console.log("\n Prize: ", +pri);
   });
 });

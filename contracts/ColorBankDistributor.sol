@@ -15,25 +15,22 @@ contract ColorBankDistributor is RoundDataHolder  {
     //запросить приз банка цвета за послений раунд в котором пользователь принимал участие
     function claimColorBankPrizeForLastPlayedRound() public {
 
-        //последний раунд в котором пользователь принимал участие
-        uint round = lastPlayedRound[msg.sender];
-
         //функция может быть вызвана только если в последнем раунде был разыгран банк цвета
-       require(winnerBankForRound[lastPlayedRound[msg.sender]] == 2, "Bank of color was not played in your last round...");
+        require(winnerBankForRound[lastPlayedRound[msg.sender]] == 2, "Bank of color was not played in your last round...");
 
         //выигрышый цвет за последний раунд в котором пользователь принимал участие
-        uint winnerColor = winnerColorForRound[round];
+        uint winnerColor = winnerColorForRound[lastPlayedRound[msg.sender]];
 
         //время завершения сбора команды приза для раунда
-        uint end = teamEndedTimeForRound[round];
+        uint end = teamEndedTimeForRound[lastPlayedRound[msg.sender]];
 
         //время начала сбора команды приза для раунда
         uint start;
 
-        if (lastPlayedRound[msg.sender] > 1 && winnerBankForRound[round - 1] == 1)
+        if (lastPlayedRound[msg.sender] > 1 && winnerBankForRound[lastPlayedRound[msg.sender] - 1] == 1)
             start = end - 24 hours;
         else 
-            start = teamStartedTimeForRound[round];
+            start = teamStartedTimeForRound[lastPlayedRound[msg.sender]];
 
         //cчетчик количества закрашиваний
         uint counter;
@@ -54,19 +51,19 @@ contract ColorBankDistributor is RoundDataHolder  {
         }
 
         //устанавливаем какую часть от банка цвета выиграл адрес за последний раунд в котором принимал участие
-        addressToColorBankPrizeForRound[round][msg.sender] += counter.mul(colorBankForRound[round]).div(colorToTotalPaintsForRound[round][winnerColor]);
+        addressToColorBankPrizeForRound[lastPlayedRound[msg.sender]][msg.sender] += counter.mul(colorBankForRound[lastPlayedRound[msg.sender]]).div(colorToTotalPaintsForRound[lastPlayedRound[msg.sender]][winnerColor]);
 
         //добавляем полученное значение в сумму выигрышей банка цвета пользователем за все время
-        addressToColorBankPrizeTotal[msg.sender] += addressToColorBankPrizeForRound[round][msg.sender];
+        addressToColorBankPrizeTotal[msg.sender] += addressToColorBankPrizeForRound[lastPlayedRound[msg.sender]][msg.sender];
 
          //переводим пользователю его выигрыш за последний раунд в котором он принимал участие
-        msg.sender.transfer(addressToColorBankPrizeForRound[round][msg.sender]);
+        msg.sender.transfer(addressToColorBankPrizeForRound[lastPlayedRound[msg.sender]][msg.sender]);
 
         //устанавливаем булевое значение о том, что пользователь получил свой приз за раунд
-        isPrizeDistributedForRound[msg.sender][round] = true;
+        isPrizeDistributedForRound[msg.sender][lastPlayedRound[msg.sender]] = true;
 
         //вызываем ивент - о том, что приз банка цвета распределен пользователю (адрес, раунд, выигрыш)
-        emit ColorBankPrizeDistributed(msg.sender, round, addressToColorBankPrizeForRound[round][msg.sender]);
+        emit ColorBankPrizeDistributed(msg.sender, lastPlayedRound[msg.sender], addressToColorBankPrizeForRound[lastPlayedRound[msg.sender]][msg.sender]);
     }
     
     //функция распределения банка цвета
