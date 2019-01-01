@@ -44,7 +44,6 @@ contract DividendsDistributor is Roles {
 
     uint public claimId;
     Claim[] public claims;
-
   
     function claimDividends() external {
         //функция не может быть вызвана, если баланс для вывода пользователя равен нулю

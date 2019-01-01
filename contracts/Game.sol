@@ -8,8 +8,9 @@ import "./Storage.sol";
 import "./PaintsPool.sol";
 import "./PaintDiscount.sol";
 import "./IColor.sol";
+import "./GameStateController.sol";
 
-contract Game is Ownable, TimeBankDistributor, ColorTeam, PaintsPool, PaintDiscount, DividendsDistributor  {
+contract Game is Ownable, TimeBankDistributor, ColorTeam, PaintsPool, PaintDiscount, DividendsDistributor, GameStateController {
 
     using SafeMath for uint;
     
@@ -115,7 +116,7 @@ contract Game is Ownable, TimeBankDistributor, ColorTeam, PaintsPool, PaintDisco
     }
     
 
-    function paint(uint[] _pixels, uint _color) external payable isRegisteredUser {
+    function paint(uint[] _pixels, uint _color) external payable isRegisteredUser isLiveGame {
 
         require(msg.value == estimateCallPrice(_pixels, _color), "Wrong call price");
 
