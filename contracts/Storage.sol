@@ -55,6 +55,9 @@ contract Storage {
     //последний раунд в котором пользователь принимал участие (адрес => раунд)
     mapping (address => uint) public lastPlayedRound; 
 
+    //время закрашивания для каждого пикселя за раунд (0 = не закрашено)
+    mapping (uint => mapping (uint => uint)) public pixelToPaintTimeForRound;
+
     //текущий раунд
     uint public currentRound;
 

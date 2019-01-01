@@ -207,6 +207,8 @@ contract Game is Ownable, TimeBankDistributor, ColorTeam, PaintsPool, PaintDisco
     
         //увеличиваем значение общего количества разукрашиваний любым цветом для всего раунда
         totalPaintsForRound[currentRound] = totalPaintsForRound[currentRound].add(1); 
+        
+        pixelToPaintTimeForRound[currentRound][_pixel] = now;
 
         timeBankShare[tbIteration][msg.sender]++;
         colorBankShare[cbIteration][_color][msg.sender]++;
