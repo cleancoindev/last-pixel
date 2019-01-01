@@ -74,6 +74,7 @@ contract Storage {
     mapping (uint => address) public counterToPainter; //cчетчик => пользователь
     mapping (uint => mapping (uint => address)) public counterToPainterForColor; //цвет => cчетчик => пользователь    
     mapping (uint => mapping (address => bool)) public isInCBT; //for cbIteration !should not be public
+    mapping (uint => mapping (address => bool)) public isInTBT; //for tbIteration !should not be public
     mapping (uint => mapping (address => uint)) public painterToCBP; //cbIteration => painter => color bank prize
     mapping (uint => mapping (address => uint)) public painterToTBP; //tbIteration => painter => time bank prize
 
