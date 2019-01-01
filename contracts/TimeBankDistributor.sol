@@ -1,8 +1,8 @@
 pragma solidity ^0.4.24;
 
-import "./RoundDataHolder.sol";
+import "./Storage.sol";
 
-contract TimeBankDistributor is RoundDataHolder {
+contract TimeBankDistributor is Storage {
     
     using SafeMath for uint;
     
@@ -13,67 +13,9 @@ contract TimeBankDistributor is RoundDataHolder {
     event TimeBankPlayed(address indexed winner, uint indexed currentRound);
     event TimeBankPrizeDistributed(address indexed winner, uint indexed round, uint indexed amount);
     
-    //запросить приз банка времени за послений раунд в котором пользователь принимал участие
-    function claimTimeBankPrizeForLastPlayedRound() public { 
-
-        //последний раунд в котором пользователь принимал участие
-        uint round = lastPlayedRound[msg.sender];
-
-        //функция может быть вызвана только если в последнем раунде был разыгран банк времени
-        require(isPrizeDistributedForRound[msg.sender][round] == false && winnerBankForRound[round] == 1, "Bank of time was not played in your last round...");
-        
-        //*** */нужно обернуть в if
-       // if(isPrizeDistributedForRound[msg.sender][round] == false)
-        
-        //время завершения сбора команды приза для раунда
-        uint end = teamEndedTimeForRound[round];
-
-        //время начала сбора команды приза для раунда
-        uint start = teamStartedTimeForRound[round];
-
-        //cчетчик количества закрашиваний
-        uint counter;
-            
-    /*
-        //счетчик общего количества закрашиваний любым цветом для пользователя за раунд     
-        uint total = addressToTotalCounterForRound[round][msg.sender]; 
-    */
-
-        //счетчик общего количества закрашиваний любым цветом для пользователя    
-        uint total = userToTotalCounter[msg.sender]; 
-
-        //считаем сколько закрашиваний ЛЮБЫМ цветом произвел пользователь за последние 24 часа
-        for (uint i = total; i > 0; i--) {
-            //uint timeStamp = addressToCounterToTimestampForRound[round][msg.sender][i];
-            uint timeStamp = userToCounterToTimestamp[msg.sender][i];
-            if (timeStamp >= start && timeStamp <= end) //т.к. (<= end), то последний закрасивший также принимает участие
-                counter++;
-        }
-        
-        //устанавливаем какую часть от банка времени выиграл адрес за последний раунд в котором принимал участие
-        addressToTimeBankPrizeForRound[round][msg.sender] += counter.mul(timeBankForRound[round]).div(totalPaintsForRound[round]);
-
-        //добавляем полученное значение в сумму выигрышей банка времени пользователем за все время
-        addressToTimeBankPrizeTotal[msg.sender] += addressToTimeBankPrizeForRound[round][msg.sender];
-        
-        //переводим пользователю его выигрыш за последний раунд в котором он принимал участие
-        msg.sender.transfer(addressToTimeBankPrizeForRound[round][msg.sender]);
-
-        //устанавливаем булевое значение о том, что пользователь получил свой приз за раунд
-        isPrizeDistributedForRound[msg.sender][round] = true;
-
-        //вызываем ивент - о том, что приз банка времени распределен пользователю (адрес, раунд, выигрыщ)
-        emit TimeBankPrizeDistributed(msg.sender, round, addressToColorBankPrizeForRound[round][msg.sender]);
-    }
-    
+   
     //функция распределения банка времени
     function _distributeTimeBank() internal  {
-
-        //начало сбора команды раунда (24 часа назад)
-        teamStartedTimeForRound[currentRound] = now - 24 hours;
-
-        //время завершения сбора команды раунда (сейчас)
-        teamEndedTimeForRound[currentRound] = now;
 
         //победитель текущего раунда - последний закрасивший пиксель пользователь за этот раунд
         winnerOfRound[currentRound] = lastPainterForRound[currentRound];

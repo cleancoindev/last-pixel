@@ -3,13 +3,13 @@ pragma solidity ^0.4.24;
 import "../node_modules/openzeppelin-solidity/contracts/ownership/Ownable.sol";
 import "./DividendsDistributor.sol";
 import "./TimeBankDistributor.sol";
-import "./ColorBankDistributor.sol";
-import "./RoundDataHolder.sol";
+import "./ColorTeam.sol";
+import "./Storage.sol";
 import "./PaintsPool.sol";
 import "./PaintDiscount.sol";
 import "./IColor.sol";
 
-contract Game is Ownable, TimeBankDistributor, ColorBankDistributor, PaintsPool, PaintDiscount, DividendsDistributor  {
+contract Game is Ownable, TimeBankDistributor, ColorTeam, PaintsPool, PaintDiscount, DividendsDistributor  {
 
     using SafeMath for uint;
     
@@ -24,12 +24,15 @@ contract Game is Ownable, TimeBankDistributor, ColorBankDistributor, PaintsPool,
     
     //ивенты
     event Paint(uint indexed pixelId, uint colorId, address indexed painter, uint indexed round, uint timestamp);
+    event ColorBankPlayed(uint indexed round);
    
     //конструктор, задающий изначальные значения переменных
     constructor() public payable { 
         
         maxPaintsInPool = 10000; //10000 in production
         currentRound = 1;
+        cbIteration = 1;
+        tbIteration = 1;
         
         for (uint i = 1; i <= 3; i++) {
             currentPaintGenForColor[i] = 1;
@@ -116,10 +119,6 @@ contract Game is Ownable, TimeBankDistributor, ColorBankDistributor, PaintsPool,
 
         require(msg.value == estimateCallPrice(_pixels, _color), "Wrong call price");
 
-
-        //при каждом закрашивании, требуем приз за предыдущий раунд, если он был
-        _claimBankPrizeForLastPlayedRound();
-        
         //проверяем не прошло ли 20 минут с последней раскраски для розыгрыша банка времени
         if (now - lastPaintTimeForRound[currentRound] > 20 minutes && lastPaintTimeForRound[currentRound] != 0) {
 
@@ -144,6 +143,10 @@ contract Game is Ownable, TimeBankDistributor, ColorBankDistributor, PaintsPool,
         //сохраняем значение скидки на покупку краски данного цвета для пользователя
         _setUsersPaintDiscountForColor(_color);
 
+        paintsCounter++; //счетчик закрашивания любым цветом
+        paintsCounterForColor[_color] ++; //счетчик закрашивания конкретным цветом
+        counterToPainter[paintsCounter] = msg.sender; //счетчик закрашивания => пользователь
+        counterToPainterForColor[_color][paintsCounterForColor[_color]] = msg.sender; //счетчик закрашивания конкретным цветом => пользователь
 
     }   
 
@@ -198,29 +201,14 @@ contract Game is Ownable, TimeBankDistributor, ColorBankDistributor, PaintsPool,
         //обновляем значение общего количества закрашенных любым цветом клеток для пользователя в маппинге
         userToTotalCounter[msg.sender] = totalCounterForUser;
                 
-        // устанавливаем время закрашивания конкретным цветом в n-ый раз для пользователя
-        userToColorToCounterToTimestamp[msg.sender][_color][totalCounterToColorForUser] = now;
-    
-        // устанавливаем время закрашивания любым цветом в n-ый раз для пользователя за текущий раунд
-        userToCounterToTimestamp[msg.sender][totalCounterForUser] = now;
-                
         //увеличиваем значение общего количества разукрашиваний данным цветом для всего раунда
         colorToTotalPaintsForRound[currentRound][_color] = colorToTotalPaintsForRound[currentRound][_color].add(1); 
     
         //увеличиваем значение общего количества разукрашиваний любым цветом для всего раунда
         totalPaintsForRound[currentRound] = totalPaintsForRound[currentRound].add(1); 
-    
 
-          // //при каждом закрашивании, требуем приз за предыдущий раунд, если он был
-        // if (lastPlayedRound[msg.sender] > 1) 
-        //     _claimBankPrizeForLastPlayedRound();
-            
-        // if (hasTakenPartInRound[currentRound - 1][msg.sender] == true)
-        //     //устанавливаем значение последнего сыгранного раунда для пользователя равным текущему раунду
-        //     lastPlayedRound[msg.sender] = currentRound - 1;
-
-        // hasTakenPartInRound[currentRound][msg.sender] = true;
-              
+        timeBankShare[tbIteration][msg.sender]++;
+        colorBankShare[cbIteration][_color][msg.sender]++;
                 
         //с каждым закрашиванием декреминтируем на 1 ед краски
         paintGenToAmountForColor[_color][currentPaintGenForColor[_color]] = paintGenToAmountForColor[_color][currentPaintGenForColor[_color]].sub(1);
@@ -241,10 +229,15 @@ contract Game is Ownable, TimeBankDistributor, ColorBankDistributor, PaintsPool,
             winnerColorForRound[currentRound] = _color;
 
             //распределяем банк цвета команде цвета
-            _distributeColorBank();                
+            winnerOfRound[currentRound] = lastPainterForRound[currentRound];        
+            painterToCBP[cbIteration][winnerOfRound[currentRound]] += colorBankForRound[currentRound].mul(50).div(100); 
+            winnerBankForRound[currentRound] = 2;//разыгранный банк этого раунда = банк цвета (2)
+            //50% банка цвета распределится между командой цвета раунда
+            colorBankForRound[currentRound] = colorBankForRound[currentRound].mul(50).div(100); 
+            timeBankForRound[currentRound + 1] = timeBankForRound[currentRound];//банк времени переносится на следующий раунд
+            timeBankForRound[currentRound] = 0;//банк времени в текущем раунде обнуляется      
+            emit ColorBankPlayed(currentRound);  
         }
-
-
     }
 
     //функция распределения ставки
@@ -261,52 +254,5 @@ contract Game is Ownable, TimeBankDistributor, ColorBankDistributor, PaintsPool,
         //20% ставки идет на пассивные доходы бенефециариев
         dividendsBank = dividendsBank.add(msg.value.mul(20).div(100)); 
     }
-
-    //запросить приз за послений раунд в котором пользователь принимал участие
-    function _claimBankPrizeForLastPlayedRound() public {
-
-        //если пользователь еще не получил приз за участие в последнем раунде
-        if (lastPlayedRound[msg.sender] > 0 && isPrizeDistributedForRound[msg.sender][lastPlayedRound[msg.sender]] == false) {
-                
-            //если был разыгран банк времени
-            if(winnerBankForRound[lastPlayedRound[msg.sender]] == 1) 
-                //выдать приз банка времени за последний раунд в котором принимал участие пользователь
-                claimTimeBankPrizeForLastPlayedRound();
-
-            //если был разыгран банк времени
-            if(winnerBankForRound[lastPlayedRound[msg.sender]] == 2) 
-                //выдать приз банка цвета за последний раунд в котором принимал участие пользователь
-                claimColorBankPrizeForLastPlayedRound();
-        }      
-
-    }   //при втором закрашивании когда происходит переход на третий раунд, ласт плейд раунд становится = 2, и клэим не получается
     
-    //dont pay attention
-    function showPotentialPrizeForColor(uint _color) external view returns (uint) {
-
-        //время завершения сбора команды приза для раунда
-        uint end = now;
-
-        //время начала сбора команды приза для раунда
-        uint start = now - 24 hours;
-
-        //cчетчик количества закрашиваний
-        uint counter;
-        
-        //счетчик общего количества закрашиваний выигрышным цветом для пользователя за раунд     
-        uint total = colorToUserToTotalCounter[_color][msg.sender]; 
-
-         //считаем сколько закрашиваний выигрышным цветом произвел пользователь за последние 24 часа
-        for (uint i = total; i > 0; i--) {
-            uint timeStamp = userToColorToCounterToTimestamp[msg.sender][_color][i];
-            if (timeStamp > start && timeStamp <= end)
-                counter = counter.add(1);
-        }
-        
-        uint potentialPrizeForColor = counter.mul(colorBankToColorForRound[currentRound][_color]).div(colorToTotalPaintsForRound[currentRound][_color]);
-        
-        return potentialPrizeForColor;
-    }
-    
-
 }

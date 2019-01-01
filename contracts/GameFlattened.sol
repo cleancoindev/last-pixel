@@ -279,9 +279,9 @@ contract DividendsDistributor is Roles {
     }
 }
 
-// File: contracts/RoundDataHolder.sol
+// File: contracts/Storage.sol
 
-contract RoundDataHolder {
+contract Storage {
     
     //сколько всего было разукрашиваний в этом раунде любым цветом
     mapping (uint => uint) public totalPaintsForRound; 
@@ -319,52 +319,11 @@ contract RoundDataHolder {
     //значение общего количества разукрашиваний данным цветом за весь раунд (раунд => цвет => количество разукрашиваний)
     mapping (uint => mapping (uint => uint)) public colorToTotalPaintsForRound; 
 
-    //время начала образования команды банка за раунд (раунд => время)
-    mapping(uint => uint) public teamStartedTimeForRound;
-
-    //время завершения команды банка за раунд (раунд => время)
-    mapping(uint => uint) public teamEndedTimeForRound;
-
-    /*
-    //счетчик общего количества закрашенных конкретным цветом клеток для пользователя за раунд (раунд => цвет => адрес => количество клеток)
-    mapping (uint => mapping(uint => mapping (address => uint))) public colorToAddressToTotalCounterForRound; 
-    */
-
     //счетчик общего количества закрашенных конкретным цветом клеток для пользователя (цвет => адрес => количество клеток)
     mapping(uint => mapping (address => uint)) public colorToUserToTotalCounter; 
 
-    /*
-    //счетчик общего количества закрашиваний любым цветом для пользователя за раунд (раунд => адрес => количество клеток)                                                                        
-    mapping(uint => mapping (address => uint)) public addressToTotalCounterForRound;
-    */
-
     //счетчик общего количества закрашиваний любым цветом для пользователя(адрес => количество клеток)                                                                        
-    mapping (address => uint) public userToTotalCounter;
-
-    /*
-    //время использования краски определенного цвета в n-ый по счету раз для пользователя за раунд (адрес => цвет краски => счетчик => метка времени)                                                                                      
-    mapping (uint => mapping(address => mapping (uint => mapping (uint => uint)))) public addressToColorToCounterToTimestampForRound; 
-    */
-
-    //время использования краски определенного цвета в n-ый по счету раз для пользователя за раунд (адрес => цвет краски => счетчик => метка времени)                                                                                      
-    mapping(address => mapping (uint => mapping (uint => uint))) public userToColorToCounterToTimestamp;             
-
-    /*
-    //время использования краски любого цвета в n-ый по счету раз для пользователя за раунд (адрес => счетчик => метка времени)                                                                    
-    mapping(uint=>mapping(address=>mapping(uint=>uint))) public addressToCounterToTimestampForRound; 
-    */
-
-    //время использования краски любого цвета в n-ый по счету раз для пользователя(адрес => счетчик => метка времени)                                                                    
-    mapping(address => mapping(uint => uint)) public userToCounterToTimestamp; 
-
-    //булевое значение проверяет получил ли пользователь приз банка за раунд (адрес => раунд => булевое значение)                                                                            
-    mapping(address => mapping(uint => bool)) public isPrizeDistributedForRound;
-    
-    //приз банка цвета для пользователя за раунд (раунд => адрес => выигрыш)
-    mapping(uint => mapping(address => uint)) public addressToColorBankPrizeForRound; 
-
-    //приз банка времени для пользователя за раунд (раунд => адрес => выигрыш)
-    mapping(uint => mapping(address => uint)) public addressToTimeBankPrizeForRound; 
+    mapping (address => uint) public userToTotalCounter;      
 
     //победитель раунда (раунд => адрес)
     mapping (uint => address) public winnerOfRound; 
@@ -372,21 +331,36 @@ contract RoundDataHolder {
     //банк который был разыгран в раунде (раунд => разыгранный банк) (1 = банк времени, 2 = банк цвета)
     mapping (uint => uint) public winnerBankForRound; 
 
-    //маппинг о том принимал ли участие в каком либо раунде пользователь
-    mapping (uint => mapping (address => bool)) public hasTakenPartInRound;
-
     //последний раунд в котором пользователь принимал участие (адрес => раунд)
     mapping (address => uint) public lastPlayedRound; 
 
     //текущий раунд
     uint public currentRound;
 
+    uint public tbIteration;
+    uint public cbIteration;
+    uint public paintsCounter; //счетчик закрашиваний любым цветом за все время
+    //Time Bank Iteration => Painter => Painter's Share in Time Team
+    mapping (uint => mapping (address => uint)) public timeBankShare;
+    //Color Bank Iteration => Color => Painter => Painter's Share in Time Team
+    mapping (uint => mapping (uint => mapping (address => uint))) public colorBankShare;
+    mapping (uint => uint) public paintsCounterForColor; //счетчик закрашиваний конкретным цветом за все время
+    mapping (uint => address[]) public cbTeam; //for cbIteration
+    mapping (uint => address[]) public tbTeam; //for tbIteration
+    mapping (uint => address) public counterToPainter; //cчетчик => пользователь
+    mapping (uint => mapping (uint => address)) public counterToPainterForColor; //цвет => cчетчик => пользователь    
+    mapping (uint => mapping (address => bool)) public isInCBT; //for cbIteration !should not be public
+    mapping (uint => mapping (address => uint)) public painterToCBP; //cbIteration => painter => color bank prize
+    mapping (uint => mapping (address => uint)) public painterToTBP; //tbIteration => painter => time bank prize
+
+    mapping (uint => bool) public isCBPTransfered;
+    mapping (uint => bool) public isTBPTransfered;
 
 }
 
 // File: contracts/TimeBankDistributor.sol
 
-contract TimeBankDistributor is RoundDataHolder {
+contract TimeBankDistributor is Storage {
     
     using SafeMath for uint;
     
@@ -397,67 +371,9 @@ contract TimeBankDistributor is RoundDataHolder {
     event TimeBankPlayed(address indexed winner, uint indexed currentRound);
     event TimeBankPrizeDistributed(address indexed winner, uint indexed round, uint indexed amount);
     
-    //запросить приз банка времени за послений раунд в котором пользователь принимал участие
-    function claimTimeBankPrizeForLastPlayedRound() public { 
-
-        //последний раунд в котором пользователь принимал участие
-        uint round = lastPlayedRound[msg.sender];
-
-        //функция может быть вызвана только если в последнем раунде был разыгран банк времени
-        require(isPrizeDistributedForRound[msg.sender][round] == false && winnerBankForRound[round] == 1, "Bank of time was not played in your last round...");
-        
-        //*** */нужно обернуть в if
-       // if(isPrizeDistributedForRound[msg.sender][round] == false)
-        
-        //время завершения сбора команды приза для раунда
-        uint end = teamEndedTimeForRound[round];
-
-        //время начала сбора команды приза для раунда
-        uint start = teamStartedTimeForRound[round];
-
-        //cчетчик количества закрашиваний
-        uint counter;
-            
-    /*
-        //счетчик общего количества закрашиваний любым цветом для пользователя за раунд     
-        uint total = addressToTotalCounterForRound[round][msg.sender]; 
-    */
-
-        //счетчик общего количества закрашиваний любым цветом для пользователя    
-        uint total = userToTotalCounter[msg.sender]; 
-
-        //считаем сколько закрашиваний ЛЮБЫМ цветом произвел пользователь за последние 24 часа
-        for (uint i = total; i > 0; i--) {
-            //uint timeStamp = addressToCounterToTimestampForRound[round][msg.sender][i];
-            uint timeStamp = userToCounterToTimestamp[msg.sender][i];
-            if (timeStamp >= start && timeStamp <= end) //т.к. (<= end), то последний закрасивший также принимает участие
-                counter++;
-        }
-        
-        //устанавливаем какую часть от банка времени выиграл адрес за последний раунд в котором принимал участие
-        addressToTimeBankPrizeForRound[round][msg.sender] += counter.mul(timeBankForRound[round]).div(totalPaintsForRound[round]);
-
-        //добавляем полученное значение в сумму выигрышей банка времени пользователем за все время
-        addressToTimeBankPrizeTotal[msg.sender] += addressToTimeBankPrizeForRound[round][msg.sender];
-        
-        //переводим пользователю его выигрыш за последний раунд в котором он принимал участие
-        msg.sender.transfer(addressToTimeBankPrizeForRound[round][msg.sender]);
-
-        //устанавливаем булевое значение о том, что пользователь получил свой приз за раунд
-        isPrizeDistributedForRound[msg.sender][round] = true;
-
-        //вызываем ивент - о том, что приз банка времени распределен пользователю (адрес, раунд, выигрыщ)
-        emit TimeBankPrizeDistributed(msg.sender, round, addressToColorBankPrizeForRound[round][msg.sender]);
-    }
-    
+   
     //функция распределения банка времени
     function _distributeTimeBank() internal  {
-
-        //начало сбора команды раунда (24 часа назад)
-        teamStartedTimeForRound[currentRound] = now - 24 hours;
-
-        //время завершения сбора команды раунда (сейчас)
-        teamEndedTimeForRound[currentRound] = now;
 
         //победитель текущего раунда - последний закрасивший пиксель пользователь за этот раунд
         winnerOfRound[currentRound] = lastPainterForRound[currentRound];
@@ -491,107 +407,70 @@ contract TimeBankDistributor is RoundDataHolder {
     }
 }
 
-// File: contracts/ColorBankDistributor.sol
+// File: contracts/ColorTeam.sol
 
-contract ColorBankDistributor is RoundDataHolder  {
-    
+contract ColorTeam is Storage, Roles {
+
     using SafeMath for uint;
-    
-    //сколько всего банка цвета выиграл адрес (в сумме за все время) (адрес => сумма общего выигрыша)
-    mapping(address => uint) public addressToColorBankPrizeTotal; 
-    
-    event ColorBankPlayed(address indexed winner, uint indexed winnerColor, uint indexed currentRound);
-    event ColorBankPrizeDistributed(address indexed winner, uint indexed round, uint indexed amount);
-    
-    //запросить приз банка цвета за послений раунд в котором пользователь принимал участие
-    function claimColorBankPrizeForLastPlayedRound() public {
+    event CBPDistributed(uint indexed round, uint indexed cbIteration, address winner);
 
-        //функция может быть вызвана только если в последнем раунде был разыгран банк цвета
-        require(winnerBankForRound[lastPlayedRound[msg.sender]] == 2, "Bank of color was not played in your last round...");
-
-        //выигрышый цвет за последний раунд в котором пользователь принимал участие
-        uint winnerColor = winnerColorForRound[lastPlayedRound[msg.sender]];
-
-        //время завершения сбора команды приза для раунда
-        uint end = teamEndedTimeForRound[lastPlayedRound[msg.sender]];
-
-        //время начала сбора команды приза для раунда
-        uint start;
-
-        if (lastPlayedRound[msg.sender] > 1 && winnerBankForRound[lastPlayedRound[msg.sender] - 1] == 1)
-            start = end - 24 hours;
-        else 
-            start = teamStartedTimeForRound[lastPlayedRound[msg.sender]];
-
-        //cчетчик количества закрашиваний
-        uint counter;
-
+    //функция формирующая команду цвета из последних 100 участников выигрывшим цветом
+    function formColorTeam(uint _winnerColor) private returns (uint) {
         
-        //счетчик общего количества закрашиваний выигрышным цветом для пользователя за раунд     
-        //uint total = colorToAddressToTotalCounterForRound[round][winnerColor][msg.sender]; 
-
-        //счетчик общего количества закрашиваний выигрышным цветом для пользователя
-        uint total = colorToUserToTotalCounter[winnerColor][msg.sender];
-
-         //считаем сколько закрашиваний выигрышным цветом произвел пользователь за последние 24 часа
-        for (uint i = total; i > 0; i--) {
-            //uint timeStamp = addressToColorToCounterToTimestampForRound[round][msg.sender][winnerColor][i];
-            uint timeStamp = userToColorToCounterToTimestamp[msg.sender][winnerColor][i];
-            if (timeStamp >= start && timeStamp <= end)
-                counter = counter.add(1);
+        for (uint i = paintsCounterForColor[_winnerColor]; i > 0; i--) {
+            uint teamMembersCounter;
+            if (isInCBT[cbIteration][counterToPainterForColor[_winnerColor][i]] == false) {
+                
+                if (paintsCounterForColor[_winnerColor] > 100) {
+                    if (teamMembersCounter >= 100)   
+                        break;
+                }
+            
+                else {
+                    if (teamMembersCounter >= paintsCounterForColor[_winnerColor])
+                        break;
+                }
+                
+                cbTeam[cbIteration].push(counterToPainterForColor[_winnerColor][i]);
+                teamMembersCounter = teamMembersCounter.add(1);
+                isInCBT[cbIteration][counterToPainterForColor[_winnerColor][i]] = true;
+            }
         }
-
-        //устанавливаем какую часть от банка цвета выиграл адрес за последний раунд в котором принимал участие
-        addressToColorBankPrizeForRound[lastPlayedRound[msg.sender]][msg.sender] += counter.mul(colorBankForRound[lastPlayedRound[msg.sender]]).div(colorToTotalPaintsForRound[lastPlayedRound[msg.sender]][winnerColor]);
-
-        //добавляем полученное значение в сумму выигрышей банка цвета пользователем за все время
-        addressToColorBankPrizeTotal[msg.sender] += addressToColorBankPrizeForRound[lastPlayedRound[msg.sender]][msg.sender];
-
-         //переводим пользователю его выигрыш за последний раунд в котором он принимал участие
-        msg.sender.transfer(addressToColorBankPrizeForRound[lastPlayedRound[msg.sender]][msg.sender]);
-
-        //устанавливаем булевое значение о том, что пользователь получил свой приз за раунд
-        isPrizeDistributedForRound[msg.sender][lastPlayedRound[msg.sender]] = true;
-
-        //вызываем ивент - о том, что приз банка цвета распределен пользователю (адрес, раунд, выигрыш)
-        emit ColorBankPrizeDistributed(msg.sender, lastPlayedRound[msg.sender], addressToColorBankPrizeForRound[lastPlayedRound[msg.sender]][msg.sender]);
+        return cbTeam[cbIteration].length;
     }
     
-    //функция распределения банка цвета
-    function _distributeColorBank() internal { 
+    function calculateCBP(uint _winnerColor) private {
 
-        //время начала сбора команды раунда (24 часа назад)
-        teamStartedTimeForRound[currentRound] = now - 24 hours;
+        uint length = formColorTeam(_winnerColor);
+        address painter;
+        uint totalPaintsForTeam; //засунуть в функцию calculateCBP
 
-        //время завершения сбора команды раунда (сейчас)
-        teamEndedTimeForRound[currentRound] = now;
+        for (uint i = 0; i < length; i++) {
+            painter = cbTeam[cbIteration][i];
+            totalPaintsForTeam += colorBankShare[cbIteration][_winnerColor][painter];
+        }
 
-        //победитель текущего раунда - последний закрасивший пиксель пользователь за этот раунд
-        winnerOfRound[currentRound] = lastPainterForRound[currentRound];
-        
-        //Checks-Effects-Interactions pattern
-        uint amountToTransfer = colorBankForRound[currentRound].mul(50).div(100);
-    
-        //переводим 50% банка цвета победителю текущего раунда
-        winnerOfRound[currentRound].transfer(amountToTransfer);
-               
-        //разыгранный банк этого раунда = банк цвета (2)
-        winnerBankForRound[currentRound] = 2;
+        for (i = 0; i < length; i++) {
+            painter = cbTeam[cbIteration][i];
+            painterToCBP[cbIteration][painter] = (colorBankShare[cbIteration][_winnerColor][painter].mul(colorBankForRound[currentRound])).div(totalPaintsForTeam);
+        }
 
-        //50% банка цвета распределится между командой цвета раунда
-        colorBankForRound[currentRound] = colorBankForRound[currentRound].mul(50).div(100); 
+    }
 
-        //банк времени переносится на следующий раунд
-        timeBankForRound[currentRound + 1] = timeBankForRound[currentRound];
-
-        //банк времени в текущем раунде обнуляется
-        timeBankForRound[currentRound] = 0;
-
-        //ивент - был разыгран банк времени (победитель, победивший цвет раунд)
-        emit ColorBankPlayed(winnerOfRound[currentRound], winnerColorForRound[currentRound], currentRound);
-        
-        //следующий раунд
-        currentRound = currentRound.add(1); 
+    function distributeCBP() external onlyAdmin {
+        require(isCBPTransfered[cbIteration] == false, "Color Bank Prizes already transferred for this cbIteration");
+        address painter;
+        calculateCBP(winnerColorForRound[currentRound]);
+        uint length = cbTeam[cbIteration].length;
+        for (uint i = 0; i < length; i++) {
+            painter = cbTeam[cbIteration][i];
+            if(painterToCBP[cbIteration][painter] != 0)
+                painter.transfer(painterToCBP[cbIteration][painter]);
+        }
+        isCBPTransfered[cbIteration] = true;
+        emit CBPDistributed(currentRound, cbIteration, winnerOfRound[currentRound]);
+        currentRound = currentRound.add(1); //следующий раунд 
+        cbIteration = cbIteration.add(1); //инкрементируем итерацию для банка цвета      
     }
 }
 
@@ -727,7 +606,7 @@ contract PaintDiscount  {
 
 // File: contracts/Game.sol
 
-contract Game is Ownable, TimeBankDistributor, ColorBankDistributor, PaintsPool, PaintDiscount, DividendsDistributor  {
+contract Game is Ownable, TimeBankDistributor, ColorTeam, PaintsPool, PaintDiscount, DividendsDistributor  {
 
     using SafeMath for uint;
     
@@ -742,12 +621,15 @@ contract Game is Ownable, TimeBankDistributor, ColorBankDistributor, PaintsPool,
     
     //ивенты
     event Paint(uint indexed pixelId, uint colorId, address indexed painter, uint indexed round, uint timestamp);
+    event ColorBankPlayed(uint indexed round);
    
     //конструктор, задающий изначальные значения переменных
     constructor() public payable { 
         
         maxPaintsInPool = 10000; //10000 in production
         currentRound = 1;
+        cbIteration = 1;
+        tbIteration = 1;
         
         for (uint i = 1; i <= 3; i++) {
             currentPaintGenForColor[i] = 1;
@@ -834,10 +716,6 @@ contract Game is Ownable, TimeBankDistributor, ColorBankDistributor, PaintsPool,
 
         require(msg.value == estimateCallPrice(_pixels, _color), "Wrong call price");
 
-
-        //при каждом закрашивании, требуем приз за предыдущий раунд, если он был
-        _claimBankPrizeForLastPlayedRound();
-        
         //проверяем не прошло ли 20 минут с последней раскраски для розыгрыша банка времени
         if (now - lastPaintTimeForRound[currentRound] > 20 minutes && lastPaintTimeForRound[currentRound] != 0) {
 
@@ -862,6 +740,10 @@ contract Game is Ownable, TimeBankDistributor, ColorBankDistributor, PaintsPool,
         //сохраняем значение скидки на покупку краски данного цвета для пользователя
         _setUsersPaintDiscountForColor(_color);
 
+        paintsCounter++; //счетчик закрашивания любым цветом
+        paintsCounterForColor[_color] ++; //счетчик закрашивания конкретным цветом
+        counterToPainter[paintsCounter] = msg.sender; //счетчик закрашивания => пользователь
+        counterToPainterForColor[_color][paintsCounterForColor[_color]] = msg.sender; //счетчик закрашивания конкретным цветом => пользователь
 
     }   
 
@@ -916,29 +798,14 @@ contract Game is Ownable, TimeBankDistributor, ColorBankDistributor, PaintsPool,
         //обновляем значение общего количества закрашенных любым цветом клеток для пользователя в маппинге
         userToTotalCounter[msg.sender] = totalCounterForUser;
                 
-        // устанавливаем время закрашивания конкретным цветом в n-ый раз для пользователя
-        userToColorToCounterToTimestamp[msg.sender][_color][totalCounterToColorForUser] = now;
-    
-        // устанавливаем время закрашивания любым цветом в n-ый раз для пользователя за текущий раунд
-        userToCounterToTimestamp[msg.sender][totalCounterForUser] = now;
-                
         //увеличиваем значение общего количества разукрашиваний данным цветом для всего раунда
         colorToTotalPaintsForRound[currentRound][_color] = colorToTotalPaintsForRound[currentRound][_color].add(1); 
     
         //увеличиваем значение общего количества разукрашиваний любым цветом для всего раунда
         totalPaintsForRound[currentRound] = totalPaintsForRound[currentRound].add(1); 
-    
 
-          // //при каждом закрашивании, требуем приз за предыдущий раунд, если он был
-        // if (lastPlayedRound[msg.sender] > 1) 
-        //     _claimBankPrizeForLastPlayedRound();
-            
-        // if (hasTakenPartInRound[currentRound - 1][msg.sender] == true)
-        //     //устанавливаем значение последнего сыгранного раунда для пользователя равным текущему раунду
-        //     lastPlayedRound[msg.sender] = currentRound - 1;
-
-        // hasTakenPartInRound[currentRound][msg.sender] = true;
-              
+        timeBankShare[tbIteration][msg.sender]++;
+        colorBankShare[cbIteration][_color][msg.sender]++;
                 
         //с каждым закрашиванием декреминтируем на 1 ед краски
         paintGenToAmountForColor[_color][currentPaintGenForColor[_color]] = paintGenToAmountForColor[_color][currentPaintGenForColor[_color]].sub(1);
@@ -948,6 +815,9 @@ contract Game is Ownable, TimeBankDistributor, ColorBankDistributor, PaintsPool,
         
         //ивент - закрашивание пикселя (пиксель, цвет, закрасивший пользователь)
         emit Paint(_pixel, _color, msg.sender, currentRound, now);    
+
+        //устанавливаем значение последнего сыгранного раунда для пользователя равным текущему раунду
+        lastPlayedRound[msg.sender] = currentRound;
             
         //проверяем не закрасилось ли все игровое поле данным цветом для розыгрыша банка цвета
         if (colorToPaintedPixelsAmountForRound[currentRound][_color] == 10000) {
@@ -956,12 +826,15 @@ contract Game is Ownable, TimeBankDistributor, ColorBankDistributor, PaintsPool,
             winnerColorForRound[currentRound] = _color;
 
             //распределяем банк цвета команде цвета
-            _distributeColorBank();                
+            winnerOfRound[currentRound] = lastPainterForRound[currentRound];        
+            painterToCBP[cbIteration][winnerOfRound[currentRound]] += colorBankForRound[currentRound].mul(50).div(100); 
+            winnerBankForRound[currentRound] = 2;//разыгранный банк этого раунда = банк цвета (2)
+            //50% банка цвета распределится между командой цвета раунда
+            colorBankForRound[currentRound] = colorBankForRound[currentRound].mul(50).div(100); 
+            timeBankForRound[currentRound + 1] = timeBankForRound[currentRound];//банк времени переносится на следующий раунд
+            timeBankForRound[currentRound] = 0;//банк времени в текущем раунде обнуляется      
+            emit ColorBankPlayed(currentRound);  
         }
-
-        //устанавливаем значение последнего сыгранного раунда для пользователя равным текущему раунду
-        lastPlayedRound[msg.sender] = currentRound;
-
     }
 
     //функция распределения ставки
@@ -978,52 +851,5 @@ contract Game is Ownable, TimeBankDistributor, ColorBankDistributor, PaintsPool,
         //20% ставки идет на пассивные доходы бенефециариев
         dividendsBank = dividendsBank.add(msg.value.mul(20).div(100)); 
     }
-
-    //запросить приз за послений раунд в котором пользователь принимал участие
-    function _claimBankPrizeForLastPlayedRound() public {
-
-        //если пользователь еще не получил приз за участие в последнем раунде
-        if (lastPlayedRound[msg.sender] > 0 && isPrizeDistributedForRound[msg.sender][lastPlayedRound[msg.sender]] == false) {
-                
-            //если был разыгран банк времени
-            if(winnerBankForRound[lastPlayedRound[msg.sender]] == 1) 
-                //выдать приз банка времени за последний раунд в котором принимал участие пользователь
-                claimTimeBankPrizeForLastPlayedRound();
-
-            //если был разыгран банк времени
-            if(winnerBankForRound[lastPlayedRound[msg.sender]] == 2) 
-                //выдать приз банка цвета за последний раунд в котором принимал участие пользователь
-                claimColorBankPrizeForLastPlayedRound();
-        }      
-
-    }   //при втором закрашивании когда происходит переход на третий раунд, ласт плейд раунд становится = 2, и клэим не получается
     
-    //dont pay attention
-    function showPotentialPrizeForColor(uint _color) external view returns (uint) {
-
-        //время завершения сбора команды приза для раунда
-        uint end = now;
-
-        //время начала сбора команды приза для раунда
-        uint start = now - 24 hours;
-
-        //cчетчик количества закрашиваний
-        uint counter;
-        
-        //счетчик общего количества закрашиваний выигрышным цветом для пользователя за раунд     
-        uint total = colorToUserToTotalCounter[_color][msg.sender]; 
-
-         //считаем сколько закрашиваний выигрышным цветом произвел пользователь за последние 24 часа
-        for (uint i = total; i > 0; i--) {
-            uint timeStamp = userToColorToCounterToTimestamp[msg.sender][_color][i];
-            if (timeStamp > start && timeStamp <= end)
-                counter = counter.add(1);
-        }
-        
-        uint potentialPrizeForColor = counter.mul(colorBankToColorForRound[currentRound][_color]).div(colorToTotalPaintsForRound[currentRound][_color]);
-        
-        return potentialPrizeForColor;
-    }
-    
-
 }
