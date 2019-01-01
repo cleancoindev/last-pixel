@@ -4,7 +4,7 @@ import "./Storage.sol";
 import "./Roles.sol";
 import "./GameStateController.sol";
 
-contract ColorTeam is Storage, Roles, GameStateController {
+contract ColorTeam is Storage, GameStateController {
 
     using SafeMath for uint;
     event CBPDistributed(uint indexed round, uint indexed cbIteration, address winner);
@@ -65,6 +65,6 @@ contract ColorTeam is Storage, Roles, GameStateController {
         isCBPTransfered[cbIteration] = true;
         emit CBPDistributed(currentRound, cbIteration, winnerOfRound[currentRound]);
         currentRound = currentRound.add(1); //следующий раунд 
-        cbIteration = cbIteration.add(1); //инкрементируем итерацию для банка цвета      
+        cbIteration = cbIteration.add(1); //инкрементируем итерацию для банка цвета
     }
 }

@@ -159,7 +159,7 @@ contract Roles is Ownable {
         isAdmin[msg.sender] = true;
     }
     
-    function addAdmin(address _new) external onlyOwner() {
+    function addAdmin(address _new) external onlyOwner {
         isAdmin[_new] = true;
     }
     
@@ -168,8 +168,12 @@ contract Roles is Ownable {
         _;
     }
     
-    function removeAdmin(address _admin) external onlyOwner() {
+    function removeAdmin(address _admin) external onlyOwner {
         isAdmin[_admin] = false;
+    }
+
+    function renounceAdmin() external onlyAdmin {
+        isAdmin[msg.sender] = false;
     }
 }
 
@@ -215,7 +219,6 @@ contract DividendsDistributor is Roles {
 
     uint public claimId;
     Claim[] public claims;
-
   
     function claimDividends() external {
         //функция не может быть вызвана, если баланс для вывода пользователя равен нулю
@@ -282,9 +285,6 @@ contract DividendsDistributor is Roles {
 // File: contracts/Storage.sol
 
 contract Storage {
-    
-    //сколько всего было разукрашиваний в этом раунде любым цветом
-    mapping (uint => uint) public totalPaintsForRound; 
 
     //цвет клетки в раунде (pаунд => пиксель => цвет)
     mapping (uint => mapping (uint => uint)) public pixelToColorForRound; 
@@ -319,23 +319,46 @@ contract Storage {
     //значение общего количества разукрашиваний данным цветом за весь раунд (раунд => цвет => количество разукрашиваний)
     mapping (uint => mapping (uint => uint)) public colorToTotalPaintsForRound; 
 
-    //счетчик общего количества закрашенных конкретным цветом клеток для пользователя (цвет => адрес => количество клеток)
-    mapping(uint => mapping (address => uint)) public colorToUserToTotalCounter; 
-
-    //счетчик общего количества закрашиваний любым цветом для пользователя(адрес => количество клеток)                                                                        
-    mapping (address => uint) public userToTotalCounter;      
-
     //победитель раунда (раунд => адрес)
     mapping (uint => address) public winnerOfRound; 
 
     //банк который был разыгран в раунде (раунд => разыгранный банк) (1 = банк времени, 2 = банк цвета)
     mapping (uint => uint) public winnerBankForRound; 
 
-    //последний раунд в котором пользователь принимал участие (адрес => раунд)
-    mapping (address => uint) public lastPlayedRound; 
+    //время закрашивания для каждого пикселя за раунд (0 = не закрашено)
+    mapping (uint => mapping (uint => uint)) public pixelToPaintTimeForRound;
 
     //текущий раунд
     uint public currentRound;
+
+    //сколько всего было разукрашиваний в этом раунде любым цветом
+    mapping (uint => uint) public totalPaintsForRound;
+        
+     //поколение краски на ее количество
+    mapping (uint => mapping (uint => uint)) public paintGenToAmountForColor;
+    
+    //время когда краска определенного поколения добавилась в пул
+    mapping (uint => mapping (uint => uint)) public paintGenToStartTimeForColor;
+    
+    //время когда краска определенного поколения закончилась в пуле
+    mapping (uint => mapping (uint => uint)) public paintGenToEndTimeForColor;
+    
+    //булевое значение - о том что, поколение краски началось
+    mapping (uint => mapping (uint => bool)) public paintGenStartedForColor;
+
+    //текущее поколение краски которое расходуется в данный момент
+    mapping (uint => uint) public currentPaintGenForColor;
+    
+    //стоимость вызова функции paint
+    mapping (uint => uint) public callPriceForColor;
+    
+    //стоимость следующего вызова функции paint
+    mapping (uint => uint) public nextCallPriceForColor;
+    
+    //количество единиц краски в общем пуле (10000)
+    uint public maxPaintsInPool;
+
+
 
     uint public tbIteration;
     uint public cbIteration;
@@ -350,6 +373,7 @@ contract Storage {
     mapping (uint => address) public counterToPainter; //cчетчик => пользователь
     mapping (uint => mapping (uint => address)) public counterToPainterForColor; //цвет => cчетчик => пользователь    
     mapping (uint => mapping (address => bool)) public isInCBT; //for cbIteration !should not be public
+    mapping (uint => mapping (address => bool)) public isInTBT; //for tbIteration !should not be public
     mapping (uint => mapping (address => uint)) public painterToCBP; //cbIteration => painter => color bank prize
     mapping (uint => mapping (address => uint)) public painterToTBP; //tbIteration => painter => time bank prize
 
@@ -358,58 +382,102 @@ contract Storage {
 
 }
 
-// File: contracts/TimeBankDistributor.sol
+// File: contracts/GameStateController.sol
 
-contract TimeBankDistributor is Storage {
-    
-    using SafeMath for uint;
-    
-    //сколько всего банка времени выиграл адрес (в сумме за все время) (адрес => сумма общего выигрыша)
-    mapping(address => uint) public addressToTimeBankPrizeTotal; 
+contract GameStateController is Roles {
 
-    
-    event TimeBankPlayed(address indexed winner, uint indexed currentRound);
-    event TimeBankPrizeDistributed(address indexed winner, uint indexed round, uint indexed amount);
-    
-   
-    //функция распределения банка времени
-    function _distributeTimeBank() internal  {
+    bool public isGamePaused;
 
-        //победитель текущего раунда - последний закрасивший пиксель пользователь за этот раунд
-        winnerOfRound[currentRound] = lastPainterForRound[currentRound];
-        
-         //Checks-Effects-Interactions pattern
-        uint amountToTransfer = timeBankForRound[currentRound].mul(45).div(100);
+    modifier isLiveGame() {
+        require(isGamePaused == false, "Game is paused");
+        _;
+    }
 
-        //переводим 45% банка времени победителю текущего раунда
-        winnerOfRound[currentRound].transfer(amountToTransfer);
-                
-        //разыгранный банк этого раунда = банк времени (1)
-        winnerBankForRound[currentRound] = 1; 
+    function pauseGame() external onlyAdmin {
+        require (isGamePaused == false, "Game is already paused");
+        isGamePaused = true;
+    }
 
-        //10% банка времени переходит в следующий раунд
-        timeBankForRound[currentRound + 1] = timeBankForRound[currentRound].div(10); 
-        
-        //45% банка времени распределится между всей командой участников раунда
-        timeBankForRound[currentRound] = timeBankForRound[currentRound].mul(45).div(100); 
-
-        //банк цвета переносится на следующий раунд
-        colorBankForRound[currentRound + 1] = colorBankForRound[currentRound]; 
-
-        //в этом раунде банк цвета обнуляется
-        colorBankForRound[currentRound] = 0; 
-
-        //ивент - был разыгран банк времени (победитель, раунд)
-        emit TimeBankPlayed(winnerOfRound[currentRound], currentRound);
-        
-        //следующий раунд
-        currentRound = currentRound.add(1); 
+    function resumeGame() external onlyAdmin {
+        require (isGamePaused == true, "Game is already live");
+        isGamePaused = false;
     }
 }
 
+// File: contracts/TimeTeam.sol
+
+contract TimeTeam is Storage, GameStateController {
+
+    using SafeMath for uint;
+    event TBPDistributed(uint indexed round, uint indexed tbIteration, address winner);
+
+    //функция формирующая команду времени из последних 100 участников любым цветом
+    function formTimeTeam() private returns (uint) {
+        
+        for (uint i = paintsCounter; i > 0; i--) {
+            uint teamMembersCounter;
+            if (isInTBT[tbIteration][counterToPainter[i]] == false) {
+                
+                if (paintsCounter > 100) {
+                    if (teamMembersCounter >= 100)   
+                        break;
+                }
+            
+                else {
+                    if (teamMembersCounter >= paintsCounter)
+                        break;
+                }
+                
+                tbTeam[tbIteration].push(counterToPainter[i]);
+                teamMembersCounter = teamMembersCounter.add(1);
+                isInTBT[tbIteration][counterToPainter[i]] = true;
+            }
+        }
+        return tbTeam[tbIteration].length;
+    }
+    
+    function calculateTBP() private {
+
+        uint length = formTimeTeam();
+        address painter;
+        uint totalPaintsForTeam; 
+
+        for (uint i = 0; i < length; i++) {
+            painter = tbTeam[tbIteration][i];
+            totalPaintsForTeam += timeBankShare[tbIteration][painter];
+        }
+
+        for (i = 0; i < length; i++) {
+            painter = tbTeam[tbIteration][i];
+            painterToTBP[tbIteration][painter] = (timeBankShare[tbIteration][painter].mul(timeBankForRound[currentRound])).div(totalPaintsForTeam);
+        }
+
+    }
+
+    function distributeTBP() external onlyAdmin isLiveGame {
+        require(isTBPTransfered[tbIteration] == false, "Time Bank Prizes already transferred for this tbIteration");
+        address painter;
+        calculateTBP();
+        uint length = tbTeam[tbIteration].length;
+        for (uint i = 0; i < length; i++) {
+            painter = tbTeam[tbIteration][i];
+            if(painterToTBP[tbIteration][painter] != 0)
+                painter.transfer(painterToTBP[tbIteration][painter]);
+        }
+        isTBPTransfered[tbIteration] = true;
+        emit TBPDistributed(currentRound, tbIteration, winnerOfRound[currentRound]);
+        currentRound = currentRound.add(1); //следующий раунд 
+        tbIteration = tbIteration.add(1); //инкрементируем итерацию для банка цвета
+    }
+}
+
+//TODO по прошествию 20 минут распределить банки времени и цвета для этого и след раундов
+//написать тесты
+//прокси, логика, бд
+
 // File: contracts/ColorTeam.sol
 
-contract ColorTeam is Storage, Roles {
+contract ColorTeam is Storage, GameStateController {
 
     using SafeMath for uint;
     event CBPDistributed(uint indexed round, uint indexed cbIteration, address winner);
@@ -457,7 +525,7 @@ contract ColorTeam is Storage, Roles {
 
     }
 
-    function distributeCBP() external onlyAdmin {
+    function distributeCBP() external onlyAdmin isLiveGame {
         require(isCBPTransfered[cbIteration] == false, "Color Bank Prizes already transferred for this cbIteration");
         address painter;
         calculateCBP(winnerColorForRound[currentRound]);
@@ -470,41 +538,15 @@ contract ColorTeam is Storage, Roles {
         isCBPTransfered[cbIteration] = true;
         emit CBPDistributed(currentRound, cbIteration, winnerOfRound[currentRound]);
         currentRound = currentRound.add(1); //следующий раунд 
-        cbIteration = cbIteration.add(1); //инкрементируем итерацию для банка цвета      
+        cbIteration = cbIteration.add(1); //инкрементируем итерацию для банка цвета
     }
 }
 
 // File: contracts/PaintsPool.sol
 
-contract PaintsPool  {
+contract PaintsPool is Storage {
     
     using SafeMath for uint;
-    
-    mapping (uint => uint) public totalPaintsForRound;
-        
-     //поколение краски на ее количество
-    mapping (uint => mapping (uint => uint)) public paintGenToAmountForColor;
-    
-    //время когда краска определенного поколения добавилась в пул
-    mapping (uint => mapping (uint => uint)) public paintGenToStartTimeForColor;
-    
-    //время когда краска определенного поколения закончилась в пуле
-    mapping (uint => mapping (uint => uint)) public paintGenToEndTimeForColor;
-    
-    //булевое значение - о том что, поколение краски началось
-    mapping (uint => mapping (uint => bool)) public paintGenStartedForColor;
-
-    //текущее поколение краски которое расходуется в данный момент
-    mapping (uint => uint) public currentPaintGenForColor;
-    
-    //стоимость вызова функции paint
-    mapping (uint => uint) public callPriceForColor;
-    
-    //стоимость следующего вызова функции paint
-    mapping (uint => uint) public nextCallPriceForColor;
-    
-    //количество единиц краски в общем пуле (10000)
-    uint public maxPaintsInPool;
     
     event CallPriceUpdated(uint indexed newCallPrice);
 
@@ -606,7 +648,7 @@ contract PaintDiscount  {
 
 // File: contracts/Game.sol
 
-contract Game is Ownable, TimeBankDistributor, ColorTeam, PaintsPool, PaintDiscount, DividendsDistributor  {
+contract Game is Ownable, TimeTeam, ColorTeam, PaintsPool, PaintDiscount, DividendsDistributor {
 
     using SafeMath for uint;
     
@@ -621,7 +663,8 @@ contract Game is Ownable, TimeBankDistributor, ColorTeam, PaintsPool, PaintDisco
     
     //ивенты
     event Paint(uint indexed pixelId, uint colorId, address indexed painter, uint indexed round, uint timestamp);
-    event ColorBankPlayed(uint indexed round);
+    event ColorBankPlayed(address winner, uint indexed round);
+    event TimeBankPlayed(address winner, uint indexed round);
    
     //конструктор, задающий изначальные значения переменных
     constructor() public payable { 
@@ -712,7 +755,7 @@ contract Game is Ownable, TimeBankDistributor, ColorTeam, PaintsPool, PaintDisco
     }
     
 
-    function paint(uint[] _pixels, uint _color) external payable isRegisteredUser {
+    function paint(uint[] _pixels, uint _color) external payable isRegisteredUser isLiveGame {
 
         require(msg.value == estimateCallPrice(_pixels, _color), "Wrong call price");
 
@@ -720,7 +763,23 @@ contract Game is Ownable, TimeBankDistributor, ColorTeam, PaintsPool, PaintDisco
         if (now - lastPaintTimeForRound[currentRound] > 20 minutes && lastPaintTimeForRound[currentRound] != 0) {
 
             //распределяем банк времени команде раунда
-            _distributeTimeBank();
+            //победитель текущего раунда - последний закрасивший пиксель пользователь за этот раунд
+            winnerOfRound[currentRound] = lastPainterForRound[currentRound];
+
+            painterToTBP[tbIteration][winnerOfRound[currentRound]] += timeBankForRound[currentRound].mul(45).div(100); 
+            
+            //разыгранный банк этого раунда = банк времени (1)
+            winnerBankForRound[currentRound] = 1; 
+            //10% банка времени переходит в следующий раунд
+            timeBankForRound[currentRound + 1] = timeBankForRound[currentRound].div(10); 
+            //45% банка времени распределится между всей командой участников раунда
+            timeBankForRound[currentRound] = timeBankForRound[currentRound].mul(45).div(100); 
+            //банк цвета переносится на следующий раунд
+            colorBankForRound[currentRound + 1] = colorBankForRound[currentRound]; 
+            //в этом раунде банк цвета обнуляется
+            colorBankForRound[currentRound] = 0; 
+            //ивент - был разыгран банк времени (победитель, раунд)
+            emit TimeBankPlayed(winnerOfRound[currentRound], currentRound);
         }
         
         //закрашиваем пиксели
@@ -779,30 +838,11 @@ contract Game is Ownable, TimeBankDistributor, ColorTeam, PaintsPool, PaintDisco
     
         //при каждой раскраске пикселя, увеличиваем счетчик цвета
         colorToPaintedPixelsAmountForRound[currentRound][_color] = colorToPaintedPixelsAmountForRound[currentRound][_color].add(1); 
-        
-        //счетчик общего количества закрашенных конкретным цветом клеток для пользователя 
-        uint totalCounterToColorForUser = colorToUserToTotalCounter[_color][msg.sender]; 
-    
-        //увеличиваем счетчик количества закрашенных конкретным цветом клеток для пользователя
-        totalCounterToColorForUser = totalCounterToColorForUser.add(1); 
-
-        //обновляем значения общего кол-ва закрашенных пользователем данным цветом клеток для пользователя в маппинге
-        colorToUserToTotalCounter[_color][msg.sender] = totalCounterToColorForUser; 
-                
-        //счетчик общего количества закрашенных любым цветом клеток для пользователя
-        uint totalCounterForUser = userToTotalCounter[msg.sender]; 
-    
-        //увеличиваем счетчик количества закрашенных любым цветом клеток для пользователя
-        totalCounterForUser = totalCounterForUser.add(1); 
-    
-        //обновляем значение общего количества закрашенных любым цветом клеток для пользователя в маппинге
-        userToTotalCounter[msg.sender] = totalCounterForUser;
-                
-        //увеличиваем значение общего количества разукрашиваний данным цветом для всего раунда
-        colorToTotalPaintsForRound[currentRound][_color] = colorToTotalPaintsForRound[currentRound][_color].add(1); 
     
         //увеличиваем значение общего количества разукрашиваний любым цветом для всего раунда
         totalPaintsForRound[currentRound] = totalPaintsForRound[currentRound].add(1); 
+
+        pixelToPaintTimeForRound[currentRound][_pixel] = now;
 
         timeBankShare[tbIteration][msg.sender]++;
         colorBankShare[cbIteration][_color][msg.sender]++;
@@ -833,7 +873,7 @@ contract Game is Ownable, TimeBankDistributor, ColorTeam, PaintsPool, PaintDisco
             colorBankForRound[currentRound] = colorBankForRound[currentRound].mul(50).div(100); 
             timeBankForRound[currentRound + 1] = timeBankForRound[currentRound];//банк времени переносится на следующий раунд
             timeBankForRound[currentRound] = 0;//банк времени в текущем раунде обнуляется      
-            emit ColorBankPlayed(currentRound);  
+            emit ColorBankPlayed(winnerOfRound[currentRound], currentRound);  
         }
     }
 

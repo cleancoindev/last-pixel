@@ -1,36 +1,11 @@
 pragma solidity ^0.4.24;
 
 import "../node_modules/openzeppelin-solidity/contracts/math/SafeMath.sol";
+import "./Storage.sol";
 
-contract PaintsPool  {
+contract PaintsPool is Storage {
     
     using SafeMath for uint;
-    
-    mapping (uint => uint) public totalPaintsForRound;
-        
-     //поколение краски на ее количество
-    mapping (uint => mapping (uint => uint)) public paintGenToAmountForColor;
-    
-    //время когда краска определенного поколения добавилась в пул
-    mapping (uint => mapping (uint => uint)) public paintGenToStartTimeForColor;
-    
-    //время когда краска определенного поколения закончилась в пуле
-    mapping (uint => mapping (uint => uint)) public paintGenToEndTimeForColor;
-    
-    //булевое значение - о том что, поколение краски началось
-    mapping (uint => mapping (uint => bool)) public paintGenStartedForColor;
-
-    //текущее поколение краски которое расходуется в данный момент
-    mapping (uint => uint) public currentPaintGenForColor;
-    
-    //стоимость вызова функции paint
-    mapping (uint => uint) public callPriceForColor;
-    
-    //стоимость следующего вызова функции paint
-    mapping (uint => uint) public nextCallPriceForColor;
-    
-    //количество единиц краски в общем пуле (10000)
-    uint public maxPaintsInPool;
     
     event CallPriceUpdated(uint indexed newCallPrice);
 

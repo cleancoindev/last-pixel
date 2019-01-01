@@ -10,7 +10,7 @@ contract Roles is Ownable {
         isAdmin[msg.sender] = true;
     }
     
-    function addAdmin(address _new) external onlyOwner() {
+    function addAdmin(address _new) external onlyOwner {
         isAdmin[_new] = true;
     }
     
@@ -19,7 +19,11 @@ contract Roles is Ownable {
         _;
     }
     
-    function removeAdmin(address _admin) external onlyOwner() {
+    function removeAdmin(address _admin) external onlyOwner {
         isAdmin[_admin] = false;
+    }
+
+    function renounceAdmin() external onlyAdmin {
+        isAdmin[msg.sender] = false;
     }
 }

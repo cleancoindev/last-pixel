@@ -4,7 +4,7 @@ import "./Storage.sol";
 import "./Roles.sol";
 import "./GameStateController.sol";
 
-contract TimeTeam is Storage, Roles, GameStateController {
+contract TimeTeam is Storage, GameStateController {
 
     using SafeMath for uint;
     event TBPDistributed(uint indexed round, uint indexed tbIteration, address winner);
@@ -68,3 +68,7 @@ contract TimeTeam is Storage, Roles, GameStateController {
         tbIteration = tbIteration.add(1); //инкрементируем итерацию для банка цвета
     }
 }
+
+//TODO по прошествию 20 минут распределить банки времени и цвета для этого и след раундов
+//написать тесты
+//прокси, логика, бд

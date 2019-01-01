@@ -3,9 +3,6 @@ pragma solidity ^0.4.24;
 import "../node_modules/openzeppelin-solidity/contracts/math/SafeMath.sol";
 
 contract Storage {
-    
-    //сколько всего было разукрашиваний в этом раунде любым цветом
-    mapping (uint => uint) public totalPaintsForRound; 
 
     //цвет клетки в раунде (pаунд => пиксель => цвет)
     mapping (uint => mapping (uint => uint)) public pixelToColorForRound; 
@@ -40,26 +37,46 @@ contract Storage {
     //значение общего количества разукрашиваний данным цветом за весь раунд (раунд => цвет => количество разукрашиваний)
     mapping (uint => mapping (uint => uint)) public colorToTotalPaintsForRound; 
 
-    //счетчик общего количества закрашенных конкретным цветом клеток для пользователя (цвет => адрес => количество клеток)
-    mapping(uint => mapping (address => uint)) public colorToUserToTotalCounter; 
-
-    //счетчик общего количества закрашиваний любым цветом для пользователя(адрес => количество клеток)                                                                        
-    mapping (address => uint) public userToTotalCounter;      
-
     //победитель раунда (раунд => адрес)
     mapping (uint => address) public winnerOfRound; 
 
     //банк который был разыгран в раунде (раунд => разыгранный банк) (1 = банк времени, 2 = банк цвета)
     mapping (uint => uint) public winnerBankForRound; 
 
-    //последний раунд в котором пользователь принимал участие (адрес => раунд)
-    mapping (address => uint) public lastPlayedRound; 
-
     //время закрашивания для каждого пикселя за раунд (0 = не закрашено)
     mapping (uint => mapping (uint => uint)) public pixelToPaintTimeForRound;
 
     //текущий раунд
     uint public currentRound;
+
+    //сколько всего было разукрашиваний в этом раунде любым цветом
+    mapping (uint => uint) public totalPaintsForRound;
+        
+     //поколение краски на ее количество
+    mapping (uint => mapping (uint => uint)) public paintGenToAmountForColor;
+    
+    //время когда краска определенного поколения добавилась в пул
+    mapping (uint => mapping (uint => uint)) public paintGenToStartTimeForColor;
+    
+    //время когда краска определенного поколения закончилась в пуле
+    mapping (uint => mapping (uint => uint)) public paintGenToEndTimeForColor;
+    
+    //булевое значение - о том что, поколение краски началось
+    mapping (uint => mapping (uint => bool)) public paintGenStartedForColor;
+
+    //текущее поколение краски которое расходуется в данный момент
+    mapping (uint => uint) public currentPaintGenForColor;
+    
+    //стоимость вызова функции paint
+    mapping (uint => uint) public callPriceForColor;
+    
+    //стоимость следующего вызова функции paint
+    mapping (uint => uint) public nextCallPriceForColor;
+    
+    //количество единиц краски в общем пуле (10000)
+    uint public maxPaintsInPool;
+
+
 
     uint public tbIteration;
     uint public cbIteration;

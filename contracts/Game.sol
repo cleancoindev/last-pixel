@@ -2,7 +2,7 @@ pragma solidity ^0.4.24;
 
 import "../node_modules/openzeppelin-solidity/contracts/ownership/Ownable.sol";
 import "./DividendsDistributor.sol";
-import "./TimeBankDistributor.sol";
+import "./TimeTeam.sol";
 import "./ColorTeam.sol";
 import "./Storage.sol";
 import "./PaintsPool.sol";
@@ -10,7 +10,7 @@ import "./PaintDiscount.sol";
 import "./IColor.sol";
 import "./GameStateController.sol";
 
-contract Game is Ownable, TimeBankDistributor, ColorTeam, PaintsPool, PaintDiscount, DividendsDistributor, GameStateController {
+contract Game is Ownable, TimeTeam, ColorTeam, PaintsPool, PaintDiscount, DividendsDistributor {
 
     using SafeMath for uint;
     
@@ -25,7 +25,8 @@ contract Game is Ownable, TimeBankDistributor, ColorTeam, PaintsPool, PaintDisco
     
     //ивенты
     event Paint(uint indexed pixelId, uint colorId, address indexed painter, uint indexed round, uint timestamp);
-    event ColorBankPlayed(uint indexed round);
+    event ColorBankPlayed(address winner, uint indexed round);
+    event TimeBankPlayed(address winner, uint indexed round);
    
     //конструктор, задающий изначальные значения переменных
     constructor() public payable { 
@@ -124,7 +125,23 @@ contract Game is Ownable, TimeBankDistributor, ColorTeam, PaintsPool, PaintDisco
         if (now - lastPaintTimeForRound[currentRound] > 20 minutes && lastPaintTimeForRound[currentRound] != 0) {
 
             //распределяем банк времени команде раунда
-            _distributeTimeBank();
+            //победитель текущего раунда - последний закрасивший пиксель пользователь за этот раунд
+            winnerOfRound[currentRound] = lastPainterForRound[currentRound];
+
+            painterToTBP[tbIteration][winnerOfRound[currentRound]] += timeBankForRound[currentRound].mul(45).div(100); 
+            
+            //разыгранный банк этого раунда = банк времени (1)
+            winnerBankForRound[currentRound] = 1; 
+            //10% банка времени переходит в следующий раунд
+            timeBankForRound[currentRound + 1] = timeBankForRound[currentRound].div(10); 
+            //45% банка времени распределится между всей командой участников раунда
+            timeBankForRound[currentRound] = timeBankForRound[currentRound].mul(45).div(100); 
+            //банк цвета переносится на следующий раунд
+            colorBankForRound[currentRound + 1] = colorBankForRound[currentRound]; 
+            //в этом раунде банк цвета обнуляется
+            colorBankForRound[currentRound] = 0; 
+            //ивент - был разыгран банк времени (победитель, раунд)
+            emit TimeBankPlayed(winnerOfRound[currentRound], currentRound);
         }
         
         //закрашиваем пиксели
@@ -183,31 +200,10 @@ contract Game is Ownable, TimeBankDistributor, ColorTeam, PaintsPool, PaintDisco
     
         //при каждой раскраске пикселя, увеличиваем счетчик цвета
         colorToPaintedPixelsAmountForRound[currentRound][_color] = colorToPaintedPixelsAmountForRound[currentRound][_color].add(1); 
-        
-        //счетчик общего количества закрашенных конкретным цветом клеток для пользователя 
-        uint totalCounterToColorForUser = colorToUserToTotalCounter[_color][msg.sender]; 
-    
-        //увеличиваем счетчик количества закрашенных конкретным цветом клеток для пользователя
-        totalCounterToColorForUser = totalCounterToColorForUser.add(1); 
-
-        //обновляем значения общего кол-ва закрашенных пользователем данным цветом клеток для пользователя в маппинге
-        colorToUserToTotalCounter[_color][msg.sender] = totalCounterToColorForUser; 
-                
-        //счетчик общего количества закрашенных любым цветом клеток для пользователя
-        uint totalCounterForUser = userToTotalCounter[msg.sender]; 
-    
-        //увеличиваем счетчик количества закрашенных любым цветом клеток для пользователя
-        totalCounterForUser = totalCounterForUser.add(1); 
-    
-        //обновляем значение общего количества закрашенных любым цветом клеток для пользователя в маппинге
-        userToTotalCounter[msg.sender] = totalCounterForUser;
-                
-        //увеличиваем значение общего количества разукрашиваний данным цветом для всего раунда
-        colorToTotalPaintsForRound[currentRound][_color] = colorToTotalPaintsForRound[currentRound][_color].add(1); 
     
         //увеличиваем значение общего количества разукрашиваний любым цветом для всего раунда
         totalPaintsForRound[currentRound] = totalPaintsForRound[currentRound].add(1); 
-        
+
         pixelToPaintTimeForRound[currentRound][_pixel] = now;
 
         timeBankShare[tbIteration][msg.sender]++;
@@ -239,7 +235,7 @@ contract Game is Ownable, TimeBankDistributor, ColorTeam, PaintsPool, PaintDisco
             colorBankForRound[currentRound] = colorBankForRound[currentRound].mul(50).div(100); 
             timeBankForRound[currentRound + 1] = timeBankForRound[currentRound];//банк времени переносится на следующий раунд
             timeBankForRound[currentRound] = 0;//банк времени в текущем раунде обнуляется      
-            emit ColorBankPlayed(currentRound);  
+            emit ColorBankPlayed(winnerOfRound[currentRound], currentRound);  
         }
     }
 
