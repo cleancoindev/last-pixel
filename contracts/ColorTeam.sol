@@ -52,7 +52,7 @@ contract ColorTeam is Storage, GameStateController {
 
     }
 
-    function distributeCBP() external onlyAdmin isLiveGame {
+    function distributeCBP() internal isLiveGame {
         require(isCBPTransfered[cbIteration] == false, "Color Bank Prizes already transferred for this cbIteration");
         address painter;
         calculateCBP(winnerColorForRound[currentRound]);

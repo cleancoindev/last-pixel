@@ -1,47 +1,19 @@
 pragma solidity ^0.4.24;
 
 import "../node_modules/openzeppelin-solidity/contracts/math/SafeMath.sol";
+import "./Storage.sol";
+import "./Utils.sol";
 
-contract Referral {
+contract Referral is Storage {
     
     using SafeMath for uint;
     
-    //зарегистрированный пользователь
-    mapping (address => bool) public isRegisteredUser;
-    
-    //пользователь имеет свою реферальную ссылку (аккредитованный для получения дивидендов рефера)
-    mapping (address => bool) public hasRefLink;
-
-    //маппинг реферала к реферу
-    mapping (address => address) public referralToReferrer;
-
-    //маппинг реферера к его рефералам
-    mapping (address => address[]) public referrerToReferrals;
-    
-    //маппинг пользователя на наличие рефера
-    mapping (address => bool) public hasReferrer;
-    
-    //маппинг пользователя к его реф ссылке
-    mapping (address => string) public userToRefLink;
-    
-    //маппинг реф ссылки к пользователю - владельцу этой реф ссылки
-    mapping (bytes32 => address) public refLinkToUser;
-    
-    //маппинг проверяющий существование (наличие в базе) реф ссылки
-    mapping (bytes32 => bool) public refLinkExists;
-    
-    //маппинг пользователь к счетчику уникальных зарегистрированных пользователей 
-    mapping (address => uint) public newUserToCounter;
-    
-    //счетчик уникальных пользователей
-    uint public uniqueUsersCount;
-    
-    function paint(string _refLink) {
+    function paint(string _refLink) external {
         
         //если пользователь еще не зарегистрирован
         if (isRegisteredUser[msg.sender] != true) {
             
-            bytes32 refLink = toBytes32(_refLink);
+            bytes32 refLink = Utils.toBytes32(_refLink);
             
             //если такая реф ссылка действительно существует 
             if (refLinkExists[refLink]) { 
@@ -61,7 +33,7 @@ contract Referral {
     function buyRefLink(string _refLink) isValidRefLink (_refLink) external payable {
         require(msg.value == 0.1 ether, "Setting referral link costs 0.1 ETH");
         require(hasRefLink[msg.sender] == false, "You have already generated your ref link");
-        bytes32 refLink = toBytes32(_refLink);
+        bytes32 refLink = Utils.toBytes32(_refLink);
         require(refLinkExists[refLink] != true, "This referral link already exists, try different one");
         hasRefLink[msg.sender] = true;
         userToRefLink[msg.sender] = _refLink;
@@ -76,20 +48,5 @@ contract Referral {
         _;
     }
     
-    // convert a string less than 32 characters long to bytes32
-    function toBytes32(string _string) pure public returns (bytes16) {
-        // make sure that the string isn't too long for this function
-        // will work but will cut off the any characters past the 32nd character
-        bytes16 _stringBytes;
-    
-        // simplest way to convert 32 character long string
-        assembly {
-          // load the memory pointer of string with an offset of 32
-          // 32 passes over non-core data parts of string such as length of text
-          _stringBytes := mload(add(_string, 32))
-        }
-    
-        return _stringBytes;
-    }
 
 }

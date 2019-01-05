@@ -328,8 +328,6 @@ contract Storage {
     //время закрашивания для каждого пикселя за раунд (0 = не закрашено)
     mapping (uint => mapping (uint => uint)) public pixelToPaintTimeForRound;
 
-    //текущий раунд
-    uint public currentRound;
 
     //сколько всего было разукрашиваний в этом раунде любым цветом
     mapping (uint => uint) public totalPaintsForRound;
@@ -355,14 +353,59 @@ contract Storage {
     //стоимость следующего вызова функции paint
     mapping (uint => uint) public nextCallPriceForColor;
     
+
+    //общее количество денег потраченных пользователем на покупку краски данного цвета
+    mapping (uint => mapping (address => uint)) public moneySpentByUserForColor;
+    
+    //маппинг хранящий булевое значение о том, имеет ли пользователь какую либо скидку на покупку краски определенного цвета
+    mapping (uint => mapping (address => bool)) public hasPaintDiscountForColor;
+    
+    //скидка пользователя на покупку краски определенного цвета (в процентах)
+    mapping (uint => mapping (address => uint)) public usersPaintDiscountForColor;
+
+
+     //зарегистрированный пользователь
+    mapping (address => bool) public isRegisteredUser;
+    
+    //пользователь имеет свою реферальную ссылку (аккредитованный для получения дивидендов рефера)
+    mapping (address => bool) public hasRefLink;
+
+    //маппинг реферала к реферу
+    mapping (address => address) public referralToReferrer;
+
+    //маппинг реферера к его рефералам
+    mapping (address => address[]) public referrerToReferrals;
+    
+    //маппинг пользователя на наличие рефера
+    mapping (address => bool) public hasReferrer;
+    
+    //маппинг пользователя к его реф ссылке
+    mapping (address => string) public userToRefLink;
+    
+    //маппинг реф ссылки к пользователю - владельцу этой реф ссылки
+    mapping (bytes32 => address) public refLinkToUser;
+    
+    //маппинг проверяющий существование (наличие в базе) реф ссылки
+    mapping (bytes32 => bool) public refLinkExists;
+    
+    //маппинг пользователь к счетчику уникальных зарегистрированных пользователей 
+    mapping (address => uint) public newUserToCounter;
+    
+    //счетчик уникальных пользователей
+    uint public uniqueUsersCount;
+
+
     //количество единиц краски в общем пуле (10000)
     uint public maxPaintsInPool;
 
 
+    //текущий раунд
+    uint public currentRound;
 
     uint public tbIteration;
     uint public cbIteration;
     uint public paintsCounter; //счетчик закрашиваний любым цветом за все время
+
     //Time Bank Iteration => Painter => Painter's Share in Time Team
     mapping (uint => mapping (address => uint)) public timeBankShare;
     //Color Bank Iteration => Color => Painter => Painter's Share in Time Team
@@ -379,6 +422,8 @@ contract Storage {
 
     mapping (uint => bool) public isCBPTransfered;
     mapping (uint => bool) public isTBPTransfered;
+
+    mapping (address => uint) public lastPlayedRound;
 
 }
 
@@ -401,6 +446,73 @@ contract GameStateController is Roles {
     function resumeGame() external onlyAdmin {
         require (isGamePaused == true, "Game is already live");
         isGamePaused = false;
+    }
+}
+
+// File: contracts/ColorTeam.sol
+
+contract ColorTeam is Storage, GameStateController {
+
+    using SafeMath for uint;
+    event CBPDistributed(uint indexed round, uint indexed cbIteration, address winner);
+
+    //функция формирующая команду цвета из последних 100 участников выигрывшим цветом
+    function formColorTeam(uint _winnerColor) private returns (uint) {
+        
+        for (uint i = paintsCounterForColor[_winnerColor]; i > 0; i--) {
+            uint teamMembersCounter;
+            if (isInCBT[cbIteration][counterToPainterForColor[_winnerColor][i]] == false) {
+                
+                if (paintsCounterForColor[_winnerColor] > 100) {
+                    if (teamMembersCounter >= 100)   
+                        break;
+                }
+            
+                else {
+                    if (teamMembersCounter >= paintsCounterForColor[_winnerColor])
+                        break;
+                }
+                
+                cbTeam[cbIteration].push(counterToPainterForColor[_winnerColor][i]);
+                teamMembersCounter = teamMembersCounter.add(1);
+                isInCBT[cbIteration][counterToPainterForColor[_winnerColor][i]] = true;
+            }
+        }
+        return cbTeam[cbIteration].length;
+    }
+    
+    function calculateCBP(uint _winnerColor) private {
+
+        uint length = formColorTeam(_winnerColor);
+        address painter;
+        uint totalPaintsForTeam; //засунуть в функцию calculateCBP
+
+        for (uint i = 0; i < length; i++) {
+            painter = cbTeam[cbIteration][i];
+            totalPaintsForTeam += colorBankShare[cbIteration][_winnerColor][painter];
+        }
+
+        for (i = 0; i < length; i++) {
+            painter = cbTeam[cbIteration][i];
+            painterToCBP[cbIteration][painter] = (colorBankShare[cbIteration][_winnerColor][painter].mul(colorBankForRound[currentRound])).div(totalPaintsForTeam);
+        }
+
+    }
+
+    function distributeCBP() internal isLiveGame {
+        require(isCBPTransfered[cbIteration] == false, "Color Bank Prizes already transferred for this cbIteration");
+        address painter;
+        calculateCBP(winnerColorForRound[currentRound]);
+        uint length = cbTeam[cbIteration].length;
+        for (uint i = 0; i < length; i++) {
+            painter = cbTeam[cbIteration][i];
+            if(painterToCBP[cbIteration][painter] != 0)
+                painter.transfer(painterToCBP[cbIteration][painter]);
+        }
+        isCBPTransfered[cbIteration] = true;
+        emit CBPDistributed(currentRound, cbIteration, winnerOfRound[currentRound]);
+        currentRound = currentRound.add(1); //следующий раунд 
+        cbIteration = cbIteration.add(1); //инкрементируем итерацию для банка цвета
     }
 }
 
@@ -475,73 +587,6 @@ contract TimeTeam is Storage, GameStateController {
 //написать тесты
 //прокси, логика, бд
 
-// File: contracts/ColorTeam.sol
-
-contract ColorTeam is Storage, GameStateController {
-
-    using SafeMath for uint;
-    event CBPDistributed(uint indexed round, uint indexed cbIteration, address winner);
-
-    //функция формирующая команду цвета из последних 100 участников выигрывшим цветом
-    function formColorTeam(uint _winnerColor) private returns (uint) {
-        
-        for (uint i = paintsCounterForColor[_winnerColor]; i > 0; i--) {
-            uint teamMembersCounter;
-            if (isInCBT[cbIteration][counterToPainterForColor[_winnerColor][i]] == false) {
-                
-                if (paintsCounterForColor[_winnerColor] > 100) {
-                    if (teamMembersCounter >= 100)   
-                        break;
-                }
-            
-                else {
-                    if (teamMembersCounter >= paintsCounterForColor[_winnerColor])
-                        break;
-                }
-                
-                cbTeam[cbIteration].push(counterToPainterForColor[_winnerColor][i]);
-                teamMembersCounter = teamMembersCounter.add(1);
-                isInCBT[cbIteration][counterToPainterForColor[_winnerColor][i]] = true;
-            }
-        }
-        return cbTeam[cbIteration].length;
-    }
-    
-    function calculateCBP(uint _winnerColor) private {
-
-        uint length = formColorTeam(_winnerColor);
-        address painter;
-        uint totalPaintsForTeam; //засунуть в функцию calculateCBP
-
-        for (uint i = 0; i < length; i++) {
-            painter = cbTeam[cbIteration][i];
-            totalPaintsForTeam += colorBankShare[cbIteration][_winnerColor][painter];
-        }
-
-        for (i = 0; i < length; i++) {
-            painter = cbTeam[cbIteration][i];
-            painterToCBP[cbIteration][painter] = (colorBankShare[cbIteration][_winnerColor][painter].mul(colorBankForRound[currentRound])).div(totalPaintsForTeam);
-        }
-
-    }
-
-    function distributeCBP() external onlyAdmin isLiveGame {
-        require(isCBPTransfered[cbIteration] == false, "Color Bank Prizes already transferred for this cbIteration");
-        address painter;
-        calculateCBP(winnerColorForRound[currentRound]);
-        uint length = cbTeam[cbIteration].length;
-        for (uint i = 0; i < length; i++) {
-            painter = cbTeam[cbIteration][i];
-            if(painterToCBP[cbIteration][painter] != 0)
-                painter.transfer(painterToCBP[cbIteration][painter]);
-        }
-        isCBPTransfered[cbIteration] = true;
-        emit CBPDistributed(currentRound, cbIteration, winnerOfRound[currentRound]);
-        currentRound = currentRound.add(1); //следующий раунд 
-        cbIteration = cbIteration.add(1); //инкрементируем итерацию для банка цвета
-    }
-}
-
 // File: contracts/PaintsPool.sol
 
 contract PaintsPool is Storage {
@@ -608,18 +653,9 @@ contract PaintsPool is Storage {
 
 // File: contracts/PaintDiscount.sol
 
-contract PaintDiscount  {
+contract PaintDiscount is Storage {
     
     using SafeMath for uint;
-    
-    //общее количество денег потраченных пользователем на покупку краски данного цвета
-    mapping (uint => mapping (address => uint)) public moneySpentByUserForColor;
-    
-    //маппинг хранящий булевое значение о том, имеет ли пользователь какую либо скидку на покупку краски определенного цвета
-    mapping (uint => mapping (address => bool)) public hasPaintDiscountForColor;
-    
-    //скидка пользователя на покупку краски определенного цвета (в процентах)
-    mapping (uint => mapping (address => uint)) public usersPaintDiscountForColor;
     
     //функция сохраняющая скидку на покупку краски определенного цвета для пользователя
     function _setUsersPaintDiscountForColor(uint _color) internal {
@@ -646,20 +682,82 @@ contract PaintDiscount  {
     
 }
 
-// File: contracts/Game.sol
+// File: contracts/Utils.sol
 
-contract Game is Ownable, TimeTeam, ColorTeam, PaintsPool, PaintDiscount, DividendsDistributor {
+library Utils {
 
+    // convert a string less than 32 characters long to bytes32
+    function toBytes32(string _string) pure external returns (bytes16) {
+        // make sure that the string isn't too long for this function
+        // will work but will cut off the any characters past the 32nd character
+        bytes16 _stringBytes;
+        string memory str = _string;
+    
+        // simplest way to convert 32 character long string
+        assembly {
+          // load the memory pointer of string with an offset of 32
+          // 32 passes over non-core data parts of string such as length of text
+          _stringBytes := mload(add(str, 32))
+        }
+    
+        return _stringBytes;
+    }
+}
+
+// File: contracts/Referral.sol
+
+contract Referral is Storage {
+    
     using SafeMath for uint;
     
-    //последний раунд в котором пользователь принимал участие (аgit дрес => раунд)
-    mapping (address => uint) public lastPlayedRound; 
+    function paint(string _refLink) external {
+        
+        //если пользователь еще не зарегистрирован
+        if (isRegisteredUser[msg.sender] != true) {
+            
+            bytes32 refLink = Utils.toBytes32(_refLink);
+            
+            //если такая реф ссылка действительно существует 
+            if (refLinkExists[refLink]) { 
+                address referrer = refLinkToUser[refLink];
+                referrerToReferrals[referrer].push(msg.sender);
+                referralToReferrer[msg.sender] = referrer;
+                hasReferrer[msg.sender] = true;
+            }
+            
+            uniqueUsersCount = uniqueUsersCount.add(1);
+            newUserToCounter[msg.sender] = uniqueUsersCount;
+            isRegisteredUser[msg.sender] = true;
+        }
+    }
+    
+    //функция для покупки реферальной ссылки для пользователя (длина в диапазоне от 4 до 8 символов)
+    function buyRefLink(string _refLink) isValidRefLink (_refLink) external payable {
+        require(msg.value == 0.1 ether, "Setting referral link costs 0.1 ETH");
+        require(hasRefLink[msg.sender] == false, "You have already generated your ref link");
+        bytes32 refLink = Utils.toBytes32(_refLink);
+        require(refLinkExists[refLink] != true, "This referral link already exists, try different one");
+        hasRefLink[msg.sender] = true;
+        userToRefLink[msg.sender] = _refLink;
+        refLinkExists[refLink] = true;
+        refLinkToUser[refLink] = msg.sender;
+    }
+    
+    //модификатор проверяющий длину реф. ссылки (длина должна быть в диапазоне от 4 до 8 символов)
+    modifier isValidRefLink(string _str) {
+        require(bytes(_str).length >= 4, "Ref link should be of length [4,8]");
+        require(bytes(_str).length <= 8, "Ref link should be of length [4,8]");
+        _;
+    }
+    
 
-    //общее количество уникальных пользователей
-    uint public uniqueUsers;
+}
 
-    //маппинг на булевое значение о том, что пользователь зарегистрирован в системе (принимал участие в игре)
-    mapping (address => bool) public isRegistered;
+// File: contracts/Game.sol
+
+contract Game is Ownable, ColorTeam, PaintsPool, PaintDiscount, Referral, DividendsDistributor {
+
+    using SafeMath for uint;
     
     //ивенты
     event Paint(uint indexed pixelId, uint colorId, address indexed painter, uint indexed round, uint timestamp);
@@ -703,37 +801,29 @@ contract Game is Ownable, TimeTeam, ColorTeam, PaintsPool, PaintDiscount, Divide
         return pixelToColorForRound[currentRound][_pixel];
     }
     
-    modifier isRegisteredUser() {
+    modifier isRegistered() {
         //если пользоваель ни разу не принимал участие в игре, инкрементируем значение уникальных пользователй
-        if (isRegistered[msg.sender] == false) {
-            isRegistered[msg.sender] = true;
-            uniqueUsers = uniqueUsers.add(1);
+        if (isRegisteredUser[msg.sender] == false) {
+            isRegisteredUser[msg.sender] = true;
+            uniqueUsersCount = uniqueUsersCount.add(1);
         }
         _;
     }        
     
     //функция оценивающая сколько будет стоить функция закрашивания
-    function estimateCallPrice(uint[] _pixels, uint _color) public view returns (uint) {
-        
-        uint price;
-        uint discount;
-        uint discountCallPrice;
-        uint moneySpent;
-        uint totalCallPrice;
-        bool hasDiscount;
-        
+    function estimateCallPrice(uint[] _pixels, uint _color) public view returns (uint totalCallPrice) {
 
-        moneySpent = moneySpentByUserForColor[_color][msg.sender];
-        hasDiscount = hasPaintDiscountForColor[_color][msg.sender];
-        discount = usersPaintDiscountForColor[_color][msg.sender];
+        uint moneySpent = moneySpentByUserForColor[_color][msg.sender];
+        bool hasDiscount = hasPaintDiscountForColor[_color][msg.sender];
+        uint discount = usersPaintDiscountForColor[_color][msg.sender];
        
         
         for (uint i = 0; i < _pixels.length; i++) {
             
-            discountCallPrice = (nextCallPriceForColor[_color].mul(100 - discount)).div(100);
+            uint discountCallPrice = (nextCallPriceForColor[_color].mul(100 - discount)).div(100);
             
             if (hasDiscount == true) 
-                price = discountCallPrice;
+                uint price = discountCallPrice;
             else
                 price = nextCallPriceForColor[_color]; 
 
@@ -750,12 +840,10 @@ contract Game is Ownable, TimeTeam, ColorTeam, PaintsPool, PaintDiscount, Divide
             }
             
         }   
-        
-        return totalCallPrice;
     }
     
 
-    function paint(uint[] _pixels, uint _color) external payable isRegisteredUser isLiveGame {
+    function paint(uint[] _pixels, uint _color) external payable isRegistered isLiveGame {
 
         require(msg.value == estimateCallPrice(_pixels, _color), "Wrong call price");
 
@@ -874,6 +962,8 @@ contract Game is Ownable, TimeTeam, ColorTeam, PaintsPool, PaintDiscount, Divide
             timeBankForRound[currentRound + 1] = timeBankForRound[currentRound];//банк времени переносится на следующий раунд
             timeBankForRound[currentRound] = 0;//банк времени в текущем раунде обнуляется      
             emit ColorBankPlayed(winnerOfRound[currentRound], currentRound);  
+
+            distributeCBP();
         }
     }
 

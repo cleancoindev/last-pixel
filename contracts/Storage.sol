@@ -46,8 +46,6 @@ contract Storage {
     //время закрашивания для каждого пикселя за раунд (0 = не закрашено)
     mapping (uint => mapping (uint => uint)) public pixelToPaintTimeForRound;
 
-    //текущий раунд
-    uint public currentRound;
 
     //сколько всего было разукрашиваний в этом раунде любым цветом
     mapping (uint => uint) public totalPaintsForRound;
@@ -73,14 +71,59 @@ contract Storage {
     //стоимость следующего вызова функции paint
     mapping (uint => uint) public nextCallPriceForColor;
     
+
+    //общее количество денег потраченных пользователем на покупку краски данного цвета
+    mapping (uint => mapping (address => uint)) public moneySpentByUserForColor;
+    
+    //маппинг хранящий булевое значение о том, имеет ли пользователь какую либо скидку на покупку краски определенного цвета
+    mapping (uint => mapping (address => bool)) public hasPaintDiscountForColor;
+    
+    //скидка пользователя на покупку краски определенного цвета (в процентах)
+    mapping (uint => mapping (address => uint)) public usersPaintDiscountForColor;
+
+
+     //зарегистрированный пользователь
+    mapping (address => bool) public isRegisteredUser;
+    
+    //пользователь имеет свою реферальную ссылку (аккредитованный для получения дивидендов рефера)
+    mapping (address => bool) public hasRefLink;
+
+    //маппинг реферала к реферу
+    mapping (address => address) public referralToReferrer;
+
+    //маппинг реферера к его рефералам
+    mapping (address => address[]) public referrerToReferrals;
+    
+    //маппинг пользователя на наличие рефера
+    mapping (address => bool) public hasReferrer;
+    
+    //маппинг пользователя к его реф ссылке
+    mapping (address => string) public userToRefLink;
+    
+    //маппинг реф ссылки к пользователю - владельцу этой реф ссылки
+    mapping (bytes32 => address) public refLinkToUser;
+    
+    //маппинг проверяющий существование (наличие в базе) реф ссылки
+    mapping (bytes32 => bool) public refLinkExists;
+    
+    //маппинг пользователь к счетчику уникальных зарегистрированных пользователей 
+    mapping (address => uint) public newUserToCounter;
+    
+    //счетчик уникальных пользователей
+    uint public uniqueUsersCount;
+
+
     //количество единиц краски в общем пуле (10000)
     uint public maxPaintsInPool;
 
 
+    //текущий раунд
+    uint public currentRound;
 
     uint public tbIteration;
     uint public cbIteration;
     uint public paintsCounter; //счетчик закрашиваний любым цветом за все время
+
     //Time Bank Iteration => Painter => Painter's Share in Time Team
     mapping (uint => mapping (address => uint)) public timeBankShare;
     //Color Bank Iteration => Color => Painter => Painter's Share in Time Team
@@ -97,5 +140,7 @@ contract Storage {
 
     mapping (uint => bool) public isCBPTransfered;
     mapping (uint => bool) public isTBPTransfered;
+
+    mapping (address => uint) public lastPlayedRound;
 
 }

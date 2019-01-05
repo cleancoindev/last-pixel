@@ -87,32 +87,4 @@ contract("Color Bank Distribution Test", async accounts => {
     console.log("Current round:", currentRound.toNumber());
     let callPrice = await gameMock.callPriceForColor(2);
   });
-
-  //   it("Color Bank should equal 1.18808 ETH after 300 paints", async () => {
-  //     let currentRound = await game.currentRound.call();
-  //     let color = 2;
-  //     //10000
-
-  //     for (i = 1; i <= 300; i++) {
-  //       let hasPaintDiscount = await game.hasPaintDiscountForColor(
-  //         color,
-  //         accounts[1]
-  //       );
-  //       let callPrice = await game.callPriceForColor(color);
-  //       let discount = await game.usersPaintDiscountForColor(color, accounts[1]);
-
-  //       let discountCallPrice = (callPrice * (100 - discount)) / 100;
-
-  //       if (hasPaintDiscount) {
-  //         await game.paint(i, color, {
-  //           value: discountCallPrice,
-  //           from: accounts[1]
-  //         });
-  //       } else {
-  //         await game.paint(i, color, { value: callPrice, from: accounts[1] });
-  //       }
-  //     }
-  //     let colorBank = await game.colorBankForRound(currentRound);
-  //     assert.equal(colorBank.toNumber(), 1188080000000000000);
-  //   });
 });

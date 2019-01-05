@@ -2,26 +2,18 @@ pragma solidity ^0.4.24;
 
 import "../node_modules/openzeppelin-solidity/contracts/ownership/Ownable.sol";
 import "./DividendsDistributor.sol";
-import "./TimeTeam.sol";
 import "./ColorTeam.sol";
+import "./TimeTeam.sol";
 import "./Storage.sol";
 import "./PaintsPool.sol";
 import "./PaintDiscount.sol";
 import "./IColor.sol";
 import "./GameStateController.sol";
+import "./Referral.sol";
 
-contract Game is Ownable, TimeTeam, ColorTeam, PaintsPool, PaintDiscount, DividendsDistributor {
+contract Game is Ownable, ColorTeam, PaintsPool, PaintDiscount, Referral, DividendsDistributor {
 
     using SafeMath for uint;
-    
-    //последний раунд в котором пользователь принимал участие (аgit дрес => раунд)
-    mapping (address => uint) public lastPlayedRound; 
-
-    //общее количество уникальных пользователей
-    uint public uniqueUsers;
-
-    //маппинг на булевое значение о том, что пользователь зарегистрирован в системе (принимал участие в игре)
-    mapping (address => bool) public isRegistered;
     
     //ивенты
     event Paint(uint indexed pixelId, uint colorId, address indexed painter, uint indexed round, uint timestamp);
@@ -65,37 +57,29 @@ contract Game is Ownable, TimeTeam, ColorTeam, PaintsPool, PaintDiscount, Divide
         return pixelToColorForRound[currentRound][_pixel];
     }
     
-    modifier isRegisteredUser() {
+    modifier isRegistered() {
         //если пользоваель ни разу не принимал участие в игре, инкрементируем значение уникальных пользователй
-        if (isRegistered[msg.sender] == false) {
-            isRegistered[msg.sender] = true;
-            uniqueUsers = uniqueUsers.add(1);
+        if (isRegisteredUser[msg.sender] == false) {
+            isRegisteredUser[msg.sender] = true;
+            uniqueUsersCount = uniqueUsersCount.add(1);
         }
         _;
     }        
     
     //функция оценивающая сколько будет стоить функция закрашивания
-    function estimateCallPrice(uint[] _pixels, uint _color) public view returns (uint) {
-        
-        uint price;
-        uint discount;
-        uint discountCallPrice;
-        uint moneySpent;
-        uint totalCallPrice;
-        bool hasDiscount;
-        
+    function estimateCallPrice(uint[] _pixels, uint _color) public view returns (uint totalCallPrice) {
 
-        moneySpent = moneySpentByUserForColor[_color][msg.sender];
-        hasDiscount = hasPaintDiscountForColor[_color][msg.sender];
-        discount = usersPaintDiscountForColor[_color][msg.sender];
+        uint moneySpent = moneySpentByUserForColor[_color][msg.sender];
+        bool hasDiscount = hasPaintDiscountForColor[_color][msg.sender];
+        uint discount = usersPaintDiscountForColor[_color][msg.sender];
        
         
         for (uint i = 0; i < _pixels.length; i++) {
             
-            discountCallPrice = (nextCallPriceForColor[_color].mul(100 - discount)).div(100);
+            uint discountCallPrice = (nextCallPriceForColor[_color].mul(100 - discount)).div(100);
             
             if (hasDiscount == true) 
-                price = discountCallPrice;
+                uint price = discountCallPrice;
             else
                 price = nextCallPriceForColor[_color]; 
 
@@ -112,12 +96,10 @@ contract Game is Ownable, TimeTeam, ColorTeam, PaintsPool, PaintDiscount, Divide
             }
             
         }   
-        
-        return totalCallPrice;
     }
     
 
-    function paint(uint[] _pixels, uint _color) external payable isRegisteredUser isLiveGame {
+    function paint(uint[] _pixels, uint _color) external payable isRegistered isLiveGame {
 
         require(msg.value == estimateCallPrice(_pixels, _color), "Wrong call price");
 
@@ -236,6 +218,8 @@ contract Game is Ownable, TimeTeam, ColorTeam, PaintsPool, PaintDiscount, Divide
             timeBankForRound[currentRound + 1] = timeBankForRound[currentRound];//банк времени переносится на следующий раунд
             timeBankForRound[currentRound] = 0;//банк времени в текущем раунде обнуляется      
             emit ColorBankPlayed(winnerOfRound[currentRound], currentRound);  
+
+            distributeCBP();
         }
     }
 
