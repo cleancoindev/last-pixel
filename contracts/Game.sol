@@ -1,19 +1,22 @@
 pragma solidity ^0.4.24;
 
-import "../node_modules/openzeppelin-solidity/contracts/ownership/Ownable.sol";
-import "./DividendsDistributor.sol";
-import "./ColorTeam.sol";
-import "./TimeTeam.sol";
-import "./Storage.sol";
+// import "../node_modules/openzeppelin-solidity/contracts/ownership/Ownable.sol";
+// import "./DividendsDistributor.sol";
+// import "./ColorTeam.sol";
+// import "./TimeTeam.sol";
 import "./PaintsPool.sol";
 import "./PaintDiscount.sol";
-import "./IColor.sol";
+// import "./IColor.sol";
 import "./GameStateController.sol";
 import "./Referral.sol";
+//import "./StorageV1.sol";
 
-contract Game is Ownable, ColorTeam, PaintsPool, PaintDiscount, Referral, DividendsDistributor {
+contract Game is GameStateController, Referral, PaintDiscount, PaintsPool{
 
     using SafeMath for uint;
+
+    address public timeTeamInstance;
+    address public colorTeamInstance;
     
     //ивенты
     event Paint(uint indexed pixelId, uint colorId, address indexed painter, uint indexed round, uint timestamp);
@@ -21,14 +24,16 @@ contract Game is Ownable, ColorTeam, PaintsPool, PaintDiscount, Referral, Divide
     event TimeBankPlayed(address winner, uint indexed round);
    
     //конструктор, задающий изначальные значения переменных
-    constructor() public payable { 
+    constructor(address _colorTeam, address _timeTeam) public payable { 
+        timeTeamInstance = _timeTeam;
+        colorTeamInstance = _colorTeam;
         
         maxPaintsInPool = 10000; //10000 in production
         currentRound = 1;
         cbIteration = 1;
         tbIteration = 1;
         
-        for (uint i = 1; i <= 3; i++) {
+        for (uint i = 1; i <= 8; i++) {
             currentPaintGenForColor[i] = 1;
             callPriceForColor[i] = 0.01 ether;
             nextCallPriceForColor[i] = callPriceForColor[i];
@@ -57,22 +62,12 @@ contract Game is Ownable, ColorTeam, PaintsPool, PaintDiscount, Referral, Divide
         return pixelToColorForRound[currentRound][_pixel];
     }
     
-    modifier isRegistered() {
-        //если пользоваель ни разу не принимал участие в игре, инкрементируем значение уникальных пользователй
-        if (isRegisteredUser[msg.sender] == false) {
-            isRegisteredUser[msg.sender] = true;
-            uniqueUsersCount = uniqueUsersCount.add(1);
-        }
-        _;
-    }        
-    
     //функция оценивающая сколько будет стоить функция закрашивания
     function estimateCallPrice(uint[] _pixels, uint _color) public view returns (uint totalCallPrice) {
 
         uint moneySpent = moneySpentByUserForColor[_color][msg.sender];
         bool hasDiscount = hasPaintDiscountForColor[_color][msg.sender];
         uint discount = usersPaintDiscountForColor[_color][msg.sender];
-       
         
         for (uint i = 0; i < _pixels.length; i++) {
             
@@ -97,9 +92,8 @@ contract Game is Ownable, ColorTeam, PaintsPool, PaintDiscount, Referral, Divide
             
         }   
     }
-    
 
-    function paint(uint[] _pixels, uint _color) external payable isRegistered isLiveGame {
+    function paint(uint[] _pixels, uint _color, string _refLink) external payable isRegistered(_refLink) isLiveGame {
 
         require(msg.value == estimateCallPrice(_pixels, _color), "Wrong call price");
 
@@ -127,7 +121,7 @@ contract Game is Ownable, ColorTeam, PaintsPool, PaintDiscount, Referral, Divide
         }
         
         //закрашиваем пиксели
-        for(uint i = 0; i < _pixels.length; i++) {
+        for (uint i = 0; i < _pixels.length; i++) {
             _paint(_pixels[i], _color);
         }
         
@@ -219,7 +213,7 @@ contract Game is Ownable, ColorTeam, PaintsPool, PaintDiscount, Referral, Divide
             timeBankForRound[currentRound] = 0;//банк времени в текущем раунде обнуляется      
             emit ColorBankPlayed(winnerOfRound[currentRound], currentRound);  
 
-            distributeCBP();
+            //distributeCBP();
         }
     }
 
@@ -236,6 +230,24 @@ contract Game is Ownable, ColorTeam, PaintsPool, PaintDiscount, Referral, Divide
 
         //20% ставки идет на пассивные доходы бенефециариев
         dividendsBank = dividendsBank.add(msg.value.mul(20).div(100)); 
+    }
+
+    //функция распределения дивидендов (пассивных доходов) - будет работать после подключения инстансов контрактов Цвета и Пикселя
+    function _distributeDividends(uint _color) internal {
+        
+        //require(ownerOfColor[_color] != address(0), "There is no such color");
+
+        //25% дивидендов распределяем организаторам (может быть смарт контракт)
+        withdrawalBalances[founders] = withdrawalBalances[founders].add(dividendsBank.mul(25).div(100)); 
+    
+        //25% дивидендов распределяем бенефециарию цвета
+        withdrawalBalances[ownerOfColor[_color]] += dividendsBank.mul(25).div(100);
+    
+        //25% дивидендов распределяем бенефециарию пикселя
+        withdrawalBalances[ownerOfPixel] += dividendsBank.mul(25).div(100);
+    
+        //25% дивидендов распределяем реферреру, если он есть
+        // withdrawalBalances[referrer] += dividendsBank.mul(25).div(100);
     }
     
 }

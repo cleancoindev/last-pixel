@@ -1,10 +1,10 @@
 pragma solidity ^0.4.24;
 import "../node_modules/openzeppelin-solidity/contracts/math/SafeMath.sol";
-import "./Storage.sol";
+import "./StorageV1.sol";
 import "./Roles.sol";
 import "./GameStateController.sol";
 
-contract TimeTeam is Storage, GameStateController {
+contract TimeTeam is StorageV1, GameStateController {
 
     using SafeMath for uint;
     event TBPDistributed(uint indexed round, uint indexed tbIteration, address winner);

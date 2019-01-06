@@ -1,12 +1,13 @@
 pragma solidity ^0.4.24;
 import "../node_modules/openzeppelin-solidity/contracts/math/SafeMath.sol";
-import "./Storage.sol";
+import "./StorageV1.sol";
 import "./Roles.sol";
 import "./GameStateController.sol";
 
-contract ColorTeam is Storage, GameStateController {
+contract ColorTeam is StorageV1, GameStateController {
 
     using SafeMath for uint;
+    
     event CBPDistributed(uint indexed round, uint indexed cbIteration, address winner);
 
     //функция формирующая команду цвета из последних 100 участников выигрывшим цветом

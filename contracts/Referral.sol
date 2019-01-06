@@ -1,14 +1,14 @@
 pragma solidity ^0.4.24;
 
 import "../node_modules/openzeppelin-solidity/contracts/math/SafeMath.sol";
-import "./Storage.sol";
+import "./StorageV1.sol";
 import "./Utils.sol";
 
-contract Referral is Storage {
+contract Referral is StorageV1 {
     
     using SafeMath for uint;
     
-    function paint(string _refLink) external {
+    modifier isRegistered(string _refLink) {
         
         //если пользователь еще не зарегистрирован
         if (isRegisteredUser[msg.sender] != true) {
@@ -27,6 +27,8 @@ contract Referral is Storage {
             newUserToCounter[msg.sender] = uniqueUsersCount;
             isRegisteredUser[msg.sender] = true;
         }
+
+        _;
     }
     
     //функция для покупки реферальной ссылки для пользователя (длина в диапазоне от 4 до 8 символов)

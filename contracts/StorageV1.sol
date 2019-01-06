@@ -1,8 +1,9 @@
 pragma solidity ^0.4.24;
 
 import "../node_modules/openzeppelin-solidity/contracts/math/SafeMath.sol";
+import "./StorageV0.sol";
 
-contract Storage {
+contract StorageV1 is StorageV0 {
 
     //цвет клетки в раунде (pаунд => пиксель => цвет)
     mapping (uint => mapping (uint => uint)) public pixelToColorForRound; 
@@ -46,7 +47,6 @@ contract Storage {
     //время закрашивания для каждого пикселя за раунд (0 = не закрашено)
     mapping (uint => mapping (uint => uint)) public pixelToPaintTimeForRound;
 
-
     //сколько всего было разукрашиваний в этом раунде любым цветом
     mapping (uint => uint) public totalPaintsForRound;
         
@@ -71,7 +71,6 @@ contract Storage {
     //стоимость следующего вызова функции paint
     mapping (uint => uint) public nextCallPriceForColor;
     
-
     //общее количество денег потраченных пользователем на покупку краски данного цвета
     mapping (uint => mapping (address => uint)) public moneySpentByUserForColor;
     
@@ -80,7 +79,6 @@ contract Storage {
     
     //скидка пользователя на покупку краски определенного цвета (в процентах)
     mapping (uint => mapping (address => uint)) public usersPaintDiscountForColor;
-
 
      //зарегистрированный пользователь
     mapping (address => bool) public isRegisteredUser;
@@ -112,35 +110,91 @@ contract Storage {
     //счетчик уникальных пользователей
     uint public uniqueUsersCount;
 
-
     //количество единиц краски в общем пуле (10000)
     uint public maxPaintsInPool;
-
 
     //текущий раунд
     uint public currentRound;
 
+    //итерация банка времени
     uint public tbIteration;
+
+    //итерация банка цвета
     uint public cbIteration;
-    uint public paintsCounter; //счетчик закрашиваний любым цветом за все время
+
+    //счетчик закрашиваний любым цветом за все время
+    uint public paintsCounter; 
 
     //Time Bank Iteration => Painter => Painter's Share in Time Team
     mapping (uint => mapping (address => uint)) public timeBankShare;
+
     //Color Bank Iteration => Color => Painter => Painter's Share in Time Team
     mapping (uint => mapping (uint => mapping (address => uint))) public colorBankShare;
-    mapping (uint => uint) public paintsCounterForColor; //счетчик закрашиваний конкретным цветом за все время
-    mapping (uint => address[]) public cbTeam; //for cbIteration
-    mapping (uint => address[]) public tbTeam; //for tbIteration
-    mapping (uint => address) public counterToPainter; //cчетчик => пользователь
-    mapping (uint => mapping (uint => address)) public counterToPainterForColor; //цвет => cчетчик => пользователь    
-    mapping (uint => mapping (address => bool)) public isInCBT; //for cbIteration !should not be public
-    mapping (uint => mapping (address => bool)) public isInTBT; //for tbIteration !should not be public
-    mapping (uint => mapping (address => uint)) public painterToCBP; //cbIteration => painter => color bank prize
-    mapping (uint => mapping (address => uint)) public painterToTBP; //tbIteration => painter => time bank prize
 
+    //счетчик закрашиваний конкретным цветом за все время
+    mapping (uint => uint) public paintsCounterForColor; 
+
+    //cbIteration => команда цвета
+    mapping (uint => address[]) public cbTeam; 
+
+    //tbIteration => команда цвета
+    mapping (uint => address[]) public tbTeam;
+
+     //cчетчик => пользователь
+    mapping (uint => address) public counterToPainter;
+
+    //цвет => cчетчик => пользователь    
+    mapping (uint => mapping (uint => address)) public counterToPainterForColor; 
+
+    //cbIteration => пользователь !should not be public
+    mapping (uint => mapping (address => bool)) public isInCBT; 
+
+    //tbIteration => пользователь !should not be public
+    mapping (uint => mapping (address => bool)) public isInTBT; 
+
+    //cbIteration => painter => color bank prize
+    mapping (uint => mapping (address => uint)) public painterToCBP; 
+
+    //tbIteration => painter => time bank prize
+    mapping (uint => mapping (address => uint)) public painterToTBP; 
+
+    //сbIteration => булевое значение
     mapping (uint => bool) public isCBPTransfered;
+
+    //tbIteration => булевое значент
     mapping (uint => bool) public isTBPTransfered;
 
+    //последний раунд в котором пользователь принимал участие
     mapping (address => uint) public lastPlayedRound;
+    
+    //Dividends Distribution
+    mapping (uint => address) public ownerOfColor;
+
+     //балансы доступные для вывода (накопленный пассивный доход за все раунды)
+    mapping (address => uint) public withdrawalBalances; 
+    
+    //время последнего вывода пассивного дохода для адреса для любого раунда (адрес => время)
+    mapping (address => uint) addressToLastWithdrawalTime; 
+    
+    //банк пассивных доходов
+    uint public dividendsBank;
+
+    struct Claim {
+        uint id;
+        address claimer;
+        bool isResolved;
+        uint timestamp;
+    }
+
+    uint public claimId;
+    Claim[] public claims;
+
+    // захардкоженные адреса для тестирования функции claimDividens()
+    // в продакшене это будут адреса бенефециариев Цветов и Пикселей : withdrawalBalances[ownerOf(_pixel)], withdrawalBalances[ownerOf(_color)]
+    //address public ownerOfColor = 0xf106a93c5ca900bfae6345b61fcfae9d75cb031d;
+    address public ownerOfPixel = 0xca35b7d915458ef540ade6068dfe2f44e8fa733c;
+    address public founders = 0x3e4d187df7d8a0820eaf4174d17b160157610912;
+    
+    bool public isGamePaused;
 
 }

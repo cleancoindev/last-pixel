@@ -1,10 +1,9 @@
 var Game = artifacts.require("Game");
-var GameMock = artifacts.require("GameMock");
+var Transparent = artifacts.require("Transparent");
+var ERC1538Delegate = artifacts.require("ERC1538Delegate");
 
 module.exports = async function(deployer) {
-  deployer.deploy(Game, { gas: 6790000 });
-  // deployer.deploy(GameMock, {
-  //   gas: 6721000,
-  //   value: web3.toWei(10)truff
-  // });
+  deployer.deploy(ERC1538Delegate).then(function() {
+    return deployer.deploy(Transparent, ERC1538Delegate.address);
+  });
 };

@@ -1,9 +1,9 @@
 pragma solidity ^0.4.24;
 
 import "../node_modules/openzeppelin-solidity/contracts/math/SafeMath.sol";
-import "./Storage.sol";
+import "./StorageV1.sol";
 
-contract PaintsPool is Storage {
+contract PaintsPool is StorageV1 {
     
     using SafeMath for uint;
     

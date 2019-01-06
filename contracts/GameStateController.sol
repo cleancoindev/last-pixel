@@ -1,9 +1,8 @@
 pragma solidity ^0.4.24;
 import "./Roles.sol";
+import "./StorageV1.sol";
 
-contract GameStateController is Roles {
-
-    bool public isGamePaused;
+contract GameStateController is StorageV1, Roles {
 
     modifier isLiveGame() {
         require(isGamePaused == false, "Game is paused");
