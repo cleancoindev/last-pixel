@@ -2,7 +2,7 @@ pragma solidity ^0.4.24;
 import "./Modifiers.sol";
 
 /**
-** Wrapper for Transparent Proxy Contract with all the functions' signatures
+** Wrapper for Transparent Proxy Contract to interact with all the functions' signatures
 **/
 
 contract Wrapper is Modifiers {
@@ -30,7 +30,6 @@ contract Wrapper is Modifiers {
     function renounceAdmin() external onlyAdmin {}
 
     //Game.sol
-    function hardCode() external {}
     function getPixelColor(uint _pixel) external view returns (uint) {}
     function estimateCallPrice(uint[] _pixels, uint _color) public view returns (uint totalCallPrice) {}
     function paint(uint[] _pixels, uint _color, string _refLink) external payable isRegistered(_refLink) isLiveGame {}

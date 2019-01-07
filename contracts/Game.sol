@@ -6,12 +6,6 @@ import "./Utils.sol";
 
 contract Game is PaintDiscount, PaintsPool, Modifiers {
     using SafeMath for uint;
-   
-    function hardCode() external {
-        timeBankForRound[currentRound] = 1 ether;
-        colorBankForRound[currentRound] = 1 ether;
-        colorToPaintedPixelsAmountForRound[currentRound][2] = 9998; 
-    }
     
     //возвращает цвет пикселя в этом раунде
     function getPixelColor(uint _pixel) external view returns (uint) {

@@ -17,4 +17,4 @@
     "addAdmin(address)removeAdmin(address)renounceAdmin()", "Added functions from Roles.sol"
 
     //Game.sol
-    "hardCode()getPixelColor(uint256)estimateCallPrice(uint256[],uint256)paint(uint256[],uint256,string)", "Added functions from Game.sol"
+    "getPixelColor(uint256)estimateCallPrice(uint256[],uint256)paint(uint256[],uint256,string)", "Added functions from Game.sol"
