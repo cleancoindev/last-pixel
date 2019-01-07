@@ -5,7 +5,7 @@ import "./Modifiers.sol";
 ** Wrapper for Transparent Proxy Contract with all the functions' signatures
 **/
 
-contract Proxy is Modifiers {
+contract Wrapper is Modifiers {
 
     //ColorTeam.sol
     function distributeCBP() external isLiveGame onlyAdmin {}
