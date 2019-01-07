@@ -3,11 +3,11 @@ import "./StorageV1.sol";
 
 contract Initializer is StorageV1 {
 
-    //constructors which should have been in any the implementation contract
+    //constructor for ERC1538 approach
     function _initializer() internal {
 
         isAdmin[msg.sender] = true;
-        maxPaintsInPool = 10000; //10000 in production
+        maxPaintsInPool = 10000; 
         currentRound = 1;
         cbIteration = 1;
         tbIteration = 1;

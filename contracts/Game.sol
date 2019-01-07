@@ -2,6 +2,7 @@ pragma solidity ^0.4.24;
 import "./PaintsPool.sol";
 import "./PaintDiscount.sol";
 import "./Modifiers.sol";
+import "./Utils.sol";
 
 contract Game is PaintDiscount, PaintsPool, Modifiers {
     using SafeMath for uint;
@@ -203,6 +204,24 @@ contract Game is PaintDiscount, PaintsPool, Modifiers {
     
         //25% дивидендов распределяем реферреру, если он есть
         // withdrawalBalances[referrer] += dividendsBank.mul(25).div(100);
+    }
+
+    modifier isRegistered(string _refLink) {
+        //если пользователь еще не зарегистрирован
+        if (isRegisteredUser[msg.sender] != true) {
+            bytes32 refLink = Utils.toBytes32(_refLink);
+            //если такая реф ссылка действительно существует 
+            if (refLinkExists[refLink]) { 
+                address referrer = refLinkToUser[refLink];
+                referrerToReferrals[referrer].push(msg.sender);
+                referralToReferrer[msg.sender] = referrer;
+                hasReferrer[msg.sender] = true;
+            }
+            uniqueUsersCount = uniqueUsersCount.add(1);
+            newUserToCounter[msg.sender] = uniqueUsersCount;
+            isRegisteredUser[msg.sender] = true;
+        }
+        _;
     }
     
 }
