@@ -1,13 +1,10 @@
 pragma solidity ^0.4.24;
-import "../node_modules/openzeppelin-solidity/contracts/math/SafeMath.sol";
-import "./StorageV1.sol";
+import "./SafeMath.sol";
 import "./Modifiers.sol";
 
-contract ColorTeam is StorageV1, Modifiers {
+contract ColorTeam is Modifiers {
 
     using SafeMath for uint;
-
-    event CBPDistributed(uint indexed round, uint indexed cbIteration, address winner);
 
     //функция формирующая команду цвета из последних 100 участников выигрывшим цветом
     function formColorTeam(uint _winnerColor) private returns (uint) {

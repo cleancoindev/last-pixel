@@ -1,18 +1,10 @@
 pragma solidity ^0.4.24;
-
-// import "../node_modules/openzeppelin-solidity/contracts/ownership/Ownable.sol";
 import "./PaintsPool.sol";
 import "./PaintDiscount.sol";
 import "./Modifiers.sol";
 
 contract Game is PaintDiscount, PaintsPool, Modifiers {
-
     using SafeMath for uint;
-
-    //ивенты
-    event Paint(uint indexed pixelId, uint colorId, address indexed painter, uint indexed round, uint timestamp);
-    event ColorBankPlayed(address winner, uint indexed round);
-    event TimeBankPlayed(address winner, uint indexed round);
    
     function hardCode() external {
         timeBankForRound[currentRound] = 1 ether;
@@ -212,6 +204,5 @@ contract Game is PaintDiscount, PaintsPool, Modifiers {
         //25% дивидендов распределяем реферреру, если он есть
         // withdrawalBalances[referrer] += dividendsBank.mul(25).div(100);
     }
-      
     
 }

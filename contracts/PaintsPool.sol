@@ -1,13 +1,9 @@
 pragma solidity ^0.4.24;
-
-import "../node_modules/openzeppelin-solidity/contracts/math/SafeMath.sol";
+import "./SafeMath.sol";
 import "./StorageV1.sol";
 
 contract PaintsPool is StorageV1 {
-    
     using SafeMath for uint;
-    
-    event CallPriceUpdated(uint indexed newCallPrice);
 
     //функция обновления цены вызова функции закрашивания (paint)
     function _updateCallPrice(uint _color) private {

@@ -1,13 +1,9 @@
 pragma solidity ^0.4.24;
-import "../node_modules/openzeppelin-solidity/contracts/math/SafeMath.sol";
-import "./StorageV1.sol";
-import "./Roles.sol";
-import "./GameStateController.sol";
+import "./SafeMath.sol";
+import "./Modifiers.sol";
 
-contract TimeTeam is StorageV1, GameStateController {
-
+contract TimeTeam is Modifiers {
     using SafeMath for uint;
-    event TBPDistributed(uint indexed round, uint indexed tbIteration, address winner);
 
     //функция формирующая команду времени из последних 100 участников любым цветом
     function formTimeTeam() private returns (uint) {

@@ -1,5 +1,4 @@
 pragma solidity ^0.4.24;
-
 import "./Game.sol";
 
 contract GameMock is Game {

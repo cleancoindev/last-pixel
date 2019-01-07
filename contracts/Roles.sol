@@ -1,9 +1,7 @@
 pragma solidity ^0.4.24;
-import "../node_modules/openzeppelin-solidity/contracts/ownership/Ownable.sol";
-import "./StorageV1.sol";
 import "./Modifiers.sol";
 
-contract Roles is StorageV1, Modifiers {
+contract Roles is Modifiers {
     
     function addAdmin(address _new) external onlyOwner {
         isAdmin[_new] = true;

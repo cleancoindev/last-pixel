@@ -1,15 +1,11 @@
 pragma solidity ^0.4.24;
-import "../node_modules/openzeppelin-solidity/contracts/math/SafeMath.sol";
+import "./SafeMath.sol";
 import "./IColor.sol";
 import "./Modifiers.sol";
 
 contract DividendsDistributor is Modifiers {
-    
     using SafeMath for uint;
 
-    event DividendsWithdrawn(address indexed withdrawer, uint indexed claimId, uint indexed amount);
-    event DividendsClaimed(address indexed claimer, uint indexed claimId, uint indexed currentTime);
-    
     constructor() {
 
         // for (uint i = 1; i < color.totalSupply(); i++) {

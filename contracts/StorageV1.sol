@@ -185,16 +185,27 @@ contract StorageV1 is StorageV0 {
     }
 
     uint public claimId;
+
     Claim[] public claims;
 
     // захардкоженные адреса для тестирования функции claimDividens()
     // в продакшене это будут адреса бенефециариев Цветов и Пикселей : withdrawalBalances[ownerOf(_pixel)], withdrawalBalances[ownerOf(_color)]
-    //address public ownerOfColor = 0xf106a93c5ca900bfae6345b61fcfae9d75cb031d;
     address public ownerOfPixel = 0xca35b7d915458ef540ade6068dfe2f44e8fa733c;
     address public founders = 0x3e4d187df7d8a0820eaf4174d17b160157610912;
-    
+
     bool public isGamePaused;
     
     mapping(address => bool) public isAdmin;
+
+   // Events
+
+    event CBPDistributed(uint indexed round, uint indexed cbIteration, address winner);
+    event DividendsWithdrawn(address indexed withdrawer, uint indexed claimId, uint indexed amount);
+    event DividendsClaimed(address indexed claimer, uint indexed claimId, uint indexed currentTime);
+    event Paint(uint indexed pixelId, uint colorId, address indexed painter, uint indexed round, uint timestamp);
+    event ColorBankPlayed(address winner, uint indexed round);
+    event TimeBankPlayed(address winner, uint indexed round);
+    event CallPriceUpdated(uint indexed newCallPrice);
+    event TBPDistributed(uint indexed round, uint indexed tbIteration, address winner);
 
 }

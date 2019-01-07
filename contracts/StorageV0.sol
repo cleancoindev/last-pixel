@@ -1,6 +1,6 @@
 pragma solidity ^0.4.24;
 pragma experimental "v0.5.0";
-import "../node_modules/openzeppelin-solidity/contracts/ownership/Ownable.sol";
+import "./Ownable.sol";
 
 contract StorageV0 is Ownable {
 
