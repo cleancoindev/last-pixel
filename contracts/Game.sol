@@ -1,56 +1,19 @@
 pragma solidity ^0.4.24;
 
 // import "../node_modules/openzeppelin-solidity/contracts/ownership/Ownable.sol";
-// import "./DividendsDistributor.sol";
-// import "./ColorTeam.sol";
-// import "./TimeTeam.sol";
 import "./PaintsPool.sol";
 import "./PaintDiscount.sol";
-// import "./IColor.sol";
-import "./GameStateController.sol";
-import "./Referral.sol";
-//import "./StorageV1.sol";
+import "./Modifiers.sol";
 
-contract Game is GameStateController, Referral, PaintDiscount, PaintsPool{
+contract Game is PaintDiscount, PaintsPool, Modifiers {
 
     using SafeMath for uint;
 
-    address public timeTeamInstance;
-    address public colorTeamInstance;
-    
     //ивенты
     event Paint(uint indexed pixelId, uint colorId, address indexed painter, uint indexed round, uint timestamp);
     event ColorBankPlayed(address winner, uint indexed round);
     event TimeBankPlayed(address winner, uint indexed round);
    
-    //конструктор, задающий изначальные значения переменных
-    constructor(address _colorTeam, address _timeTeam) public payable { 
-        timeTeamInstance = _timeTeam;
-        colorTeamInstance = _colorTeam;
-        
-        maxPaintsInPool = 10000; //10000 in production
-        currentRound = 1;
-        cbIteration = 1;
-        tbIteration = 1;
-        
-        for (uint i = 1; i <= 8; i++) {
-            currentPaintGenForColor[i] = 1;
-            callPriceForColor[i] = 0.01 ether;
-            nextCallPriceForColor[i] = callPriceForColor[i];
-            paintGenToAmountForColor[i][currentPaintGenForColor[i]] = maxPaintsInPool;
-            paintGenStartedForColor[i][currentPaintGenForColor[i]] = true;
-            
-            //если ни одна единица краски еще не потрачена
-            if (totalPaintsForRound[currentRound] == 0) {
-                paintGenToEndTimeForColor[i][currentPaintGenForColor[i] - 1] = now;
-            }
-            
-            paintGenToStartTimeForColor[i][currentPaintGenForColor[i]] = now;
-            paintGenToAmountForColor[i][currentPaintGenForColor[i]] = maxPaintsInPool;
-        }
-        
-    }
-    
     function hardCode() external {
         timeBankForRound[currentRound] = 1 ether;
         colorBankForRound[currentRound] = 1 ether;
@@ -96,7 +59,7 @@ contract Game is GameStateController, Referral, PaintDiscount, PaintsPool{
     function paint(uint[] _pixels, uint _color, string _refLink) external payable isRegistered(_refLink) isLiveGame {
 
         require(msg.value == estimateCallPrice(_pixels, _color), "Wrong call price");
-
+        
         //проверяем не прошло ли 20 минут с последней раскраски для розыгрыша банка времени
         if (now - lastPaintTimeForRound[currentRound] > 20 minutes && lastPaintTimeForRound[currentRound] != 0) {
 
@@ -249,5 +212,6 @@ contract Game is GameStateController, Referral, PaintDiscount, PaintsPool{
         //25% дивидендов распределяем реферреру, если он есть
         // withdrawalBalances[referrer] += dividendsBank.mul(25).div(100);
     }
+      
     
 }

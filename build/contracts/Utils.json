@@ -31,10 +31,10 @@
     "absolutePath": "/Users/Amir/last-pixel-contracts/contracts/Utils.sol",
     "exportedSymbols": {
       "Utils": [
-        1876
+        1860
       ]
     },
-    "id": 1877,
+    "id": 1861,
     "nodeType": "SourceUnit",
     "nodes": [
       {
@@ -43,16 +43,16 @@
         "contractKind": "library",
         "documentation": null,
         "fullyImplemented": true,
-        "id": 1876,
+        "id": 1860,
         "linearizedBaseContracts": [
-          1876
+          1860
         ],
         "name": "Utils",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "body": {
-              "id": 1874,
+              "id": 1858,
               "nodeType": "Block",
               "src": "152:548:9",
               "statements": [
@@ -61,10 +61,10 @@
                   "declarations": [
                     {
                       "constant": false,
-                      "id": 1865,
+                      "id": 1849,
                       "name": "_stringBytes",
                       "nodeType": "VariableDeclaration",
-                      "scope": 1875,
+                      "scope": 1859,
                       "src": "313:20:9",
                       "stateVariable": false,
                       "storageLocation": "default",
@@ -73,7 +73,7 @@
                         "typeString": "bytes16"
                       },
                       "typeName": {
-                        "id": 1864,
+                        "id": 1848,
                         "name": "bytes16",
                         "nodeType": "ElementaryTypeName",
                         "src": "313:7:9",
@@ -86,22 +86,22 @@
                       "visibility": "internal"
                     }
                   ],
-                  "id": 1866,
+                  "id": 1850,
                   "initialValue": null,
                   "nodeType": "VariableDeclarationStatement",
                   "src": "313:20:9"
                 },
                 {
                   "assignments": [
-                    1868
+                    1852
                   ],
                   "declarations": [
                     {
                       "constant": false,
-                      "id": 1868,
+                      "id": 1852,
                       "name": "str",
                       "nodeType": "VariableDeclaration",
-                      "scope": 1875,
+                      "scope": 1859,
                       "src": "343:17:9",
                       "stateVariable": false,
                       "storageLocation": "memory",
@@ -110,7 +110,7 @@
                         "typeString": "string"
                       },
                       "typeName": {
-                        "id": 1867,
+                        "id": 1851,
                         "name": "string",
                         "nodeType": "ElementaryTypeName",
                         "src": "343:6:9",
@@ -123,14 +123,14 @@
                       "visibility": "internal"
                     }
                   ],
-                  "id": 1870,
+                  "id": 1854,
                   "initialValue": {
                     "argumentTypes": null,
-                    "id": 1869,
+                    "id": 1853,
                     "name": "_string",
                     "nodeType": "Identifier",
                     "overloadedDeclarations": [],
-                    "referencedDeclaration": 1859,
+                    "referencedDeclaration": 1843,
                     "src": "363:7:9",
                     "typeDescriptions": {
                       "typeIdentifier": "t_string_calldata_ptr",
@@ -144,7 +144,7 @@
                   "externalReferences": [
                     {
                       "_stringBytes": {
-                        "declaration": 1865,
+                        "declaration": 1849,
                         "isOffset": false,
                         "isSlot": false,
                         "src": "615:12:9",
@@ -153,7 +153,7 @@
                     },
                     {
                       "str": {
-                        "declaration": 1868,
+                        "declaration": 1852,
                         "isOffset": false,
                         "isSlot": false,
                         "src": "641:3:9",
@@ -161,7 +161,7 @@
                       }
                     }
                   ],
-                  "id": 1871,
+                  "id": 1855,
                   "nodeType": "InlineAssembly",
                   "operations": "{\n    _stringBytes := mload(add(str, 32))\n}",
                   "src": "445:235:9"
@@ -169,26 +169,26 @@
                 {
                   "expression": {
                     "argumentTypes": null,
-                    "id": 1872,
+                    "id": 1856,
                     "name": "_stringBytes",
                     "nodeType": "Identifier",
                     "overloadedDeclarations": [],
-                    "referencedDeclaration": 1865,
+                    "referencedDeclaration": 1849,
                     "src": "681:12:9",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bytes16",
                       "typeString": "bytes16"
                     }
                   },
-                  "functionReturnParameters": 1863,
-                  "id": 1873,
+                  "functionReturnParameters": 1847,
+                  "id": 1857,
                   "nodeType": "Return",
                   "src": "674:19:9"
                 }
               ]
             },
             "documentation": null,
-            "id": 1875,
+            "id": 1859,
             "implemented": true,
             "isConstructor": false,
             "isDeclaredConst": true,
@@ -196,15 +196,15 @@
             "name": "toBytes32",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1860,
+              "id": 1844,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1859,
+                  "id": 1843,
                   "name": "_string",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1875,
+                  "scope": 1859,
                   "src": "104:14:9",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -213,7 +213,7 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 1858,
+                    "id": 1842,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
                     "src": "104:6:9",
@@ -230,15 +230,15 @@
             },
             "payable": false,
             "returnParameters": {
-              "id": 1863,
+              "id": 1847,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1862,
+                  "id": 1846,
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1875,
+                  "scope": 1859,
                   "src": "143:7:9",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -247,7 +247,7 @@
                     "typeString": "bytes16"
                   },
                   "typeName": {
-                    "id": 1861,
+                    "id": 1845,
                     "name": "bytes16",
                     "nodeType": "ElementaryTypeName",
                     "src": "143:7:9",
@@ -262,14 +262,14 @@
               ],
               "src": "142:9:9"
             },
-            "scope": 1876,
+            "scope": 1860,
             "src": "85:615:9",
             "stateMutability": "pure",
             "superFunction": null,
             "visibility": "external"
           }
         ],
-        "scope": 1877,
+        "scope": 1861,
         "src": "0:702:9"
       }
     ],
@@ -279,10 +279,10 @@
     "absolutePath": "/Users/Amir/last-pixel-contracts/contracts/Utils.sol",
     "exportedSymbols": {
       "Utils": [
-        1876
+        1860
       ]
     },
-    "id": 1877,
+    "id": 1861,
     "nodeType": "SourceUnit",
     "nodes": [
       {
@@ -291,16 +291,16 @@
         "contractKind": "library",
         "documentation": null,
         "fullyImplemented": true,
-        "id": 1876,
+        "id": 1860,
         "linearizedBaseContracts": [
-          1876
+          1860
         ],
         "name": "Utils",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "body": {
-              "id": 1874,
+              "id": 1858,
               "nodeType": "Block",
               "src": "152:548:9",
               "statements": [
@@ -309,10 +309,10 @@
                   "declarations": [
                     {
                       "constant": false,
-                      "id": 1865,
+                      "id": 1849,
                       "name": "_stringBytes",
                       "nodeType": "VariableDeclaration",
-                      "scope": 1875,
+                      "scope": 1859,
                       "src": "313:20:9",
                       "stateVariable": false,
                       "storageLocation": "default",
@@ -321,7 +321,7 @@
                         "typeString": "bytes16"
                       },
                       "typeName": {
-                        "id": 1864,
+                        "id": 1848,
                         "name": "bytes16",
                         "nodeType": "ElementaryTypeName",
                         "src": "313:7:9",
@@ -334,22 +334,22 @@
                       "visibility": "internal"
                     }
                   ],
-                  "id": 1866,
+                  "id": 1850,
                   "initialValue": null,
                   "nodeType": "VariableDeclarationStatement",
                   "src": "313:20:9"
                 },
                 {
                   "assignments": [
-                    1868
+                    1852
                   ],
                   "declarations": [
                     {
                       "constant": false,
-                      "id": 1868,
+                      "id": 1852,
                       "name": "str",
                       "nodeType": "VariableDeclaration",
-                      "scope": 1875,
+                      "scope": 1859,
                       "src": "343:17:9",
                       "stateVariable": false,
                       "storageLocation": "memory",
@@ -358,7 +358,7 @@
                         "typeString": "string"
                       },
                       "typeName": {
-                        "id": 1867,
+                        "id": 1851,
                         "name": "string",
                         "nodeType": "ElementaryTypeName",
                         "src": "343:6:9",
@@ -371,14 +371,14 @@
                       "visibility": "internal"
                     }
                   ],
-                  "id": 1870,
+                  "id": 1854,
                   "initialValue": {
                     "argumentTypes": null,
-                    "id": 1869,
+                    "id": 1853,
                     "name": "_string",
                     "nodeType": "Identifier",
                     "overloadedDeclarations": [],
-                    "referencedDeclaration": 1859,
+                    "referencedDeclaration": 1843,
                     "src": "363:7:9",
                     "typeDescriptions": {
                       "typeIdentifier": "t_string_calldata_ptr",
@@ -392,7 +392,7 @@
                   "externalReferences": [
                     {
                       "_stringBytes": {
-                        "declaration": 1865,
+                        "declaration": 1849,
                         "isOffset": false,
                         "isSlot": false,
                         "src": "615:12:9",
@@ -401,7 +401,7 @@
                     },
                     {
                       "str": {
-                        "declaration": 1868,
+                        "declaration": 1852,
                         "isOffset": false,
                         "isSlot": false,
                         "src": "641:3:9",
@@ -409,7 +409,7 @@
                       }
                     }
                   ],
-                  "id": 1871,
+                  "id": 1855,
                   "nodeType": "InlineAssembly",
                   "operations": "{\n    _stringBytes := mload(add(str, 32))\n}",
                   "src": "445:235:9"
@@ -417,26 +417,26 @@
                 {
                   "expression": {
                     "argumentTypes": null,
-                    "id": 1872,
+                    "id": 1856,
                     "name": "_stringBytes",
                     "nodeType": "Identifier",
                     "overloadedDeclarations": [],
-                    "referencedDeclaration": 1865,
+                    "referencedDeclaration": 1849,
                     "src": "681:12:9",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bytes16",
                       "typeString": "bytes16"
                     }
                   },
-                  "functionReturnParameters": 1863,
-                  "id": 1873,
+                  "functionReturnParameters": 1847,
+                  "id": 1857,
                   "nodeType": "Return",
                   "src": "674:19:9"
                 }
               ]
             },
             "documentation": null,
-            "id": 1875,
+            "id": 1859,
             "implemented": true,
             "isConstructor": false,
             "isDeclaredConst": true,
@@ -444,15 +444,15 @@
             "name": "toBytes32",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1860,
+              "id": 1844,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1859,
+                  "id": 1843,
                   "name": "_string",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1875,
+                  "scope": 1859,
                   "src": "104:14:9",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -461,7 +461,7 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 1858,
+                    "id": 1842,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
                     "src": "104:6:9",
@@ -478,15 +478,15 @@
             },
             "payable": false,
             "returnParameters": {
-              "id": 1863,
+              "id": 1847,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1862,
+                  "id": 1846,
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1875,
+                  "scope": 1859,
                   "src": "143:7:9",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -495,7 +495,7 @@
                     "typeString": "bytes16"
                   },
                   "typeName": {
-                    "id": 1861,
+                    "id": 1845,
                     "name": "bytes16",
                     "nodeType": "ElementaryTypeName",
                     "src": "143:7:9",
@@ -510,14 +510,14 @@
               ],
               "src": "142:9:9"
             },
-            "scope": 1876,
+            "scope": 1860,
             "src": "85:615:9",
             "stateMutability": "pure",
             "superFunction": null,
             "visibility": "external"
           }
         ],
-        "scope": 1877,
+        "scope": 1861,
         "src": "0:702:9"
       }
     ],
@@ -529,5 +529,5 @@
   },
   "networks": {},
   "schemaVersion": "2.0.1",
-  "updatedAt": "2019-01-06T14:33:16.853Z"
+  "updatedAt": "2019-01-07T11:36:34.293Z"
 }

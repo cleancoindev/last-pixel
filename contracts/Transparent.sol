@@ -1,9 +1,10 @@
 pragma solidity ^0.4.24;
 pragma experimental "v0.5.0";
 
+import "../node_modules/openzeppelin-solidity/contracts/ownership/Ownable.sol";
 import "./StorageV1.sol";
 
-contract Transparent is StorageV1 {
+contract Transparent is Ownable, StorageV1 {
     
     event CommitMessage(string message);
     event FunctionUpdate(bytes4 indexed functionId, address indexed oldDelegate, address indexed newDelegate, string functionSignature);
@@ -18,6 +19,36 @@ contract Transparent is StorageV1 {
         funcSignatureToIndex[signature] = funcSignatures.length;
         emit FunctionUpdate(funcId, address(0), _erc1538Delegate, string(signature));
         emit CommitMessage("Added ERC1538 updateContract function at contract creation");
+    
+        _initializer();
+    }
+
+    //constructors which should have been in any the implementation contract
+    function _initializer() private {
+
+        isAdmin[msg.sender] = true;
+        
+        maxPaintsInPool = 10000; //10000 in production
+        currentRound = 1;
+        cbIteration = 1;
+        tbIteration = 1;
+        
+        for (uint i = 1; i <= 8; i++) {
+            currentPaintGenForColor[i] = 1;
+            callPriceForColor[i] = 0.01 ether;
+            nextCallPriceForColor[i] = callPriceForColor[i];
+            paintGenToAmountForColor[i][currentPaintGenForColor[i]] = maxPaintsInPool;
+            paintGenStartedForColor[i][currentPaintGenForColor[i]] = true;
+            
+            //если ни одна единица краски еще не потрачена
+            if (totalPaintsForRound[currentRound] == 0) {
+                paintGenToEndTimeForColor[i][currentPaintGenForColor[i] - 1] = now;
+            }
+            
+            paintGenToStartTimeForColor[i][currentPaintGenForColor[i]] = now;
+            paintGenToAmountForColor[i][currentPaintGenForColor[i]] = maxPaintsInPool;
+        }
+        
     }
 
     function() external payable {

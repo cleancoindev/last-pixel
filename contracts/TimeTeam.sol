@@ -52,7 +52,7 @@ contract TimeTeam is StorageV1, GameStateController {
 
     }
 
-    function distributeTBP() external onlyAdmin isLiveGame {
+    function distributeTBP() external isLiveGame onlyAdmin {
         require(isTBPTransfered[tbIteration] == false, "Time Bank Prizes already transferred for this tbIteration");
         address painter;
         calculateTBP();
@@ -69,6 +69,3 @@ contract TimeTeam is StorageV1, GameStateController {
     }
 }
 
-//TODO по прошествию 20 минут распределить банки времени и цвета для этого и след раундов
-//написать тесты
-//прокси, логика, бд

@@ -1,13 +1,9 @@
 pragma solidity ^0.4.24;
 import "./Roles.sol";
 import "./StorageV1.sol";
+import "./Modifiers.sol";
 
-contract GameStateController is StorageV1, Roles {
-
-    modifier isLiveGame() {
-        require(isGamePaused == false, "Game is paused");
-        _;
-    }
+contract GameStateController is StorageV1, Modifiers {
 
     function pauseGame() external onlyAdmin {
         require (isGamePaused == false, "Game is already paused");

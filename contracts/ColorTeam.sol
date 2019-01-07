@@ -1,13 +1,12 @@
 pragma solidity ^0.4.24;
 import "../node_modules/openzeppelin-solidity/contracts/math/SafeMath.sol";
 import "./StorageV1.sol";
-import "./Roles.sol";
-import "./GameStateController.sol";
+import "./Modifiers.sol";
 
-contract ColorTeam is StorageV1, GameStateController {
+contract ColorTeam is StorageV1, Modifiers {
 
     using SafeMath for uint;
-    
+
     event CBPDistributed(uint indexed round, uint indexed cbIteration, address winner);
 
     //функция формирующая команду цвета из последних 100 участников выигрывшим цветом
@@ -53,7 +52,7 @@ contract ColorTeam is StorageV1, GameStateController {
 
     }
 
-    function distributeCBP() internal isLiveGame {
+    function distributeCBP() external isLiveGame onlyAdmin {
         require(isCBPTransfered[cbIteration] == false, "Color Bank Prizes already transferred for this cbIteration");
         address painter;
         calculateCBP(winnerColorForRound[currentRound]);
@@ -68,4 +67,5 @@ contract ColorTeam is StorageV1, GameStateController {
         currentRound = currentRound.add(1); //следующий раунд 
         cbIteration = cbIteration.add(1); //инкрементируем итерацию для банка цвета
     }
+    
 }

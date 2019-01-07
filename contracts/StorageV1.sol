@@ -1,6 +1,4 @@
 pragma solidity ^0.4.24;
-
-import "../node_modules/openzeppelin-solidity/contracts/math/SafeMath.sol";
 import "./StorageV0.sol";
 
 contract StorageV1 is StorageV0 {
@@ -196,5 +194,7 @@ contract StorageV1 is StorageV0 {
     address public founders = 0x3e4d187df7d8a0820eaf4174d17b160157610912;
     
     bool public isGamePaused;
+    
+    mapping(address => bool) public isAdmin;
 
 }

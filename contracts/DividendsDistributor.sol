@@ -1,11 +1,9 @@
 pragma solidity ^0.4.24;
-
 import "../node_modules/openzeppelin-solidity/contracts/math/SafeMath.sol";
 import "./IColor.sol";
-import "./Roles.sol";
-import "./StorageV1.sol";
+import "./Modifiers.sol";
 
-contract DividendsDistributor is Roles, StorageV1 {
+contract DividendsDistributor is Modifiers {
     
     using SafeMath for uint;
 
