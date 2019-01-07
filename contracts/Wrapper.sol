@@ -2,8 +2,7 @@ pragma solidity ^0.4.24;
 import "./Modifiers.sol";
 
 /**
-** Proxy Contract with all the functions' signatures to load the Transparent Contract at 
-**/
+** Wrapper for Transparent Proxy Contract with all the functions' signatures
 contract Proxy is Modifiers {
 
     //ColorTeam.sol

@@ -1330,14 +1330,14 @@
     "absolutePath": "/Users/Amir/last-pixel-contracts/contracts/StorageV1.sol",
     "exportedSymbols": {
       "StorageV1": [
-        2732
+        2571
       ]
     },
-    "id": 2733,
+    "id": 2572,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 2439,
+        "id": 2278,
         "literals": [
           "solidity",
           "^",
@@ -1350,10 +1350,10 @@
       {
         "absolutePath": "/Users/Amir/last-pixel-contracts/contracts/StorageV0.sol",
         "file": "./StorageV0.sol",
-        "id": 2440,
+        "id": 2279,
         "nodeType": "ImportDirective",
-        "scope": 2733,
-        "sourceUnit": 2438,
+        "scope": 2572,
+        "sourceUnit": 2277,
         "src": "25:25:14",
         "symbolAliases": [],
         "unitAlias": ""
@@ -1364,43 +1364,43 @@
             "arguments": null,
             "baseName": {
               "contractScope": null,
-              "id": 2441,
+              "id": 2280,
               "name": "StorageV0",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 2437,
+              "referencedDeclaration": 2276,
               "src": "74:9:14",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_StorageV0_$2437",
+                "typeIdentifier": "t_contract$_StorageV0_$2276",
                 "typeString": "contract StorageV0"
               }
             },
-            "id": 2442,
+            "id": 2281,
             "nodeType": "InheritanceSpecifier",
             "src": "74:9:14"
           }
         ],
         "contractDependencies": [
-          2437,
-          3468
+          2276,
+          3304
         ],
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": true,
-        "id": 2732,
+        "id": 2571,
         "linearizedBaseContracts": [
-          2732,
-          2437,
-          3468
+          2571,
+          2276,
+          3304
         ],
         "name": "StorageV1",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "constant": false,
-            "id": 2448,
+            "id": 2287,
             "name": "pixelToColorForRound",
             "nodeType": "VariableDeclaration",
-            "scope": 2732,
+            "scope": 2571,
             "src": "177:68:14",
             "stateVariable": true,
             "storageLocation": "default",
@@ -1409,9 +1409,9 @@
               "typeString": "mapping(uint256 => mapping(uint256 => uint256))"
             },
             "typeName": {
-              "id": 2447,
+              "id": 2286,
               "keyType": {
-                "id": 2443,
+                "id": 2282,
                 "name": "uint",
                 "nodeType": "ElementaryTypeName",
                 "src": "186:4:14",
@@ -1427,9 +1427,9 @@
                 "typeString": "mapping(uint256 => mapping(uint256 => uint256))"
               },
               "valueType": {
-                "id": 2446,
+                "id": 2285,
                 "keyType": {
-                  "id": 2444,
+                  "id": 2283,
                   "name": "uint",
                   "nodeType": "ElementaryTypeName",
                   "src": "203:4:14",
@@ -1445,7 +1445,7 @@
                   "typeString": "mapping(uint256 => uint256)"
                 },
                 "valueType": {
-                  "id": 2445,
+                  "id": 2284,
                   "name": "uint",
                   "nodeType": "ElementaryTypeName",
                   "src": "211:4:14",
@@ -1461,10 +1461,10 @@
           },
           {
             "constant": false,
-            "id": 2454,
+            "id": 2293,
             "name": "pixelToOldColorForRound",
             "nodeType": "VariableDeclaration",
-            "scope": 2732,
+            "scope": 2571,
             "src": "360:71:14",
             "stateVariable": true,
             "storageLocation": "default",
@@ -1473,9 +1473,9 @@
               "typeString": "mapping(uint256 => mapping(uint256 => uint256))"
             },
             "typeName": {
-              "id": 2453,
+              "id": 2292,
               "keyType": {
-                "id": 2449,
+                "id": 2288,
                 "name": "uint",
                 "nodeType": "ElementaryTypeName",
                 "src": "369:4:14",
@@ -1491,9 +1491,9 @@
                 "typeString": "mapping(uint256 => mapping(uint256 => uint256))"
               },
               "valueType": {
-                "id": 2452,
+                "id": 2291,
                 "keyType": {
-                  "id": 2450,
+                  "id": 2289,
                   "name": "uint",
                   "nodeType": "ElementaryTypeName",
                   "src": "386:4:14",
@@ -1509,7 +1509,7 @@
                   "typeString": "mapping(uint256 => uint256)"
                 },
                 "valueType": {
-                  "id": 2451,
+                  "id": 2290,
                   "name": "uint",
                   "nodeType": "ElementaryTypeName",
                   "src": "394:4:14",
@@ -1525,10 +1525,10 @@
           },
           {
             "constant": false,
-            "id": 2460,
+            "id": 2299,
             "name": "colorToPaintedPixelsAmountForRound",
             "nodeType": "VariableDeclaration",
-            "scope": 2732,
+            "scope": 2571,
             "src": "637:82:14",
             "stateVariable": true,
             "storageLocation": "default",
@@ -1537,9 +1537,9 @@
               "typeString": "mapping(uint256 => mapping(uint256 => uint256))"
             },
             "typeName": {
-              "id": 2459,
+              "id": 2298,
               "keyType": {
-                "id": 2455,
+                "id": 2294,
                 "name": "uint",
                 "nodeType": "ElementaryTypeName",
                 "src": "646:4:14",
@@ -1555,9 +1555,9 @@
                 "typeString": "mapping(uint256 => mapping(uint256 => uint256))"
               },
               "valueType": {
-                "id": 2458,
+                "id": 2297,
                 "keyType": {
-                  "id": 2456,
+                  "id": 2295,
                   "name": "uint",
                   "nodeType": "ElementaryTypeName",
                   "src": "663:4:14",
@@ -1573,7 +1573,7 @@
                   "typeString": "mapping(uint256 => uint256)"
                 },
                 "valueType": {
-                  "id": 2457,
+                  "id": 2296,
                   "name": "uint",
                   "nodeType": "ElementaryTypeName",
                   "src": "671:4:14",
@@ -1589,10 +1589,10 @@
           },
           {
             "constant": false,
-            "id": 2464,
+            "id": 2303,
             "name": "colorBankForRound",
             "nodeType": "VariableDeclaration",
-            "scope": 2732,
+            "scope": 2571,
             "src": "805:47:14",
             "stateVariable": true,
             "storageLocation": "default",
@@ -1601,9 +1601,9 @@
               "typeString": "mapping(uint256 => uint256)"
             },
             "typeName": {
-              "id": 2463,
+              "id": 2302,
               "keyType": {
-                "id": 2461,
+                "id": 2300,
                 "name": "uint",
                 "nodeType": "ElementaryTypeName",
                 "src": "814:4:14",
@@ -1619,7 +1619,7 @@
                 "typeString": "mapping(uint256 => uint256)"
               },
               "valueType": {
-                "id": 2462,
+                "id": 2301,
                 "name": "uint",
                 "nodeType": "ElementaryTypeName",
                 "src": "822:4:14",
@@ -1634,10 +1634,10 @@
           },
           {
             "constant": false,
-            "id": 2470,
+            "id": 2309,
             "name": "colorBankToColorForRound",
             "nodeType": "VariableDeclaration",
-            "scope": 2732,
+            "scope": 2571,
             "src": "989:72:14",
             "stateVariable": true,
             "storageLocation": "default",
@@ -1646,9 +1646,9 @@
               "typeString": "mapping(uint256 => mapping(uint256 => uint256))"
             },
             "typeName": {
-              "id": 2469,
+              "id": 2308,
               "keyType": {
-                "id": 2465,
+                "id": 2304,
                 "name": "uint",
                 "nodeType": "ElementaryTypeName",
                 "src": "998:4:14",
@@ -1664,9 +1664,9 @@
                 "typeString": "mapping(uint256 => mapping(uint256 => uint256))"
               },
               "valueType": {
-                "id": 2468,
+                "id": 2307,
                 "keyType": {
-                  "id": 2466,
+                  "id": 2305,
                   "name": "uint",
                   "nodeType": "ElementaryTypeName",
                   "src": "1015:4:14",
@@ -1682,7 +1682,7 @@
                   "typeString": "mapping(uint256 => uint256)"
                 },
                 "valueType": {
-                  "id": 2467,
+                  "id": 2306,
                   "name": "uint",
                   "nodeType": "ElementaryTypeName",
                   "src": "1023:4:14",
@@ -1698,10 +1698,10 @@
           },
           {
             "constant": false,
-            "id": 2474,
+            "id": 2313,
             "name": "timeBankForRound",
             "nodeType": "VariableDeclaration",
-            "scope": 2732,
+            "scope": 2571,
             "src": "1155:46:14",
             "stateVariable": true,
             "storageLocation": "default",
@@ -1710,9 +1710,9 @@
               "typeString": "mapping(uint256 => uint256)"
             },
             "typeName": {
-              "id": 2473,
+              "id": 2312,
               "keyType": {
-                "id": 2471,
+                "id": 2310,
                 "name": "uint",
                 "nodeType": "ElementaryTypeName",
                 "src": "1164:4:14",
@@ -1728,7 +1728,7 @@
                 "typeString": "mapping(uint256 => uint256)"
               },
               "valueType": {
-                "id": 2472,
+                "id": 2311,
                 "name": "uint",
                 "nodeType": "ElementaryTypeName",
                 "src": "1172:4:14",
@@ -1743,10 +1743,10 @@
           },
           {
             "constant": false,
-            "id": 2478,
+            "id": 2317,
             "name": "lastPaintTimeForRound",
             "nodeType": "VariableDeclaration",
-            "scope": 2732,
+            "scope": 2571,
             "src": "1366:51:14",
             "stateVariable": true,
             "storageLocation": "default",
@@ -1755,9 +1755,9 @@
               "typeString": "mapping(uint256 => uint256)"
             },
             "typeName": {
-              "id": 2477,
+              "id": 2316,
               "keyType": {
-                "id": 2475,
+                "id": 2314,
                 "name": "uint",
                 "nodeType": "ElementaryTypeName",
                 "src": "1375:4:14",
@@ -1773,7 +1773,7 @@
                 "typeString": "mapping(uint256 => uint256)"
               },
               "valueType": {
-                "id": 2476,
+                "id": 2315,
                 "name": "uint",
                 "nodeType": "ElementaryTypeName",
                 "src": "1383:4:14",
@@ -1788,10 +1788,10 @@
           },
           {
             "constant": false,
-            "id": 2482,
+            "id": 2321,
             "name": "lastPainterForRound",
             "nodeType": "VariableDeclaration",
-            "scope": 2732,
+            "scope": 2571,
             "src": "1567:52:14",
             "stateVariable": true,
             "storageLocation": "default",
@@ -1800,9 +1800,9 @@
               "typeString": "mapping(uint256 => address)"
             },
             "typeName": {
-              "id": 2481,
+              "id": 2320,
               "keyType": {
-                "id": 2479,
+                "id": 2318,
                 "name": "uint",
                 "nodeType": "ElementaryTypeName",
                 "src": "1576:4:14",
@@ -1818,7 +1818,7 @@
                 "typeString": "mapping(uint256 => address)"
               },
               "valueType": {
-                "id": 2480,
+                "id": 2319,
                 "name": "address",
                 "nodeType": "ElementaryTypeName",
                 "src": "1584:7:14",
@@ -1833,10 +1833,10 @@
           },
           {
             "constant": false,
-            "id": 2486,
+            "id": 2325,
             "name": "lastPaintedPixelForRound",
             "nodeType": "VariableDeclaration",
-            "scope": 2732,
+            "scope": 2571,
             "src": "1710:54:14",
             "stateVariable": true,
             "storageLocation": "default",
@@ -1845,9 +1845,9 @@
               "typeString": "mapping(uint256 => uint256)"
             },
             "typeName": {
-              "id": 2485,
+              "id": 2324,
               "keyType": {
-                "id": 2483,
+                "id": 2322,
                 "name": "uint",
                 "nodeType": "ElementaryTypeName",
                 "src": "1719:4:14",
@@ -1863,7 +1863,7 @@
                 "typeString": "mapping(uint256 => uint256)"
               },
               "valueType": {
-                "id": 2484,
+                "id": 2323,
                 "name": "uint",
                 "nodeType": "ElementaryTypeName",
                 "src": "1727:4:14",
@@ -1878,10 +1878,10 @@
           },
           {
             "constant": false,
-            "id": 2490,
+            "id": 2329,
             "name": "winnerColorForRound",
             "nodeType": "VariableDeclaration",
-            "scope": 2732,
+            "scope": 2571,
             "src": "1920:49:14",
             "stateVariable": true,
             "storageLocation": "default",
@@ -1890,9 +1890,9 @@
               "typeString": "mapping(uint256 => uint256)"
             },
             "typeName": {
-              "id": 2489,
+              "id": 2328,
               "keyType": {
-                "id": 2487,
+                "id": 2326,
                 "name": "uint",
                 "nodeType": "ElementaryTypeName",
                 "src": "1929:4:14",
@@ -1908,7 +1908,7 @@
                 "typeString": "mapping(uint256 => uint256)"
               },
               "valueType": {
-                "id": 2488,
+                "id": 2327,
                 "name": "uint",
                 "nodeType": "ElementaryTypeName",
                 "src": "1937:4:14",
@@ -1923,10 +1923,10 @@
           },
           {
             "constant": false,
-            "id": 2496,
+            "id": 2335,
             "name": "colorToTotalPaintsForRound",
             "nodeType": "VariableDeclaration",
-            "scope": 2732,
+            "scope": 2571,
             "src": "2192:74:14",
             "stateVariable": true,
             "storageLocation": "default",
@@ -1935,9 +1935,9 @@
               "typeString": "mapping(uint256 => mapping(uint256 => uint256))"
             },
             "typeName": {
-              "id": 2495,
+              "id": 2334,
               "keyType": {
-                "id": 2491,
+                "id": 2330,
                 "name": "uint",
                 "nodeType": "ElementaryTypeName",
                 "src": "2201:4:14",
@@ -1953,9 +1953,9 @@
                 "typeString": "mapping(uint256 => mapping(uint256 => uint256))"
               },
               "valueType": {
-                "id": 2494,
+                "id": 2333,
                 "keyType": {
-                  "id": 2492,
+                  "id": 2331,
                   "name": "uint",
                   "nodeType": "ElementaryTypeName",
                   "src": "2218:4:14",
@@ -1971,7 +1971,7 @@
                   "typeString": "mapping(uint256 => uint256)"
                 },
                 "valueType": {
-                  "id": 2493,
+                  "id": 2332,
                   "name": "uint",
                   "nodeType": "ElementaryTypeName",
                   "src": "2226:4:14",
@@ -1987,10 +1987,10 @@
           },
           {
             "constant": false,
-            "id": 2500,
+            "id": 2339,
             "name": "winnerOfRound",
             "nodeType": "VariableDeclaration",
-            "scope": 2732,
+            "scope": 2571,
             "src": "2341:46:14",
             "stateVariable": true,
             "storageLocation": "default",
@@ -1999,9 +1999,9 @@
               "typeString": "mapping(uint256 => address)"
             },
             "typeName": {
-              "id": 2499,
+              "id": 2338,
               "keyType": {
-                "id": 2497,
+                "id": 2336,
                 "name": "uint",
                 "nodeType": "ElementaryTypeName",
                 "src": "2350:4:14",
@@ -2017,7 +2017,7 @@
                 "typeString": "mapping(uint256 => address)"
               },
               "valueType": {
-                "id": 2498,
+                "id": 2337,
                 "name": "address",
                 "nodeType": "ElementaryTypeName",
                 "src": "2358:7:14",
@@ -2032,10 +2032,10 @@
           },
           {
             "constant": false,
-            "id": 2504,
+            "id": 2343,
             "name": "winnerBankForRound",
             "nodeType": "VariableDeclaration",
-            "scope": 2732,
+            "scope": 2571,
             "src": "2568:48:14",
             "stateVariable": true,
             "storageLocation": "default",
@@ -2044,9 +2044,9 @@
               "typeString": "mapping(uint256 => uint256)"
             },
             "typeName": {
-              "id": 2503,
+              "id": 2342,
               "keyType": {
-                "id": 2501,
+                "id": 2340,
                 "name": "uint",
                 "nodeType": "ElementaryTypeName",
                 "src": "2577:4:14",
@@ -2062,7 +2062,7 @@
                 "typeString": "mapping(uint256 => uint256)"
               },
               "valueType": {
-                "id": 2502,
+                "id": 2341,
                 "name": "uint",
                 "nodeType": "ElementaryTypeName",
                 "src": "2585:4:14",
@@ -2077,10 +2077,10 @@
           },
           {
             "constant": false,
-            "id": 2510,
+            "id": 2349,
             "name": "pixelToPaintTimeForRound",
             "nodeType": "VariableDeclaration",
-            "scope": 2732,
+            "scope": 2571,
             "src": "2749:72:14",
             "stateVariable": true,
             "storageLocation": "default",
@@ -2089,9 +2089,9 @@
               "typeString": "mapping(uint256 => mapping(uint256 => uint256))"
             },
             "typeName": {
-              "id": 2509,
+              "id": 2348,
               "keyType": {
-                "id": 2505,
+                "id": 2344,
                 "name": "uint",
                 "nodeType": "ElementaryTypeName",
                 "src": "2758:4:14",
@@ -2107,9 +2107,9 @@
                 "typeString": "mapping(uint256 => mapping(uint256 => uint256))"
               },
               "valueType": {
-                "id": 2508,
+                "id": 2347,
                 "keyType": {
-                  "id": 2506,
+                  "id": 2345,
                   "name": "uint",
                   "nodeType": "ElementaryTypeName",
                   "src": "2775:4:14",
@@ -2125,7 +2125,7 @@
                   "typeString": "mapping(uint256 => uint256)"
                 },
                 "valueType": {
-                  "id": 2507,
+                  "id": 2346,
                   "name": "uint",
                   "nodeType": "ElementaryTypeName",
                   "src": "2783:4:14",
@@ -2141,10 +2141,10 @@
           },
           {
             "constant": false,
-            "id": 2514,
+            "id": 2353,
             "name": "totalPaintsForRound",
             "nodeType": "VariableDeclaration",
-            "scope": 2732,
+            "scope": 2571,
             "src": "2947:49:14",
             "stateVariable": true,
             "storageLocation": "default",
@@ -2153,9 +2153,9 @@
               "typeString": "mapping(uint256 => uint256)"
             },
             "typeName": {
-              "id": 2513,
+              "id": 2352,
               "keyType": {
-                "id": 2511,
+                "id": 2350,
                 "name": "uint",
                 "nodeType": "ElementaryTypeName",
                 "src": "2956:4:14",
@@ -2171,7 +2171,7 @@
                 "typeString": "mapping(uint256 => uint256)"
               },
               "valueType": {
-                "id": 2512,
+                "id": 2351,
                 "name": "uint",
                 "nodeType": "ElementaryTypeName",
                 "src": "2964:4:14",
@@ -2186,10 +2186,10 @@
           },
           {
             "constant": false,
-            "id": 2520,
+            "id": 2359,
             "name": "paintGenToAmountForColor",
             "nodeType": "VariableDeclaration",
-            "scope": 2732,
+            "scope": 2571,
             "src": "3081:72:14",
             "stateVariable": true,
             "storageLocation": "default",
@@ -2198,9 +2198,9 @@
               "typeString": "mapping(uint256 => mapping(uint256 => uint256))"
             },
             "typeName": {
-              "id": 2519,
+              "id": 2358,
               "keyType": {
-                "id": 2515,
+                "id": 2354,
                 "name": "uint",
                 "nodeType": "ElementaryTypeName",
                 "src": "3090:4:14",
@@ -2216,9 +2216,9 @@
                 "typeString": "mapping(uint256 => mapping(uint256 => uint256))"
               },
               "valueType": {
-                "id": 2518,
+                "id": 2357,
                 "keyType": {
-                  "id": 2516,
+                  "id": 2355,
                   "name": "uint",
                   "nodeType": "ElementaryTypeName",
                   "src": "3107:4:14",
@@ -2234,7 +2234,7 @@
                   "typeString": "mapping(uint256 => uint256)"
                 },
                 "valueType": {
-                  "id": 2517,
+                  "id": 2356,
                   "name": "uint",
                   "nodeType": "ElementaryTypeName",
                   "src": "3115:4:14",
@@ -2250,10 +2250,10 @@
           },
           {
             "constant": false,
-            "id": 2526,
+            "id": 2365,
             "name": "paintGenToStartTimeForColor",
             "nodeType": "VariableDeclaration",
-            "scope": 2732,
+            "scope": 2571,
             "src": "3282:75:14",
             "stateVariable": true,
             "storageLocation": "default",
@@ -2262,9 +2262,9 @@
               "typeString": "mapping(uint256 => mapping(uint256 => uint256))"
             },
             "typeName": {
-              "id": 2525,
+              "id": 2364,
               "keyType": {
-                "id": 2521,
+                "id": 2360,
                 "name": "uint",
                 "nodeType": "ElementaryTypeName",
                 "src": "3291:4:14",
@@ -2280,9 +2280,9 @@
                 "typeString": "mapping(uint256 => mapping(uint256 => uint256))"
               },
               "valueType": {
-                "id": 2524,
+                "id": 2363,
                 "keyType": {
-                  "id": 2522,
+                  "id": 2361,
                   "name": "uint",
                   "nodeType": "ElementaryTypeName",
                   "src": "3308:4:14",
@@ -2298,7 +2298,7 @@
                   "typeString": "mapping(uint256 => uint256)"
                 },
                 "valueType": {
-                  "id": 2523,
+                  "id": 2362,
                   "name": "uint",
                   "nodeType": "ElementaryTypeName",
                   "src": "3316:4:14",
@@ -2314,10 +2314,10 @@
           },
           {
             "constant": false,
-            "id": 2532,
+            "id": 2371,
             "name": "paintGenToEndTimeForColor",
             "nodeType": "VariableDeclaration",
-            "scope": 2732,
+            "scope": 2571,
             "src": "3490:73:14",
             "stateVariable": true,
             "storageLocation": "default",
@@ -2326,9 +2326,9 @@
               "typeString": "mapping(uint256 => mapping(uint256 => uint256))"
             },
             "typeName": {
-              "id": 2531,
+              "id": 2370,
               "keyType": {
-                "id": 2527,
+                "id": 2366,
                 "name": "uint",
                 "nodeType": "ElementaryTypeName",
                 "src": "3499:4:14",
@@ -2344,9 +2344,9 @@
                 "typeString": "mapping(uint256 => mapping(uint256 => uint256))"
               },
               "valueType": {
-                "id": 2530,
+                "id": 2369,
                 "keyType": {
-                  "id": 2528,
+                  "id": 2367,
                   "name": "uint",
                   "nodeType": "ElementaryTypeName",
                   "src": "3516:4:14",
@@ -2362,7 +2362,7 @@
                   "typeString": "mapping(uint256 => uint256)"
                 },
                 "valueType": {
-                  "id": 2529,
+                  "id": 2368,
                   "name": "uint",
                   "nodeType": "ElementaryTypeName",
                   "src": "3524:4:14",
@@ -2378,10 +2378,10 @@
           },
           {
             "constant": false,
-            "id": 2538,
+            "id": 2377,
             "name": "paintGenStartedForColor",
             "nodeType": "VariableDeclaration",
-            "scope": 2732,
+            "scope": 2571,
             "src": "3681:71:14",
             "stateVariable": true,
             "storageLocation": "default",
@@ -2390,9 +2390,9 @@
               "typeString": "mapping(uint256 => mapping(uint256 => bool))"
             },
             "typeName": {
-              "id": 2537,
+              "id": 2376,
               "keyType": {
-                "id": 2533,
+                "id": 2372,
                 "name": "uint",
                 "nodeType": "ElementaryTypeName",
                 "src": "3690:4:14",
@@ -2408,9 +2408,9 @@
                 "typeString": "mapping(uint256 => mapping(uint256 => bool))"
               },
               "valueType": {
-                "id": 2536,
+                "id": 2375,
                 "keyType": {
-                  "id": 2534,
+                  "id": 2373,
                   "name": "uint",
                   "nodeType": "ElementaryTypeName",
                   "src": "3707:4:14",
@@ -2426,7 +2426,7 @@
                   "typeString": "mapping(uint256 => bool)"
                 },
                 "valueType": {
-                  "id": 2535,
+                  "id": 2374,
                   "name": "bool",
                   "nodeType": "ElementaryTypeName",
                   "src": "3715:4:14",
@@ -2442,10 +2442,10 @@
           },
           {
             "constant": false,
-            "id": 2542,
+            "id": 2381,
             "name": "currentPaintGenForColor",
             "nodeType": "VariableDeclaration",
-            "scope": 2732,
+            "scope": 2571,
             "src": "3879:53:14",
             "stateVariable": true,
             "storageLocation": "default",
@@ -2454,9 +2454,9 @@
               "typeString": "mapping(uint256 => uint256)"
             },
             "typeName": {
-              "id": 2541,
+              "id": 2380,
               "keyType": {
-                "id": 2539,
+                "id": 2378,
                 "name": "uint",
                 "nodeType": "ElementaryTypeName",
                 "src": "3888:4:14",
@@ -2472,7 +2472,7 @@
                 "typeString": "mapping(uint256 => uint256)"
               },
               "valueType": {
-                "id": 2540,
+                "id": 2379,
                 "name": "uint",
                 "nodeType": "ElementaryTypeName",
                 "src": "3896:4:14",
@@ -2487,10 +2487,10 @@
           },
           {
             "constant": false,
-            "id": 2546,
+            "id": 2385,
             "name": "callPriceForColor",
             "nodeType": "VariableDeclaration",
-            "scope": 2732,
+            "scope": 2571,
             "src": "4002:47:14",
             "stateVariable": true,
             "storageLocation": "default",
@@ -2499,9 +2499,9 @@
               "typeString": "mapping(uint256 => uint256)"
             },
             "typeName": {
-              "id": 2545,
+              "id": 2384,
               "keyType": {
-                "id": 2543,
+                "id": 2382,
                 "name": "uint",
                 "nodeType": "ElementaryTypeName",
                 "src": "4011:4:14",
@@ -2517,7 +2517,7 @@
                 "typeString": "mapping(uint256 => uint256)"
               },
               "valueType": {
-                "id": 2544,
+                "id": 2383,
                 "name": "uint",
                 "nodeType": "ElementaryTypeName",
                 "src": "4019:4:14",
@@ -2532,10 +2532,10 @@
           },
           {
             "constant": false,
-            "id": 2550,
+            "id": 2389,
             "name": "nextCallPriceForColor",
             "nodeType": "VariableDeclaration",
-            "scope": 2732,
+            "scope": 2571,
             "src": "4140:51:14",
             "stateVariable": true,
             "storageLocation": "default",
@@ -2544,9 +2544,9 @@
               "typeString": "mapping(uint256 => uint256)"
             },
             "typeName": {
-              "id": 2549,
+              "id": 2388,
               "keyType": {
-                "id": 2547,
+                "id": 2386,
                 "name": "uint",
                 "nodeType": "ElementaryTypeName",
                 "src": "4149:4:14",
@@ -2562,7 +2562,7 @@
                 "typeString": "mapping(uint256 => uint256)"
               },
               "valueType": {
-                "id": 2548,
+                "id": 2387,
                 "name": "uint",
                 "nodeType": "ElementaryTypeName",
                 "src": "4157:4:14",
@@ -2577,10 +2577,10 @@
           },
           {
             "constant": false,
-            "id": 2556,
+            "id": 2395,
             "name": "moneySpentByUserForColor",
             "nodeType": "VariableDeclaration",
-            "scope": 2732,
+            "scope": 2571,
             "src": "4360:75:14",
             "stateVariable": true,
             "storageLocation": "default",
@@ -2589,9 +2589,9 @@
               "typeString": "mapping(uint256 => mapping(address => uint256))"
             },
             "typeName": {
-              "id": 2555,
+              "id": 2394,
               "keyType": {
-                "id": 2551,
+                "id": 2390,
                 "name": "uint",
                 "nodeType": "ElementaryTypeName",
                 "src": "4369:4:14",
@@ -2607,9 +2607,9 @@
                 "typeString": "mapping(uint256 => mapping(address => uint256))"
               },
               "valueType": {
-                "id": 2554,
+                "id": 2393,
                 "keyType": {
-                  "id": 2552,
+                  "id": 2391,
                   "name": "address",
                   "nodeType": "ElementaryTypeName",
                   "src": "4386:7:14",
@@ -2625,7 +2625,7 @@
                   "typeString": "mapping(address => uint256)"
                 },
                 "valueType": {
-                  "id": 2553,
+                  "id": 2392,
                   "name": "uint",
                   "nodeType": "ElementaryTypeName",
                   "src": "4397:4:14",
@@ -2641,10 +2641,10 @@
           },
           {
             "constant": false,
-            "id": 2562,
+            "id": 2401,
             "name": "hasPaintDiscountForColor",
             "nodeType": "VariableDeclaration",
-            "scope": 2732,
+            "scope": 2571,
             "src": "4672:75:14",
             "stateVariable": true,
             "storageLocation": "default",
@@ -2653,9 +2653,9 @@
               "typeString": "mapping(uint256 => mapping(address => bool))"
             },
             "typeName": {
-              "id": 2561,
+              "id": 2400,
               "keyType": {
-                "id": 2557,
+                "id": 2396,
                 "name": "uint",
                 "nodeType": "ElementaryTypeName",
                 "src": "4681:4:14",
@@ -2671,9 +2671,9 @@
                 "typeString": "mapping(uint256 => mapping(address => bool))"
               },
               "valueType": {
-                "id": 2560,
+                "id": 2399,
                 "keyType": {
-                  "id": 2558,
+                  "id": 2397,
                   "name": "address",
                   "nodeType": "ElementaryTypeName",
                   "src": "4698:7:14",
@@ -2689,7 +2689,7 @@
                   "typeString": "mapping(address => bool)"
                 },
                 "valueType": {
-                  "id": 2559,
+                  "id": 2398,
                   "name": "bool",
                   "nodeType": "ElementaryTypeName",
                   "src": "4709:4:14",
@@ -2705,10 +2705,10 @@
           },
           {
             "constant": false,
-            "id": 2568,
+            "id": 2407,
             "name": "usersPaintDiscountForColor",
             "nodeType": "VariableDeclaration",
-            "scope": 2732,
+            "scope": 2571,
             "src": "4897:77:14",
             "stateVariable": true,
             "storageLocation": "default",
@@ -2717,9 +2717,9 @@
               "typeString": "mapping(uint256 => mapping(address => uint256))"
             },
             "typeName": {
-              "id": 2567,
+              "id": 2406,
               "keyType": {
-                "id": 2563,
+                "id": 2402,
                 "name": "uint",
                 "nodeType": "ElementaryTypeName",
                 "src": "4906:4:14",
@@ -2735,9 +2735,9 @@
                 "typeString": "mapping(uint256 => mapping(address => uint256))"
               },
               "valueType": {
-                "id": 2566,
+                "id": 2405,
                 "keyType": {
-                  "id": 2564,
+                  "id": 2403,
                   "name": "address",
                   "nodeType": "ElementaryTypeName",
                   "src": "4923:7:14",
@@ -2753,7 +2753,7 @@
                   "typeString": "mapping(address => uint256)"
                 },
                 "valueType": {
-                  "id": 2565,
+                  "id": 2404,
                   "name": "uint",
                   "nodeType": "ElementaryTypeName",
                   "src": "4934:4:14",
@@ -2769,10 +2769,10 @@
           },
           {
             "constant": false,
-            "id": 2572,
+            "id": 2411,
             "name": "isRegisteredUser",
             "nodeType": "VariableDeclaration",
-            "scope": 2732,
+            "scope": 2571,
             "src": "5050:49:14",
             "stateVariable": true,
             "storageLocation": "default",
@@ -2781,9 +2781,9 @@
               "typeString": "mapping(address => bool)"
             },
             "typeName": {
-              "id": 2571,
+              "id": 2410,
               "keyType": {
-                "id": 2569,
+                "id": 2408,
                 "name": "address",
                 "nodeType": "ElementaryTypeName",
                 "src": "5059:7:14",
@@ -2799,7 +2799,7 @@
                 "typeString": "mapping(address => bool)"
               },
               "valueType": {
-                "id": 2570,
+                "id": 2409,
                 "name": "bool",
                 "nodeType": "ElementaryTypeName",
                 "src": "5070:4:14",
@@ -2814,10 +2814,10 @@
           },
           {
             "constant": false,
-            "id": 2576,
+            "id": 2415,
             "name": "hasRefLink",
             "nodeType": "VariableDeclaration",
-            "scope": 2732,
+            "scope": 2571,
             "src": "5290:43:14",
             "stateVariable": true,
             "storageLocation": "default",
@@ -2826,9 +2826,9 @@
               "typeString": "mapping(address => bool)"
             },
             "typeName": {
-              "id": 2575,
+              "id": 2414,
               "keyType": {
-                "id": 2573,
+                "id": 2412,
                 "name": "address",
                 "nodeType": "ElementaryTypeName",
                 "src": "5299:7:14",
@@ -2844,7 +2844,7 @@
                 "typeString": "mapping(address => bool)"
               },
               "valueType": {
-                "id": 2574,
+                "id": 2413,
                 "name": "bool",
                 "nodeType": "ElementaryTypeName",
                 "src": "5310:4:14",
@@ -2859,10 +2859,10 @@
           },
           {
             "constant": false,
-            "id": 2580,
+            "id": 2419,
             "name": "referralToReferrer",
             "nodeType": "VariableDeclaration",
-            "scope": 2732,
+            "scope": 2571,
             "src": "5394:54:14",
             "stateVariable": true,
             "storageLocation": "default",
@@ -2871,9 +2871,9 @@
               "typeString": "mapping(address => address)"
             },
             "typeName": {
-              "id": 2579,
+              "id": 2418,
               "keyType": {
-                "id": 2577,
+                "id": 2416,
                 "name": "address",
                 "nodeType": "ElementaryTypeName",
                 "src": "5403:7:14",
@@ -2889,7 +2889,7 @@
                 "typeString": "mapping(address => address)"
               },
               "valueType": {
-                "id": 2578,
+                "id": 2417,
                 "name": "address",
                 "nodeType": "ElementaryTypeName",
                 "src": "5414:7:14",
@@ -2904,10 +2904,10 @@
           },
           {
             "constant": false,
-            "id": 2585,
+            "id": 2424,
             "name": "referrerToReferrals",
             "nodeType": "VariableDeclaration",
-            "scope": 2732,
+            "scope": 2571,
             "src": "5522:57:14",
             "stateVariable": true,
             "storageLocation": "default",
@@ -2916,9 +2916,9 @@
               "typeString": "mapping(address => address[])"
             },
             "typeName": {
-              "id": 2584,
+              "id": 2423,
               "keyType": {
-                "id": 2581,
+                "id": 2420,
                 "name": "address",
                 "nodeType": "ElementaryTypeName",
                 "src": "5531:7:14",
@@ -2935,7 +2935,7 @@
               },
               "valueType": {
                 "baseType": {
-                  "id": 2582,
+                  "id": 2421,
                   "name": "address",
                   "nodeType": "ElementaryTypeName",
                   "src": "5542:7:14",
@@ -2944,7 +2944,7 @@
                     "typeString": "address"
                   }
                 },
-                "id": 2583,
+                "id": 2422,
                 "length": null,
                 "nodeType": "ArrayTypeName",
                 "src": "5542:9:14",
@@ -2959,10 +2959,10 @@
           },
           {
             "constant": false,
-            "id": 2589,
+            "id": 2428,
             "name": "hasReferrer",
             "nodeType": "VariableDeclaration",
-            "scope": 2732,
+            "scope": 2571,
             "src": "5669:44:14",
             "stateVariable": true,
             "storageLocation": "default",
@@ -2971,9 +2971,9 @@
               "typeString": "mapping(address => bool)"
             },
             "typeName": {
-              "id": 2588,
+              "id": 2427,
               "keyType": {
-                "id": 2586,
+                "id": 2425,
                 "name": "address",
                 "nodeType": "ElementaryTypeName",
                 "src": "5678:7:14",
@@ -2989,7 +2989,7 @@
                 "typeString": "mapping(address => bool)"
               },
               "valueType": {
-                "id": 2587,
+                "id": 2426,
                 "name": "bool",
                 "nodeType": "ElementaryTypeName",
                 "src": "5689:4:14",
@@ -3004,10 +3004,10 @@
           },
           {
             "constant": false,
-            "id": 2593,
+            "id": 2432,
             "name": "userToRefLink",
             "nodeType": "VariableDeclaration",
-            "scope": 2732,
+            "scope": 2571,
             "src": "5800:48:14",
             "stateVariable": true,
             "storageLocation": "default",
@@ -3016,9 +3016,9 @@
               "typeString": "mapping(address => string)"
             },
             "typeName": {
-              "id": 2592,
+              "id": 2431,
               "keyType": {
-                "id": 2590,
+                "id": 2429,
                 "name": "address",
                 "nodeType": "ElementaryTypeName",
                 "src": "5809:7:14",
@@ -3034,7 +3034,7 @@
                 "typeString": "mapping(address => string)"
               },
               "valueType": {
-                "id": 2591,
+                "id": 2430,
                 "name": "string",
                 "nodeType": "ElementaryTypeName",
                 "src": "5820:6:14",
@@ -3049,10 +3049,10 @@
           },
           {
             "constant": false,
-            "id": 2597,
+            "id": 2436,
             "name": "refLinkToUser",
             "nodeType": "VariableDeclaration",
-            "scope": 2732,
+            "scope": 2571,
             "src": "5978:49:14",
             "stateVariable": true,
             "storageLocation": "default",
@@ -3061,9 +3061,9 @@
               "typeString": "mapping(bytes32 => address)"
             },
             "typeName": {
-              "id": 2596,
+              "id": 2435,
               "keyType": {
-                "id": 2594,
+                "id": 2433,
                 "name": "bytes32",
                 "nodeType": "ElementaryTypeName",
                 "src": "5987:7:14",
@@ -3079,7 +3079,7 @@
                 "typeString": "mapping(bytes32 => address)"
               },
               "valueType": {
-                "id": 2595,
+                "id": 2434,
                 "name": "address",
                 "nodeType": "ElementaryTypeName",
                 "src": "5998:7:14",
@@ -3094,10 +3094,10 @@
           },
           {
             "constant": false,
-            "id": 2601,
+            "id": 2440,
             "name": "refLinkExists",
             "nodeType": "VariableDeclaration",
-            "scope": 2732,
+            "scope": 2571,
             "src": "6158:46:14",
             "stateVariable": true,
             "storageLocation": "default",
@@ -3106,9 +3106,9 @@
               "typeString": "mapping(bytes32 => bool)"
             },
             "typeName": {
-              "id": 2600,
+              "id": 2439,
               "keyType": {
-                "id": 2598,
+                "id": 2437,
                 "name": "bytes32",
                 "nodeType": "ElementaryTypeName",
                 "src": "6167:7:14",
@@ -3124,7 +3124,7 @@
                 "typeString": "mapping(bytes32 => bool)"
               },
               "valueType": {
-                "id": 2599,
+                "id": 2438,
                 "name": "bool",
                 "nodeType": "ElementaryTypeName",
                 "src": "6178:4:14",
@@ -3139,10 +3139,10 @@
           },
           {
             "constant": false,
-            "id": 2605,
+            "id": 2444,
             "name": "newUserToCounter",
             "nodeType": "VariableDeclaration",
-            "scope": 2732,
+            "scope": 2571,
             "src": "6367:49:14",
             "stateVariable": true,
             "storageLocation": "default",
@@ -3151,9 +3151,9 @@
               "typeString": "mapping(address => uint256)"
             },
             "typeName": {
-              "id": 2604,
+              "id": 2443,
               "keyType": {
-                "id": 2602,
+                "id": 2441,
                 "name": "address",
                 "nodeType": "ElementaryTypeName",
                 "src": "6376:7:14",
@@ -3169,7 +3169,7 @@
                 "typeString": "mapping(address => uint256)"
               },
               "valueType": {
-                "id": 2603,
+                "id": 2442,
                 "name": "uint",
                 "nodeType": "ElementaryTypeName",
                 "src": "6387:4:14",
@@ -3184,10 +3184,10 @@
           },
           {
             "constant": false,
-            "id": 2607,
+            "id": 2446,
             "name": "uniqueUsersCount",
             "nodeType": "VariableDeclaration",
-            "scope": 2732,
+            "scope": 2571,
             "src": "6496:28:14",
             "stateVariable": true,
             "storageLocation": "default",
@@ -3196,7 +3196,7 @@
               "typeString": "uint256"
             },
             "typeName": {
-              "id": 2606,
+              "id": 2445,
               "name": "uint",
               "nodeType": "ElementaryTypeName",
               "src": "6496:4:14",
@@ -3210,10 +3210,10 @@
           },
           {
             "constant": false,
-            "id": 2609,
+            "id": 2448,
             "name": "maxPaintsInPool",
             "nodeType": "VariableDeclaration",
-            "scope": 2732,
+            "scope": 2571,
             "src": "6615:27:14",
             "stateVariable": true,
             "storageLocation": "default",
@@ -3222,7 +3222,7 @@
               "typeString": "uint256"
             },
             "typeName": {
-              "id": 2608,
+              "id": 2447,
               "name": "uint",
               "nodeType": "ElementaryTypeName",
               "src": "6615:4:14",
@@ -3236,10 +3236,10 @@
           },
           {
             "constant": false,
-            "id": 2611,
+            "id": 2450,
             "name": "currentRound",
             "nodeType": "VariableDeclaration",
-            "scope": 2732,
+            "scope": 2571,
             "src": "6681:24:14",
             "stateVariable": true,
             "storageLocation": "default",
@@ -3248,7 +3248,7 @@
               "typeString": "uint256"
             },
             "typeName": {
-              "id": 2610,
+              "id": 2449,
               "name": "uint",
               "nodeType": "ElementaryTypeName",
               "src": "6681:4:14",
@@ -3262,10 +3262,10 @@
           },
           {
             "constant": false,
-            "id": 2613,
+            "id": 2452,
             "name": "tbIteration",
             "nodeType": "VariableDeclaration",
-            "scope": 2732,
+            "scope": 2571,
             "src": "6761:23:14",
             "stateVariable": true,
             "storageLocation": "default",
@@ -3274,7 +3274,7 @@
               "typeString": "uint256"
             },
             "typeName": {
-              "id": 2612,
+              "id": 2451,
               "name": "uint",
               "nodeType": "ElementaryTypeName",
               "src": "6761:4:14",
@@ -3288,10 +3288,10 @@
           },
           {
             "constant": false,
-            "id": 2615,
+            "id": 2454,
             "name": "cbIteration",
             "nodeType": "VariableDeclaration",
-            "scope": 2732,
+            "scope": 2571,
             "src": "6836:23:14",
             "stateVariable": true,
             "storageLocation": "default",
@@ -3300,7 +3300,7 @@
               "typeString": "uint256"
             },
             "typeName": {
-              "id": 2614,
+              "id": 2453,
               "name": "uint",
               "nodeType": "ElementaryTypeName",
               "src": "6836:4:14",
@@ -3314,10 +3314,10 @@
           },
           {
             "constant": false,
-            "id": 2617,
+            "id": 2456,
             "name": "paintsCounter",
             "nodeType": "VariableDeclaration",
-            "scope": 2732,
+            "scope": 2571,
             "src": "6959:25:14",
             "stateVariable": true,
             "storageLocation": "default",
@@ -3326,7 +3326,7 @@
               "typeString": "uint256"
             },
             "typeName": {
-              "id": 2616,
+              "id": 2455,
               "name": "uint",
               "nodeType": "ElementaryTypeName",
               "src": "6959:4:14",
@@ -3340,10 +3340,10 @@
           },
           {
             "constant": false,
-            "id": 2623,
+            "id": 2462,
             "name": "timeBankShare",
             "nodeType": "VariableDeclaration",
-            "scope": 2732,
+            "scope": 2571,
             "src": "7061:64:14",
             "stateVariable": true,
             "storageLocation": "default",
@@ -3352,9 +3352,9 @@
               "typeString": "mapping(uint256 => mapping(address => uint256))"
             },
             "typeName": {
-              "id": 2622,
+              "id": 2461,
               "keyType": {
-                "id": 2618,
+                "id": 2457,
                 "name": "uint",
                 "nodeType": "ElementaryTypeName",
                 "src": "7070:4:14",
@@ -3370,9 +3370,9 @@
                 "typeString": "mapping(uint256 => mapping(address => uint256))"
               },
               "valueType": {
-                "id": 2621,
+                "id": 2460,
                 "keyType": {
-                  "id": 2619,
+                  "id": 2458,
                   "name": "address",
                   "nodeType": "ElementaryTypeName",
                   "src": "7087:7:14",
@@ -3388,7 +3388,7 @@
                   "typeString": "mapping(address => uint256)"
                 },
                 "valueType": {
-                  "id": 2620,
+                  "id": 2459,
                   "name": "uint",
                   "nodeType": "ElementaryTypeName",
                   "src": "7098:4:14",
@@ -3404,10 +3404,10 @@
           },
           {
             "constant": false,
-            "id": 2631,
+            "id": 2470,
             "name": "colorBankShare",
             "nodeType": "VariableDeclaration",
-            "scope": 2732,
+            "scope": 2571,
             "src": "7211:83:14",
             "stateVariable": true,
             "storageLocation": "default",
@@ -3416,9 +3416,9 @@
               "typeString": "mapping(uint256 => mapping(uint256 => mapping(address => uint256)))"
             },
             "typeName": {
-              "id": 2630,
+              "id": 2469,
               "keyType": {
-                "id": 2624,
+                "id": 2463,
                 "name": "uint",
                 "nodeType": "ElementaryTypeName",
                 "src": "7220:4:14",
@@ -3434,9 +3434,9 @@
                 "typeString": "mapping(uint256 => mapping(uint256 => mapping(address => uint256)))"
               },
               "valueType": {
-                "id": 2629,
+                "id": 2468,
                 "keyType": {
-                  "id": 2625,
+                  "id": 2464,
                   "name": "uint",
                   "nodeType": "ElementaryTypeName",
                   "src": "7237:4:14",
@@ -3452,9 +3452,9 @@
                   "typeString": "mapping(uint256 => mapping(address => uint256))"
                 },
                 "valueType": {
-                  "id": 2628,
+                  "id": 2467,
                   "keyType": {
-                    "id": 2626,
+                    "id": 2465,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "7254:7:14",
@@ -3470,7 +3470,7 @@
                     "typeString": "mapping(address => uint256)"
                   },
                   "valueType": {
-                    "id": 2627,
+                    "id": 2466,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
                     "src": "7265:4:14",
@@ -3487,10 +3487,10 @@
           },
           {
             "constant": false,
-            "id": 2635,
+            "id": 2474,
             "name": "paintsCounterForColor",
             "nodeType": "VariableDeclaration",
-            "scope": 2732,
+            "scope": 2571,
             "src": "7404:51:14",
             "stateVariable": true,
             "storageLocation": "default",
@@ -3499,9 +3499,9 @@
               "typeString": "mapping(uint256 => uint256)"
             },
             "typeName": {
-              "id": 2634,
+              "id": 2473,
               "keyType": {
-                "id": 2632,
+                "id": 2471,
                 "name": "uint",
                 "nodeType": "ElementaryTypeName",
                 "src": "7413:4:14",
@@ -3517,7 +3517,7 @@
                 "typeString": "mapping(uint256 => uint256)"
               },
               "valueType": {
-                "id": 2633,
+                "id": 2472,
                 "name": "uint",
                 "nodeType": "ElementaryTypeName",
                 "src": "7421:4:14",
@@ -3532,10 +3532,10 @@
           },
           {
             "constant": false,
-            "id": 2640,
+            "id": 2479,
             "name": "cbTeam",
             "nodeType": "VariableDeclaration",
-            "scope": 2732,
+            "scope": 2571,
             "src": "7510:41:14",
             "stateVariable": true,
             "storageLocation": "default",
@@ -3544,9 +3544,9 @@
               "typeString": "mapping(uint256 => address[])"
             },
             "typeName": {
-              "id": 2639,
+              "id": 2478,
               "keyType": {
-                "id": 2636,
+                "id": 2475,
                 "name": "uint",
                 "nodeType": "ElementaryTypeName",
                 "src": "7519:4:14",
@@ -3563,7 +3563,7 @@
               },
               "valueType": {
                 "baseType": {
-                  "id": 2637,
+                  "id": 2476,
                   "name": "address",
                   "nodeType": "ElementaryTypeName",
                   "src": "7527:7:14",
@@ -3572,7 +3572,7 @@
                     "typeString": "address"
                   }
                 },
-                "id": 2638,
+                "id": 2477,
                 "length": null,
                 "nodeType": "ArrayTypeName",
                 "src": "7527:9:14",
@@ -3587,10 +3587,10 @@
           },
           {
             "constant": false,
-            "id": 2645,
+            "id": 2484,
             "name": "tbTeam",
             "nodeType": "VariableDeclaration",
-            "scope": 2732,
+            "scope": 2571,
             "src": "7606:41:14",
             "stateVariable": true,
             "storageLocation": "default",
@@ -3599,9 +3599,9 @@
               "typeString": "mapping(uint256 => address[])"
             },
             "typeName": {
-              "id": 2644,
+              "id": 2483,
               "keyType": {
-                "id": 2641,
+                "id": 2480,
                 "name": "uint",
                 "nodeType": "ElementaryTypeName",
                 "src": "7615:4:14",
@@ -3618,7 +3618,7 @@
               },
               "valueType": {
                 "baseType": {
-                  "id": 2642,
+                  "id": 2481,
                   "name": "address",
                   "nodeType": "ElementaryTypeName",
                   "src": "7623:7:14",
@@ -3627,7 +3627,7 @@
                     "typeString": "address"
                   }
                 },
-                "id": 2643,
+                "id": 2482,
                 "length": null,
                 "nodeType": "ArrayTypeName",
                 "src": "7623:9:14",
@@ -3642,10 +3642,10 @@
           },
           {
             "constant": false,
-            "id": 2649,
+            "id": 2488,
             "name": "counterToPainter",
             "nodeType": "VariableDeclaration",
-            "scope": 2732,
+            "scope": 2571,
             "src": "7703:49:14",
             "stateVariable": true,
             "storageLocation": "default",
@@ -3654,9 +3654,9 @@
               "typeString": "mapping(uint256 => address)"
             },
             "typeName": {
-              "id": 2648,
+              "id": 2487,
               "keyType": {
-                "id": 2646,
+                "id": 2485,
                 "name": "uint",
                 "nodeType": "ElementaryTypeName",
                 "src": "7712:4:14",
@@ -3672,7 +3672,7 @@
                 "typeString": "mapping(uint256 => address)"
               },
               "valueType": {
-                "id": 2647,
+                "id": 2486,
                 "name": "address",
                 "nodeType": "ElementaryTypeName",
                 "src": "7720:7:14",
@@ -3687,10 +3687,10 @@
           },
           {
             "constant": false,
-            "id": 2655,
+            "id": 2494,
             "name": "counterToPainterForColor",
             "nodeType": "VariableDeclaration",
-            "scope": 2732,
+            "scope": 2571,
             "src": "7823:75:14",
             "stateVariable": true,
             "storageLocation": "default",
@@ -3699,9 +3699,9 @@
               "typeString": "mapping(uint256 => mapping(uint256 => address))"
             },
             "typeName": {
-              "id": 2654,
+              "id": 2493,
               "keyType": {
-                "id": 2650,
+                "id": 2489,
                 "name": "uint",
                 "nodeType": "ElementaryTypeName",
                 "src": "7832:4:14",
@@ -3717,9 +3717,9 @@
                 "typeString": "mapping(uint256 => mapping(uint256 => address))"
               },
               "valueType": {
-                "id": 2653,
+                "id": 2492,
                 "keyType": {
-                  "id": 2651,
+                  "id": 2490,
                   "name": "uint",
                   "nodeType": "ElementaryTypeName",
                   "src": "7849:4:14",
@@ -3735,7 +3735,7 @@
                   "typeString": "mapping(uint256 => address)"
                 },
                 "valueType": {
-                  "id": 2652,
+                  "id": 2491,
                   "name": "address",
                   "nodeType": "ElementaryTypeName",
                   "src": "7857:7:14",
@@ -3751,10 +3751,10 @@
           },
           {
             "constant": false,
-            "id": 2661,
+            "id": 2500,
             "name": "isInCBT",
             "nodeType": "VariableDeclaration",
-            "scope": 2732,
+            "scope": 2571,
             "src": "7974:58:14",
             "stateVariable": true,
             "storageLocation": "default",
@@ -3763,9 +3763,9 @@
               "typeString": "mapping(uint256 => mapping(address => bool))"
             },
             "typeName": {
-              "id": 2660,
+              "id": 2499,
               "keyType": {
-                "id": 2656,
+                "id": 2495,
                 "name": "uint",
                 "nodeType": "ElementaryTypeName",
                 "src": "7983:4:14",
@@ -3781,9 +3781,9 @@
                 "typeString": "mapping(uint256 => mapping(address => bool))"
               },
               "valueType": {
-                "id": 2659,
+                "id": 2498,
                 "keyType": {
-                  "id": 2657,
+                  "id": 2496,
                   "name": "address",
                   "nodeType": "ElementaryTypeName",
                   "src": "8000:7:14",
@@ -3799,7 +3799,7 @@
                   "typeString": "mapping(address => bool)"
                 },
                 "valueType": {
-                  "id": 2658,
+                  "id": 2497,
                   "name": "bool",
                   "nodeType": "ElementaryTypeName",
                   "src": "8011:4:14",
@@ -3815,10 +3815,10 @@
           },
           {
             "constant": false,
-            "id": 2667,
+            "id": 2506,
             "name": "isInTBT",
             "nodeType": "VariableDeclaration",
-            "scope": 2732,
+            "scope": 2571,
             "src": "8108:58:14",
             "stateVariable": true,
             "storageLocation": "default",
@@ -3827,9 +3827,9 @@
               "typeString": "mapping(uint256 => mapping(address => bool))"
             },
             "typeName": {
-              "id": 2666,
+              "id": 2505,
               "keyType": {
-                "id": 2662,
+                "id": 2501,
                 "name": "uint",
                 "nodeType": "ElementaryTypeName",
                 "src": "8117:4:14",
@@ -3845,9 +3845,9 @@
                 "typeString": "mapping(uint256 => mapping(address => bool))"
               },
               "valueType": {
-                "id": 2665,
+                "id": 2504,
                 "keyType": {
-                  "id": 2663,
+                  "id": 2502,
                   "name": "address",
                   "nodeType": "ElementaryTypeName",
                   "src": "8134:7:14",
@@ -3863,7 +3863,7 @@
                   "typeString": "mapping(address => bool)"
                 },
                 "valueType": {
-                  "id": 2664,
+                  "id": 2503,
                   "name": "bool",
                   "nodeType": "ElementaryTypeName",
                   "src": "8145:4:14",
@@ -3879,10 +3879,10 @@
           },
           {
             "constant": false,
-            "id": 2673,
+            "id": 2512,
             "name": "painterToCBP",
             "nodeType": "VariableDeclaration",
-            "scope": 2732,
+            "scope": 2571,
             "src": "8223:63:14",
             "stateVariable": true,
             "storageLocation": "default",
@@ -3891,9 +3891,9 @@
               "typeString": "mapping(uint256 => mapping(address => uint256))"
             },
             "typeName": {
-              "id": 2672,
+              "id": 2511,
               "keyType": {
-                "id": 2668,
+                "id": 2507,
                 "name": "uint",
                 "nodeType": "ElementaryTypeName",
                 "src": "8232:4:14",
@@ -3909,9 +3909,9 @@
                 "typeString": "mapping(uint256 => mapping(address => uint256))"
               },
               "valueType": {
-                "id": 2671,
+                "id": 2510,
                 "keyType": {
-                  "id": 2669,
+                  "id": 2508,
                   "name": "address",
                   "nodeType": "ElementaryTypeName",
                   "src": "8249:7:14",
@@ -3927,7 +3927,7 @@
                   "typeString": "mapping(address => uint256)"
                 },
                 "valueType": {
-                  "id": 2670,
+                  "id": 2509,
                   "name": "uint",
                   "nodeType": "ElementaryTypeName",
                   "src": "8260:4:14",
@@ -3943,10 +3943,10 @@
           },
           {
             "constant": false,
-            "id": 2679,
+            "id": 2518,
             "name": "painterToTBP",
             "nodeType": "VariableDeclaration",
-            "scope": 2732,
+            "scope": 2571,
             "src": "8342:63:14",
             "stateVariable": true,
             "storageLocation": "default",
@@ -3955,9 +3955,9 @@
               "typeString": "mapping(uint256 => mapping(address => uint256))"
             },
             "typeName": {
-              "id": 2678,
+              "id": 2517,
               "keyType": {
-                "id": 2674,
+                "id": 2513,
                 "name": "uint",
                 "nodeType": "ElementaryTypeName",
                 "src": "8351:4:14",
@@ -3973,9 +3973,9 @@
                 "typeString": "mapping(uint256 => mapping(address => uint256))"
               },
               "valueType": {
-                "id": 2677,
+                "id": 2516,
                 "keyType": {
-                  "id": 2675,
+                  "id": 2514,
                   "name": "address",
                   "nodeType": "ElementaryTypeName",
                   "src": "8368:7:14",
@@ -3991,7 +3991,7 @@
                   "typeString": "mapping(address => uint256)"
                 },
                 "valueType": {
-                  "id": 2676,
+                  "id": 2515,
                   "name": "uint",
                   "nodeType": "ElementaryTypeName",
                   "src": "8379:4:14",
@@ -4007,10 +4007,10 @@
           },
           {
             "constant": false,
-            "id": 2683,
+            "id": 2522,
             "name": "isCBPTransfered",
             "nodeType": "VariableDeclaration",
-            "scope": 2732,
+            "scope": 2571,
             "src": "8467:45:14",
             "stateVariable": true,
             "storageLocation": "default",
@@ -4019,9 +4019,9 @@
               "typeString": "mapping(uint256 => bool)"
             },
             "typeName": {
-              "id": 2682,
+              "id": 2521,
               "keyType": {
-                "id": 2680,
+                "id": 2519,
                 "name": "uint",
                 "nodeType": "ElementaryTypeName",
                 "src": "8476:4:14",
@@ -4037,7 +4037,7 @@
                 "typeString": "mapping(uint256 => bool)"
               },
               "valueType": {
-                "id": 2681,
+                "id": 2520,
                 "name": "bool",
                 "nodeType": "ElementaryTypeName",
                 "src": "8484:4:14",
@@ -4052,10 +4052,10 @@
           },
           {
             "constant": false,
-            "id": 2687,
+            "id": 2526,
             "name": "isTBPTransfered",
             "nodeType": "VariableDeclaration",
-            "scope": 2732,
+            "scope": 2571,
             "src": "8570:45:14",
             "stateVariable": true,
             "storageLocation": "default",
@@ -4064,9 +4064,9 @@
               "typeString": "mapping(uint256 => bool)"
             },
             "typeName": {
-              "id": 2686,
+              "id": 2525,
               "keyType": {
-                "id": 2684,
+                "id": 2523,
                 "name": "uint",
                 "nodeType": "ElementaryTypeName",
                 "src": "8579:4:14",
@@ -4082,7 +4082,7 @@
                 "typeString": "mapping(uint256 => bool)"
               },
               "valueType": {
-                "id": 2685,
+                "id": 2524,
                 "name": "bool",
                 "nodeType": "ElementaryTypeName",
                 "src": "8587:4:14",
@@ -4097,10 +4097,10 @@
           },
           {
             "constant": false,
-            "id": 2691,
+            "id": 2530,
             "name": "lastPlayedRound",
             "nodeType": "VariableDeclaration",
-            "scope": 2732,
+            "scope": 2571,
             "src": "8733:48:14",
             "stateVariable": true,
             "storageLocation": "default",
@@ -4109,9 +4109,9 @@
               "typeString": "mapping(address => uint256)"
             },
             "typeName": {
-              "id": 2690,
+              "id": 2529,
               "keyType": {
-                "id": 2688,
+                "id": 2527,
                 "name": "address",
                 "nodeType": "ElementaryTypeName",
                 "src": "8742:7:14",
@@ -4127,7 +4127,7 @@
                 "typeString": "mapping(address => uint256)"
               },
               "valueType": {
-                "id": 2689,
+                "id": 2528,
                 "name": "uint",
                 "nodeType": "ElementaryTypeName",
                 "src": "8753:4:14",
@@ -4142,10 +4142,10 @@
           },
           {
             "constant": false,
-            "id": 2695,
+            "id": 2534,
             "name": "ownerOfColor",
             "nodeType": "VariableDeclaration",
-            "scope": 2732,
+            "scope": 2571,
             "src": "8821:45:14",
             "stateVariable": true,
             "storageLocation": "default",
@@ -4154,9 +4154,9 @@
               "typeString": "mapping(uint256 => address)"
             },
             "typeName": {
-              "id": 2694,
+              "id": 2533,
               "keyType": {
-                "id": 2692,
+                "id": 2531,
                 "name": "uint",
                 "nodeType": "ElementaryTypeName",
                 "src": "8830:4:14",
@@ -4172,7 +4172,7 @@
                 "typeString": "mapping(uint256 => address)"
               },
               "valueType": {
-                "id": 2693,
+                "id": 2532,
                 "name": "address",
                 "nodeType": "ElementaryTypeName",
                 "src": "8838:7:14",
@@ -4187,10 +4187,10 @@
           },
           {
             "constant": false,
-            "id": 2699,
+            "id": 2538,
             "name": "withdrawalBalances",
             "nodeType": "VariableDeclaration",
-            "scope": 2732,
+            "scope": 2571,
             "src": "9014:51:14",
             "stateVariable": true,
             "storageLocation": "default",
@@ -4199,9 +4199,9 @@
               "typeString": "mapping(address => uint256)"
             },
             "typeName": {
-              "id": 2698,
+              "id": 2537,
               "keyType": {
-                "id": 2696,
+                "id": 2535,
                 "name": "address",
                 "nodeType": "ElementaryTypeName",
                 "src": "9023:7:14",
@@ -4217,7 +4217,7 @@
                 "typeString": "mapping(address => uint256)"
               },
               "valueType": {
-                "id": 2697,
+                "id": 2536,
                 "name": "uint",
                 "nodeType": "ElementaryTypeName",
                 "src": "9034:4:14",
@@ -4232,10 +4232,10 @@
           },
           {
             "constant": false,
-            "id": 2703,
+            "id": 2542,
             "name": "addressToLastWithdrawalTime",
             "nodeType": "VariableDeclaration",
-            "scope": 2732,
+            "scope": 2571,
             "src": "9242:53:14",
             "stateVariable": true,
             "storageLocation": "default",
@@ -4244,9 +4244,9 @@
               "typeString": "mapping(address => uint256)"
             },
             "typeName": {
-              "id": 2702,
+              "id": 2541,
               "keyType": {
-                "id": 2700,
+                "id": 2539,
                 "name": "address",
                 "nodeType": "ElementaryTypeName",
                 "src": "9251:7:14",
@@ -4262,7 +4262,7 @@
                 "typeString": "mapping(address => uint256)"
               },
               "valueType": {
-                "id": 2701,
+                "id": 2540,
                 "name": "uint",
                 "nodeType": "ElementaryTypeName",
                 "src": "9262:4:14",
@@ -4277,10 +4277,10 @@
           },
           {
             "constant": false,
-            "id": 2705,
+            "id": 2544,
             "name": "dividendsBank",
             "nodeType": "VariableDeclaration",
-            "scope": 2732,
+            "scope": 2571,
             "src": "9356:25:14",
             "stateVariable": true,
             "storageLocation": "default",
@@ -4289,7 +4289,7 @@
               "typeString": "uint256"
             },
             "typeName": {
-              "id": 2704,
+              "id": 2543,
               "name": "uint",
               "nodeType": "ElementaryTypeName",
               "src": "9356:4:14",
@@ -4303,14 +4303,14 @@
           },
           {
             "canonicalName": "StorageV1.Claim",
-            "id": 2714,
+            "id": 2553,
             "members": [
               {
                 "constant": false,
-                "id": 2707,
+                "id": 2546,
                 "name": "id",
                 "nodeType": "VariableDeclaration",
-                "scope": 2714,
+                "scope": 2553,
                 "src": "9411:7:14",
                 "stateVariable": false,
                 "storageLocation": "default",
@@ -4319,7 +4319,7 @@
                   "typeString": "uint256"
                 },
                 "typeName": {
-                  "id": 2706,
+                  "id": 2545,
                   "name": "uint",
                   "nodeType": "ElementaryTypeName",
                   "src": "9411:4:14",
@@ -4333,10 +4333,10 @@
               },
               {
                 "constant": false,
-                "id": 2709,
+                "id": 2548,
                 "name": "claimer",
                 "nodeType": "VariableDeclaration",
-                "scope": 2714,
+                "scope": 2553,
                 "src": "9428:15:14",
                 "stateVariable": false,
                 "storageLocation": "default",
@@ -4345,7 +4345,7 @@
                   "typeString": "address"
                 },
                 "typeName": {
-                  "id": 2708,
+                  "id": 2547,
                   "name": "address",
                   "nodeType": "ElementaryTypeName",
                   "src": "9428:7:14",
@@ -4359,10 +4359,10 @@
               },
               {
                 "constant": false,
-                "id": 2711,
+                "id": 2550,
                 "name": "isResolved",
                 "nodeType": "VariableDeclaration",
-                "scope": 2714,
+                "scope": 2553,
                 "src": "9453:15:14",
                 "stateVariable": false,
                 "storageLocation": "default",
@@ -4371,7 +4371,7 @@
                   "typeString": "bool"
                 },
                 "typeName": {
-                  "id": 2710,
+                  "id": 2549,
                   "name": "bool",
                   "nodeType": "ElementaryTypeName",
                   "src": "9453:4:14",
@@ -4385,10 +4385,10 @@
               },
               {
                 "constant": false,
-                "id": 2713,
+                "id": 2552,
                 "name": "timestamp",
                 "nodeType": "VariableDeclaration",
-                "scope": 2714,
+                "scope": 2553,
                 "src": "9478:14:14",
                 "stateVariable": false,
                 "storageLocation": "default",
@@ -4397,7 +4397,7 @@
                   "typeString": "uint256"
                 },
                 "typeName": {
-                  "id": 2712,
+                  "id": 2551,
                   "name": "uint",
                   "nodeType": "ElementaryTypeName",
                   "src": "9478:4:14",
@@ -4412,16 +4412,16 @@
             ],
             "name": "Claim",
             "nodeType": "StructDefinition",
-            "scope": 2732,
+            "scope": 2571,
             "src": "9388:111:14",
             "visibility": "public"
           },
           {
             "constant": false,
-            "id": 2716,
+            "id": 2555,
             "name": "claimId",
             "nodeType": "VariableDeclaration",
-            "scope": 2732,
+            "scope": 2571,
             "src": "9505:19:14",
             "stateVariable": true,
             "storageLocation": "default",
@@ -4430,7 +4430,7 @@
               "typeString": "uint256"
             },
             "typeName": {
-              "id": 2715,
+              "id": 2554,
               "name": "uint",
               "nodeType": "ElementaryTypeName",
               "src": "9505:4:14",
@@ -4444,36 +4444,36 @@
           },
           {
             "constant": false,
-            "id": 2719,
+            "id": 2558,
             "name": "claims",
             "nodeType": "VariableDeclaration",
-            "scope": 2732,
+            "scope": 2571,
             "src": "9530:21:14",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
-              "typeIdentifier": "t_array$_t_struct$_Claim_$2714_storage_$dyn_storage",
+              "typeIdentifier": "t_array$_t_struct$_Claim_$2553_storage_$dyn_storage",
               "typeString": "struct StorageV1.Claim[]"
             },
             "typeName": {
               "baseType": {
                 "contractScope": null,
-                "id": 2717,
+                "id": 2556,
                 "name": "Claim",
                 "nodeType": "UserDefinedTypeName",
-                "referencedDeclaration": 2714,
+                "referencedDeclaration": 2553,
                 "src": "9530:5:14",
                 "typeDescriptions": {
-                  "typeIdentifier": "t_struct$_Claim_$2714_storage_ptr",
+                  "typeIdentifier": "t_struct$_Claim_$2553_storage_ptr",
                   "typeString": "struct StorageV1.Claim"
                 }
               },
-              "id": 2718,
+              "id": 2557,
               "length": null,
               "nodeType": "ArrayTypeName",
               "src": "9530:7:14",
               "typeDescriptions": {
-                "typeIdentifier": "t_array$_t_struct$_Claim_$2714_storage_$dyn_storage_ptr",
+                "typeIdentifier": "t_array$_t_struct$_Claim_$2553_storage_$dyn_storage_ptr",
                 "typeString": "struct StorageV1.Claim[]"
               }
             },
@@ -4482,10 +4482,10 @@
           },
           {
             "constant": false,
-            "id": 2722,
+            "id": 2561,
             "name": "ownerOfPixel",
             "nodeType": "VariableDeclaration",
-            "scope": 2732,
+            "scope": 2571,
             "src": "9947:72:14",
             "stateVariable": true,
             "storageLocation": "default",
@@ -4494,7 +4494,7 @@
               "typeString": "address"
             },
             "typeName": {
-              "id": 2720,
+              "id": 2559,
               "name": "address",
               "nodeType": "ElementaryTypeName",
               "src": "9947:7:14",
@@ -4506,7 +4506,7 @@
             "value": {
               "argumentTypes": null,
               "hexValue": "307863613335623764393135343538656635343061646536303638646665326634346538666137333363",
-              "id": 2721,
+              "id": 2560,
               "isConstant": false,
               "isLValue": false,
               "isPure": true,
@@ -4525,10 +4525,10 @@
           },
           {
             "constant": false,
-            "id": 2725,
+            "id": 2564,
             "name": "founders",
             "nodeType": "VariableDeclaration",
-            "scope": 2732,
+            "scope": 2571,
             "src": "10025:68:14",
             "stateVariable": true,
             "storageLocation": "default",
@@ -4537,7 +4537,7 @@
               "typeString": "address"
             },
             "typeName": {
-              "id": 2723,
+              "id": 2562,
               "name": "address",
               "nodeType": "ElementaryTypeName",
               "src": "10025:7:14",
@@ -4549,7 +4549,7 @@
             "value": {
               "argumentTypes": null,
               "hexValue": "307833653464313837646637643861303832306561663431373464313762313630313537363130393132",
-              "id": 2724,
+              "id": 2563,
               "isConstant": false,
               "isLValue": false,
               "isPure": true,
@@ -4568,10 +4568,10 @@
           },
           {
             "constant": false,
-            "id": 2727,
+            "id": 2566,
             "name": "isGamePaused",
             "nodeType": "VariableDeclaration",
-            "scope": 2732,
+            "scope": 2571,
             "src": "10104:24:14",
             "stateVariable": true,
             "storageLocation": "default",
@@ -4580,7 +4580,7 @@
               "typeString": "bool"
             },
             "typeName": {
-              "id": 2726,
+              "id": 2565,
               "name": "bool",
               "nodeType": "ElementaryTypeName",
               "src": "10104:4:14",
@@ -4594,10 +4594,10 @@
           },
           {
             "constant": false,
-            "id": 2731,
+            "id": 2570,
             "name": "isAdmin",
             "nodeType": "VariableDeclaration",
-            "scope": 2732,
+            "scope": 2571,
             "src": "10139:39:14",
             "stateVariable": true,
             "storageLocation": "default",
@@ -4606,9 +4606,9 @@
               "typeString": "mapping(address => bool)"
             },
             "typeName": {
-              "id": 2730,
+              "id": 2569,
               "keyType": {
-                "id": 2728,
+                "id": 2567,
                 "name": "address",
                 "nodeType": "ElementaryTypeName",
                 "src": "10147:7:14",
@@ -4624,7 +4624,7 @@
                 "typeString": "mapping(address => bool)"
               },
               "valueType": {
-                "id": 2729,
+                "id": 2568,
                 "name": "bool",
                 "nodeType": "ElementaryTypeName",
                 "src": "10158:4:14",
@@ -4638,7 +4638,7 @@
             "visibility": "public"
           }
         ],
-        "scope": 2733,
+        "scope": 2572,
         "src": "52:10130:14"
       }
     ],
@@ -4648,14 +4648,14 @@
     "absolutePath": "/Users/Amir/last-pixel-contracts/contracts/StorageV1.sol",
     "exportedSymbols": {
       "StorageV1": [
-        2732
+        2571
       ]
     },
-    "id": 2733,
+    "id": 2572,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 2439,
+        "id": 2278,
         "literals": [
           "solidity",
           "^",
@@ -4668,10 +4668,10 @@
       {
         "absolutePath": "/Users/Amir/last-pixel-contracts/contracts/StorageV0.sol",
         "file": "./StorageV0.sol",
-        "id": 2440,
+        "id": 2279,
         "nodeType": "ImportDirective",
-        "scope": 2733,
-        "sourceUnit": 2438,
+        "scope": 2572,
+        "sourceUnit": 2277,
         "src": "25:25:14",
         "symbolAliases": [],
         "unitAlias": ""
@@ -4682,43 +4682,43 @@
             "arguments": null,
             "baseName": {
               "contractScope": null,
-              "id": 2441,
+              "id": 2280,
               "name": "StorageV0",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 2437,
+              "referencedDeclaration": 2276,
               "src": "74:9:14",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_StorageV0_$2437",
+                "typeIdentifier": "t_contract$_StorageV0_$2276",
                 "typeString": "contract StorageV0"
               }
             },
-            "id": 2442,
+            "id": 2281,
             "nodeType": "InheritanceSpecifier",
             "src": "74:9:14"
           }
         ],
         "contractDependencies": [
-          2437,
-          3468
+          2276,
+          3304
         ],
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": true,
-        "id": 2732,
+        "id": 2571,
         "linearizedBaseContracts": [
-          2732,
-          2437,
-          3468
+          2571,
+          2276,
+          3304
         ],
         "name": "StorageV1",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "constant": false,
-            "id": 2448,
+            "id": 2287,
             "name": "pixelToColorForRound",
             "nodeType": "VariableDeclaration",
-            "scope": 2732,
+            "scope": 2571,
             "src": "177:68:14",
             "stateVariable": true,
             "storageLocation": "default",
@@ -4727,9 +4727,9 @@
               "typeString": "mapping(uint256 => mapping(uint256 => uint256))"
             },
             "typeName": {
-              "id": 2447,
+              "id": 2286,
               "keyType": {
-                "id": 2443,
+                "id": 2282,
                 "name": "uint",
                 "nodeType": "ElementaryTypeName",
                 "src": "186:4:14",
@@ -4745,9 +4745,9 @@
                 "typeString": "mapping(uint256 => mapping(uint256 => uint256))"
               },
               "valueType": {
-                "id": 2446,
+                "id": 2285,
                 "keyType": {
-                  "id": 2444,
+                  "id": 2283,
                   "name": "uint",
                   "nodeType": "ElementaryTypeName",
                   "src": "203:4:14",
@@ -4763,7 +4763,7 @@
                   "typeString": "mapping(uint256 => uint256)"
                 },
                 "valueType": {
-                  "id": 2445,
+                  "id": 2284,
                   "name": "uint",
                   "nodeType": "ElementaryTypeName",
                   "src": "211:4:14",
@@ -4779,10 +4779,10 @@
           },
           {
             "constant": false,
-            "id": 2454,
+            "id": 2293,
             "name": "pixelToOldColorForRound",
             "nodeType": "VariableDeclaration",
-            "scope": 2732,
+            "scope": 2571,
             "src": "360:71:14",
             "stateVariable": true,
             "storageLocation": "default",
@@ -4791,9 +4791,9 @@
               "typeString": "mapping(uint256 => mapping(uint256 => uint256))"
             },
             "typeName": {
-              "id": 2453,
+              "id": 2292,
               "keyType": {
-                "id": 2449,
+                "id": 2288,
                 "name": "uint",
                 "nodeType": "ElementaryTypeName",
                 "src": "369:4:14",
@@ -4809,9 +4809,9 @@
                 "typeString": "mapping(uint256 => mapping(uint256 => uint256))"
               },
               "valueType": {
-                "id": 2452,
+                "id": 2291,
                 "keyType": {
-                  "id": 2450,
+                  "id": 2289,
                   "name": "uint",
                   "nodeType": "ElementaryTypeName",
                   "src": "386:4:14",
@@ -4827,7 +4827,7 @@
                   "typeString": "mapping(uint256 => uint256)"
                 },
                 "valueType": {
-                  "id": 2451,
+                  "id": 2290,
                   "name": "uint",
                   "nodeType": "ElementaryTypeName",
                   "src": "394:4:14",
@@ -4843,10 +4843,10 @@
           },
           {
             "constant": false,
-            "id": 2460,
+            "id": 2299,
             "name": "colorToPaintedPixelsAmountForRound",
             "nodeType": "VariableDeclaration",
-            "scope": 2732,
+            "scope": 2571,
             "src": "637:82:14",
             "stateVariable": true,
             "storageLocation": "default",
@@ -4855,9 +4855,9 @@
               "typeString": "mapping(uint256 => mapping(uint256 => uint256))"
             },
             "typeName": {
-              "id": 2459,
+              "id": 2298,
               "keyType": {
-                "id": 2455,
+                "id": 2294,
                 "name": "uint",
                 "nodeType": "ElementaryTypeName",
                 "src": "646:4:14",
@@ -4873,9 +4873,9 @@
                 "typeString": "mapping(uint256 => mapping(uint256 => uint256))"
               },
               "valueType": {
-                "id": 2458,
+                "id": 2297,
                 "keyType": {
-                  "id": 2456,
+                  "id": 2295,
                   "name": "uint",
                   "nodeType": "ElementaryTypeName",
                   "src": "663:4:14",
@@ -4891,7 +4891,7 @@
                   "typeString": "mapping(uint256 => uint256)"
                 },
                 "valueType": {
-                  "id": 2457,
+                  "id": 2296,
                   "name": "uint",
                   "nodeType": "ElementaryTypeName",
                   "src": "671:4:14",
@@ -4907,10 +4907,10 @@
           },
           {
             "constant": false,
-            "id": 2464,
+            "id": 2303,
             "name": "colorBankForRound",
             "nodeType": "VariableDeclaration",
-            "scope": 2732,
+            "scope": 2571,
             "src": "805:47:14",
             "stateVariable": true,
             "storageLocation": "default",
@@ -4919,9 +4919,9 @@
               "typeString": "mapping(uint256 => uint256)"
             },
             "typeName": {
-              "id": 2463,
+              "id": 2302,
               "keyType": {
-                "id": 2461,
+                "id": 2300,
                 "name": "uint",
                 "nodeType": "ElementaryTypeName",
                 "src": "814:4:14",
@@ -4937,7 +4937,7 @@
                 "typeString": "mapping(uint256 => uint256)"
               },
               "valueType": {
-                "id": 2462,
+                "id": 2301,
                 "name": "uint",
                 "nodeType": "ElementaryTypeName",
                 "src": "822:4:14",
@@ -4952,10 +4952,10 @@
           },
           {
             "constant": false,
-            "id": 2470,
+            "id": 2309,
             "name": "colorBankToColorForRound",
             "nodeType": "VariableDeclaration",
-            "scope": 2732,
+            "scope": 2571,
             "src": "989:72:14",
             "stateVariable": true,
             "storageLocation": "default",
@@ -4964,9 +4964,9 @@
               "typeString": "mapping(uint256 => mapping(uint256 => uint256))"
             },
             "typeName": {
-              "id": 2469,
+              "id": 2308,
               "keyType": {
-                "id": 2465,
+                "id": 2304,
                 "name": "uint",
                 "nodeType": "ElementaryTypeName",
                 "src": "998:4:14",
@@ -4982,9 +4982,9 @@
                 "typeString": "mapping(uint256 => mapping(uint256 => uint256))"
               },
               "valueType": {
-                "id": 2468,
+                "id": 2307,
                 "keyType": {
-                  "id": 2466,
+                  "id": 2305,
                   "name": "uint",
                   "nodeType": "ElementaryTypeName",
                   "src": "1015:4:14",
@@ -5000,7 +5000,7 @@
                   "typeString": "mapping(uint256 => uint256)"
                 },
                 "valueType": {
-                  "id": 2467,
+                  "id": 2306,
                   "name": "uint",
                   "nodeType": "ElementaryTypeName",
                   "src": "1023:4:14",
@@ -5016,10 +5016,10 @@
           },
           {
             "constant": false,
-            "id": 2474,
+            "id": 2313,
             "name": "timeBankForRound",
             "nodeType": "VariableDeclaration",
-            "scope": 2732,
+            "scope": 2571,
             "src": "1155:46:14",
             "stateVariable": true,
             "storageLocation": "default",
@@ -5028,9 +5028,9 @@
               "typeString": "mapping(uint256 => uint256)"
             },
             "typeName": {
-              "id": 2473,
+              "id": 2312,
               "keyType": {
-                "id": 2471,
+                "id": 2310,
                 "name": "uint",
                 "nodeType": "ElementaryTypeName",
                 "src": "1164:4:14",
@@ -5046,7 +5046,7 @@
                 "typeString": "mapping(uint256 => uint256)"
               },
               "valueType": {
-                "id": 2472,
+                "id": 2311,
                 "name": "uint",
                 "nodeType": "ElementaryTypeName",
                 "src": "1172:4:14",
@@ -5061,10 +5061,10 @@
           },
           {
             "constant": false,
-            "id": 2478,
+            "id": 2317,
             "name": "lastPaintTimeForRound",
             "nodeType": "VariableDeclaration",
-            "scope": 2732,
+            "scope": 2571,
             "src": "1366:51:14",
             "stateVariable": true,
             "storageLocation": "default",
@@ -5073,9 +5073,9 @@
               "typeString": "mapping(uint256 => uint256)"
             },
             "typeName": {
-              "id": 2477,
+              "id": 2316,
               "keyType": {
-                "id": 2475,
+                "id": 2314,
                 "name": "uint",
                 "nodeType": "ElementaryTypeName",
                 "src": "1375:4:14",
@@ -5091,7 +5091,7 @@
                 "typeString": "mapping(uint256 => uint256)"
               },
               "valueType": {
-                "id": 2476,
+                "id": 2315,
                 "name": "uint",
                 "nodeType": "ElementaryTypeName",
                 "src": "1383:4:14",
@@ -5106,10 +5106,10 @@
           },
           {
             "constant": false,
-            "id": 2482,
+            "id": 2321,
             "name": "lastPainterForRound",
             "nodeType": "VariableDeclaration",
-            "scope": 2732,
+            "scope": 2571,
             "src": "1567:52:14",
             "stateVariable": true,
             "storageLocation": "default",
@@ -5118,9 +5118,9 @@
               "typeString": "mapping(uint256 => address)"
             },
             "typeName": {
-              "id": 2481,
+              "id": 2320,
               "keyType": {
-                "id": 2479,
+                "id": 2318,
                 "name": "uint",
                 "nodeType": "ElementaryTypeName",
                 "src": "1576:4:14",
@@ -5136,7 +5136,7 @@
                 "typeString": "mapping(uint256 => address)"
               },
               "valueType": {
-                "id": 2480,
+                "id": 2319,
                 "name": "address",
                 "nodeType": "ElementaryTypeName",
                 "src": "1584:7:14",
@@ -5151,10 +5151,10 @@
           },
           {
             "constant": false,
-            "id": 2486,
+            "id": 2325,
             "name": "lastPaintedPixelForRound",
             "nodeType": "VariableDeclaration",
-            "scope": 2732,
+            "scope": 2571,
             "src": "1710:54:14",
             "stateVariable": true,
             "storageLocation": "default",
@@ -5163,9 +5163,9 @@
               "typeString": "mapping(uint256 => uint256)"
             },
             "typeName": {
-              "id": 2485,
+              "id": 2324,
               "keyType": {
-                "id": 2483,
+                "id": 2322,
                 "name": "uint",
                 "nodeType": "ElementaryTypeName",
                 "src": "1719:4:14",
@@ -5181,7 +5181,7 @@
                 "typeString": "mapping(uint256 => uint256)"
               },
               "valueType": {
-                "id": 2484,
+                "id": 2323,
                 "name": "uint",
                 "nodeType": "ElementaryTypeName",
                 "src": "1727:4:14",
@@ -5196,10 +5196,10 @@
           },
           {
             "constant": false,
-            "id": 2490,
+            "id": 2329,
             "name": "winnerColorForRound",
             "nodeType": "VariableDeclaration",
-            "scope": 2732,
+            "scope": 2571,
             "src": "1920:49:14",
             "stateVariable": true,
             "storageLocation": "default",
@@ -5208,9 +5208,9 @@
               "typeString": "mapping(uint256 => uint256)"
             },
             "typeName": {
-              "id": 2489,
+              "id": 2328,
               "keyType": {
-                "id": 2487,
+                "id": 2326,
                 "name": "uint",
                 "nodeType": "ElementaryTypeName",
                 "src": "1929:4:14",
@@ -5226,7 +5226,7 @@
                 "typeString": "mapping(uint256 => uint256)"
               },
               "valueType": {
-                "id": 2488,
+                "id": 2327,
                 "name": "uint",
                 "nodeType": "ElementaryTypeName",
                 "src": "1937:4:14",
@@ -5241,10 +5241,10 @@
           },
           {
             "constant": false,
-            "id": 2496,
+            "id": 2335,
             "name": "colorToTotalPaintsForRound",
             "nodeType": "VariableDeclaration",
-            "scope": 2732,
+            "scope": 2571,
             "src": "2192:74:14",
             "stateVariable": true,
             "storageLocation": "default",
@@ -5253,9 +5253,9 @@
               "typeString": "mapping(uint256 => mapping(uint256 => uint256))"
             },
             "typeName": {
-              "id": 2495,
+              "id": 2334,
               "keyType": {
-                "id": 2491,
+                "id": 2330,
                 "name": "uint",
                 "nodeType": "ElementaryTypeName",
                 "src": "2201:4:14",
@@ -5271,9 +5271,9 @@
                 "typeString": "mapping(uint256 => mapping(uint256 => uint256))"
               },
               "valueType": {
-                "id": 2494,
+                "id": 2333,
                 "keyType": {
-                  "id": 2492,
+                  "id": 2331,
                   "name": "uint",
                   "nodeType": "ElementaryTypeName",
                   "src": "2218:4:14",
@@ -5289,7 +5289,7 @@
                   "typeString": "mapping(uint256 => uint256)"
                 },
                 "valueType": {
-                  "id": 2493,
+                  "id": 2332,
                   "name": "uint",
                   "nodeType": "ElementaryTypeName",
                   "src": "2226:4:14",
@@ -5305,10 +5305,10 @@
           },
           {
             "constant": false,
-            "id": 2500,
+            "id": 2339,
             "name": "winnerOfRound",
             "nodeType": "VariableDeclaration",
-            "scope": 2732,
+            "scope": 2571,
             "src": "2341:46:14",
             "stateVariable": true,
             "storageLocation": "default",
@@ -5317,9 +5317,9 @@
               "typeString": "mapping(uint256 => address)"
             },
             "typeName": {
-              "id": 2499,
+              "id": 2338,
               "keyType": {
-                "id": 2497,
+                "id": 2336,
                 "name": "uint",
                 "nodeType": "ElementaryTypeName",
                 "src": "2350:4:14",
@@ -5335,7 +5335,7 @@
                 "typeString": "mapping(uint256 => address)"
               },
               "valueType": {
-                "id": 2498,
+                "id": 2337,
                 "name": "address",
                 "nodeType": "ElementaryTypeName",
                 "src": "2358:7:14",
@@ -5350,10 +5350,10 @@
           },
           {
             "constant": false,
-            "id": 2504,
+            "id": 2343,
             "name": "winnerBankForRound",
             "nodeType": "VariableDeclaration",
-            "scope": 2732,
+            "scope": 2571,
             "src": "2568:48:14",
             "stateVariable": true,
             "storageLocation": "default",
@@ -5362,9 +5362,9 @@
               "typeString": "mapping(uint256 => uint256)"
             },
             "typeName": {
-              "id": 2503,
+              "id": 2342,
               "keyType": {
-                "id": 2501,
+                "id": 2340,
                 "name": "uint",
                 "nodeType": "ElementaryTypeName",
                 "src": "2577:4:14",
@@ -5380,7 +5380,7 @@
                 "typeString": "mapping(uint256 => uint256)"
               },
               "valueType": {
-                "id": 2502,
+                "id": 2341,
                 "name": "uint",
                 "nodeType": "ElementaryTypeName",
                 "src": "2585:4:14",
@@ -5395,10 +5395,10 @@
           },
           {
             "constant": false,
-            "id": 2510,
+            "id": 2349,
             "name": "pixelToPaintTimeForRound",
             "nodeType": "VariableDeclaration",
-            "scope": 2732,
+            "scope": 2571,
             "src": "2749:72:14",
             "stateVariable": true,
             "storageLocation": "default",
@@ -5407,9 +5407,9 @@
               "typeString": "mapping(uint256 => mapping(uint256 => uint256))"
             },
             "typeName": {
-              "id": 2509,
+              "id": 2348,
               "keyType": {
-                "id": 2505,
+                "id": 2344,
                 "name": "uint",
                 "nodeType": "ElementaryTypeName",
                 "src": "2758:4:14",
@@ -5425,9 +5425,9 @@
                 "typeString": "mapping(uint256 => mapping(uint256 => uint256))"
               },
               "valueType": {
-                "id": 2508,
+                "id": 2347,
                 "keyType": {
-                  "id": 2506,
+                  "id": 2345,
                   "name": "uint",
                   "nodeType": "ElementaryTypeName",
                   "src": "2775:4:14",
@@ -5443,7 +5443,7 @@
                   "typeString": "mapping(uint256 => uint256)"
                 },
                 "valueType": {
-                  "id": 2507,
+                  "id": 2346,
                   "name": "uint",
                   "nodeType": "ElementaryTypeName",
                   "src": "2783:4:14",
@@ -5459,10 +5459,10 @@
           },
           {
             "constant": false,
-            "id": 2514,
+            "id": 2353,
             "name": "totalPaintsForRound",
             "nodeType": "VariableDeclaration",
-            "scope": 2732,
+            "scope": 2571,
             "src": "2947:49:14",
             "stateVariable": true,
             "storageLocation": "default",
@@ -5471,9 +5471,9 @@
               "typeString": "mapping(uint256 => uint256)"
             },
             "typeName": {
-              "id": 2513,
+              "id": 2352,
               "keyType": {
-                "id": 2511,
+                "id": 2350,
                 "name": "uint",
                 "nodeType": "ElementaryTypeName",
                 "src": "2956:4:14",
@@ -5489,7 +5489,7 @@
                 "typeString": "mapping(uint256 => uint256)"
               },
               "valueType": {
-                "id": 2512,
+                "id": 2351,
                 "name": "uint",
                 "nodeType": "ElementaryTypeName",
                 "src": "2964:4:14",
@@ -5504,10 +5504,10 @@
           },
           {
             "constant": false,
-            "id": 2520,
+            "id": 2359,
             "name": "paintGenToAmountForColor",
             "nodeType": "VariableDeclaration",
-            "scope": 2732,
+            "scope": 2571,
             "src": "3081:72:14",
             "stateVariable": true,
             "storageLocation": "default",
@@ -5516,9 +5516,9 @@
               "typeString": "mapping(uint256 => mapping(uint256 => uint256))"
             },
             "typeName": {
-              "id": 2519,
+              "id": 2358,
               "keyType": {
-                "id": 2515,
+                "id": 2354,
                 "name": "uint",
                 "nodeType": "ElementaryTypeName",
                 "src": "3090:4:14",
@@ -5534,9 +5534,9 @@
                 "typeString": "mapping(uint256 => mapping(uint256 => uint256))"
               },
               "valueType": {
-                "id": 2518,
+                "id": 2357,
                 "keyType": {
-                  "id": 2516,
+                  "id": 2355,
                   "name": "uint",
                   "nodeType": "ElementaryTypeName",
                   "src": "3107:4:14",
@@ -5552,7 +5552,7 @@
                   "typeString": "mapping(uint256 => uint256)"
                 },
                 "valueType": {
-                  "id": 2517,
+                  "id": 2356,
                   "name": "uint",
                   "nodeType": "ElementaryTypeName",
                   "src": "3115:4:14",
@@ -5568,10 +5568,10 @@
           },
           {
             "constant": false,
-            "id": 2526,
+            "id": 2365,
             "name": "paintGenToStartTimeForColor",
             "nodeType": "VariableDeclaration",
-            "scope": 2732,
+            "scope": 2571,
             "src": "3282:75:14",
             "stateVariable": true,
             "storageLocation": "default",
@@ -5580,9 +5580,9 @@
               "typeString": "mapping(uint256 => mapping(uint256 => uint256))"
             },
             "typeName": {
-              "id": 2525,
+              "id": 2364,
               "keyType": {
-                "id": 2521,
+                "id": 2360,
                 "name": "uint",
                 "nodeType": "ElementaryTypeName",
                 "src": "3291:4:14",
@@ -5598,9 +5598,9 @@
                 "typeString": "mapping(uint256 => mapping(uint256 => uint256))"
               },
               "valueType": {
-                "id": 2524,
+                "id": 2363,
                 "keyType": {
-                  "id": 2522,
+                  "id": 2361,
                   "name": "uint",
                   "nodeType": "ElementaryTypeName",
                   "src": "3308:4:14",
@@ -5616,7 +5616,7 @@
                   "typeString": "mapping(uint256 => uint256)"
                 },
                 "valueType": {
-                  "id": 2523,
+                  "id": 2362,
                   "name": "uint",
                   "nodeType": "ElementaryTypeName",
                   "src": "3316:4:14",
@@ -5632,10 +5632,10 @@
           },
           {
             "constant": false,
-            "id": 2532,
+            "id": 2371,
             "name": "paintGenToEndTimeForColor",
             "nodeType": "VariableDeclaration",
-            "scope": 2732,
+            "scope": 2571,
             "src": "3490:73:14",
             "stateVariable": true,
             "storageLocation": "default",
@@ -5644,9 +5644,9 @@
               "typeString": "mapping(uint256 => mapping(uint256 => uint256))"
             },
             "typeName": {
-              "id": 2531,
+              "id": 2370,
               "keyType": {
-                "id": 2527,
+                "id": 2366,
                 "name": "uint",
                 "nodeType": "ElementaryTypeName",
                 "src": "3499:4:14",
@@ -5662,9 +5662,9 @@
                 "typeString": "mapping(uint256 => mapping(uint256 => uint256))"
               },
               "valueType": {
-                "id": 2530,
+                "id": 2369,
                 "keyType": {
-                  "id": 2528,
+                  "id": 2367,
                   "name": "uint",
                   "nodeType": "ElementaryTypeName",
                   "src": "3516:4:14",
@@ -5680,7 +5680,7 @@
                   "typeString": "mapping(uint256 => uint256)"
                 },
                 "valueType": {
-                  "id": 2529,
+                  "id": 2368,
                   "name": "uint",
                   "nodeType": "ElementaryTypeName",
                   "src": "3524:4:14",
@@ -5696,10 +5696,10 @@
           },
           {
             "constant": false,
-            "id": 2538,
+            "id": 2377,
             "name": "paintGenStartedForColor",
             "nodeType": "VariableDeclaration",
-            "scope": 2732,
+            "scope": 2571,
             "src": "3681:71:14",
             "stateVariable": true,
             "storageLocation": "default",
@@ -5708,9 +5708,9 @@
               "typeString": "mapping(uint256 => mapping(uint256 => bool))"
             },
             "typeName": {
-              "id": 2537,
+              "id": 2376,
               "keyType": {
-                "id": 2533,
+                "id": 2372,
                 "name": "uint",
                 "nodeType": "ElementaryTypeName",
                 "src": "3690:4:14",
@@ -5726,9 +5726,9 @@
                 "typeString": "mapping(uint256 => mapping(uint256 => bool))"
               },
               "valueType": {
-                "id": 2536,
+                "id": 2375,
                 "keyType": {
-                  "id": 2534,
+                  "id": 2373,
                   "name": "uint",
                   "nodeType": "ElementaryTypeName",
                   "src": "3707:4:14",
@@ -5744,7 +5744,7 @@
                   "typeString": "mapping(uint256 => bool)"
                 },
                 "valueType": {
-                  "id": 2535,
+                  "id": 2374,
                   "name": "bool",
                   "nodeType": "ElementaryTypeName",
                   "src": "3715:4:14",
@@ -5760,10 +5760,10 @@
           },
           {
             "constant": false,
-            "id": 2542,
+            "id": 2381,
             "name": "currentPaintGenForColor",
             "nodeType": "VariableDeclaration",
-            "scope": 2732,
+            "scope": 2571,
             "src": "3879:53:14",
             "stateVariable": true,
             "storageLocation": "default",
@@ -5772,9 +5772,9 @@
               "typeString": "mapping(uint256 => uint256)"
             },
             "typeName": {
-              "id": 2541,
+              "id": 2380,
               "keyType": {
-                "id": 2539,
+                "id": 2378,
                 "name": "uint",
                 "nodeType": "ElementaryTypeName",
                 "src": "3888:4:14",
@@ -5790,7 +5790,7 @@
                 "typeString": "mapping(uint256 => uint256)"
               },
               "valueType": {
-                "id": 2540,
+                "id": 2379,
                 "name": "uint",
                 "nodeType": "ElementaryTypeName",
                 "src": "3896:4:14",
@@ -5805,10 +5805,10 @@
           },
           {
             "constant": false,
-            "id": 2546,
+            "id": 2385,
             "name": "callPriceForColor",
             "nodeType": "VariableDeclaration",
-            "scope": 2732,
+            "scope": 2571,
             "src": "4002:47:14",
             "stateVariable": true,
             "storageLocation": "default",
@@ -5817,9 +5817,9 @@
               "typeString": "mapping(uint256 => uint256)"
             },
             "typeName": {
-              "id": 2545,
+              "id": 2384,
               "keyType": {
-                "id": 2543,
+                "id": 2382,
                 "name": "uint",
                 "nodeType": "ElementaryTypeName",
                 "src": "4011:4:14",
@@ -5835,7 +5835,7 @@
                 "typeString": "mapping(uint256 => uint256)"
               },
               "valueType": {
-                "id": 2544,
+                "id": 2383,
                 "name": "uint",
                 "nodeType": "ElementaryTypeName",
                 "src": "4019:4:14",
@@ -5850,10 +5850,10 @@
           },
           {
             "constant": false,
-            "id": 2550,
+            "id": 2389,
             "name": "nextCallPriceForColor",
             "nodeType": "VariableDeclaration",
-            "scope": 2732,
+            "scope": 2571,
             "src": "4140:51:14",
             "stateVariable": true,
             "storageLocation": "default",
@@ -5862,9 +5862,9 @@
               "typeString": "mapping(uint256 => uint256)"
             },
             "typeName": {
-              "id": 2549,
+              "id": 2388,
               "keyType": {
-                "id": 2547,
+                "id": 2386,
                 "name": "uint",
                 "nodeType": "ElementaryTypeName",
                 "src": "4149:4:14",
@@ -5880,7 +5880,7 @@
                 "typeString": "mapping(uint256 => uint256)"
               },
               "valueType": {
-                "id": 2548,
+                "id": 2387,
                 "name": "uint",
                 "nodeType": "ElementaryTypeName",
                 "src": "4157:4:14",
@@ -5895,10 +5895,10 @@
           },
           {
             "constant": false,
-            "id": 2556,
+            "id": 2395,
             "name": "moneySpentByUserForColor",
             "nodeType": "VariableDeclaration",
-            "scope": 2732,
+            "scope": 2571,
             "src": "4360:75:14",
             "stateVariable": true,
             "storageLocation": "default",
@@ -5907,9 +5907,9 @@
               "typeString": "mapping(uint256 => mapping(address => uint256))"
             },
             "typeName": {
-              "id": 2555,
+              "id": 2394,
               "keyType": {
-                "id": 2551,
+                "id": 2390,
                 "name": "uint",
                 "nodeType": "ElementaryTypeName",
                 "src": "4369:4:14",
@@ -5925,9 +5925,9 @@
                 "typeString": "mapping(uint256 => mapping(address => uint256))"
               },
               "valueType": {
-                "id": 2554,
+                "id": 2393,
                 "keyType": {
-                  "id": 2552,
+                  "id": 2391,
                   "name": "address",
                   "nodeType": "ElementaryTypeName",
                   "src": "4386:7:14",
@@ -5943,7 +5943,7 @@
                   "typeString": "mapping(address => uint256)"
                 },
                 "valueType": {
-                  "id": 2553,
+                  "id": 2392,
                   "name": "uint",
                   "nodeType": "ElementaryTypeName",
                   "src": "4397:4:14",
@@ -5959,10 +5959,10 @@
           },
           {
             "constant": false,
-            "id": 2562,
+            "id": 2401,
             "name": "hasPaintDiscountForColor",
             "nodeType": "VariableDeclaration",
-            "scope": 2732,
+            "scope": 2571,
             "src": "4672:75:14",
             "stateVariable": true,
             "storageLocation": "default",
@@ -5971,9 +5971,9 @@
               "typeString": "mapping(uint256 => mapping(address => bool))"
             },
             "typeName": {
-              "id": 2561,
+              "id": 2400,
               "keyType": {
-                "id": 2557,
+                "id": 2396,
                 "name": "uint",
                 "nodeType": "ElementaryTypeName",
                 "src": "4681:4:14",
@@ -5989,9 +5989,9 @@
                 "typeString": "mapping(uint256 => mapping(address => bool))"
               },
               "valueType": {
-                "id": 2560,
+                "id": 2399,
                 "keyType": {
-                  "id": 2558,
+                  "id": 2397,
                   "name": "address",
                   "nodeType": "ElementaryTypeName",
                   "src": "4698:7:14",
@@ -6007,7 +6007,7 @@
                   "typeString": "mapping(address => bool)"
                 },
                 "valueType": {
-                  "id": 2559,
+                  "id": 2398,
                   "name": "bool",
                   "nodeType": "ElementaryTypeName",
                   "src": "4709:4:14",
@@ -6023,10 +6023,10 @@
           },
           {
             "constant": false,
-            "id": 2568,
+            "id": 2407,
             "name": "usersPaintDiscountForColor",
             "nodeType": "VariableDeclaration",
-            "scope": 2732,
+            "scope": 2571,
             "src": "4897:77:14",
             "stateVariable": true,
             "storageLocation": "default",
@@ -6035,9 +6035,9 @@
               "typeString": "mapping(uint256 => mapping(address => uint256))"
             },
             "typeName": {
-              "id": 2567,
+              "id": 2406,
               "keyType": {
-                "id": 2563,
+                "id": 2402,
                 "name": "uint",
                 "nodeType": "ElementaryTypeName",
                 "src": "4906:4:14",
@@ -6053,9 +6053,9 @@
                 "typeString": "mapping(uint256 => mapping(address => uint256))"
               },
               "valueType": {
-                "id": 2566,
+                "id": 2405,
                 "keyType": {
-                  "id": 2564,
+                  "id": 2403,
                   "name": "address",
                   "nodeType": "ElementaryTypeName",
                   "src": "4923:7:14",
@@ -6071,7 +6071,7 @@
                   "typeString": "mapping(address => uint256)"
                 },
                 "valueType": {
-                  "id": 2565,
+                  "id": 2404,
                   "name": "uint",
                   "nodeType": "ElementaryTypeName",
                   "src": "4934:4:14",
@@ -6087,10 +6087,10 @@
           },
           {
             "constant": false,
-            "id": 2572,
+            "id": 2411,
             "name": "isRegisteredUser",
             "nodeType": "VariableDeclaration",
-            "scope": 2732,
+            "scope": 2571,
             "src": "5050:49:14",
             "stateVariable": true,
             "storageLocation": "default",
@@ -6099,9 +6099,9 @@
               "typeString": "mapping(address => bool)"
             },
             "typeName": {
-              "id": 2571,
+              "id": 2410,
               "keyType": {
-                "id": 2569,
+                "id": 2408,
                 "name": "address",
                 "nodeType": "ElementaryTypeName",
                 "src": "5059:7:14",
@@ -6117,7 +6117,7 @@
                 "typeString": "mapping(address => bool)"
               },
               "valueType": {
-                "id": 2570,
+                "id": 2409,
                 "name": "bool",
                 "nodeType": "ElementaryTypeName",
                 "src": "5070:4:14",
@@ -6132,10 +6132,10 @@
           },
           {
             "constant": false,
-            "id": 2576,
+            "id": 2415,
             "name": "hasRefLink",
             "nodeType": "VariableDeclaration",
-            "scope": 2732,
+            "scope": 2571,
             "src": "5290:43:14",
             "stateVariable": true,
             "storageLocation": "default",
@@ -6144,9 +6144,9 @@
               "typeString": "mapping(address => bool)"
             },
             "typeName": {
-              "id": 2575,
+              "id": 2414,
               "keyType": {
-                "id": 2573,
+                "id": 2412,
                 "name": "address",
                 "nodeType": "ElementaryTypeName",
                 "src": "5299:7:14",
@@ -6162,7 +6162,7 @@
                 "typeString": "mapping(address => bool)"
               },
               "valueType": {
-                "id": 2574,
+                "id": 2413,
                 "name": "bool",
                 "nodeType": "ElementaryTypeName",
                 "src": "5310:4:14",
@@ -6177,10 +6177,10 @@
           },
           {
             "constant": false,
-            "id": 2580,
+            "id": 2419,
             "name": "referralToReferrer",
             "nodeType": "VariableDeclaration",
-            "scope": 2732,
+            "scope": 2571,
             "src": "5394:54:14",
             "stateVariable": true,
             "storageLocation": "default",
@@ -6189,9 +6189,9 @@
               "typeString": "mapping(address => address)"
             },
             "typeName": {
-              "id": 2579,
+              "id": 2418,
               "keyType": {
-                "id": 2577,
+                "id": 2416,
                 "name": "address",
                 "nodeType": "ElementaryTypeName",
                 "src": "5403:7:14",
@@ -6207,7 +6207,7 @@
                 "typeString": "mapping(address => address)"
               },
               "valueType": {
-                "id": 2578,
+                "id": 2417,
                 "name": "address",
                 "nodeType": "ElementaryTypeName",
                 "src": "5414:7:14",
@@ -6222,10 +6222,10 @@
           },
           {
             "constant": false,
-            "id": 2585,
+            "id": 2424,
             "name": "referrerToReferrals",
             "nodeType": "VariableDeclaration",
-            "scope": 2732,
+            "scope": 2571,
             "src": "5522:57:14",
             "stateVariable": true,
             "storageLocation": "default",
@@ -6234,9 +6234,9 @@
               "typeString": "mapping(address => address[])"
             },
             "typeName": {
-              "id": 2584,
+              "id": 2423,
               "keyType": {
-                "id": 2581,
+                "id": 2420,
                 "name": "address",
                 "nodeType": "ElementaryTypeName",
                 "src": "5531:7:14",
@@ -6253,7 +6253,7 @@
               },
               "valueType": {
                 "baseType": {
-                  "id": 2582,
+                  "id": 2421,
                   "name": "address",
                   "nodeType": "ElementaryTypeName",
                   "src": "5542:7:14",
@@ -6262,7 +6262,7 @@
                     "typeString": "address"
                   }
                 },
-                "id": 2583,
+                "id": 2422,
                 "length": null,
                 "nodeType": "ArrayTypeName",
                 "src": "5542:9:14",
@@ -6277,10 +6277,10 @@
           },
           {
             "constant": false,
-            "id": 2589,
+            "id": 2428,
             "name": "hasReferrer",
             "nodeType": "VariableDeclaration",
-            "scope": 2732,
+            "scope": 2571,
             "src": "5669:44:14",
             "stateVariable": true,
             "storageLocation": "default",
@@ -6289,9 +6289,9 @@
               "typeString": "mapping(address => bool)"
             },
             "typeName": {
-              "id": 2588,
+              "id": 2427,
               "keyType": {
-                "id": 2586,
+                "id": 2425,
                 "name": "address",
                 "nodeType": "ElementaryTypeName",
                 "src": "5678:7:14",
@@ -6307,7 +6307,7 @@
                 "typeString": "mapping(address => bool)"
               },
               "valueType": {
-                "id": 2587,
+                "id": 2426,
                 "name": "bool",
                 "nodeType": "ElementaryTypeName",
                 "src": "5689:4:14",
@@ -6322,10 +6322,10 @@
           },
           {
             "constant": false,
-            "id": 2593,
+            "id": 2432,
             "name": "userToRefLink",
             "nodeType": "VariableDeclaration",
-            "scope": 2732,
+            "scope": 2571,
             "src": "5800:48:14",
             "stateVariable": true,
             "storageLocation": "default",
@@ -6334,9 +6334,9 @@
               "typeString": "mapping(address => string)"
             },
             "typeName": {
-              "id": 2592,
+              "id": 2431,
               "keyType": {
-                "id": 2590,
+                "id": 2429,
                 "name": "address",
                 "nodeType": "ElementaryTypeName",
                 "src": "5809:7:14",
@@ -6352,7 +6352,7 @@
                 "typeString": "mapping(address => string)"
               },
               "valueType": {
-                "id": 2591,
+                "id": 2430,
                 "name": "string",
                 "nodeType": "ElementaryTypeName",
                 "src": "5820:6:14",
@@ -6367,10 +6367,10 @@
           },
           {
             "constant": false,
-            "id": 2597,
+            "id": 2436,
             "name": "refLinkToUser",
             "nodeType": "VariableDeclaration",
-            "scope": 2732,
+            "scope": 2571,
             "src": "5978:49:14",
             "stateVariable": true,
             "storageLocation": "default",
@@ -6379,9 +6379,9 @@
               "typeString": "mapping(bytes32 => address)"
             },
             "typeName": {
-              "id": 2596,
+              "id": 2435,
               "keyType": {
-                "id": 2594,
+                "id": 2433,
                 "name": "bytes32",
                 "nodeType": "ElementaryTypeName",
                 "src": "5987:7:14",
@@ -6397,7 +6397,7 @@
                 "typeString": "mapping(bytes32 => address)"
               },
               "valueType": {
-                "id": 2595,
+                "id": 2434,
                 "name": "address",
                 "nodeType": "ElementaryTypeName",
                 "src": "5998:7:14",
@@ -6412,10 +6412,10 @@
           },
           {
             "constant": false,
-            "id": 2601,
+            "id": 2440,
             "name": "refLinkExists",
             "nodeType": "VariableDeclaration",
-            "scope": 2732,
+            "scope": 2571,
             "src": "6158:46:14",
             "stateVariable": true,
             "storageLocation": "default",
@@ -6424,9 +6424,9 @@
               "typeString": "mapping(bytes32 => bool)"
             },
             "typeName": {
-              "id": 2600,
+              "id": 2439,
               "keyType": {
-                "id": 2598,
+                "id": 2437,
                 "name": "bytes32",
                 "nodeType": "ElementaryTypeName",
                 "src": "6167:7:14",
@@ -6442,7 +6442,7 @@
                 "typeString": "mapping(bytes32 => bool)"
               },
               "valueType": {
-                "id": 2599,
+                "id": 2438,
                 "name": "bool",
                 "nodeType": "ElementaryTypeName",
                 "src": "6178:4:14",
@@ -6457,10 +6457,10 @@
           },
           {
             "constant": false,
-            "id": 2605,
+            "id": 2444,
             "name": "newUserToCounter",
             "nodeType": "VariableDeclaration",
-            "scope": 2732,
+            "scope": 2571,
             "src": "6367:49:14",
             "stateVariable": true,
             "storageLocation": "default",
@@ -6469,9 +6469,9 @@
               "typeString": "mapping(address => uint256)"
             },
             "typeName": {
-              "id": 2604,
+              "id": 2443,
               "keyType": {
-                "id": 2602,
+                "id": 2441,
                 "name": "address",
                 "nodeType": "ElementaryTypeName",
                 "src": "6376:7:14",
@@ -6487,7 +6487,7 @@
                 "typeString": "mapping(address => uint256)"
               },
               "valueType": {
-                "id": 2603,
+                "id": 2442,
                 "name": "uint",
                 "nodeType": "ElementaryTypeName",
                 "src": "6387:4:14",
@@ -6502,10 +6502,10 @@
           },
           {
             "constant": false,
-            "id": 2607,
+            "id": 2446,
             "name": "uniqueUsersCount",
             "nodeType": "VariableDeclaration",
-            "scope": 2732,
+            "scope": 2571,
             "src": "6496:28:14",
             "stateVariable": true,
             "storageLocation": "default",
@@ -6514,7 +6514,7 @@
               "typeString": "uint256"
             },
             "typeName": {
-              "id": 2606,
+              "id": 2445,
               "name": "uint",
               "nodeType": "ElementaryTypeName",
               "src": "6496:4:14",
@@ -6528,10 +6528,10 @@
           },
           {
             "constant": false,
-            "id": 2609,
+            "id": 2448,
             "name": "maxPaintsInPool",
             "nodeType": "VariableDeclaration",
-            "scope": 2732,
+            "scope": 2571,
             "src": "6615:27:14",
             "stateVariable": true,
             "storageLocation": "default",
@@ -6540,7 +6540,7 @@
               "typeString": "uint256"
             },
             "typeName": {
-              "id": 2608,
+              "id": 2447,
               "name": "uint",
               "nodeType": "ElementaryTypeName",
               "src": "6615:4:14",
@@ -6554,10 +6554,10 @@
           },
           {
             "constant": false,
-            "id": 2611,
+            "id": 2450,
             "name": "currentRound",
             "nodeType": "VariableDeclaration",
-            "scope": 2732,
+            "scope": 2571,
             "src": "6681:24:14",
             "stateVariable": true,
             "storageLocation": "default",
@@ -6566,7 +6566,7 @@
               "typeString": "uint256"
             },
             "typeName": {
-              "id": 2610,
+              "id": 2449,
               "name": "uint",
               "nodeType": "ElementaryTypeName",
               "src": "6681:4:14",
@@ -6580,10 +6580,10 @@
           },
           {
             "constant": false,
-            "id": 2613,
+            "id": 2452,
             "name": "tbIteration",
             "nodeType": "VariableDeclaration",
-            "scope": 2732,
+            "scope": 2571,
             "src": "6761:23:14",
             "stateVariable": true,
             "storageLocation": "default",
@@ -6592,7 +6592,7 @@
               "typeString": "uint256"
             },
             "typeName": {
-              "id": 2612,
+              "id": 2451,
               "name": "uint",
               "nodeType": "ElementaryTypeName",
               "src": "6761:4:14",
@@ -6606,10 +6606,10 @@
           },
           {
             "constant": false,
-            "id": 2615,
+            "id": 2454,
             "name": "cbIteration",
             "nodeType": "VariableDeclaration",
-            "scope": 2732,
+            "scope": 2571,
             "src": "6836:23:14",
             "stateVariable": true,
             "storageLocation": "default",
@@ -6618,7 +6618,7 @@
               "typeString": "uint256"
             },
             "typeName": {
-              "id": 2614,
+              "id": 2453,
               "name": "uint",
               "nodeType": "ElementaryTypeName",
               "src": "6836:4:14",
@@ -6632,10 +6632,10 @@
           },
           {
             "constant": false,
-            "id": 2617,
+            "id": 2456,
             "name": "paintsCounter",
             "nodeType": "VariableDeclaration",
-            "scope": 2732,
+            "scope": 2571,
             "src": "6959:25:14",
             "stateVariable": true,
             "storageLocation": "default",
@@ -6644,7 +6644,7 @@
               "typeString": "uint256"
             },
             "typeName": {
-              "id": 2616,
+              "id": 2455,
               "name": "uint",
               "nodeType": "ElementaryTypeName",
               "src": "6959:4:14",
@@ -6658,10 +6658,10 @@
           },
           {
             "constant": false,
-            "id": 2623,
+            "id": 2462,
             "name": "timeBankShare",
             "nodeType": "VariableDeclaration",
-            "scope": 2732,
+            "scope": 2571,
             "src": "7061:64:14",
             "stateVariable": true,
             "storageLocation": "default",
@@ -6670,9 +6670,9 @@
               "typeString": "mapping(uint256 => mapping(address => uint256))"
             },
             "typeName": {
-              "id": 2622,
+              "id": 2461,
               "keyType": {
-                "id": 2618,
+                "id": 2457,
                 "name": "uint",
                 "nodeType": "ElementaryTypeName",
                 "src": "7070:4:14",
@@ -6688,9 +6688,9 @@
                 "typeString": "mapping(uint256 => mapping(address => uint256))"
               },
               "valueType": {
-                "id": 2621,
+                "id": 2460,
                 "keyType": {
-                  "id": 2619,
+                  "id": 2458,
                   "name": "address",
                   "nodeType": "ElementaryTypeName",
                   "src": "7087:7:14",
@@ -6706,7 +6706,7 @@
                   "typeString": "mapping(address => uint256)"
                 },
                 "valueType": {
-                  "id": 2620,
+                  "id": 2459,
                   "name": "uint",
                   "nodeType": "ElementaryTypeName",
                   "src": "7098:4:14",
@@ -6722,10 +6722,10 @@
           },
           {
             "constant": false,
-            "id": 2631,
+            "id": 2470,
             "name": "colorBankShare",
             "nodeType": "VariableDeclaration",
-            "scope": 2732,
+            "scope": 2571,
             "src": "7211:83:14",
             "stateVariable": true,
             "storageLocation": "default",
@@ -6734,9 +6734,9 @@
               "typeString": "mapping(uint256 => mapping(uint256 => mapping(address => uint256)))"
             },
             "typeName": {
-              "id": 2630,
+              "id": 2469,
               "keyType": {
-                "id": 2624,
+                "id": 2463,
                 "name": "uint",
                 "nodeType": "ElementaryTypeName",
                 "src": "7220:4:14",
@@ -6752,9 +6752,9 @@
                 "typeString": "mapping(uint256 => mapping(uint256 => mapping(address => uint256)))"
               },
               "valueType": {
-                "id": 2629,
+                "id": 2468,
                 "keyType": {
-                  "id": 2625,
+                  "id": 2464,
                   "name": "uint",
                   "nodeType": "ElementaryTypeName",
                   "src": "7237:4:14",
@@ -6770,9 +6770,9 @@
                   "typeString": "mapping(uint256 => mapping(address => uint256))"
                 },
                 "valueType": {
-                  "id": 2628,
+                  "id": 2467,
                   "keyType": {
-                    "id": 2626,
+                    "id": 2465,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "7254:7:14",
@@ -6788,7 +6788,7 @@
                     "typeString": "mapping(address => uint256)"
                   },
                   "valueType": {
-                    "id": 2627,
+                    "id": 2466,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
                     "src": "7265:4:14",
@@ -6805,10 +6805,10 @@
           },
           {
             "constant": false,
-            "id": 2635,
+            "id": 2474,
             "name": "paintsCounterForColor",
             "nodeType": "VariableDeclaration",
-            "scope": 2732,
+            "scope": 2571,
             "src": "7404:51:14",
             "stateVariable": true,
             "storageLocation": "default",
@@ -6817,9 +6817,9 @@
               "typeString": "mapping(uint256 => uint256)"
             },
             "typeName": {
-              "id": 2634,
+              "id": 2473,
               "keyType": {
-                "id": 2632,
+                "id": 2471,
                 "name": "uint",
                 "nodeType": "ElementaryTypeName",
                 "src": "7413:4:14",
@@ -6835,7 +6835,7 @@
                 "typeString": "mapping(uint256 => uint256)"
               },
               "valueType": {
-                "id": 2633,
+                "id": 2472,
                 "name": "uint",
                 "nodeType": "ElementaryTypeName",
                 "src": "7421:4:14",
@@ -6850,10 +6850,10 @@
           },
           {
             "constant": false,
-            "id": 2640,
+            "id": 2479,
             "name": "cbTeam",
             "nodeType": "VariableDeclaration",
-            "scope": 2732,
+            "scope": 2571,
             "src": "7510:41:14",
             "stateVariable": true,
             "storageLocation": "default",
@@ -6862,9 +6862,9 @@
               "typeString": "mapping(uint256 => address[])"
             },
             "typeName": {
-              "id": 2639,
+              "id": 2478,
               "keyType": {
-                "id": 2636,
+                "id": 2475,
                 "name": "uint",
                 "nodeType": "ElementaryTypeName",
                 "src": "7519:4:14",
@@ -6881,7 +6881,7 @@
               },
               "valueType": {
                 "baseType": {
-                  "id": 2637,
+                  "id": 2476,
                   "name": "address",
                   "nodeType": "ElementaryTypeName",
                   "src": "7527:7:14",
@@ -6890,7 +6890,7 @@
                     "typeString": "address"
                   }
                 },
-                "id": 2638,
+                "id": 2477,
                 "length": null,
                 "nodeType": "ArrayTypeName",
                 "src": "7527:9:14",
@@ -6905,10 +6905,10 @@
           },
           {
             "constant": false,
-            "id": 2645,
+            "id": 2484,
             "name": "tbTeam",
             "nodeType": "VariableDeclaration",
-            "scope": 2732,
+            "scope": 2571,
             "src": "7606:41:14",
             "stateVariable": true,
             "storageLocation": "default",
@@ -6917,9 +6917,9 @@
               "typeString": "mapping(uint256 => address[])"
             },
             "typeName": {
-              "id": 2644,
+              "id": 2483,
               "keyType": {
-                "id": 2641,
+                "id": 2480,
                 "name": "uint",
                 "nodeType": "ElementaryTypeName",
                 "src": "7615:4:14",
@@ -6936,7 +6936,7 @@
               },
               "valueType": {
                 "baseType": {
-                  "id": 2642,
+                  "id": 2481,
                   "name": "address",
                   "nodeType": "ElementaryTypeName",
                   "src": "7623:7:14",
@@ -6945,7 +6945,7 @@
                     "typeString": "address"
                   }
                 },
-                "id": 2643,
+                "id": 2482,
                 "length": null,
                 "nodeType": "ArrayTypeName",
                 "src": "7623:9:14",
@@ -6960,10 +6960,10 @@
           },
           {
             "constant": false,
-            "id": 2649,
+            "id": 2488,
             "name": "counterToPainter",
             "nodeType": "VariableDeclaration",
-            "scope": 2732,
+            "scope": 2571,
             "src": "7703:49:14",
             "stateVariable": true,
             "storageLocation": "default",
@@ -6972,9 +6972,9 @@
               "typeString": "mapping(uint256 => address)"
             },
             "typeName": {
-              "id": 2648,
+              "id": 2487,
               "keyType": {
-                "id": 2646,
+                "id": 2485,
                 "name": "uint",
                 "nodeType": "ElementaryTypeName",
                 "src": "7712:4:14",
@@ -6990,7 +6990,7 @@
                 "typeString": "mapping(uint256 => address)"
               },
               "valueType": {
-                "id": 2647,
+                "id": 2486,
                 "name": "address",
                 "nodeType": "ElementaryTypeName",
                 "src": "7720:7:14",
@@ -7005,10 +7005,10 @@
           },
           {
             "constant": false,
-            "id": 2655,
+            "id": 2494,
             "name": "counterToPainterForColor",
             "nodeType": "VariableDeclaration",
-            "scope": 2732,
+            "scope": 2571,
             "src": "7823:75:14",
             "stateVariable": true,
             "storageLocation": "default",
@@ -7017,9 +7017,9 @@
               "typeString": "mapping(uint256 => mapping(uint256 => address))"
             },
             "typeName": {
-              "id": 2654,
+              "id": 2493,
               "keyType": {
-                "id": 2650,
+                "id": 2489,
                 "name": "uint",
                 "nodeType": "ElementaryTypeName",
                 "src": "7832:4:14",
@@ -7035,9 +7035,9 @@
                 "typeString": "mapping(uint256 => mapping(uint256 => address))"
               },
               "valueType": {
-                "id": 2653,
+                "id": 2492,
                 "keyType": {
-                  "id": 2651,
+                  "id": 2490,
                   "name": "uint",
                   "nodeType": "ElementaryTypeName",
                   "src": "7849:4:14",
@@ -7053,7 +7053,7 @@
                   "typeString": "mapping(uint256 => address)"
                 },
                 "valueType": {
-                  "id": 2652,
+                  "id": 2491,
                   "name": "address",
                   "nodeType": "ElementaryTypeName",
                   "src": "7857:7:14",
@@ -7069,10 +7069,10 @@
           },
           {
             "constant": false,
-            "id": 2661,
+            "id": 2500,
             "name": "isInCBT",
             "nodeType": "VariableDeclaration",
-            "scope": 2732,
+            "scope": 2571,
             "src": "7974:58:14",
             "stateVariable": true,
             "storageLocation": "default",
@@ -7081,9 +7081,9 @@
               "typeString": "mapping(uint256 => mapping(address => bool))"
             },
             "typeName": {
-              "id": 2660,
+              "id": 2499,
               "keyType": {
-                "id": 2656,
+                "id": 2495,
                 "name": "uint",
                 "nodeType": "ElementaryTypeName",
                 "src": "7983:4:14",
@@ -7099,9 +7099,9 @@
                 "typeString": "mapping(uint256 => mapping(address => bool))"
               },
               "valueType": {
-                "id": 2659,
+                "id": 2498,
                 "keyType": {
-                  "id": 2657,
+                  "id": 2496,
                   "name": "address",
                   "nodeType": "ElementaryTypeName",
                   "src": "8000:7:14",
@@ -7117,7 +7117,7 @@
                   "typeString": "mapping(address => bool)"
                 },
                 "valueType": {
-                  "id": 2658,
+                  "id": 2497,
                   "name": "bool",
                   "nodeType": "ElementaryTypeName",
                   "src": "8011:4:14",
@@ -7133,10 +7133,10 @@
           },
           {
             "constant": false,
-            "id": 2667,
+            "id": 2506,
             "name": "isInTBT",
             "nodeType": "VariableDeclaration",
-            "scope": 2732,
+            "scope": 2571,
             "src": "8108:58:14",
             "stateVariable": true,
             "storageLocation": "default",
@@ -7145,9 +7145,9 @@
               "typeString": "mapping(uint256 => mapping(address => bool))"
             },
             "typeName": {
-              "id": 2666,
+              "id": 2505,
               "keyType": {
-                "id": 2662,
+                "id": 2501,
                 "name": "uint",
                 "nodeType": "ElementaryTypeName",
                 "src": "8117:4:14",
@@ -7163,9 +7163,9 @@
                 "typeString": "mapping(uint256 => mapping(address => bool))"
               },
               "valueType": {
-                "id": 2665,
+                "id": 2504,
                 "keyType": {
-                  "id": 2663,
+                  "id": 2502,
                   "name": "address",
                   "nodeType": "ElementaryTypeName",
                   "src": "8134:7:14",
@@ -7181,7 +7181,7 @@
                   "typeString": "mapping(address => bool)"
                 },
                 "valueType": {
-                  "id": 2664,
+                  "id": 2503,
                   "name": "bool",
                   "nodeType": "ElementaryTypeName",
                   "src": "8145:4:14",
@@ -7197,10 +7197,10 @@
           },
           {
             "constant": false,
-            "id": 2673,
+            "id": 2512,
             "name": "painterToCBP",
             "nodeType": "VariableDeclaration",
-            "scope": 2732,
+            "scope": 2571,
             "src": "8223:63:14",
             "stateVariable": true,
             "storageLocation": "default",
@@ -7209,9 +7209,9 @@
               "typeString": "mapping(uint256 => mapping(address => uint256))"
             },
             "typeName": {
-              "id": 2672,
+              "id": 2511,
               "keyType": {
-                "id": 2668,
+                "id": 2507,
                 "name": "uint",
                 "nodeType": "ElementaryTypeName",
                 "src": "8232:4:14",
@@ -7227,9 +7227,9 @@
                 "typeString": "mapping(uint256 => mapping(address => uint256))"
               },
               "valueType": {
-                "id": 2671,
+                "id": 2510,
                 "keyType": {
-                  "id": 2669,
+                  "id": 2508,
                   "name": "address",
                   "nodeType": "ElementaryTypeName",
                   "src": "8249:7:14",
@@ -7245,7 +7245,7 @@
                   "typeString": "mapping(address => uint256)"
                 },
                 "valueType": {
-                  "id": 2670,
+                  "id": 2509,
                   "name": "uint",
                   "nodeType": "ElementaryTypeName",
                   "src": "8260:4:14",
@@ -7261,10 +7261,10 @@
           },
           {
             "constant": false,
-            "id": 2679,
+            "id": 2518,
             "name": "painterToTBP",
             "nodeType": "VariableDeclaration",
-            "scope": 2732,
+            "scope": 2571,
             "src": "8342:63:14",
             "stateVariable": true,
             "storageLocation": "default",
@@ -7273,9 +7273,9 @@
               "typeString": "mapping(uint256 => mapping(address => uint256))"
             },
             "typeName": {
-              "id": 2678,
+              "id": 2517,
               "keyType": {
-                "id": 2674,
+                "id": 2513,
                 "name": "uint",
                 "nodeType": "ElementaryTypeName",
                 "src": "8351:4:14",
@@ -7291,9 +7291,9 @@
                 "typeString": "mapping(uint256 => mapping(address => uint256))"
               },
               "valueType": {
-                "id": 2677,
+                "id": 2516,
                 "keyType": {
-                  "id": 2675,
+                  "id": 2514,
                   "name": "address",
                   "nodeType": "ElementaryTypeName",
                   "src": "8368:7:14",
@@ -7309,7 +7309,7 @@
                   "typeString": "mapping(address => uint256)"
                 },
                 "valueType": {
-                  "id": 2676,
+                  "id": 2515,
                   "name": "uint",
                   "nodeType": "ElementaryTypeName",
                   "src": "8379:4:14",
@@ -7325,10 +7325,10 @@
           },
           {
             "constant": false,
-            "id": 2683,
+            "id": 2522,
             "name": "isCBPTransfered",
             "nodeType": "VariableDeclaration",
-            "scope": 2732,
+            "scope": 2571,
             "src": "8467:45:14",
             "stateVariable": true,
             "storageLocation": "default",
@@ -7337,9 +7337,9 @@
               "typeString": "mapping(uint256 => bool)"
             },
             "typeName": {
-              "id": 2682,
+              "id": 2521,
               "keyType": {
-                "id": 2680,
+                "id": 2519,
                 "name": "uint",
                 "nodeType": "ElementaryTypeName",
                 "src": "8476:4:14",
@@ -7355,7 +7355,7 @@
                 "typeString": "mapping(uint256 => bool)"
               },
               "valueType": {
-                "id": 2681,
+                "id": 2520,
                 "name": "bool",
                 "nodeType": "ElementaryTypeName",
                 "src": "8484:4:14",
@@ -7370,10 +7370,10 @@
           },
           {
             "constant": false,
-            "id": 2687,
+            "id": 2526,
             "name": "isTBPTransfered",
             "nodeType": "VariableDeclaration",
-            "scope": 2732,
+            "scope": 2571,
             "src": "8570:45:14",
             "stateVariable": true,
             "storageLocation": "default",
@@ -7382,9 +7382,9 @@
               "typeString": "mapping(uint256 => bool)"
             },
             "typeName": {
-              "id": 2686,
+              "id": 2525,
               "keyType": {
-                "id": 2684,
+                "id": 2523,
                 "name": "uint",
                 "nodeType": "ElementaryTypeName",
                 "src": "8579:4:14",
@@ -7400,7 +7400,7 @@
                 "typeString": "mapping(uint256 => bool)"
               },
               "valueType": {
-                "id": 2685,
+                "id": 2524,
                 "name": "bool",
                 "nodeType": "ElementaryTypeName",
                 "src": "8587:4:14",
@@ -7415,10 +7415,10 @@
           },
           {
             "constant": false,
-            "id": 2691,
+            "id": 2530,
             "name": "lastPlayedRound",
             "nodeType": "VariableDeclaration",
-            "scope": 2732,
+            "scope": 2571,
             "src": "8733:48:14",
             "stateVariable": true,
             "storageLocation": "default",
@@ -7427,9 +7427,9 @@
               "typeString": "mapping(address => uint256)"
             },
             "typeName": {
-              "id": 2690,
+              "id": 2529,
               "keyType": {
-                "id": 2688,
+                "id": 2527,
                 "name": "address",
                 "nodeType": "ElementaryTypeName",
                 "src": "8742:7:14",
@@ -7445,7 +7445,7 @@
                 "typeString": "mapping(address => uint256)"
               },
               "valueType": {
-                "id": 2689,
+                "id": 2528,
                 "name": "uint",
                 "nodeType": "ElementaryTypeName",
                 "src": "8753:4:14",
@@ -7460,10 +7460,10 @@
           },
           {
             "constant": false,
-            "id": 2695,
+            "id": 2534,
             "name": "ownerOfColor",
             "nodeType": "VariableDeclaration",
-            "scope": 2732,
+            "scope": 2571,
             "src": "8821:45:14",
             "stateVariable": true,
             "storageLocation": "default",
@@ -7472,9 +7472,9 @@
               "typeString": "mapping(uint256 => address)"
             },
             "typeName": {
-              "id": 2694,
+              "id": 2533,
               "keyType": {
-                "id": 2692,
+                "id": 2531,
                 "name": "uint",
                 "nodeType": "ElementaryTypeName",
                 "src": "8830:4:14",
@@ -7490,7 +7490,7 @@
                 "typeString": "mapping(uint256 => address)"
               },
               "valueType": {
-                "id": 2693,
+                "id": 2532,
                 "name": "address",
                 "nodeType": "ElementaryTypeName",
                 "src": "8838:7:14",
@@ -7505,10 +7505,10 @@
           },
           {
             "constant": false,
-            "id": 2699,
+            "id": 2538,
             "name": "withdrawalBalances",
             "nodeType": "VariableDeclaration",
-            "scope": 2732,
+            "scope": 2571,
             "src": "9014:51:14",
             "stateVariable": true,
             "storageLocation": "default",
@@ -7517,9 +7517,9 @@
               "typeString": "mapping(address => uint256)"
             },
             "typeName": {
-              "id": 2698,
+              "id": 2537,
               "keyType": {
-                "id": 2696,
+                "id": 2535,
                 "name": "address",
                 "nodeType": "ElementaryTypeName",
                 "src": "9023:7:14",
@@ -7535,7 +7535,7 @@
                 "typeString": "mapping(address => uint256)"
               },
               "valueType": {
-                "id": 2697,
+                "id": 2536,
                 "name": "uint",
                 "nodeType": "ElementaryTypeName",
                 "src": "9034:4:14",
@@ -7550,10 +7550,10 @@
           },
           {
             "constant": false,
-            "id": 2703,
+            "id": 2542,
             "name": "addressToLastWithdrawalTime",
             "nodeType": "VariableDeclaration",
-            "scope": 2732,
+            "scope": 2571,
             "src": "9242:53:14",
             "stateVariable": true,
             "storageLocation": "default",
@@ -7562,9 +7562,9 @@
               "typeString": "mapping(address => uint256)"
             },
             "typeName": {
-              "id": 2702,
+              "id": 2541,
               "keyType": {
-                "id": 2700,
+                "id": 2539,
                 "name": "address",
                 "nodeType": "ElementaryTypeName",
                 "src": "9251:7:14",
@@ -7580,7 +7580,7 @@
                 "typeString": "mapping(address => uint256)"
               },
               "valueType": {
-                "id": 2701,
+                "id": 2540,
                 "name": "uint",
                 "nodeType": "ElementaryTypeName",
                 "src": "9262:4:14",
@@ -7595,10 +7595,10 @@
           },
           {
             "constant": false,
-            "id": 2705,
+            "id": 2544,
             "name": "dividendsBank",
             "nodeType": "VariableDeclaration",
-            "scope": 2732,
+            "scope": 2571,
             "src": "9356:25:14",
             "stateVariable": true,
             "storageLocation": "default",
@@ -7607,7 +7607,7 @@
               "typeString": "uint256"
             },
             "typeName": {
-              "id": 2704,
+              "id": 2543,
               "name": "uint",
               "nodeType": "ElementaryTypeName",
               "src": "9356:4:14",
@@ -7621,14 +7621,14 @@
           },
           {
             "canonicalName": "StorageV1.Claim",
-            "id": 2714,
+            "id": 2553,
             "members": [
               {
                 "constant": false,
-                "id": 2707,
+                "id": 2546,
                 "name": "id",
                 "nodeType": "VariableDeclaration",
-                "scope": 2714,
+                "scope": 2553,
                 "src": "9411:7:14",
                 "stateVariable": false,
                 "storageLocation": "default",
@@ -7637,7 +7637,7 @@
                   "typeString": "uint256"
                 },
                 "typeName": {
-                  "id": 2706,
+                  "id": 2545,
                   "name": "uint",
                   "nodeType": "ElementaryTypeName",
                   "src": "9411:4:14",
@@ -7651,10 +7651,10 @@
               },
               {
                 "constant": false,
-                "id": 2709,
+                "id": 2548,
                 "name": "claimer",
                 "nodeType": "VariableDeclaration",
-                "scope": 2714,
+                "scope": 2553,
                 "src": "9428:15:14",
                 "stateVariable": false,
                 "storageLocation": "default",
@@ -7663,7 +7663,7 @@
                   "typeString": "address"
                 },
                 "typeName": {
-                  "id": 2708,
+                  "id": 2547,
                   "name": "address",
                   "nodeType": "ElementaryTypeName",
                   "src": "9428:7:14",
@@ -7677,10 +7677,10 @@
               },
               {
                 "constant": false,
-                "id": 2711,
+                "id": 2550,
                 "name": "isResolved",
                 "nodeType": "VariableDeclaration",
-                "scope": 2714,
+                "scope": 2553,
                 "src": "9453:15:14",
                 "stateVariable": false,
                 "storageLocation": "default",
@@ -7689,7 +7689,7 @@
                   "typeString": "bool"
                 },
                 "typeName": {
-                  "id": 2710,
+                  "id": 2549,
                   "name": "bool",
                   "nodeType": "ElementaryTypeName",
                   "src": "9453:4:14",
@@ -7703,10 +7703,10 @@
               },
               {
                 "constant": false,
-                "id": 2713,
+                "id": 2552,
                 "name": "timestamp",
                 "nodeType": "VariableDeclaration",
-                "scope": 2714,
+                "scope": 2553,
                 "src": "9478:14:14",
                 "stateVariable": false,
                 "storageLocation": "default",
@@ -7715,7 +7715,7 @@
                   "typeString": "uint256"
                 },
                 "typeName": {
-                  "id": 2712,
+                  "id": 2551,
                   "name": "uint",
                   "nodeType": "ElementaryTypeName",
                   "src": "9478:4:14",
@@ -7730,16 +7730,16 @@
             ],
             "name": "Claim",
             "nodeType": "StructDefinition",
-            "scope": 2732,
+            "scope": 2571,
             "src": "9388:111:14",
             "visibility": "public"
           },
           {
             "constant": false,
-            "id": 2716,
+            "id": 2555,
             "name": "claimId",
             "nodeType": "VariableDeclaration",
-            "scope": 2732,
+            "scope": 2571,
             "src": "9505:19:14",
             "stateVariable": true,
             "storageLocation": "default",
@@ -7748,7 +7748,7 @@
               "typeString": "uint256"
             },
             "typeName": {
-              "id": 2715,
+              "id": 2554,
               "name": "uint",
               "nodeType": "ElementaryTypeName",
               "src": "9505:4:14",
@@ -7762,36 +7762,36 @@
           },
           {
             "constant": false,
-            "id": 2719,
+            "id": 2558,
             "name": "claims",
             "nodeType": "VariableDeclaration",
-            "scope": 2732,
+            "scope": 2571,
             "src": "9530:21:14",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
-              "typeIdentifier": "t_array$_t_struct$_Claim_$2714_storage_$dyn_storage",
+              "typeIdentifier": "t_array$_t_struct$_Claim_$2553_storage_$dyn_storage",
               "typeString": "struct StorageV1.Claim[]"
             },
             "typeName": {
               "baseType": {
                 "contractScope": null,
-                "id": 2717,
+                "id": 2556,
                 "name": "Claim",
                 "nodeType": "UserDefinedTypeName",
-                "referencedDeclaration": 2714,
+                "referencedDeclaration": 2553,
                 "src": "9530:5:14",
                 "typeDescriptions": {
-                  "typeIdentifier": "t_struct$_Claim_$2714_storage_ptr",
+                  "typeIdentifier": "t_struct$_Claim_$2553_storage_ptr",
                   "typeString": "struct StorageV1.Claim"
                 }
               },
-              "id": 2718,
+              "id": 2557,
               "length": null,
               "nodeType": "ArrayTypeName",
               "src": "9530:7:14",
               "typeDescriptions": {
-                "typeIdentifier": "t_array$_t_struct$_Claim_$2714_storage_$dyn_storage_ptr",
+                "typeIdentifier": "t_array$_t_struct$_Claim_$2553_storage_$dyn_storage_ptr",
                 "typeString": "struct StorageV1.Claim[]"
               }
             },
@@ -7800,10 +7800,10 @@
           },
           {
             "constant": false,
-            "id": 2722,
+            "id": 2561,
             "name": "ownerOfPixel",
             "nodeType": "VariableDeclaration",
-            "scope": 2732,
+            "scope": 2571,
             "src": "9947:72:14",
             "stateVariable": true,
             "storageLocation": "default",
@@ -7812,7 +7812,7 @@
               "typeString": "address"
             },
             "typeName": {
-              "id": 2720,
+              "id": 2559,
               "name": "address",
               "nodeType": "ElementaryTypeName",
               "src": "9947:7:14",
@@ -7824,7 +7824,7 @@
             "value": {
               "argumentTypes": null,
               "hexValue": "307863613335623764393135343538656635343061646536303638646665326634346538666137333363",
-              "id": 2721,
+              "id": 2560,
               "isConstant": false,
               "isLValue": false,
               "isPure": true,
@@ -7843,10 +7843,10 @@
           },
           {
             "constant": false,
-            "id": 2725,
+            "id": 2564,
             "name": "founders",
             "nodeType": "VariableDeclaration",
-            "scope": 2732,
+            "scope": 2571,
             "src": "10025:68:14",
             "stateVariable": true,
             "storageLocation": "default",
@@ -7855,7 +7855,7 @@
               "typeString": "address"
             },
             "typeName": {
-              "id": 2723,
+              "id": 2562,
               "name": "address",
               "nodeType": "ElementaryTypeName",
               "src": "10025:7:14",
@@ -7867,7 +7867,7 @@
             "value": {
               "argumentTypes": null,
               "hexValue": "307833653464313837646637643861303832306561663431373464313762313630313537363130393132",
-              "id": 2724,
+              "id": 2563,
               "isConstant": false,
               "isLValue": false,
               "isPure": true,
@@ -7886,10 +7886,10 @@
           },
           {
             "constant": false,
-            "id": 2727,
+            "id": 2566,
             "name": "isGamePaused",
             "nodeType": "VariableDeclaration",
-            "scope": 2732,
+            "scope": 2571,
             "src": "10104:24:14",
             "stateVariable": true,
             "storageLocation": "default",
@@ -7898,7 +7898,7 @@
               "typeString": "bool"
             },
             "typeName": {
-              "id": 2726,
+              "id": 2565,
               "name": "bool",
               "nodeType": "ElementaryTypeName",
               "src": "10104:4:14",
@@ -7912,10 +7912,10 @@
           },
           {
             "constant": false,
-            "id": 2731,
+            "id": 2570,
             "name": "isAdmin",
             "nodeType": "VariableDeclaration",
-            "scope": 2732,
+            "scope": 2571,
             "src": "10139:39:14",
             "stateVariable": true,
             "storageLocation": "default",
@@ -7924,9 +7924,9 @@
               "typeString": "mapping(address => bool)"
             },
             "typeName": {
-              "id": 2730,
+              "id": 2569,
               "keyType": {
-                "id": 2728,
+                "id": 2567,
                 "name": "address",
                 "nodeType": "ElementaryTypeName",
                 "src": "10147:7:14",
@@ -7942,7 +7942,7 @@
                 "typeString": "mapping(address => bool)"
               },
               "valueType": {
-                "id": 2729,
+                "id": 2568,
                 "name": "bool",
                 "nodeType": "ElementaryTypeName",
                 "src": "10158:4:14",
@@ -7956,7 +7956,7 @@
             "visibility": "public"
           }
         ],
-        "scope": 2733,
+        "scope": 2572,
         "src": "52:10130:14"
       }
     ],
@@ -7968,5 +7968,5 @@
   },
   "networks": {},
   "schemaVersion": "2.0.1",
-  "updatedAt": "2019-01-07T13:01:30.421Z"
+  "updatedAt": "2019-01-07T13:24:12.472Z"
 }
