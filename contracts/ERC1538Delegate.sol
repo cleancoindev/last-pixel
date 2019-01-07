@@ -6,16 +6,10 @@ pragma experimental "v0.5.0";
 * Implementation of ERC1538.
 * Function signatures are stored in an array so functions can be queried.
 /******************************************************************************/
-
+import "./IERC1538.sol";
 import "./StorageV0.sol";
 
-interface ERC1538 {
-    event CommitMessage(string message);
-    event FunctionUpdate(bytes4 indexed functionId, address indexed oldDelegate, address indexed newDelegate, string functionSignature);
-    function updateContract(address _delegate, string _functionSignatures, string commitMessage) external;
-}
-
-contract ERC1538Delegate is ERC1538, StorageV0 {
+contract ERC1538Delegate is IERC1538, StorageV0 {
 
     function updateContract(address _delegate, string _functionSignatures, string commitMessage) external onlyOwner {
         // pos is first used to check the size of the delegate contract.
