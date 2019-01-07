@@ -3,6 +3,8 @@ import "./Modifiers.sol";
 
 /**
 ** Wrapper for Transparent Proxy Contract with all the functions' signatures
+**/
+
 contract Proxy is Modifiers {
 
     //ColorTeam.sol
