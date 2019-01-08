@@ -4,12 +4,12 @@ import "./Modifiers.sol";
 
 contract GameStateController is Modifiers {
 
-    function pauseGame() external onlyAdmin {
+    function pauseGame() external onlyAdmin() {
         require (isGamePaused == false, "Game is already paused");
         isGamePaused = true;
     }
 
-    function resumeGame() external onlyAdmin {
+    function resumeGame() external onlyAdmin() {
         require (isGamePaused == true, "Game is already live");
         isGamePaused = false;
     }

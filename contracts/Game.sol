@@ -43,7 +43,7 @@ contract Game is PaintDiscount, PaintsPool, Modifiers {
         }   
     }
 
-    function paint(uint[] _pixels, uint _color, string _refLink) external payable isRegistered(_refLink) isLiveGame {
+    function paint(uint[] _pixels, uint _color, string _refLink) external payable isRegistered(_refLink) isLiveGame() {
 
         require(msg.value == estimateCallPrice(_pixels, _color), "Wrong call price");
         

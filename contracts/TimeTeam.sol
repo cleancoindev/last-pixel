@@ -48,7 +48,7 @@ contract TimeTeam is Modifiers {
 
     }
 
-    function distributeTBP() external isLiveGame onlyAdmin {
+    function distributeTBP() external isLiveGame() onlyAdmin() {
         require(isTBPTransfered[tbIteration] == false, "Time Bank Prizes already transferred for this tbIteration");
         address painter;
         calculateTBP();

@@ -49,7 +49,7 @@ contract ColorTeam is Modifiers {
 
     }
 
-    function distributeCBP() external isLiveGame onlyAdmin {
+    function distributeCBP() external isLiveGame() onlyAdmin() {
         require(isCBPTransfered[cbIteration] == false, "Color Bank Prizes already transferred for this cbIteration");
         address painter;
         calculateCBP(winnerColorForRound[currentRound]);
