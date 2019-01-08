@@ -72,7 +72,7 @@ contract ERC1538Delegate is IERC1538, StorageV0 {
                     emit FunctionUpdate(funcId, oldDelegate, address(0), string(signatures));
                 }
                 else if (funcSignatureToIndex[signatures] == 0) {
-                    require(oldDelegate == address(0), "FuncId clash.");
+                    require(oldDelegate == address(0), "Funcion id clash.");
                     delegates[funcId] = _delegate;
                     funcSignatures.push(signatures);
                     funcSignatureToIndex[signatures] = funcSignatures.length;

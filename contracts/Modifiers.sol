@@ -13,7 +13,6 @@ contract Modifiers is StorageV1 {
     modifier isLiveGame() {
         require(isGamePaused == false, "Game is paused");
         _;
-
     }
 
     //модификатор проверяющий длину реф. ссылки (длина должна быть в диапазоне от 4 до 8 символов)

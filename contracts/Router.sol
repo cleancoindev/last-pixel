@@ -2,7 +2,7 @@ pragma solidity ^0.4.24;
 pragma experimental "v0.5.0";
 import "./Initializer.sol";
 
-contract Transparent is Initializer {
+contract Router is Initializer {
     
     event CommitMessage(string message);
     event FunctionUpdate(bytes4 indexed functionId, address indexed oldDelegate, address indexed newDelegate, string functionSignature);

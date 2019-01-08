@@ -25,7 +25,4 @@ contract PaintDiscount is StorageV1 {
         if (moneySpentByUserForColor[_color][msg.sender] >= 1 ether)
             hasPaintDiscountForColor[_color][msg.sender] = true;
     }
-    
-
-    
 }

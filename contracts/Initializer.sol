@@ -3,7 +3,7 @@ import "./StorageV1.sol";
 
 contract Initializer is StorageV1 {
 
-    //constructor for ERC1538 approach
+    //constructor
     function _initializer() internal {
 
         isAdmin[msg.sender] = true;
