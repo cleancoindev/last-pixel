@@ -1,18 +1,12 @@
-const Game = artifacts.require("Game");
-const Wrapper = artifacts.require("Wrapper");
-const Router = artifacts.require("Router");
-const ERC1538Delegate = artifacts.require("ERC1538Delegate");
+const helper = require("./helpers/deployer");
 
-let game;
 let currentRound;
 let color = 1;
 let callPrice;
 
 contract("Paint Test", async accounts => {
   beforeEach(async function() {
-    erc1538Delegate = await ERC1538Delegate.deployed();
-    router = await Router.new(erc1538Delegate.address, { gas: 5000000 });
-    game = await Wrapper.at(router.address);
+    await helper.deploy();
     currentRound = await game.currentRound.call();
   });
 

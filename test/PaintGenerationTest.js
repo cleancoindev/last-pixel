@@ -1,3 +1,6 @@
+const ERC1538Delegate = artifacts.require("ERC1538Delegate");
+const Router = artifacts.require("Router");
+const Wrapper = artifacts.require("Wrapper");
 const GameMock = artifacts.require("GameMock");
 
 const helper = require("./helpers/truffleTestHelper");
@@ -6,11 +9,15 @@ let gameMock;
 let color;
 let callPrice;
 let pixels;
+let wrapper;
+let router;
 
 contract("Paint Generation", async accounts => {
   //create new smart contract instance before each test method
   beforeEach(async function() {
-    gameMock = await GameMock.deployed();
+    //gameMock = await GameMock.deployed();
+    router = await Router.deployed();
+    gameMock = await Wrapper.at(router.address);
   });
 
   it("After 1.5 minutes have passed, the amount of second gen paints should equal to what is used of first", async () => {
@@ -22,7 +29,7 @@ contract("Paint Generation", async accounts => {
       pixels.push(i);
     }
     callPrice = await gameMock.estimateCallPrice(pixels, color);
-    await gameMock.paint(pixels, color, { value: callPrice });
+    await gameMock.paint(pixels, color, "", { value: callPrice });
 
     //paint pixels 31-50
     pixels = [];
@@ -30,7 +37,7 @@ contract("Paint Generation", async accounts => {
       pixels.push(i);
     }
     callPrice = await gameMock.estimateCallPrice(pixels, color);
-    await gameMock.paint(pixels, color, { value: callPrice });
+    await gameMock.paint(pixels, color, "", { value: callPrice });
 
     let firstGenAmount = await gameMock.paintGenToAmountForColor(color, 1);
     console.log(
@@ -50,7 +57,7 @@ contract("Paint Generation", async accounts => {
     await helper.advanceTimeAndBlock(advancement);
 
     let nextCallPrice = await gameMock.estimateCallPrice([51], color);
-    await gameMock.paint([51], color, {
+    await gameMock.paint([51], color, "", {
       value: nextCallPrice
     });
 
@@ -67,9 +74,6 @@ contract("Paint Generation", async accounts => {
 
   it("Paint price of current collor has increased by 5%", async () => {
     color = 2;
-    //let callprice = await gameMock.nextCallPriceForColor(color);
-
-    let callprice = await gameMock.callPriceForColor(color);
 
     //paint pixels 101-150
     pixels = [];
@@ -77,7 +81,7 @@ contract("Paint Generation", async accounts => {
       pixels.push(i);
     }
     callPrice = await gameMock.estimateCallPrice(pixels, color);
-    await gameMock.paint(pixels, color, { value: callPrice });
+    await gameMock.paint(pixels, color, "", { value: callPrice });
 
     //paint pixels 131-150
     pixels = [];
@@ -86,7 +90,7 @@ contract("Paint Generation", async accounts => {
     }
 
     callPrice = await gameMock.estimateCallPrice(pixels, color);
-    await gameMock.paint(pixels, color, { value: callPrice });
+    await gameMock.paint(pixels, color, "", { value: callPrice });
 
     let firstGenAmount = await gameMock.paintGenToAmountForColor(color, 1);
     console.log(

@@ -15,6 +15,7 @@ contract PaintsPool is StorageV1 {
         emit CallPriceUpdated(callPriceForColor[_color]);
     }
     
+    
     //функция пополнения пула краски
     function _fillPaintsPool(uint _color) internal {
         
