@@ -1,14 +1,14 @@
 pragma solidity ^0.4.24;
 pragma experimental "v0.5.0";
 import "./IERC1538.sol";
-import "./StorageV0.sol";
+import "./ERC1538QueryDelegates.sol";
 
 /******************************************************************************\
 * Implementation of ERC1538.
 * Function signatures are stored in an array so functions can be queried.
 /******************************************************************************/
 
-contract ERC1538Delegate is IERC1538, StorageV0 {
+contract ERC1538Delegate is IERC1538, ERC1538QueryDelegates {
 
     function updateContract(address _delegate, string _functionSignatures, string commitMessage) external onlyOwner {
         // pos is first used to check the size of the delegate contract.

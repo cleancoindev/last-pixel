@@ -10,6 +10,7 @@ const Roles = artifacts.require("Roles");
 const Wrapper = artifacts.require("Wrapper");
 
 // Contract instances
+let erc1538Delegate;
 let router;
 let game;
 let colorTeam;
@@ -24,6 +25,11 @@ module.exports = async function(deployer) {
   deployer
     .then(function() {
       console.log("\n");
+      return ERC1538Delegate.deployed();
+    })
+    .then(function(instance) {
+      erc1538Delegate = instance;
+      console.log("ERC1538 Delegate:", erc1538Delegate.address);
       return Router.deployed();
     })
     .then(function(instance) {
@@ -70,6 +76,13 @@ module.exports = async function(deployer) {
       roles = instance;
       console.log("Roles:", roles.address);
       console.log("\n");
+      return wrapper.updateContract(
+        erc1538Delegate.address,
+        "functionByIndex(uint256)functionExists(string)delegateAddress(string)delegateAddresses()delegateFunctionSignatures(address)functionById(bytes4)functionBySignature(string)functionSignatures()totalFunctions()",
+        "Added functions from ERC1538QueryDelegates.sol"
+      );
+    })
+    .then(function() {
       return wrapper.updateContract(
         game.address,
         "getPixelColor(uint256)estimateCallPrice(uint256[],uint256)paint(uint256[],uint256,string)",
