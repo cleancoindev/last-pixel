@@ -194,6 +194,9 @@ contract StorageV1 is StorageV0 {
     address public founders = 0x3e4d187df7d8a0820eaf4174d17b160157610912;
 
     bool public isGamePaused;
+    //todo - internal
+    bool public isCBPDistributable;
+    bool public isTBPDistributable;
     
     mapping(address => bool) public isAdmin;
 

@@ -49,7 +49,7 @@ contract ColorTeam is Modifiers {
 
     }
 
-    function distributeCBP() external isLiveGame() onlyAdmin() {
+    function distributeCBP() external isLiveGame() canDistributeCBP() {
         require(isCBPTransfered[cbIteration] == false, "Color Bank Prizes already transferred for this cbIteration");
         address painter;
         calculateCBP(winnerColorForRound[currentRound]);
@@ -59,10 +59,12 @@ contract ColorTeam is Modifiers {
             if(painterToCBP[cbIteration][painter] != 0)
                 painter.transfer(painterToCBP[cbIteration][painter]);
         }
+        isCBPDistributable = false;
         isCBPTransfered[cbIteration] = true;
         emit CBPDistributed(currentRound, cbIteration, winnerOfRound[currentRound]);
         currentRound = currentRound.add(1); //следующий раунд 
         cbIteration = cbIteration.add(1); //инкрементируем итерацию для банка цвета
+        isGamePaused = false;
     }
     
 }

@@ -5,6 +5,7 @@ var DividendsDistributor = artifacts.require("DividendsDistributor");
 var GameStateController = artifacts.require("GameStateController");
 var Referral = artifacts.require("Referral");
 var Roles = artifacts.require("Roles");
+var GameMock = artifacts.require("GameMock");
 
 module.exports = async function(deployer) {
   deployer.deploy(Game, { gas: 5000000 });
@@ -14,4 +15,5 @@ module.exports = async function(deployer) {
   deployer.deploy(GameStateController);
   deployer.deploy(Referral);
   deployer.deploy(Roles);
+  deployer.deploy(GameMock, { gas: 5000000 });
 };

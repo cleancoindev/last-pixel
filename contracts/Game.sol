@@ -68,6 +68,9 @@ contract Game is PaintDiscount, PaintsPool, Modifiers {
             colorBankForRound[currentRound] = 0; 
             //ивент - был разыгран банк времени (победитель, раунд)
             emit TimeBankPlayed(winnerOfRound[currentRound], currentRound);
+
+            isGamePaused = true;
+            isTBPDistributable = true;
         }
         
         //закрашиваем пиксели
@@ -95,7 +98,7 @@ contract Game is PaintDiscount, PaintsPool, Modifiers {
     }   
 
     //функция закрашивания пикселя цветом
-    function _paint(uint _pixel, uint _color) internal {
+    function _paint(uint _pixel, uint _color) internal isLiveGame() {
 
         //устанавливаем значения для краски в пуле и цену вызова функции paint
         _fillPaintsPool(_color);
@@ -162,7 +165,9 @@ contract Game is PaintDiscount, PaintsPool, Modifiers {
             timeBankForRound[currentRound + 1] = timeBankForRound[currentRound];//банк времени переносится на следующий раунд
             timeBankForRound[currentRound] = 0;//банк времени в текущем раунде обнуляется      
             emit ColorBankPlayed(winnerOfRound[currentRound], currentRound);  
-
+            
+            isGamePaused = true;
+            isCBPDistributable = true;
             //distributeCBP();
         }
     }

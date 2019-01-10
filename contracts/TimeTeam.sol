@@ -48,7 +48,7 @@ contract TimeTeam is Modifiers {
 
     }
 
-    function distributeTBP() external isLiveGame() onlyAdmin() {
+    function distributeTBP() external isLiveGame() canDistributeTBP() {
         require(isTBPTransfered[tbIteration] == false, "Time Bank Prizes already transferred for this tbIteration");
         address painter;
         calculateTBP();
@@ -58,10 +58,12 @@ contract TimeTeam is Modifiers {
             if(painterToTBP[tbIteration][painter] != 0)
                 painter.transfer(painterToTBP[tbIteration][painter]);
         }
+        isTBPDistributable = false;
         isTBPTransfered[tbIteration] = true;
         emit TBPDistributed(currentRound, tbIteration, winnerOfRound[currentRound]);
         currentRound = currentRound.add(1); //следующий раунд 
         tbIteration = tbIteration.add(1); //инкрементируем итерацию для банка цвета
+        isGamePaused = false;
     }
 }
 

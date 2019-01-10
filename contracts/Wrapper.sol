@@ -37,4 +37,8 @@ contract Wrapper is Modifiers {
     //ERC1538.sol
     function updateContract(address _delegate, string _functionSignatures, string commitMessage) external {}
 
+    //GameMock.sol
+    function mock() external {}
+    function mock2() external {}
+
 }

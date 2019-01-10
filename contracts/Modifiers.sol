@@ -6,12 +6,22 @@ contract Modifiers is StorageV1 {
     using SafeMath for uint;
 
     modifier onlyAdmin() {
-        require(isAdmin[msg.sender] == true, "You don't have admin rights");
+        require(isAdmin[msg.sender] == true, "You don't have admin rights.");
         _;
     }
 
     modifier isLiveGame() {
-        require(isGamePaused == false, "Game is paused");
+        require(isGamePaused == false, "Game is paused.");
+        _;
+    }
+
+    modifier canDistributeCBP() {
+        require(isCBPDistributable == true, "Cannot distribute color bank prize at the moment.");
+        _;
+    }
+
+    modifier canDistributeTBP() {
+        require(isTBPDistributable == true, "Cannot distribute time bank prize at the moment.");
         _;
     }
 

@@ -8,6 +8,7 @@ const GameStateController = artifacts.require("GameStateController");
 const Referral = artifacts.require("Referral");
 const Roles = artifacts.require("Roles");
 const Wrapper = artifacts.require("Wrapper");
+const GameMock = artifacts.require("GameMock");
 
 // Contract instances
 let erc1538Delegate;
@@ -20,6 +21,7 @@ let gameStateController;
 let referral;
 let roles;
 let wrapper;
+let gameMock;
 
 module.exports = async function(deployer) {
   deployer
@@ -75,6 +77,11 @@ module.exports = async function(deployer) {
     .then(function(instance) {
       roles = instance;
       console.log("Roles:", roles.address);
+      return GameMock.deployed();
+    })
+    .then(function(instance) {
+      gameMock = instance;
+      console.log("Game Mock:", gameMock.address);
       console.log("\n");
       return wrapper.updateContract(
         erc1538Delegate.address,
@@ -129,6 +136,13 @@ module.exports = async function(deployer) {
         roles.address,
         "addAdmin(address)removeAdmin(address)renounceAdmin()",
         "Added functions from Roles.sol"
+      );
+    })
+    .then(function() {
+      return wrapper.updateContract(
+        gameMock.address,
+        "mock()mock2()",
+        "Added functions from GameMock.sol"
       );
     });
 };
