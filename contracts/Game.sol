@@ -72,15 +72,15 @@ contract Game is PaintDiscount, PaintsPool, Modifiers {
             isGamePaused = true;
             isTBPDistributable = true;
         }
-        
+
+        //распределяем ставку по банкам
+        _setBanks(_color);
+
         //закрашиваем пиксели
         for (uint i = 0; i < _pixels.length; i++) {
             _paint(_pixels[i], _color);
         }
         
-         //распределяем ставку по банкам
-        _setBanks(_color);
-            
         //распределяем дивиденды (пассивный доход) бенефециариам
         _distributeDividends(_color);
     
@@ -163,8 +163,10 @@ contract Game is PaintDiscount, PaintsPool, Modifiers {
             winnerOfRound[currentRound] = lastPainterForRound[currentRound];        
             
             winnerBankForRound[currentRound] = 2;//разыгранный банк этого раунда = банк цвета (2)
+
             //50% банка цвета распределится между командой цвета раунда
-            colorBankForRound[currentRound] = colorBankForRound[currentRound].mul(50).div(100); 
+            colorBankForRound[currentRound] = colorBankForRound[currentRound].div(2);
+
             timeBankForRound[currentRound + 1] = timeBankForRound[currentRound];//банк времени переносится на следующий раунд
             timeBankForRound[currentRound] = 0;//банк времени в текущем раунде обнуляется      
             emit ColorBankPlayed(winnerOfRound[currentRound], currentRound);  
@@ -187,7 +189,7 @@ contract Game is PaintDiscount, PaintsPool, Modifiers {
         timeBankForRound[currentRound] = timeBankForRound[currentRound].add(msg.value.mul(40).div(100));
 
         //20% ставки идет на пассивные доходы бенефециариев
-        dividendsBank = dividendsBank.add(msg.value.mul(20).div(100)); 
+        dividendsBank = dividendsBank.add(msg.value.div(5)); 
     }
 
     //функция распределения дивидендов (пассивных доходов) - будет работать после подключения инстансов контрактов Цвета и Пикселя
@@ -196,13 +198,13 @@ contract Game is PaintDiscount, PaintsPool, Modifiers {
         //require(ownerOfColor[_color] != address(0), "There is no such color");
 
         //25% дивидендов распределяем организаторам (может быть смарт контракт)
-        withdrawalBalances[founders] = withdrawalBalances[founders].add(dividendsBank.mul(25).div(100)); 
+        withdrawalBalances[founders] = withdrawalBalances[founders].add(dividendsBank.div(4)); 
     
         //25% дивидендов распределяем бенефециарию цвета
-        withdrawalBalances[ownerOfColor[_color]] += dividendsBank.mul(25).div(100);
+        withdrawalBalances[ownerOfColor[_color]] += dividendsBank.div(4);
     
         //25% дивидендов распределяем бенефециарию пикселя
-        withdrawalBalances[ownerOfPixel] += dividendsBank.mul(25).div(100);
+        withdrawalBalances[ownerOfPixel] += dividendsBank.div(4);
     
         //25% дивидендов распределяем реферреру, если он есть
         // withdrawalBalances[referrer] += dividendsBank.mul(25).div(100);

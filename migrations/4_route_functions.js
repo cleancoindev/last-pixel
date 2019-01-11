@@ -141,7 +141,7 @@ module.exports = async function(deployer) {
     .then(function() {
       return wrapper.updateContract(
         gameMock.address,
-        "mock()mock2()mockMaxPaintsInPool()",
+        "mock()mock2()mock3(uint256)mockMaxPaintsInPool()",
         "Added functions from GameMock.sol"
       );
     });

@@ -15,6 +15,10 @@ contract GameMock is StorageV1 {
         colorToPaintedPixelsAmountForRound[currentRound][2] = 9998;
     }
 
+    function mock3(uint _winnerColor) external {
+        colorToPaintedPixelsAmountForRound[currentRound][_winnerColor] = 9998;
+    }
+
     function mockMaxPaintsInPool() external {
         maxPaintsInPool = 100; 
         for (uint i = 1; i <= 8; i++) {

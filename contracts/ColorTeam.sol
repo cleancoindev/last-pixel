@@ -44,7 +44,7 @@ contract ColorTeam is Modifiers {
         
         for (i = 0; i < length; i++) {
             painter = cbTeam[cbIteration][i];
-            painterToCBP[cbIteration][painter] += (colorBankShare[cbIteration][_winnerColor][painter].mul(colorBankForRound[currentRound])).div(totalPaintsForTeam);
+            painterToCBP[cbIteration][painter] = (colorBankShare[cbIteration][_winnerColor][painter].mul(colorBankForRound[currentRound])).div(totalPaintsForTeam);
         }
 
     }
@@ -52,8 +52,8 @@ contract ColorTeam is Modifiers {
     function distributeCBP() external canDistributeCBP() {
         require(isCBPTransfered[cbIteration] == false, "Color Bank Prizes already transferred for this cbIteration");
         address painter;
-        painterToCBP[cbIteration][winnerOfRound[currentRound]] += colorBankForRound[currentRound].mul(50).div(100); 
         calculateCBP(winnerColorForRound[currentRound]);
+        painterToCBP[cbIteration][winnerOfRound[currentRound]] += colorBankForRound[currentRound];
         uint length = cbTeam[cbIteration].length;
         for (uint i = 0; i < length; i++) {
             painter = cbTeam[cbIteration][i];

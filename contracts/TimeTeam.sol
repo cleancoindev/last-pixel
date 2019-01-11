@@ -43,7 +43,7 @@ contract TimeTeam is Modifiers {
 
         for (i = 0; i < length; i++) {
             painter = tbTeam[tbIteration][i];
-            painterToTBP[tbIteration][painter] += (timeBankShare[tbIteration][painter].mul(timeBankForRound[currentRound])).div(totalPaintsForTeam);
+            painterToTBP[tbIteration][painter] = (timeBankShare[tbIteration][painter].mul(timeBankForRound[currentRound])).div(totalPaintsForTeam);
         }
 
     }
@@ -51,8 +51,8 @@ contract TimeTeam is Modifiers {
     function distributeTBP() external canDistributeTBP() {
         require(isTBPTransfered[tbIteration] == false, "Time Bank Prizes already transferred for this tbIteration");
         address painter;
-        painterToTBP[tbIteration][winnerOfRound[currentRound]] += timeBankForRound[currentRound].mul(45).div(100); 
         calculateTBP();
+        painterToTBP[tbIteration][winnerOfRound[currentRound]] += timeBankForRound[currentRound].mul(45).div(100); 
         uint length = tbTeam[tbIteration].length;
         for (uint i = 0; i < length; i++) {
             painter = tbTeam[tbIteration][i];

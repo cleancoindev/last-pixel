@@ -73,14 +73,14 @@
     "absolutePath": "/Users/Amir/last-pixel-contracts/contracts/IERC1538.sol",
     "exportedSymbols": {
       "IERC1538": [
-        2257
+        2306
       ]
     },
-    "id": 2258,
+    "id": 2307,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 2233,
+        "id": 2282,
         "literals": [
           "solidity",
           "^",
@@ -96,9 +96,9 @@
         "contractKind": "interface",
         "documentation": null,
         "fullyImplemented": false,
-        "id": 2257,
+        "id": 2306,
         "linearizedBaseContracts": [
-          2257
+          2306
         ],
         "name": "IERC1538",
         "nodeType": "ContractDefinition",
@@ -106,20 +106,20 @@
           {
             "anonymous": false,
             "documentation": null,
-            "id": 2237,
+            "id": 2286,
             "name": "CommitMessage",
             "nodeType": "EventDefinition",
             "parameters": {
-              "id": 2236,
+              "id": 2285,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 2235,
+                  "id": 2284,
                   "indexed": false,
                   "name": "message",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2237,
+                  "scope": 2286,
                   "src": "71:14:8",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -128,7 +128,7 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 2234,
+                    "id": 2283,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
                     "src": "71:6:8",
@@ -148,20 +148,20 @@
           {
             "anonymous": false,
             "documentation": null,
-            "id": 2247,
+            "id": 2296,
             "name": "FunctionUpdate",
             "nodeType": "EventDefinition",
             "parameters": {
-              "id": 2246,
+              "id": 2295,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 2239,
+                  "id": 2288,
                   "indexed": true,
                   "name": "functionId",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2247,
+                  "scope": 2296,
                   "src": "113:25:8",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -170,7 +170,7 @@
                     "typeString": "bytes4"
                   },
                   "typeName": {
-                    "id": 2238,
+                    "id": 2287,
                     "name": "bytes4",
                     "nodeType": "ElementaryTypeName",
                     "src": "113:6:8",
@@ -184,11 +184,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 2241,
+                  "id": 2290,
                   "indexed": true,
                   "name": "oldDelegate",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2247,
+                  "scope": 2296,
                   "src": "140:27:8",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -197,7 +197,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 2240,
+                    "id": 2289,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "140:7:8",
@@ -211,11 +211,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 2243,
+                  "id": 2292,
                   "indexed": true,
                   "name": "newDelegate",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2247,
+                  "scope": 2296,
                   "src": "169:27:8",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -224,7 +224,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 2242,
+                    "id": 2291,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "169:7:8",
@@ -238,11 +238,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 2245,
+                  "id": 2294,
                   "indexed": false,
                   "name": "functionSignature",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2247,
+                  "scope": 2296,
                   "src": "198:24:8",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -251,7 +251,7 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 2244,
+                    "id": 2293,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
                     "src": "198:6:8",
@@ -271,7 +271,7 @@
           {
             "body": null,
             "documentation": null,
-            "id": 2256,
+            "id": 2305,
             "implemented": false,
             "isConstructor": false,
             "isDeclaredConst": false,
@@ -279,15 +279,15 @@
             "name": "updateContract",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 2254,
+              "id": 2303,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 2249,
+                  "id": 2298,
                   "name": "_delegate",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2256,
+                  "scope": 2305,
                   "src": "253:17:8",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -296,7 +296,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 2248,
+                    "id": 2297,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "253:7:8",
@@ -310,10 +310,10 @@
                 },
                 {
                   "constant": false,
-                  "id": 2251,
+                  "id": 2300,
                   "name": "_functionSignatures",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2256,
+                  "scope": 2305,
                   "src": "272:26:8",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -322,7 +322,7 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 2250,
+                    "id": 2299,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
                     "src": "272:6:8",
@@ -336,10 +336,10 @@
                 },
                 {
                   "constant": false,
-                  "id": 2253,
+                  "id": 2302,
                   "name": "commitMessage",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2256,
+                  "scope": 2305,
                   "src": "300:20:8",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -348,7 +348,7 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 2252,
+                    "id": 2301,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
                     "src": "300:6:8",
@@ -365,19 +365,19 @@
             },
             "payable": false,
             "returnParameters": {
-              "id": 2255,
+              "id": 2304,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "330:0:8"
             },
-            "scope": 2257,
+            "scope": 2306,
             "src": "229:102:8",
             "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "external"
           }
         ],
-        "scope": 2258,
+        "scope": 2307,
         "src": "26:307:8"
       }
     ],
@@ -387,14 +387,14 @@
     "absolutePath": "/Users/Amir/last-pixel-contracts/contracts/IERC1538.sol",
     "exportedSymbols": {
       "IERC1538": [
-        2257
+        2306
       ]
     },
-    "id": 2258,
+    "id": 2307,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 2233,
+        "id": 2282,
         "literals": [
           "solidity",
           "^",
@@ -410,9 +410,9 @@
         "contractKind": "interface",
         "documentation": null,
         "fullyImplemented": false,
-        "id": 2257,
+        "id": 2306,
         "linearizedBaseContracts": [
-          2257
+          2306
         ],
         "name": "IERC1538",
         "nodeType": "ContractDefinition",
@@ -420,20 +420,20 @@
           {
             "anonymous": false,
             "documentation": null,
-            "id": 2237,
+            "id": 2286,
             "name": "CommitMessage",
             "nodeType": "EventDefinition",
             "parameters": {
-              "id": 2236,
+              "id": 2285,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 2235,
+                  "id": 2284,
                   "indexed": false,
                   "name": "message",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2237,
+                  "scope": 2286,
                   "src": "71:14:8",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -442,7 +442,7 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 2234,
+                    "id": 2283,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
                     "src": "71:6:8",
@@ -462,20 +462,20 @@
           {
             "anonymous": false,
             "documentation": null,
-            "id": 2247,
+            "id": 2296,
             "name": "FunctionUpdate",
             "nodeType": "EventDefinition",
             "parameters": {
-              "id": 2246,
+              "id": 2295,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 2239,
+                  "id": 2288,
                   "indexed": true,
                   "name": "functionId",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2247,
+                  "scope": 2296,
                   "src": "113:25:8",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -484,7 +484,7 @@
                     "typeString": "bytes4"
                   },
                   "typeName": {
-                    "id": 2238,
+                    "id": 2287,
                     "name": "bytes4",
                     "nodeType": "ElementaryTypeName",
                     "src": "113:6:8",
@@ -498,11 +498,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 2241,
+                  "id": 2290,
                   "indexed": true,
                   "name": "oldDelegate",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2247,
+                  "scope": 2296,
                   "src": "140:27:8",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -511,7 +511,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 2240,
+                    "id": 2289,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "140:7:8",
@@ -525,11 +525,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 2243,
+                  "id": 2292,
                   "indexed": true,
                   "name": "newDelegate",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2247,
+                  "scope": 2296,
                   "src": "169:27:8",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -538,7 +538,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 2242,
+                    "id": 2291,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "169:7:8",
@@ -552,11 +552,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 2245,
+                  "id": 2294,
                   "indexed": false,
                   "name": "functionSignature",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2247,
+                  "scope": 2296,
                   "src": "198:24:8",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -565,7 +565,7 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 2244,
+                    "id": 2293,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
                     "src": "198:6:8",
@@ -585,7 +585,7 @@
           {
             "body": null,
             "documentation": null,
-            "id": 2256,
+            "id": 2305,
             "implemented": false,
             "isConstructor": false,
             "isDeclaredConst": false,
@@ -593,15 +593,15 @@
             "name": "updateContract",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 2254,
+              "id": 2303,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 2249,
+                  "id": 2298,
                   "name": "_delegate",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2256,
+                  "scope": 2305,
                   "src": "253:17:8",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -610,7 +610,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 2248,
+                    "id": 2297,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "253:7:8",
@@ -624,10 +624,10 @@
                 },
                 {
                   "constant": false,
-                  "id": 2251,
+                  "id": 2300,
                   "name": "_functionSignatures",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2256,
+                  "scope": 2305,
                   "src": "272:26:8",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -636,7 +636,7 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 2250,
+                    "id": 2299,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
                     "src": "272:6:8",
@@ -650,10 +650,10 @@
                 },
                 {
                   "constant": false,
-                  "id": 2253,
+                  "id": 2302,
                   "name": "commitMessage",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2256,
+                  "scope": 2305,
                   "src": "300:20:8",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -662,7 +662,7 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 2252,
+                    "id": 2301,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
                     "src": "300:6:8",
@@ -679,19 +679,19 @@
             },
             "payable": false,
             "returnParameters": {
-              "id": 2255,
+              "id": 2304,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "330:0:8"
             },
-            "scope": 2257,
+            "scope": 2306,
             "src": "229:102:8",
             "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "external"
           }
         ],
-        "scope": 2258,
+        "scope": 2307,
         "src": "26:307:8"
       }
     ],
@@ -703,5 +703,5 @@
   },
   "networks": {},
   "schemaVersion": "2.0.1",
-  "updatedAt": "2019-01-09T17:56:16.932Z"
+  "updatedAt": "2019-01-11T13:15:36.557Z"
 }
