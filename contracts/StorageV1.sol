@@ -34,7 +34,7 @@ contract StorageV1 is StorageV0 {
     mapping (uint => uint) public winnerColorForRound; 
 
     //значение общего количества разукрашиваний данным цветом за весь раунд (раунд => цвет => количество разукрашиваний)
-    mapping (uint => mapping (uint => uint)) public colorToTotalPaintsForRound; 
+    mapping (uint => mapping (uint => uint)) public colorToTotalPaintsForCBIteration; 
 
     //победитель раунда (раунд => адрес)
     mapping (uint => address) public winnerOfRound; 

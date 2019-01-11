@@ -40,5 +40,6 @@ contract Wrapper is Modifiers {
     //GameMock.sol
     function mock() external {}
     function mock2() external {}
+    function mockMaxPaintsInPool() external {}
 
 }

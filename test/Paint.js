@@ -64,4 +64,13 @@ contract("Paint Test", async accounts => {
       newBalanceForFounders - initialBalanceOfFounders;
     assert.equal(differenceForFounders, callPrice * 0.05);
   });
+
+  it("Can batch paint 25 pixels at once", async () => {
+    let pixels = [];
+    for (i = 2; i < 27; i++) {
+      pixels.push(i);
+    }
+    callPrice = await wrapper.estimateCallPrice(pixels, color);
+    await wrapper.paint(pixels, color, "", { value: callPrice });
+  });
 });

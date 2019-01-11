@@ -7,7 +7,7 @@ contract Router is Initializer {
     event CommitMessage(string message);
     event FunctionUpdate(bytes4 indexed functionId, address indexed oldDelegate, address indexed newDelegate, string functionSignature);
 
-    constructor(address _erc1538Delegate) public {
+    constructor(address _erc1538Delegate) public payable {
 
         //Adding ERC1538 updateContract function
         bytes memory signature = "updateContract(address,string,string)";

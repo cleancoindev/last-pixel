@@ -54,7 +54,7 @@ contract Game is PaintDiscount, PaintsPool, Modifiers {
             //победитель текущего раунда - последний закрасивший пиксель пользователь за этот раунд
             winnerOfRound[currentRound] = lastPainterForRound[currentRound];
 
-            painterToTBP[tbIteration][winnerOfRound[currentRound]] += timeBankForRound[currentRound].mul(45).div(100); 
+            
             
             //разыгранный банк этого раунда = банк времени (1)
             winnerBankForRound[currentRound] = 1; 
@@ -129,7 +129,10 @@ contract Game is PaintDiscount, PaintsPool, Modifiers {
     
         //при каждой раскраске пикселя, увеличиваем счетчик цвета
         colorToPaintedPixelsAmountForRound[currentRound][_color] = colorToPaintedPixelsAmountForRound[currentRound][_color].add(1); 
-    
+
+        //увеличиваем значение общего количества разукрашиваний данным цветом для итерации команды цвета
+        colorToTotalPaintsForCBIteration[cbIteration][_color] = colorToTotalPaintsForCBIteration[cbIteration][_color].add(1);
+
         //увеличиваем значение общего количества разукрашиваний любым цветом для всего раунда
         totalPaintsForRound[currentRound] = totalPaintsForRound[currentRound].add(1); 
 
@@ -158,7 +161,7 @@ contract Game is PaintDiscount, PaintsPool, Modifiers {
 
             //распределяем банк цвета команде цвета
             winnerOfRound[currentRound] = lastPainterForRound[currentRound];        
-            painterToCBP[cbIteration][winnerOfRound[currentRound]] += colorBankForRound[currentRound].mul(50).div(100); 
+            
             winnerBankForRound[currentRound] = 2;//разыгранный банк этого раунда = банк цвета (2)
             //50% банка цвета распределится между командой цвета раунда
             colorBankForRound[currentRound] = colorBankForRound[currentRound].mul(50).div(100); 

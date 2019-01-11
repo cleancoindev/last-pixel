@@ -27,36 +27,50 @@ contract("Color Bank Distribution Test", async accounts => {
     await wrapper.paint([45], 3, "", { value: callPrice3, from: accounts[3] });
     await wrapper.paint([46], 1, "", { value: callPrice3, from: accounts[3] });
 
-    await wrapper.mock2();
+    let colorBank = await wrapper.colorBankForRound(currentRound);
+    console.log(
+      "ColorBank 1 is:",
+      (await wrapper.colorBankForRound(currentRound)).toNumber()
+    );
+
+    await wrapper.mock();
 
     await wrapper.paint([1], 2, "", { value: callPrice2, from: user });
+    colorBank = await wrapper.colorBankForRound(currentRound);
+    console.log(
+      "ColorBank 2is:",
+      (await wrapper.colorBankForRound(currentRound)).toNumber()
+    );
 
     let initialBalance = await web3.eth.getBalance(user);
     let lastPaint = await wrapper.paint([2], 2, "", {
       value: callPrice2,
       from: user
     });
+
     console.log(
       "Color of pixel 1 is:",
       (await wrapper.pixelToColorForRound(currentRound, 1)).toNumber()
     );
+
     console.log(
       "Color of pixel 2 is:",
       (await wrapper.pixelToColorForRound(currentRound, 2)).toNumber()
     );
 
-    let colorBank = await wrapper.colorBankForRound(currentRound);
+    colorBank = await wrapper.colorBankForRound(currentRound);
     console.log(
       "ColorBank is:",
       (await wrapper.colorBankForRound(currentRound)).toNumber()
     );
-    let finalBalance = await web3.eth.getBalance(user);
 
-    let difference = finalBalance - initialBalance;
+    await wrapper.distributeCBP();
+
     let cbIteration = await wrapper.cbIteration.call();
+    console.log("Cb", +cbIteration);
     currentRound = await wrapper.currentRound.call();
-    let winner = await wrapper.winnerOfRound(currentRound);
-    let amount = await wrapper.painterToCBP(cbIteration, winner);
+    let winner = await wrapper.winnerOfRound(currentRound - 1);
+    let amount = await wrapper.painterToCBP(cbIteration - 1, winner);
 
     assert.equal(+amount, +colorBank);
   });
