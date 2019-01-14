@@ -202,12 +202,12 @@ contract StorageV1 is StorageV0 {
 
    // Events
 
-    event CBPDistributed(uint indexed round, uint indexed cbIteration, address winner);
+    event CBPDistributed(uint indexed round, uint indexed cbIteration, address indexed winner, uint prize);
     event DividendsWithdrawn(address indexed withdrawer, uint indexed claimId, uint indexed amount);
     event DividendsClaimed(address indexed claimer, uint indexed claimId, uint indexed currentTime);
     event Paint(uint indexed pixelId, uint colorId, address indexed painter, uint indexed round, uint timestamp);
     event ColorBankPlayed(address winnerOfRound, uint indexed round);
     event TimeBankPlayed(address winnerOfRound, uint indexed round);
     event CallPriceUpdated(uint indexed newCallPrice);
-    event TBPDistributed(uint indexed round, uint indexed tbIteration, address winner);
+    event TBPDistributed(uint indexed round, uint indexed tbIteration, address indexed winner, uint prize);
 }

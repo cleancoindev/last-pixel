@@ -66,11 +66,11 @@ contract Game is PaintDiscount, PaintsPool, Modifiers {
             colorBankForRound[currentRound] = 0; 
             //ивент - был разыгран банк времени (победитель, раунд)
             emit TimeBankPlayed(winnerOfRound[currentRound], currentRound);
-            
+
             isGamePaused = true;
             isTBPDistributable = true;
         }
-
+        
         else {
             //распределяем ставку по банкам
             _setBanks(_color);

@@ -7,9 +7,10 @@ let erc1538Delegate;
 let router;
 let wrapper;
 
-let user;
 let color;
 let callPrice;
+let timebank1;
+let timebank2;
 
 contract("Time Bank Distribution Test", async accounts => {
   beforeEach(async function() {
@@ -24,45 +25,58 @@ contract("Time Bank Distribution Test", async accounts => {
     console.log("Current round:", currentRound.toNumber());
 
     // 1st user paints 20 pixels with color 1
+    let pixels1 = [];
     for (i = 1; i <= 20; i++) {
-      user = accounts[1];
-      color = 1;
-      callPrice = await wrapper.estimateCallPrice(color);
-      await wrapper.paint(i, color, { value: callPrice, from: user });
-      let pixelColor = await wrapper.pixelToColorForRound(currentRound, i);
-      //console.log("User 1 is painting pixel", i, "with color 1");
-      console.log("Color of pixel", i, "is", pixelColor.toNumber());
+      pixels1.push(i);
     }
+    color = 1;
+    callPrice = await wrapper.estimateCallPrice(pixels1, color);
+    await wrapper.paint(pixels1, color, "", {
+      value: callPrice,
+      from: accounts[1]
+    });
 
     // 2nd user paints next 20 pixels with color 2
-    for (i = 21; i <= 40; i++) {
-      user = accounts[2];
-      color = 2;
-      callPrice = await wrapper.nextCallPriceForColor(color);
-      await wrapper.paint(i, color, { value: callPrice, from: user });
-
-      //console.log("User 2 is painting pixel", i, "with color 2");
-      let pixelColor = await wrapper.pixelToColorForRound(currentRound, i);
-      console.log("Color of pixel", i, "is", pixelColor.toNumber());
+    let pixels2 = [];
+    for (i = 21; i <= 50; i++) {
+      pixels2.push(i);
     }
+    color = 2;
+    callPrice = await wrapper.estimateCallPrice(pixels2, color);
+    await wrapper.paint(pixels2, color, "", {
+      value: callPrice,
+      from: accounts[2]
+    });
 
     //20 minutes have passed
     const advancement = 20 * 60; //20 minutes
     await helper.advanceTimeAndBlock(advancement);
 
-    //Time bank
-    timeBankForRoundOne = await wrapper.timeBankForRound(currentRound);
-    console.log("Time Bank: ", timeBankForRoundOne.toNumber());
+    // //Time bank
+    timebank1 = await wrapper.timeBankForRound(currentRound);
+    // console.log("Time bank:", timebank.toNumber());
 
     //This paint doesn't count and will revert, since 20 minutes have passed by
-    let callPrice = await wrapper.nextCallPriceForColor(3);
-    await wrapper.paint(11, 3, { from: accounts[3], value: callPrice });
+    callPrice = await wrapper.estimateCallPrice([11], 3);
+    await wrapper.paint([11], 3, "", { from: accounts[3], value: callPrice });
 
-    //Time bank prize that the last painter will get
-    let amount = await wrapper.timeBankPrizeOfLastPainter.call();
-    console.log("Winner should get:", web3.fromWei(amount).toNumber());
+    let timebank = await wrapper.timeBankForRound(currentRound);
+    // console.log("Time bank:", timebank.toNumber()); // 90000000000000000
 
-    assert.equal(amount.toNumber(), timeBankForRoundOne * 0.45);
+    await wrapper.distributeTBP();
+    console.log("Distributing time bank prize for round 1...");
+
+    let tbIteration = await wrapper.tbIteration.call(); //2
+    currentRound = await wrapper.currentRound.call(); //2
+
+    let winner = await wrapper.winnerOfRound(currentRound - 1);
+    let share = await wrapper.timeBankShare(tbIteration - 1, winner);
+
+    let paints = 50; //50 paints have been made
+    let prize = (timebank * share) / paints;
+    let tbp = await wrapper.painterToTBP(tbIteration - 1, winner);
+    let amount = timebank.toNumber() + prize;
+    assert.equal(+tbp, amount);
   });
 
   it("The new round has started", async () => {
@@ -74,9 +88,9 @@ contract("Time Bank Distribution Test", async accounts => {
 
   it("New round has 10% of previous round's Time Bank", async () => {
     let currentRound = await wrapper.currentRound.call();
-    timeBankForRoundTwo = await wrapper.timeBankForRound(currentRound);
+    timebank2 = await wrapper.timeBankForRound(currentRound);
 
-    assert.equal(timeBankForRoundTwo.toNumber(), timeBankForRoundOne * 0.1);
+    assert.equal(timebank2.toNumber(), timebank1 * 0.1);
   });
 
   it("All pixels in new round should be transparent", async () => {
@@ -85,7 +99,7 @@ contract("Time Bank Distribution Test", async accounts => {
     for (i = 1; i <= 40; i++) {
       let pixelColor = await wrapper.pixelToColorForRound(currentRound, i);
 
-      console.log("Color of pixel", i, "is", pixelColor.toNumber());
+      //console.log("Color of pixel", i, "is", pixelColor.toNumber());
       assert.equal(pixelColor.toNumber(), transparent);
     }
   });

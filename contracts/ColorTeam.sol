@@ -58,8 +58,9 @@ contract ColorTeam is Modifiers {
         for (uint i = 0; i < length; i++) {
             painter = cbTeam[cbIteration][i];
             if (painterToCBP[cbIteration][painter] != 0) {
-                painter.transfer(painterToCBP[cbIteration][painter]);
-                emit CBPDistributed(currentRound, cbIteration, painter);
+                uint prize = painterToCBP[cbIteration][painter];
+                painter.transfer(prize);
+                emit CBPDistributed(currentRound, cbIteration, painter, prize);
             }
         }
         isCBPDistributable = false;
