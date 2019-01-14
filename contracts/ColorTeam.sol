@@ -57,12 +57,13 @@ contract ColorTeam is Modifiers {
         uint length = cbTeam[cbIteration].length;
         for (uint i = 0; i < length; i++) {
             painter = cbTeam[cbIteration][i];
-            if(painterToCBP[cbIteration][painter] != 0)
+            if (painterToCBP[cbIteration][painter] != 0) {
                 painter.transfer(painterToCBP[cbIteration][painter]);
+                emit CBPDistributed(currentRound, cbIteration, painter);
+            }
         }
         isCBPDistributable = false;
         isCBPTransfered[cbIteration] = true;
-        emit CBPDistributed(currentRound, cbIteration, winnerOfRound[currentRound]);
         currentRound = currentRound.add(1); //следующий раунд 
         cbIteration = cbIteration.add(1); //инкрементируем итерацию для банка цвета
         isGamePaused = false;

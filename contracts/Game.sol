@@ -54,8 +54,6 @@ contract Game is PaintDiscount, PaintsPool, Modifiers {
             //победитель текущего раунда - последний закрасивший пиксель пользователь за этот раунд
             winnerOfRound[currentRound] = lastPainterForRound[currentRound];
 
-            
-            
             //разыгранный банк этого раунда = банк времени (1)
             winnerBankForRound[currentRound] = 1; 
             //10% банка времени переходит в следующий раунд
@@ -68,46 +66,48 @@ contract Game is PaintDiscount, PaintsPool, Modifiers {
             colorBankForRound[currentRound] = 0; 
             //ивент - был разыгран банк времени (победитель, раунд)
             emit TimeBankPlayed(winnerOfRound[currentRound], currentRound);
-
+            
             isGamePaused = true;
             isTBPDistributable = true;
         }
 
-        //распределяем ставку по банкам
-        _setBanks(_color);
+        else {
+            //распределяем ставку по банкам
+            _setBanks(_color);
 
-        //закрашиваем пиксели
-        for (uint i = 0; i < _pixels.length; i++) {
-            _paint(_pixels[i], _color);
+            //закрашиваем пиксели
+            for (uint i = 0; i < _pixels.length; i++) {
+                _paint(_pixels[i], _color);
+            }
+            
+            //распределяем дивиденды (пассивный доход) бенефециариам
+            _distributeDividends(_color);
+        
+            //сохраняем значение потраченных пользователем денег на покупку краски данного цвета
+            _setMoneySpentByUserForColor(_color); 
+            
+            //сохраняем значение скидки на покупку краски данного цвета для пользователя
+            _setUsersPaintDiscountForColor(_color);
+
+            paintsCounter++; //счетчик закрашивания любым цветом
+            paintsCounterForColor[_color] ++; //счетчик закрашивания конкретным цветом
+            counterToPainter[paintsCounter] = msg.sender; //счетчик закрашивания => пользователь
+            counterToPainterForColor[_color][paintsCounterForColor[_color]] = msg.sender; //счетчик закрашивания конкретным цветом => пользователь
         }
-        
-        //распределяем дивиденды (пассивный доход) бенефециариам
-        _distributeDividends(_color);
-    
-         //сохраняем значение потраченных пользователем денег на покупку краски данного цвета
-        _setMoneySpentByUserForColor(_color); 
-        
-        //сохраняем значение скидки на покупку краски данного цвета для пользователя
-        _setUsersPaintDiscountForColor(_color);
-
-        paintsCounter++; //счетчик закрашивания любым цветом
-        paintsCounterForColor[_color] ++; //счетчик закрашивания конкретным цветом
-        counterToPainter[paintsCounter] = msg.sender; //счетчик закрашивания => пользователь
-        counterToPainterForColor[_color][paintsCounterForColor[_color]] = msg.sender; //счетчик закрашивания конкретным цветом => пользователь
 
     }   
 
     //функция закрашивания пикселя цветом
-    function _paint(uint _pixel, uint _color) internal isLiveGame() {
+    function _paint(uint _pixel, uint _color) internal {
 
         //устанавливаем значения для краски в пуле и цену вызова функции paint
         _fillPaintsPool(_color);
 
-        require(_pixel != 0, "The pixel with id = 0 does not exist...");
+        require(_pixel != 0, "The pixel with id = 0 does not exist.");
         require(_color != 0, "You cannot paint to transparent color...");
-        require(pixelToColorForRound[currentRound][_pixel] != _color, "This pixel is already of this color...");
-
-        //paint    
+        require(pixelToColorForRound[currentRound][_pixel] != _color, "This pixel is already of this color.");
+        //require(colorToPaintedPixelsAmountForRound[currentRound][_color] != 10000, "The game field is filled with one color.");
+ 
         //берем предыдущий цвет данного пикселя
         uint oldColor = pixelToColorForRound[currentRound][_pixel];
     

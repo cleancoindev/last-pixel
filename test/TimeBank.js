@@ -1,10 +1,6 @@
 const ERC1538Delegate = artifacts.require("ERC1538Delegate");
 const Router = artifacts.require("Router");
 const Wrapper = artifacts.require("Wrapper");
-
-let erc1538Delegate;
-let router;
-let wrapper;
 const helper = require("./helpers/truffleTestHelper");
 
 let erc1538Delegate;

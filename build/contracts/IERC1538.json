@@ -73,14 +73,14 @@
     "absolutePath": "/Users/Amir/last-pixel-contracts/contracts/IERC1538.sol",
     "exportedSymbols": {
       "IERC1538": [
-        2306
+        2028
       ]
     },
-    "id": 2307,
+    "id": 2029,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 2282,
+        "id": 2004,
         "literals": [
           "solidity",
           "^",
@@ -88,7 +88,7 @@
           ".24"
         ],
         "nodeType": "PragmaDirective",
-        "src": "0:24:8"
+        "src": "0:24:5"
       },
       {
         "baseContracts": [],
@@ -96,9 +96,9 @@
         "contractKind": "interface",
         "documentation": null,
         "fullyImplemented": false,
-        "id": 2306,
+        "id": 2028,
         "linearizedBaseContracts": [
-          2306
+          2028
         ],
         "name": "IERC1538",
         "nodeType": "ContractDefinition",
@@ -106,21 +106,21 @@
           {
             "anonymous": false,
             "documentation": null,
-            "id": 2286,
+            "id": 2008,
             "name": "CommitMessage",
             "nodeType": "EventDefinition",
             "parameters": {
-              "id": 2285,
+              "id": 2007,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 2284,
+                  "id": 2006,
                   "indexed": false,
                   "name": "message",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2286,
-                  "src": "71:14:8",
+                  "scope": 2008,
+                  "src": "71:14:5",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -128,10 +128,10 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 2283,
+                    "id": 2005,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
-                    "src": "71:6:8",
+                    "src": "71:6:5",
                     "typeDescriptions": {
                       "typeIdentifier": "t_string_storage_ptr",
                       "typeString": "string"
@@ -141,28 +141,28 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "70:16:8"
+              "src": "70:16:5"
             },
-            "src": "51:36:8"
+            "src": "51:36:5"
           },
           {
             "anonymous": false,
             "documentation": null,
-            "id": 2296,
+            "id": 2018,
             "name": "FunctionUpdate",
             "nodeType": "EventDefinition",
             "parameters": {
-              "id": 2295,
+              "id": 2017,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 2288,
+                  "id": 2010,
                   "indexed": true,
                   "name": "functionId",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2296,
-                  "src": "113:25:8",
+                  "scope": 2018,
+                  "src": "113:25:5",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -170,10 +170,10 @@
                     "typeString": "bytes4"
                   },
                   "typeName": {
-                    "id": 2287,
+                    "id": 2009,
                     "name": "bytes4",
                     "nodeType": "ElementaryTypeName",
-                    "src": "113:6:8",
+                    "src": "113:6:5",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bytes4",
                       "typeString": "bytes4"
@@ -184,12 +184,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 2290,
+                  "id": 2012,
                   "indexed": true,
                   "name": "oldDelegate",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2296,
-                  "src": "140:27:8",
+                  "scope": 2018,
+                  "src": "140:27:5",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -197,10 +197,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 2289,
+                    "id": 2011,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "140:7:8",
+                    "src": "140:7:5",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
                       "typeString": "address"
@@ -211,12 +211,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 2292,
+                  "id": 2014,
                   "indexed": true,
                   "name": "newDelegate",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2296,
-                  "src": "169:27:8",
+                  "scope": 2018,
+                  "src": "169:27:5",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -224,10 +224,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 2291,
+                    "id": 2013,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "169:7:8",
+                    "src": "169:7:5",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
                       "typeString": "address"
@@ -238,12 +238,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 2294,
+                  "id": 2016,
                   "indexed": false,
                   "name": "functionSignature",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2296,
-                  "src": "198:24:8",
+                  "scope": 2018,
+                  "src": "198:24:5",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -251,10 +251,10 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 2293,
+                    "id": 2015,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
-                    "src": "198:6:8",
+                    "src": "198:6:5",
                     "typeDescriptions": {
                       "typeIdentifier": "t_string_storage_ptr",
                       "typeString": "string"
@@ -264,14 +264,14 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "112:111:8"
+              "src": "112:111:5"
             },
-            "src": "92:132:8"
+            "src": "92:132:5"
           },
           {
             "body": null,
             "documentation": null,
-            "id": 2305,
+            "id": 2027,
             "implemented": false,
             "isConstructor": false,
             "isDeclaredConst": false,
@@ -279,16 +279,16 @@
             "name": "updateContract",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 2303,
+              "id": 2025,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 2298,
+                  "id": 2020,
                   "name": "_delegate",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2305,
-                  "src": "253:17:8",
+                  "scope": 2027,
+                  "src": "253:17:5",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -296,10 +296,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 2297,
+                    "id": 2019,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "253:7:8",
+                    "src": "253:7:5",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
                       "typeString": "address"
@@ -310,11 +310,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 2300,
+                  "id": 2022,
                   "name": "_functionSignatures",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2305,
-                  "src": "272:26:8",
+                  "scope": 2027,
+                  "src": "272:26:5",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -322,10 +322,10 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 2299,
+                    "id": 2021,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
-                    "src": "272:6:8",
+                    "src": "272:6:5",
                     "typeDescriptions": {
                       "typeIdentifier": "t_string_storage_ptr",
                       "typeString": "string"
@@ -336,11 +336,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 2302,
+                  "id": 2024,
                   "name": "commitMessage",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2305,
-                  "src": "300:20:8",
+                  "scope": 2027,
+                  "src": "300:20:5",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -348,10 +348,10 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 2301,
+                    "id": 2023,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
-                    "src": "300:6:8",
+                    "src": "300:6:5",
                     "typeDescriptions": {
                       "typeIdentifier": "t_string_storage_ptr",
                       "typeString": "string"
@@ -361,40 +361,40 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "252:69:8"
+              "src": "252:69:5"
             },
             "payable": false,
             "returnParameters": {
-              "id": 2304,
+              "id": 2026,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "330:0:8"
+              "src": "330:0:5"
             },
-            "scope": 2306,
-            "src": "229:102:8",
+            "scope": 2028,
+            "src": "229:102:5",
             "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "external"
           }
         ],
-        "scope": 2307,
-        "src": "26:307:8"
+        "scope": 2029,
+        "src": "26:307:5"
       }
     ],
-    "src": "0:333:8"
+    "src": "0:333:5"
   },
   "legacyAST": {
     "absolutePath": "/Users/Amir/last-pixel-contracts/contracts/IERC1538.sol",
     "exportedSymbols": {
       "IERC1538": [
-        2306
+        2028
       ]
     },
-    "id": 2307,
+    "id": 2029,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 2282,
+        "id": 2004,
         "literals": [
           "solidity",
           "^",
@@ -402,7 +402,7 @@
           ".24"
         ],
         "nodeType": "PragmaDirective",
-        "src": "0:24:8"
+        "src": "0:24:5"
       },
       {
         "baseContracts": [],
@@ -410,9 +410,9 @@
         "contractKind": "interface",
         "documentation": null,
         "fullyImplemented": false,
-        "id": 2306,
+        "id": 2028,
         "linearizedBaseContracts": [
-          2306
+          2028
         ],
         "name": "IERC1538",
         "nodeType": "ContractDefinition",
@@ -420,21 +420,21 @@
           {
             "anonymous": false,
             "documentation": null,
-            "id": 2286,
+            "id": 2008,
             "name": "CommitMessage",
             "nodeType": "EventDefinition",
             "parameters": {
-              "id": 2285,
+              "id": 2007,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 2284,
+                  "id": 2006,
                   "indexed": false,
                   "name": "message",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2286,
-                  "src": "71:14:8",
+                  "scope": 2008,
+                  "src": "71:14:5",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -442,10 +442,10 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 2283,
+                    "id": 2005,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
-                    "src": "71:6:8",
+                    "src": "71:6:5",
                     "typeDescriptions": {
                       "typeIdentifier": "t_string_storage_ptr",
                       "typeString": "string"
@@ -455,28 +455,28 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "70:16:8"
+              "src": "70:16:5"
             },
-            "src": "51:36:8"
+            "src": "51:36:5"
           },
           {
             "anonymous": false,
             "documentation": null,
-            "id": 2296,
+            "id": 2018,
             "name": "FunctionUpdate",
             "nodeType": "EventDefinition",
             "parameters": {
-              "id": 2295,
+              "id": 2017,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 2288,
+                  "id": 2010,
                   "indexed": true,
                   "name": "functionId",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2296,
-                  "src": "113:25:8",
+                  "scope": 2018,
+                  "src": "113:25:5",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -484,10 +484,10 @@
                     "typeString": "bytes4"
                   },
                   "typeName": {
-                    "id": 2287,
+                    "id": 2009,
                     "name": "bytes4",
                     "nodeType": "ElementaryTypeName",
-                    "src": "113:6:8",
+                    "src": "113:6:5",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bytes4",
                       "typeString": "bytes4"
@@ -498,12 +498,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 2290,
+                  "id": 2012,
                   "indexed": true,
                   "name": "oldDelegate",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2296,
-                  "src": "140:27:8",
+                  "scope": 2018,
+                  "src": "140:27:5",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -511,10 +511,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 2289,
+                    "id": 2011,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "140:7:8",
+                    "src": "140:7:5",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
                       "typeString": "address"
@@ -525,12 +525,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 2292,
+                  "id": 2014,
                   "indexed": true,
                   "name": "newDelegate",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2296,
-                  "src": "169:27:8",
+                  "scope": 2018,
+                  "src": "169:27:5",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -538,10 +538,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 2291,
+                    "id": 2013,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "169:7:8",
+                    "src": "169:7:5",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
                       "typeString": "address"
@@ -552,12 +552,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 2294,
+                  "id": 2016,
                   "indexed": false,
                   "name": "functionSignature",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2296,
-                  "src": "198:24:8",
+                  "scope": 2018,
+                  "src": "198:24:5",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -565,10 +565,10 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 2293,
+                    "id": 2015,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
-                    "src": "198:6:8",
+                    "src": "198:6:5",
                     "typeDescriptions": {
                       "typeIdentifier": "t_string_storage_ptr",
                       "typeString": "string"
@@ -578,14 +578,14 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "112:111:8"
+              "src": "112:111:5"
             },
-            "src": "92:132:8"
+            "src": "92:132:5"
           },
           {
             "body": null,
             "documentation": null,
-            "id": 2305,
+            "id": 2027,
             "implemented": false,
             "isConstructor": false,
             "isDeclaredConst": false,
@@ -593,16 +593,16 @@
             "name": "updateContract",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 2303,
+              "id": 2025,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 2298,
+                  "id": 2020,
                   "name": "_delegate",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2305,
-                  "src": "253:17:8",
+                  "scope": 2027,
+                  "src": "253:17:5",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -610,10 +610,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 2297,
+                    "id": 2019,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "253:7:8",
+                    "src": "253:7:5",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
                       "typeString": "address"
@@ -624,11 +624,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 2300,
+                  "id": 2022,
                   "name": "_functionSignatures",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2305,
-                  "src": "272:26:8",
+                  "scope": 2027,
+                  "src": "272:26:5",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -636,10 +636,10 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 2299,
+                    "id": 2021,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
-                    "src": "272:6:8",
+                    "src": "272:6:5",
                     "typeDescriptions": {
                       "typeIdentifier": "t_string_storage_ptr",
                       "typeString": "string"
@@ -650,11 +650,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 2302,
+                  "id": 2024,
                   "name": "commitMessage",
                   "nodeType": "VariableDeclaration",
-                  "scope": 2305,
-                  "src": "300:20:8",
+                  "scope": 2027,
+                  "src": "300:20:5",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -662,10 +662,10 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 2301,
+                    "id": 2023,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
-                    "src": "300:6:8",
+                    "src": "300:6:5",
                     "typeDescriptions": {
                       "typeIdentifier": "t_string_storage_ptr",
                       "typeString": "string"
@@ -675,27 +675,27 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "252:69:8"
+              "src": "252:69:5"
             },
             "payable": false,
             "returnParameters": {
-              "id": 2304,
+              "id": 2026,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "330:0:8"
+              "src": "330:0:5"
             },
-            "scope": 2306,
-            "src": "229:102:8",
+            "scope": 2028,
+            "src": "229:102:5",
             "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "external"
           }
         ],
-        "scope": 2307,
-        "src": "26:307:8"
+        "scope": 2029,
+        "src": "26:307:5"
       }
     ],
-    "src": "0:333:8"
+    "src": "0:333:5"
   },
   "compiler": {
     "name": "solc",
@@ -703,5 +703,5 @@
   },
   "networks": {},
   "schemaVersion": "2.0.1",
-  "updatedAt": "2019-01-11T13:15:36.557Z"
+  "updatedAt": "2019-01-14T07:56:17.237Z"
 }

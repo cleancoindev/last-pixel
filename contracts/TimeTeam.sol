@@ -56,12 +56,14 @@ contract TimeTeam is Modifiers {
         uint length = tbTeam[tbIteration].length;
         for (uint i = 0; i < length; i++) {
             painter = tbTeam[tbIteration][i];
-            if(painterToTBP[tbIteration][painter] != 0)
+            if (painterToTBP[tbIteration][painter] != 0) {
                 painter.transfer(painterToTBP[tbIteration][painter]);
+                emit TBPDistributed(currentRound, tbIteration, painter);
+            }
         }
         isTBPDistributable = false;
         isTBPTransfered[tbIteration] = true;
-        emit TBPDistributed(currentRound, tbIteration, winnerOfRound[currentRound]);
+        
         currentRound = currentRound.add(1); //следующий раунд 
         tbIteration = tbIteration.add(1); //инкрементируем итерацию для банка цвета
         isGamePaused = false;
