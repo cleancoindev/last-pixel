@@ -48,7 +48,7 @@ contract StorageV1 is StorageV0 {
     //сколько всего было разукрашиваний в этом раунде любым цветом
     mapping (uint => uint) public totalPaintsForRound;
         
-     //поколение краски на ее количество
+    //поколение краски на ее количество
     mapping (uint => mapping (uint => uint)) public paintGenToAmountForColor;
     
     //время когда краска определенного поколения добавилась в пул
