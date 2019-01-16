@@ -69,7 +69,7 @@ contract("Paint Generation", async accounts => {
     assert.equal(secondGenAmount.toNumber(), 50);
   });
 
-  it("Paint price of current collor has increased by 5%", async () => {
+  it("Paint price of current color has increased by 5%", async () => {
     color = 2;
 
     //paint pixels 101-150

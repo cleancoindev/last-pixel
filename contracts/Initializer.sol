@@ -4,15 +4,15 @@ import "./StorageV1.sol";
 contract Initializer is StorageV1 {
 
     //constructor
-    function _initializer() internal {
-
+    function _initializer(address _colorDeployed) internal {
+        colorInstance = Color(_colorDeployed);
         isAdmin[msg.sender] = true;
         maxPaintsInPool = 10000; 
         currentRound = 1;
         cbIteration = 1;
         tbIteration = 1;
         
-        for (uint i = 1; i <= 8; i++) {
+        for (uint i = 1; i <= color.totalSupply(); i++) {
             currentPaintGenForColor[i] = 1;
             callPriceForColor[i] = 0.01 ether;
             nextCallPriceForColor[i] = callPriceForColor[i];

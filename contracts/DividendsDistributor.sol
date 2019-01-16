@@ -5,17 +5,6 @@ import "./Modifiers.sol";
 
 contract DividendsDistributor is Modifiers {
     using SafeMath for uint;
-
-    constructor() {
-
-        // for (uint i = 1; i < color.totalSupply(); i++) {
-        //     ownerOfColor[i] = color.ownerOf(i);
-        // }0xbF0e4036BF968dD007F9B4A1BFdA4e54C042F612
-
-        for (uint i = 1; i <= 8; i++) {
-            ownerOfColor[i] = 0xbF0e4036BF968dD007F9B4A1BFdA4e54C042F612;
-        }
-    }
     
     function claimDividends() external {
         //функция не может быть вызвана, если баланс для вывода пользователя равен нулю
@@ -64,7 +53,7 @@ contract DividendsDistributor is Modifiers {
         withdrawalBalances[founders] = withdrawalBalances[founders].add(dividendsBank.mul(25).div(100)); 
     
         //25% дивидендов распределяем бенефециарию цвета
-        withdrawalBalances[ownerOfColor[_color]] += dividendsBank.mul(25).div(100);
+        withdrawalBalances[colorInstance.ownerOf(_color)] += dividendsBank.mul(25).div(100);
     
         //25% дивидендов распределяем бенефециарию пикселя
         withdrawalBalances[ownerOfPixel] += dividendsBank.mul(25).div(100);
