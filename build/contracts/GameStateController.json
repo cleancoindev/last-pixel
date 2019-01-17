@@ -2628,8 +2628,14 @@
       "links": {},
       "address": "0x0270352c61f35811bf9efafca0e63889aabbe5fd",
       "transactionHash": "0xe5f55ab62dbe8ef606776c20e15dcc580ee0e69966ef63b27ff2535f1cee1906"
+    },
+    "5777": {
+      "events": {},
+      "links": {},
+      "address": "0x6926f0d31f861816cfe8b53ffc1dc04af5770d99",
+      "transactionHash": "0x02747c96606acf58abf27168edd44ec1e2c559d1ec89b5e8ab2c76b592ddb60e"
     }
   },
   "schemaVersion": "2.0.1",
-  "updatedAt": "2019-01-14T17:57:59.713Z"
+  "updatedAt": "2019-01-16T18:20:39.761Z"
 }

@@ -1,7 +1,7 @@
 pragma solidity ^0.4.24;
 import "./StorageV0.sol";
 import "./IColor.sol";
-import "./IPixel.sol";
+import "./IPixelFactory.sol";
 
 contract StorageV1 is StorageV0 {
 
@@ -168,7 +168,6 @@ contract StorageV1 is StorageV0 {
     mapping (address => uint) public lastPlayedRound;
     
     //Dividends Distribution
-    mapping (uint => address) public ownerOfColor;
 
      //балансы доступные для вывода (накопленный пассивный доход за все раунды)
     mapping (address => uint) public withdrawalBalances; 
@@ -203,7 +202,12 @@ contract StorageV1 is StorageV0 {
     mapping(address => bool) public isAdmin;
 
     Color colorInstance;
-    Pixel pixelInstance;
+    PixelFactory pixelFactoryInstance;
+
+    uint public totalColorsNumber; // 8
+
+    //memory mapping о том, является ли пользователь членом команды (входит в последнюю 100ку игрокоа)
+    mapping (address => bool) public isTeamMember;
 
    // Events
 

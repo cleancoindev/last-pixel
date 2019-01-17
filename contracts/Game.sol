@@ -45,7 +45,8 @@ contract Game is PaintDiscount, PaintsPool, Modifiers {
 
     function paint(uint[] _pixels, uint _color, string _refLink) external payable isRegistered(_refLink) isLiveGame() {
 
-        require(msg.value == estimateCallPrice(_pixels, _color), "Wrong call price");
+        require(msg.value == estimateCallPrice(_pixels, _color), "Wrong call price.");
+        require(_color <= totalColorsNumber, "No such color does exist.");
         
         //проверяем не прошло ли 20 минут с последней раскраски для розыгрыша банка времени
         if (now - lastPaintTimeForRound[currentRound] > 20 minutes && lastPaintTimeForRound[currentRound] != 0) {
@@ -67,8 +68,8 @@ contract Game is PaintDiscount, PaintsPool, Modifiers {
             //ивент - был разыгран банк времени (победитель, раунд)
             emit TimeBankPlayed(winnerOfRound[currentRound], currentRound);
 
-            isGamePaused = true;
             isTBPDistributable = true;
+            isGamePaused = true;
         }
         
         else {
@@ -103,10 +104,9 @@ contract Game is PaintDiscount, PaintsPool, Modifiers {
         //устанавливаем значения для краски в пуле и цену вызова функции paint
         _fillPaintsPool(_color);
 
-        require(_pixel != 0, "The pixel with id = 0 does not exist.");
-        require(_color != 0, "You cannot paint to transparent color...");
+        require(_pixel <= 10000 && _pixel > 0, "No such pixel does exist.");
+        require(_color != 0, "Cannot paint to transparent color.");
         require(pixelToColorForRound[currentRound][_pixel] != _color, "This pixel is already of this color.");
-        //require(colorToPaintedPixelsAmountForRound[currentRound][_color] != 10000, "The game field is filled with one color.");
  
         //берем предыдущий цвет данного пикселя
         uint oldColor = pixelToColorForRound[currentRound][_pixel];
@@ -192,19 +192,17 @@ contract Game is PaintDiscount, PaintsPool, Modifiers {
         dividendsBank = dividendsBank.add(msg.value.div(5)); 
     }
 
-    //функция распределения дивидендов (пассивных доходов) - будет работать после подключения инстансов контрактов Цвета и Пикселя
+   //функция распределения дивидендов (пассивных доходов) - будет работать после подключения инстансов контрактов Цвета и Пикселя
     function _distributeDividends(uint _color) internal {
-        
-        //require(ownerOfColor[_color] != address(0), "There is no such color");
 
         //25% дивидендов распределяем организаторам (может быть смарт контракт)
-        withdrawalBalances[founders] = withdrawalBalances[founders].add(dividendsBank.div(4)); 
+        withdrawalBalances[founders] = withdrawalBalances[founders].add(dividendsBank.mul(25).div(100)); 
     
         //25% дивидендов распределяем бенефециарию цвета
-        withdrawalBalances[ownerOfColor[_color]] += dividendsBank.div(4);
+        // withdrawalBalances[colorInstance.ownerOf(_color)] += dividendsBank.mul(25).div(100);
     
         //25% дивидендов распределяем бенефециарию пикселя
-        withdrawalBalances[ownerOfPixel] += dividendsBank.div(4);
+        //withdrawalBalances[pixelFactoryInstance.ownerOf(_pixel)] += dividendsBank.mul(25).div(100);
     
         //25% дивидендов распределяем реферреру, если он есть
         // withdrawalBalances[referrer] += dividendsBank.mul(25).div(100);

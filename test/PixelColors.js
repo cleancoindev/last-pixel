@@ -6,7 +6,7 @@ let erc1538Delegate;
 let router;
 let wrapper;
 
-contract("Color Bank Distribution Test", async accounts => {
+contract("Pixel Colors Test", async accounts => {
   //create new smart contract instance before each test method
   beforeEach(async function() {
     erc1538Delegate = await ERC1538Delegate.deployed();

@@ -43,22 +43,4 @@ contract DividendsDistributor is Modifiers {
         claim.isResolved = true;
     }
 
-   
-    //функция распределения дивидендов (пассивных доходов) - будет работать после подключения инстансов контрактов Цвета и Пикселя
-    function _distributeDividends(uint _color) internal {
-        
-        //require(ownerOfColor[_color] != address(0), "There is no such color");
-
-        //25% дивидендов распределяем организаторам (может быть смарт контракт)
-        withdrawalBalances[founders] = withdrawalBalances[founders].add(dividendsBank.mul(25).div(100)); 
-    
-        //25% дивидендов распределяем бенефециарию цвета
-        withdrawalBalances[colorInstance.ownerOf(_color)] += dividendsBank.mul(25).div(100);
-    
-        //25% дивидендов распределяем бенефециарию пикселя
-        withdrawalBalances[ownerOfPixel] += dividendsBank.mul(25).div(100);
-    
-        //25% дивидендов распределяем реферреру, если он есть
-        // withdrawalBalances[referrer] += dividendsBank.mul(25).div(100);
-    }
 }
