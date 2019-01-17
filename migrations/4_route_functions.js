@@ -92,7 +92,7 @@ module.exports = async function(deployer) {
     .then(function() {
       return wrapper.updateContract(
         game.address,
-        "getPixelColor(uint256)estimateCallPrice(uint256[],uint256)paint(uint256[],uint256,string)",
+        "getPixelColor(uint256)estimateCallPrice(uint256[],uint256)paint(uint256[],uint256,string)drawTimeBank()",
         "Added functions from Game.sol"
       );
     })

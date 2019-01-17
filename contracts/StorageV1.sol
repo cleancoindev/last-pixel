@@ -168,6 +168,7 @@ contract StorageV1 is StorageV0 {
     mapping (address => uint) public lastPlayedRound;
     
     //Dividends Distribution
+    mapping (uint => address) public ownerOfColor;
 
      //балансы доступные для вывода (накопленный пассивный доход за все раунды)
     mapping (address => uint) public withdrawalBalances; 
@@ -208,6 +209,8 @@ contract StorageV1 is StorageV0 {
 
     //memory mapping о том, является ли пользователь членом команды (входит в последнюю 100ку игрокоа)
     mapping (address => bool) public isTeamMember;
+
+    mapping (uint => bool) public timeBankDrawnForRound;
 
    // Events
 

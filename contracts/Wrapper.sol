@@ -33,6 +33,7 @@ contract Wrapper is Modifiers {
     function getPixelColor(uint _pixel) external view returns (uint) {}
     function estimateCallPrice(uint[] _pixels, uint _color) public view returns (uint totalCallPrice) {}
     function paint(uint[] _pixels, uint _color, string _refLink) external payable {}
+    function drawTimeBank() public {}
 
     //ERC1538.sol
     function updateContract(address _delegate, string _functionSignatures, string commitMessage) external {}

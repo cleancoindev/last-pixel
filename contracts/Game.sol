@@ -43,33 +43,46 @@ contract Game is PaintDiscount, PaintsPool, Modifiers {
         }   
     }
 
+
+    function drawTimeBank() public {
+
+        uint lastPaintTime = lastPaintTimeForRound[currentRound];
+        require ((now - lastPaintTime) > 20 minutes && lastPaintTime != 0, "20 minutes have not passed yet.");
+
+        //распределяем банк времени команде раунда
+        //победитель текущего раунда - последний закрасивший пиксель пользователь за этот раунд
+        winnerOfRound[currentRound] = lastPainterForRound[currentRound];
+
+        //разыгранный банк этого раунда = банк времени (1)
+        winnerBankForRound[currentRound] = 1; 
+        //10% банка времени переходит в следующий раунд
+        timeBankForRound[currentRound + 1] = timeBankForRound[currentRound].div(10); 
+        //45% банка времени распределится между всей командой участников раунда
+        timeBankForRound[currentRound] = timeBankForRound[currentRound].mul(45).div(100); 
+        //банк цвета переносится на следующий раунд
+        colorBankForRound[currentRound + 1] = colorBankForRound[currentRound]; 
+        //в этом раунде банк цвета обнуляется
+        colorBankForRound[currentRound] = 0; 
+        //ивент - был разыгран банк времени (победитель, раунд)
+        emit TimeBankPlayed(winnerOfRound[currentRound], currentRound);
+
+        isTBPDistributable = true;
+        isGamePaused = true;
+        timeBankDrawnForRound[currentRound] = true;
+
+    }
+
     function paint(uint[] _pixels, uint _color, string _refLink) external payable isRegistered(_refLink) isLiveGame() {
 
-        require(msg.value == estimateCallPrice(_pixels, _color), "Wrong call price.");
-        require(_color <= totalColorsNumber, "No such color does exist.");
+        require(msg.value == estimateCallPrice(_pixels, _color), "Wrong call price");
         
-        //проверяем не прошло ли 20 минут с последней раскраски для розыгрыша банка времени
-        if (now - lastPaintTimeForRound[currentRound] > 20 minutes && lastPaintTimeForRound[currentRound] != 0) {
+       //проверяем не прошло ли 20 минут с последней раскраски для розыгрыша банка времени
+        if ((now - lastPaintTimeForRound[currentRound]) > 20 minutes && 
+            lastPaintTimeForRound[currentRound] != 0 && 
+            timeBankDrawnForRound[currentRound] == false) {
 
-            //распределяем банк времени команде раунда
-            //победитель текущего раунда - последний закрасивший пиксель пользователь за этот раунд
-            winnerOfRound[currentRound] = lastPainterForRound[currentRound];
+            drawTimeBank();
 
-            //разыгранный банк этого раунда = банк времени (1)
-            winnerBankForRound[currentRound] = 1; 
-            //10% банка времени переходит в следующий раунд
-            timeBankForRound[currentRound + 1] = timeBankForRound[currentRound].div(10); 
-            //45% банка времени распределится между всей командой участников раунда
-            timeBankForRound[currentRound] = timeBankForRound[currentRound].mul(45).div(100); 
-            //банк цвета переносится на следующий раунд
-            colorBankForRound[currentRound + 1] = colorBankForRound[currentRound]; 
-            //в этом раунде банк цвета обнуляется
-            colorBankForRound[currentRound] = 0; 
-            //ивент - был разыгран банк времени (победитель, раунд)
-            emit TimeBankPlayed(winnerOfRound[currentRound], currentRound);
-
-            isTBPDistributable = true;
-            isGamePaused = true;
         }
         
         else {
@@ -104,9 +117,10 @@ contract Game is PaintDiscount, PaintsPool, Modifiers {
         //устанавливаем значения для краски в пуле и цену вызова функции paint
         _fillPaintsPool(_color);
 
-        require(_pixel <= 10000 && _pixel > 0, "No such pixel does exist.");
-        require(_color != 0, "Cannot paint to transparent color.");
+        require(_pixel != 0, "The pixel with id = 0 does not exist.");
+        require(_color != 0, "You cannot paint to transparent color...");
         require(pixelToColorForRound[currentRound][_pixel] != _color, "This pixel is already of this color.");
+        //require(colorToPaintedPixelsAmountForRound[currentRound][_color] != 10000, "The game field is filled with one color.");
  
         //берем предыдущий цвет данного пикселя
         uint oldColor = pixelToColorForRound[currentRound][_pixel];
@@ -192,17 +206,19 @@ contract Game is PaintDiscount, PaintsPool, Modifiers {
         dividendsBank = dividendsBank.add(msg.value.div(5)); 
     }
 
-   //функция распределения дивидендов (пассивных доходов) - будет работать после подключения инстансов контрактов Цвета и Пикселя
+    //функция распределения дивидендов (пассивных доходов) - будет работать после подключения инстансов контрактов Цвета и Пикселя
     function _distributeDividends(uint _color) internal {
+        
+        //require(ownerOfColor[_color] != address(0), "There is no such color");
 
         //25% дивидендов распределяем организаторам (может быть смарт контракт)
-        withdrawalBalances[founders] = withdrawalBalances[founders].add(dividendsBank.mul(25).div(100)); 
+        withdrawalBalances[founders] = withdrawalBalances[founders].add(dividendsBank.div(4)); 
     
         //25% дивидендов распределяем бенефециарию цвета
-        // withdrawalBalances[colorInstance.ownerOf(_color)] += dividendsBank.mul(25).div(100);
+        withdrawalBalances[ownerOfColor[_color]] += dividendsBank.div(4);
     
         //25% дивидендов распределяем бенефециарию пикселя
-        //withdrawalBalances[pixelFactoryInstance.ownerOf(_pixel)] += dividendsBank.mul(25).div(100);
+        withdrawalBalances[ownerOfPixel] += dividendsBank.div(4);
     
         //25% дивидендов распределяем реферреру, если он есть
         // withdrawalBalances[referrer] += dividendsBank.mul(25).div(100);

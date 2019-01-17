@@ -54,14 +54,14 @@ contract("Time Bank Distribution Test", async accounts => {
 
     // //Time bank
     timebank1 = await wrapper.timeBankForRound(currentRound);
-    console.log("Time bank:", timebank1.toNumber());
+    // console.log("Time bank:", timebank.toNumber());
 
     //This paint doesn't count and will revert, since 20 minutes have passed by
     callPrice = await wrapper.estimateCallPrice([11], 3);
     await wrapper.paint([11], 3, "", { from: accounts[3], value: callPrice });
 
     let timebank = await wrapper.timeBankForRound(currentRound);
-    console.log("Time bank:", timebank.toNumber()); // 90000000000000000
+    // console.log("Time bank:", timebank.toNumber()); // 90000000000000000
 
     await wrapper.distributeTBP();
     console.log("Distributing time bank prize for round 1...");

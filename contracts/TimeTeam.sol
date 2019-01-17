@@ -70,4 +70,3 @@ contract TimeTeam is Modifiers {
         isGamePaused = false;
     }
 }
-
