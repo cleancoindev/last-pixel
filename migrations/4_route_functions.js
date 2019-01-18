@@ -9,6 +9,7 @@ const Referral = artifacts.require("Referral");
 const Roles = artifacts.require("Roles");
 const Wrapper = artifacts.require("Wrapper");
 const GameMock = artifacts.require("GameMock");
+const Helpers = artifacts.require("helpers");
 
 // Contract instances
 let erc1538Delegate;
@@ -22,6 +23,7 @@ let referral;
 let roles;
 let wrapper;
 let gameMock;
+let helpers;
 
 module.exports = async function(deployer) {
   deployer
@@ -82,7 +84,13 @@ module.exports = async function(deployer) {
     .then(function(instance) {
       gameMock = instance;
       console.log("Game Mock:", gameMock.address);
+      return Helpers.deployed();
+    })
+    .then(function(instance) {
+      helpers = instance;
+      console.log("Helpers:", helpers.address);
       console.log("\n");
+      console.log("Adding functions from ERC1538QueryDelegates.sol");
       return wrapper.updateContract(
         erc1538Delegate.address,
         "functionByIndex(uint256)functionExists(string)delegateAddress(string)delegateAddresses()delegateFunctionSignatures(address)functionById(bytes4)functionBySignature(string)functionSignatures()totalFunctions()",
@@ -90,48 +98,55 @@ module.exports = async function(deployer) {
       );
     })
     .then(function() {
+      console.log("Adding functions from Game.sol");
       return wrapper.updateContract(
         game.address,
-        "getPixelColor(uint256)estimateCallPrice(uint256[],uint256)paint(uint256[],uint256,string)drawTimeBank()",
+        "estimateCallPrice(uint256[],uint256)paint(uint256[],uint256,string)drawTimeBank()",
         "Added functions from Game.sol"
       );
     })
     .then(function() {
+      console.log("Adding functions from ColorTeam.sol");
       return wrapper.updateContract(
         colorTeam.address,
         "distributeCBP()",
-        "Added function from ColorTeam.sol"
+        "Added functions from ColorTeam.sol"
       );
     })
     .then(function() {
+      console.log("Adding functions from TimeTeam.sol");
       return wrapper.updateContract(
         timeTeam.address,
         "distributeTBP()",
-        "Added function from TimeTeam.sol"
+        "Added functions from TimeTeam.sol"
       );
     })
     .then(function() {
+      console.log("Adding functions from DividendsDistributor.sol");
       return wrapper.updateContract(
         dividendsDistributor.address,
         "claimDividends()approveClaim(uint256)",
-        "Added function from DividendsDistributor.sol"
+        "Added functions from DividendsDistributor.sol"
       );
     })
     .then(function() {
+      console.log("Adding functions from GameStateController.sol");
       return wrapper.updateContract(
         gameStateController.address,
         "pauseGame()resumeGame()",
-        "Added function from GameStateController.sol"
+        "Added functions from GameStateController.sol"
       );
     })
     .then(function() {
+      console.log("Adding functions from Referral.sol");
       return wrapper.updateContract(
         referral.address,
         "buyRefLink(string)",
-        "Added function from Referral.sol"
+        "Added functions from Referral.sol"
       );
     })
     .then(function() {
+      console.log("Adding functions from Roles.sol");
       return wrapper.updateContract(
         roles.address,
         "addAdmin(address)removeAdmin(address)renounceAdmin()",
@@ -139,10 +154,19 @@ module.exports = async function(deployer) {
       );
     })
     .then(function() {
+      console.log("Adding functions from GameMock.sol");
       return wrapper.updateContract(
         gameMock.address,
         "mock()mock2()mock3(uint256)mockMaxPaintsInPool()",
         "Added functions from GameMock.sol"
+      );
+    })
+    .then(function() {
+      console.log("Adding functions from Helpers.sol");
+      return wrapper.updateContract(
+        helpers.address,
+        "getPixelColor(uint256)",
+        "Added functions from Helpers.sol"
       );
     });
 };

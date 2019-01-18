@@ -6,13 +6,8 @@ import "./Utils.sol";
 
 contract Game is PaintDiscount, PaintsPool, Modifiers {
     using SafeMath for uint;
-    
-    //возвращает цвет пикселя в этом раунде
-    function getPixelColor(uint _pixel) external view returns (uint) {
-        return pixelToColorForRound[currentRound][_pixel];
-    }
-    
-    //функция оценивающая сколько будет стоить функция закрашивания
+
+     //функция оценивающая сколько будет стоить функция закрашивания
     function estimateCallPrice(uint[] _pixels, uint _color) public view returns (uint totalCallPrice) {
 
         uint moneySpent = moneySpentByUserForColor[_color][msg.sender];
@@ -43,7 +38,6 @@ contract Game is PaintDiscount, PaintsPool, Modifiers {
         }   
     }
 
-
     function drawTimeBank() public {
 
         uint lastPaintTime = lastPaintTimeForRound[currentRound];
@@ -72,6 +66,7 @@ contract Game is PaintDiscount, PaintsPool, Modifiers {
 
     }
 
+    
     function paint(uint[] _pixels, uint _color, string _refLink) external payable isRegistered(_refLink) isLiveGame() {
 
         require(msg.value == estimateCallPrice(_pixels, _color), "Wrong call price");
@@ -107,6 +102,7 @@ contract Game is PaintDiscount, PaintsPool, Modifiers {
             paintsCounterForColor[_color] ++; //счетчик закрашивания конкретным цветом
             counterToPainter[paintsCounter] = msg.sender; //счетчик закрашивания => пользователь
             counterToPainterForColor[_color][paintsCounterForColor[_color]] = msg.sender; //счетчик закрашивания конкретным цветом => пользователь
+            
         }
 
     }   
@@ -152,8 +148,22 @@ contract Game is PaintDiscount, PaintsPool, Modifiers {
 
         pixelToPaintTimeForRound[currentRound][_pixel] = now;
 
-        timeBankShare[tbIteration][msg.sender]++;
-        colorBankShare[cbIteration][_color][msg.sender]++;
+        //если пользователь делал ставку данным цветом в течение 24 часов, повышаем его долю участия в команде времени
+        if (lastPaintTimeOfUser[msg.sender] != 0 && now - lastPaintTimeOfUser[msg.sender] < 24 hours) 
+            timeBankShare[tbIteration][msg.sender]++;
+            
+        else    
+            timeBankShare[tbIteration][msg.sender] = 1;
+
+        //если пользователь делал ставку данным цветом в течение 24 часов, повышаем его долю участия в команде цвета
+        if (lastPaintTimeOfUserForColor[_color][msg.sender] != 0 && now - lastPaintTimeOfUserForColor[_color][msg.sender] < 24 hours) 
+            colorBankShare[cbIteration][_color][msg.sender]++;
+
+        else 
+            colorBankShare[cbIteration][_color][msg.sender] = 1;
+
+        lastPaintTimeOfUser[msg.sender] = now;
+        lastPaintTimeOfUserForColor[_color][msg.sender] = now;
                 
         //с каждым закрашиванием декреминтируем на 1 ед краски
         paintGenToAmountForColor[_color][currentPaintGenForColor[_color]] = paintGenToAmountForColor[_color][currentPaintGenForColor[_color]].sub(1);
@@ -241,5 +251,5 @@ contract Game is PaintDiscount, PaintsPool, Modifiers {
         }
         _;
     }
-    
+
 }

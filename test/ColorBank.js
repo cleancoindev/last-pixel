@@ -37,15 +37,18 @@ contract("Color Bank Distribution Test", async accounts => {
     callPrice = await wrapper.estimateCallPrice([1], 2);
     await wrapper.paint([1], 2, "", { value: callPrice, from: accounts[2] });
 
+    let colorBank = await wrapper.colorBankForRound(currentRound); //0.036
+    console.log("ColorBank before last paint is:", +colorBank);
+
     let lastPaint = await wrapper.paint([2], 2, "", {
       value: callPrice,
       from: accounts[3]
     });
 
-    let colorBank = await wrapper.colorBankForRound(currentRound);
+    let colorBankAfterLastPaint = await wrapper.colorBankForRound(currentRound); //0.04/2 = 0.02
     console.log(
-      "ColorBank is:",
-      (await wrapper.colorBankForRound(currentRound)).toNumber()
+      "ColorBank after last paint is:",
+      colorBankAfterLastPaint.toNumber()
     );
 
     await wrapper.distributeCBP();
@@ -54,17 +57,22 @@ contract("Color Bank Distribution Test", async accounts => {
     currentRound = await wrapper.currentRound.call();
 
     let winner = await wrapper.winnerOfRound(currentRound - 1);
+
     let winnerColor = await wrapper.winnerColorForRound(currentRound - 1);
+    console.log("Winner Color:", +winnerColor);
 
     let share = await wrapper.colorBankShare(
       cbIteration - 1,
       winnerColor,
       winner
     );
+    console.log("Share:", +share);
+
     let paints = 10; //10 paints have been made
-    let prize = (colorBank * share) / paints;
+    let prize = (colorBankAfterLastPaint * share) / paints;
+    console.log("Prize", +prize);
     let cbp = await wrapper.painterToCBP(cbIteration - 1, winner);
-    let amount = colorBank.toNumber() + prize;
+    let amount = colorBankAfterLastPaint.toNumber() + prize;
     assert.equal(+cbp, amount);
   });
 
@@ -106,7 +114,7 @@ contract("Color Bank Distribution Test", async accounts => {
     let paints = 10; //10 paints have been made in round 1
     let colorBank = await wrapper.colorBankForRound(currentRound - 1); //for round 1
     let prize1 = (colorBank * shareOfUser1) / paints;
-    assert.equal(cbp1, prize1);
+    assert.equal(+cbp1, prize1);
   });
 
   it("User2 should receive his CBP for round 1", async () => {
@@ -123,6 +131,6 @@ contract("Color Bank Distribution Test", async accounts => {
     let paints = 10; //10 paints have been made in round 1
     let colorBank = await wrapper.colorBankForRound(currentRound - 1); //for round 1
     let prize2 = (colorBank * shareOfUser2) / paints;
-    assert.equal(cbp2, prize2);
+    assert.equal(+cbp2, prize2);
   });
 });

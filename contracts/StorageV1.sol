@@ -207,8 +207,8 @@ contract StorageV1 is StorageV0 {
 
     uint public totalColorsNumber; // 8
 
-    //memory mapping о том, является ли пользователь членом команды (входит в последнюю 100ку игрокоа)
-    mapping (address => bool) public isTeamMember;
+    mapping (address => uint) public lastPaintTimeOfUser;
+    mapping (uint => mapping (address => uint)) public lastPaintTimeOfUserForColor;
 
     mapping (uint => bool) public timeBankDrawnForRound;
 

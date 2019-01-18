@@ -72,22 +72,22 @@
   ],
   "bytecode": "0x6080604052336000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff1602179055506000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16600073ffffffffffffffffffffffffffffffffffffffff167f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e060405160405180910390a36103de806100cf6000396000f300608060405260043610610062576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff168063715018a6146100675780638da5cb5b1461007e5780638f32d59b146100d5578063f2fde38b14610104575b600080fd5b34801561007357600080fd5b5061007c610147565b005b34801561008a57600080fd5b50610093610219565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b3480156100e157600080fd5b506100ea610242565b604051808215151515815260200191505060405180910390f35b34801561011057600080fd5b50610145600480360381019080803573ffffffffffffffffffffffffffffffffffffffff169060200190929190505050610299565b005b61014f610242565b151561015a57600080fd5b600073ffffffffffffffffffffffffffffffffffffffff166000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff167f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e060405160405180910390a360008060006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff160217905550565b60008060009054906101000a900473ffffffffffffffffffffffffffffffffffffffff16905090565b60008060009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff1614905090565b6102a1610242565b15156102ac57600080fd5b6102b5816102b8565b50565b600073ffffffffffffffffffffffffffffffffffffffff168173ffffffffffffffffffffffffffffffffffffffff16141515156102f457600080fd5b8073ffffffffffffffffffffffffffffffffffffffff166000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff167f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e060405160405180910390a3806000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff160217905550505600a165627a7a723058205a1fb85b3542b5c125022dbc5b1388d3b910f9c00f4b7158f40bfdf70d30d22a0029",
   "deployedBytecode": "0x608060405260043610610062576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff168063715018a6146100675780638da5cb5b1461007e5780638f32d59b146100d5578063f2fde38b14610104575b600080fd5b34801561007357600080fd5b5061007c610147565b005b34801561008a57600080fd5b50610093610219565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b3480156100e157600080fd5b506100ea610242565b604051808215151515815260200191505060405180910390f35b34801561011057600080fd5b50610145600480360381019080803573ffffffffffffffffffffffffffffffffffffffff169060200190929190505050610299565b005b61014f610242565b151561015a57600080fd5b600073ffffffffffffffffffffffffffffffffffffffff166000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff167f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e060405160405180910390a360008060006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff160217905550565b60008060009054906101000a900473ffffffffffffffffffffffffffffffffffffffff16905090565b60008060009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff1614905090565b6102a1610242565b15156102ac57600080fd5b6102b5816102b8565b50565b600073ffffffffffffffffffffffffffffffffffffffff168173ffffffffffffffffffffffffffffffffffffffff16141515156102f457600080fd5b8073ffffffffffffffffffffffffffffffffffffffff166000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff167f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e060405160405180910390a3806000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff160217905550505600a165627a7a723058205a1fb85b3542b5c125022dbc5b1388d3b910f9c00f4b7158f40bfdf70d30d22a0029",
-  "sourceMap": "80:467:9:-;;;518:10:5;509:6;;:19;;;;;;;;;;;;;;;;;;572:6;;;;;;;;;;;539:40;;568:1;539:40;;;;;;;;;;;;80:467:9;;;;;;",
-  "deployedSourceMap": "80:467:9:-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1273:127:5;;8:9:-1;5:2;;;30:1;27;20:12;5:2;1273:127:5;;;;;;639:70;;8:9:-1;5:2;;;30:1;27;20:12;5:2;639:70:5;;;;;;;;;;;;;;;;;;;;;;;;;;;926:83;;8:9:-1;5:2;;;30:1;27;20:12;5:2;926:83:5;;;;;;;;;;;;;;;;;;;;;;;;;;;1561:101;;8:9:-1;5:2;;;30:1;27;20:12;5:2;1561:101:5;;;;;;;;;;;;;;;;;;;;;;;;;;;;1273:127;824:9;:7;:9::i;:::-;816:18;;;;;;;;1367:1;1330:40;;1351:6;;;;;;;;;;;1330:40;;;;;;;;;;;;1393:1;1376:6;;:19;;;;;;;;;;;;;;;;;;1273:127::o;639:70::-;676:7;698:6;;;;;;;;;;;691:13;;639:70;:::o;926:83::-;965:4;998:6;;;;;;;;;;;984:20;;:10;:20;;;977:27;;926:83;:::o;1561:101::-;824:9;:7;:9::i;:::-;816:18;;;;;;;;1629:28;1648:8;1629:18;:28::i;:::-;1561:101;:::o;1796:169::-;1885:1;1865:22;;:8;:22;;;;1857:31;;;;;;;;1928:8;1899:38;;1920:6;;;;;;;;;;;1899:38;;;;;;;;;;;;1952:8;1943:6;;:17;;;;;;;;;;;;;;;;;;1796:169;:::o",
+  "sourceMap": "80:467:10:-;;;518:10:6;509:6;;:19;;;;;;;;;;;;;;;;;;572:6;;;;;;;;;;;539:40;;568:1;539:40;;;;;;;;;;;;80:467:10;;;;;;",
+  "deployedSourceMap": "80:467:10:-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1273:127:6;;8:9:-1;5:2;;;30:1;27;20:12;5:2;1273:127:6;;;;;;639:70;;8:9:-1;5:2;;;30:1;27;20:12;5:2;639:70:6;;;;;;;;;;;;;;;;;;;;;;;;;;;926:83;;8:9:-1;5:2;;;30:1;27;20:12;5:2;926:83:6;;;;;;;;;;;;;;;;;;;;;;;;;;;1561:101;;8:9:-1;5:2;;;30:1;27;20:12;5:2;1561:101:6;;;;;;;;;;;;;;;;;;;;;;;;;;;;1273:127;824:9;:7;:9::i;:::-;816:18;;;;;;;;1367:1;1330:40;;1351:6;;;;;;;;;;;1330:40;;;;;;;;;;;;1393:1;1376:6;;:19;;;;;;;;;;;;;;;;;;1273:127::o;639:70::-;676:7;698:6;;;;;;;;;;;691:13;;639:70;:::o;926:83::-;965:4;998:6;;;;;;;;;;;984:20;;:10;:20;;;977:27;;926:83;:::o;1561:101::-;824:9;:7;:9::i;:::-;816:18;;;;;;;;1629:28;1648:8;1629:18;:28::i;:::-;1561:101;:::o;1796:169::-;1885:1;1865:22;;:8;:22;;;;1857:31;;;;;;;;1928:8;1899:38;;1920:6;;;;;;;;;;;1899:38;;;;;;;;;;;;1952:8;1943:6;;:17;;;;;;;;;;;;;;;;;;1796:169;:::o",
   "source": "pragma solidity ^0.4.24;\npragma experimental \"v0.5.0\";\nimport \"./Ownable.sol\";\n\ncontract StorageV0 is Ownable {\n\n    // maps functions to the delegate contracts that execute the functions\n    // funcId => delegate contract\n    mapping(bytes4 => address) internal delegates;\n\n    // array of function signatures supported by the contract\n    bytes[] internal funcSignatures;\n\n    // maps each function signature to its position in the funcSignatures array.\n    // signature => index+1\n    mapping(bytes => uint256) internal funcSignatureToIndex;\n\n}",
   "sourcePath": "/Users/Amir/last-pixel-contracts/contracts/StorageV0.sol",
   "ast": {
     "absolutePath": "/Users/Amir/last-pixel-contracts/contracts/StorageV0.sol",
     "exportedSymbols": {
       "StorageV0": [
-        1752
+        1838
       ]
     },
-    "id": 1753,
+    "id": 1839,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 1736,
+        "id": 1822,
         "literals": [
           "solidity",
           "^",
@@ -95,25 +95,25 @@
           ".24"
         ],
         "nodeType": "PragmaDirective",
-        "src": "0:24:9"
+        "src": "0:24:10"
       },
       {
-        "id": 1737,
+        "id": 1823,
         "literals": [
           "experimental",
           "v0.5.0"
         ],
         "nodeType": "PragmaDirective",
-        "src": "25:29:9"
+        "src": "25:29:10"
       },
       {
         "absolutePath": "/Users/Amir/last-pixel-contracts/contracts/Ownable.sol",
         "file": "./Ownable.sol",
-        "id": 1738,
+        "id": 1824,
         "nodeType": "ImportDirective",
-        "scope": 1753,
-        "sourceUnit": 1361,
-        "src": "55:23:9",
+        "scope": 1839,
+        "sourceUnit": 1447,
+        "src": "55:23:10",
         "symbolAliases": [],
         "unitAlias": ""
       },
@@ -123,42 +123,42 @@
             "arguments": null,
             "baseName": {
               "contractScope": null,
-              "id": 1739,
+              "id": 1825,
               "name": "Ownable",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 1360,
-              "src": "102:7:9",
+              "referencedDeclaration": 1446,
+              "src": "102:7:10",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_Ownable_$1360",
+                "typeIdentifier": "t_contract$_Ownable_$1446",
                 "typeString": "contract Ownable"
               }
             },
-            "id": 1740,
+            "id": 1826,
             "nodeType": "InheritanceSpecifier",
-            "src": "102:7:9"
+            "src": "102:7:10"
           }
         ],
         "contractDependencies": [
-          1360
+          1446
         ],
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": true,
-        "id": 1752,
+        "id": 1838,
         "linearizedBaseContracts": [
-          1752,
-          1360
+          1838,
+          1446
         ],
         "name": "StorageV0",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "constant": false,
-            "id": 1744,
+            "id": 1830,
             "name": "delegates",
             "nodeType": "VariableDeclaration",
-            "scope": 1752,
-            "src": "227:45:9",
+            "scope": 1838,
+            "src": "227:45:10",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -166,28 +166,28 @@
               "typeString": "mapping(bytes4 => address)"
             },
             "typeName": {
-              "id": 1743,
+              "id": 1829,
               "keyType": {
-                "id": 1741,
+                "id": 1827,
                 "name": "bytes4",
                 "nodeType": "ElementaryTypeName",
-                "src": "235:6:9",
+                "src": "235:6:10",
                 "typeDescriptions": {
                   "typeIdentifier": "t_bytes4",
                   "typeString": "bytes4"
                 }
               },
               "nodeType": "Mapping",
-              "src": "227:26:9",
+              "src": "227:26:10",
               "typeDescriptions": {
                 "typeIdentifier": "t_mapping$_t_bytes4_$_t_address_$",
                 "typeString": "mapping(bytes4 => address)"
               },
               "valueType": {
-                "id": 1742,
+                "id": 1828,
                 "name": "address",
                 "nodeType": "ElementaryTypeName",
-                "src": "245:7:9",
+                "src": "245:7:10",
                 "typeDescriptions": {
                   "typeIdentifier": "t_address",
                   "typeString": "address"
@@ -199,11 +199,11 @@
           },
           {
             "constant": false,
-            "id": 1747,
+            "id": 1833,
             "name": "funcSignatures",
             "nodeType": "VariableDeclaration",
-            "scope": 1752,
-            "src": "341:31:9",
+            "scope": 1838,
+            "src": "341:31:10",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -212,19 +212,19 @@
             },
             "typeName": {
               "baseType": {
-                "id": 1745,
+                "id": 1831,
                 "name": "bytes",
                 "nodeType": "ElementaryTypeName",
-                "src": "341:5:9",
+                "src": "341:5:10",
                 "typeDescriptions": {
                   "typeIdentifier": "t_bytes_storage_ptr",
                   "typeString": "bytes"
                 }
               },
-              "id": 1746,
+              "id": 1832,
               "length": null,
               "nodeType": "ArrayTypeName",
-              "src": "341:7:9",
+              "src": "341:7:10",
               "typeDescriptions": {
                 "typeIdentifier": "t_array$_t_bytes_storage_$dyn_storage_ptr",
                 "typeString": "bytes[]"
@@ -235,11 +235,11 @@
           },
           {
             "constant": false,
-            "id": 1751,
+            "id": 1837,
             "name": "funcSignatureToIndex",
             "nodeType": "VariableDeclaration",
-            "scope": 1752,
-            "src": "488:55:9",
+            "scope": 1838,
+            "src": "488:55:10",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -247,28 +247,28 @@
               "typeString": "mapping(bytes => uint256)"
             },
             "typeName": {
-              "id": 1750,
+              "id": 1836,
               "keyType": {
-                "id": 1748,
+                "id": 1834,
                 "name": "bytes",
                 "nodeType": "ElementaryTypeName",
-                "src": "496:5:9",
+                "src": "496:5:10",
                 "typeDescriptions": {
                   "typeIdentifier": "t_bytes_storage_ptr",
                   "typeString": "bytes"
                 }
               },
               "nodeType": "Mapping",
-              "src": "488:25:9",
+              "src": "488:25:10",
               "typeDescriptions": {
                 "typeIdentifier": "t_mapping$_t_bytes_memory_$_t_uint256_$",
                 "typeString": "mapping(bytes => uint256)"
               },
               "valueType": {
-                "id": 1749,
+                "id": 1835,
                 "name": "uint256",
                 "nodeType": "ElementaryTypeName",
-                "src": "505:7:9",
+                "src": "505:7:10",
                 "typeDescriptions": {
                   "typeIdentifier": "t_uint256",
                   "typeString": "uint256"
@@ -279,24 +279,24 @@
             "visibility": "internal"
           }
         ],
-        "scope": 1753,
-        "src": "80:467:9"
+        "scope": 1839,
+        "src": "80:467:10"
       }
     ],
-    "src": "0:547:9"
+    "src": "0:547:10"
   },
   "legacyAST": {
     "absolutePath": "/Users/Amir/last-pixel-contracts/contracts/StorageV0.sol",
     "exportedSymbols": {
       "StorageV0": [
-        1752
+        1838
       ]
     },
-    "id": 1753,
+    "id": 1839,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 1736,
+        "id": 1822,
         "literals": [
           "solidity",
           "^",
@@ -304,25 +304,25 @@
           ".24"
         ],
         "nodeType": "PragmaDirective",
-        "src": "0:24:9"
+        "src": "0:24:10"
       },
       {
-        "id": 1737,
+        "id": 1823,
         "literals": [
           "experimental",
           "v0.5.0"
         ],
         "nodeType": "PragmaDirective",
-        "src": "25:29:9"
+        "src": "25:29:10"
       },
       {
         "absolutePath": "/Users/Amir/last-pixel-contracts/contracts/Ownable.sol",
         "file": "./Ownable.sol",
-        "id": 1738,
+        "id": 1824,
         "nodeType": "ImportDirective",
-        "scope": 1753,
-        "sourceUnit": 1361,
-        "src": "55:23:9",
+        "scope": 1839,
+        "sourceUnit": 1447,
+        "src": "55:23:10",
         "symbolAliases": [],
         "unitAlias": ""
       },
@@ -332,42 +332,42 @@
             "arguments": null,
             "baseName": {
               "contractScope": null,
-              "id": 1739,
+              "id": 1825,
               "name": "Ownable",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 1360,
-              "src": "102:7:9",
+              "referencedDeclaration": 1446,
+              "src": "102:7:10",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_Ownable_$1360",
+                "typeIdentifier": "t_contract$_Ownable_$1446",
                 "typeString": "contract Ownable"
               }
             },
-            "id": 1740,
+            "id": 1826,
             "nodeType": "InheritanceSpecifier",
-            "src": "102:7:9"
+            "src": "102:7:10"
           }
         ],
         "contractDependencies": [
-          1360
+          1446
         ],
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": true,
-        "id": 1752,
+        "id": 1838,
         "linearizedBaseContracts": [
-          1752,
-          1360
+          1838,
+          1446
         ],
         "name": "StorageV0",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "constant": false,
-            "id": 1744,
+            "id": 1830,
             "name": "delegates",
             "nodeType": "VariableDeclaration",
-            "scope": 1752,
-            "src": "227:45:9",
+            "scope": 1838,
+            "src": "227:45:10",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -375,28 +375,28 @@
               "typeString": "mapping(bytes4 => address)"
             },
             "typeName": {
-              "id": 1743,
+              "id": 1829,
               "keyType": {
-                "id": 1741,
+                "id": 1827,
                 "name": "bytes4",
                 "nodeType": "ElementaryTypeName",
-                "src": "235:6:9",
+                "src": "235:6:10",
                 "typeDescriptions": {
                   "typeIdentifier": "t_bytes4",
                   "typeString": "bytes4"
                 }
               },
               "nodeType": "Mapping",
-              "src": "227:26:9",
+              "src": "227:26:10",
               "typeDescriptions": {
                 "typeIdentifier": "t_mapping$_t_bytes4_$_t_address_$",
                 "typeString": "mapping(bytes4 => address)"
               },
               "valueType": {
-                "id": 1742,
+                "id": 1828,
                 "name": "address",
                 "nodeType": "ElementaryTypeName",
-                "src": "245:7:9",
+                "src": "245:7:10",
                 "typeDescriptions": {
                   "typeIdentifier": "t_address",
                   "typeString": "address"
@@ -408,11 +408,11 @@
           },
           {
             "constant": false,
-            "id": 1747,
+            "id": 1833,
             "name": "funcSignatures",
             "nodeType": "VariableDeclaration",
-            "scope": 1752,
-            "src": "341:31:9",
+            "scope": 1838,
+            "src": "341:31:10",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -421,19 +421,19 @@
             },
             "typeName": {
               "baseType": {
-                "id": 1745,
+                "id": 1831,
                 "name": "bytes",
                 "nodeType": "ElementaryTypeName",
-                "src": "341:5:9",
+                "src": "341:5:10",
                 "typeDescriptions": {
                   "typeIdentifier": "t_bytes_storage_ptr",
                   "typeString": "bytes"
                 }
               },
-              "id": 1746,
+              "id": 1832,
               "length": null,
               "nodeType": "ArrayTypeName",
-              "src": "341:7:9",
+              "src": "341:7:10",
               "typeDescriptions": {
                 "typeIdentifier": "t_array$_t_bytes_storage_$dyn_storage_ptr",
                 "typeString": "bytes[]"
@@ -444,11 +444,11 @@
           },
           {
             "constant": false,
-            "id": 1751,
+            "id": 1837,
             "name": "funcSignatureToIndex",
             "nodeType": "VariableDeclaration",
-            "scope": 1752,
-            "src": "488:55:9",
+            "scope": 1838,
+            "src": "488:55:10",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -456,28 +456,28 @@
               "typeString": "mapping(bytes => uint256)"
             },
             "typeName": {
-              "id": 1750,
+              "id": 1836,
               "keyType": {
-                "id": 1748,
+                "id": 1834,
                 "name": "bytes",
                 "nodeType": "ElementaryTypeName",
-                "src": "496:5:9",
+                "src": "496:5:10",
                 "typeDescriptions": {
                   "typeIdentifier": "t_bytes_storage_ptr",
                   "typeString": "bytes"
                 }
               },
               "nodeType": "Mapping",
-              "src": "488:25:9",
+              "src": "488:25:10",
               "typeDescriptions": {
                 "typeIdentifier": "t_mapping$_t_bytes_memory_$_t_uint256_$",
                 "typeString": "mapping(bytes => uint256)"
               },
               "valueType": {
-                "id": 1749,
+                "id": 1835,
                 "name": "uint256",
                 "nodeType": "ElementaryTypeName",
-                "src": "505:7:9",
+                "src": "505:7:10",
                 "typeDescriptions": {
                   "typeIdentifier": "t_uint256",
                   "typeString": "uint256"
@@ -488,11 +488,11 @@
             "visibility": "internal"
           }
         ],
-        "scope": 1753,
-        "src": "80:467:9"
+        "scope": 1839,
+        "src": "80:467:10"
       }
     ],
-    "src": "0:547:9"
+    "src": "0:547:10"
   },
   "compiler": {
     "name": "solc",
@@ -500,5 +500,5 @@
   },
   "networks": {},
   "schemaVersion": "2.0.1",
-  "updatedAt": "2019-01-17T12:21:23.850Z"
+  "updatedAt": "2019-01-18T11:04:23.216Z"
 }
