@@ -165,7 +165,7 @@ module.exports = async function(deployer) {
       console.log("Adding functions from Helpers.sol");
       return wrapper.updateContract(
         helpers.address,
-        "getPixelColor(uint256)",
+        "getPixelColor(uint256)addNewColor()",
         "Added functions from Helpers.sol"
       );
     });

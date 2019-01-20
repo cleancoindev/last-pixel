@@ -30,7 +30,6 @@ contract Wrapper is Modifiers {
     function renounceAdmin() external {}
 
     //Game.sol
-    function getPixelColor(uint _pixel) external view returns (uint) {}
     function estimateCallPrice(uint[] _pixels, uint _color) public view returns (uint totalCallPrice) {}
     function paint(uint[] _pixels, uint _color, string _refLink) external payable {}
     function drawTimeBank() public {}
@@ -43,5 +42,9 @@ contract Wrapper is Modifiers {
     function mock2() external {}
     function mock3(uint _winnerColor) external {}
     function mockMaxPaintsInPool() external {}
+
+    //Helpers.sol
+    function getPixelColor(uint _pixel) external view returns (uint) {}
+    function addNewColor() external {}
 
 }
