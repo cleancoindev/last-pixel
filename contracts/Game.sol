@@ -70,6 +70,7 @@ contract Game is PaintDiscount, PaintsPool, Modifiers {
     function paint(uint[] _pixels, uint _color, string _refLink) external payable isRegistered(_refLink) isLiveGame() {
 
         require(msg.value == estimateCallPrice(_pixels, _color), "Wrong call price");
+        require(_color > 0, )
         
        //проверяем не прошло ли 20 минут с последней раскраски для розыгрыша банка времени
         if ((now - lastPaintTimeForRound[currentRound]) > 20 minutes && 
@@ -113,8 +114,11 @@ contract Game is PaintDiscount, PaintsPool, Modifiers {
         //устанавливаем значения для краски в пуле и цену вызова функции paint
         _fillPaintsPool(_color);
 
-        require(_pixel != 0, "The pixel with id = 0 does not exist.");
-        require(_color != 0, "You cannot paint to transparent color...");
+        require(_pixel > 0 && _pixel <= 10000 "The pixel with such id does not exist.");
+
+        //TODO change to colorInstance.totalSupply() instead of 8 
+        require(_color > 0 && _color <= 8, "The color with such id does not exist."); 
+        
         require(pixelToColorForRound[currentRound][_pixel] != _color, "This pixel is already of this color.");
         //require(colorToPaintedPixelsAmountForRound[currentRound][_color] != 10000, "The game field is filled with one color.");
  
