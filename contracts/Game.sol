@@ -70,7 +70,7 @@ contract Game is PaintDiscount, PaintsPool, Modifiers {
     function paint(uint[] _pixels, uint _color, string _refLink) external payable isRegistered(_refLink) isLiveGame() {
 
         require(msg.value == estimateCallPrice(_pixels, _color), "Wrong call price");
-        require(_color > 0, )
+        require(_color > 0 && _color <= totalColorsNumber, "The color with such id does not exist."); 
         
        //проверяем не прошло ли 20 минут с последней раскраски для розыгрыша банка времени
         if ((now - lastPaintTimeForRound[currentRound]) > 20 minutes && 
@@ -91,7 +91,7 @@ contract Game is PaintDiscount, PaintsPool, Modifiers {
             }
             
             //распределяем дивиденды (пассивный доход) бенефециариам
-            _distributeDividends(_color);
+            _distributeDividends(_pixels, _color);
         
             //сохраняем значение потраченных пользователем денег на покупку краски данного цвета
             _setMoneySpentByUserForColor(_color); 
@@ -116,9 +116,6 @@ contract Game is PaintDiscount, PaintsPool, Modifiers {
 
         require(_pixel > 0 && _pixel <= 10000 "The pixel with such id does not exist.");
 
-        //TODO change to colorInstance.totalSupply() instead of 8 
-        require(_color > 0 && _color <= 8, "The color with such id does not exist."); 
-        
         require(pixelToColorForRound[currentRound][_pixel] != _color, "This pixel is already of this color.");
         //require(colorToPaintedPixelsAmountForRound[currentRound][_color] != 10000, "The game field is filled with one color.");
  
@@ -221,7 +218,7 @@ contract Game is PaintDiscount, PaintsPool, Modifiers {
     }
 
     //функция распределения дивидендов (пассивных доходов) - будет работать после подключения инстансов контрактов Цвета и Пикселя
-    function _distributeDividends(uint _color) internal {
+    function _distributeDividends(uint[] _pixels, uint _color) internal {
         
         //require(ownerOfColor[_color] != address(0), "There is no such color");
 
@@ -229,10 +226,14 @@ contract Game is PaintDiscount, PaintsPool, Modifiers {
         withdrawalBalances[founders] = withdrawalBalances[founders].add(dividendsBank.div(4)); 
     
         //25% дивидендов распределяем бенефециарию цвета
-        withdrawalBalances[ownerOfColor[_color]] += dividendsBank.div(4);
+        withdrawalBalances[colorInstance.ownerOf[_color]] += dividendsBank.div(4);
     
         //25% дивидендов распределяем бенефециарию пикселя
-        withdrawalBalances[ownerOfPixel] += dividendsBank.div(4);
+        //withdrawalBalances[ownerOfPixel] += dividendsBank.div(4);
+
+        for (uint i = 0; i < _pixel.length; i++) {
+            withdrawalBalances[pixelInstance.ownerOf[i]] += dividendsBank.div(_pixel.length).div(4);
+        }
     
         //25% дивидендов распределяем реферреру, если он есть
         // withdrawalBalances[referrer] += dividendsBank.mul(25).div(100);
