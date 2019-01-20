@@ -71,6 +71,9 @@ contract Game is PaintDiscount, PaintsPool, Modifiers {
 
         require(msg.value == estimateCallPrice(_pixels, _color), "Wrong call price");
         require(_color > 0 && _color <= totalColorsNumber, "The color with such id does not exist."); 
+
+        bytes32 refLink32 = Utils.toBytes32(_refLink);
+        require(_refLink == "" || refLinkExists[refLink32] == true, "No such referral link exists.");
         
        //проверяем не прошло ли 20 минут с последней раскраски для розыгрыша банка времени
         if ((now - lastPaintTimeForRound[currentRound]) > 20 minutes && 
@@ -91,7 +94,7 @@ contract Game is PaintDiscount, PaintsPool, Modifiers {
             }
             
             //распределяем дивиденды (пассивный доход) бенефециариам
-            _distributeDividends(_pixels, _color);
+            _distributeDividends(_pixels, _color, refLink32);
         
             //сохраняем значение потраченных пользователем денег на покупку краски данного цвета
             _setMoneySpentByUserForColor(_color); 
@@ -218,34 +221,44 @@ contract Game is PaintDiscount, PaintsPool, Modifiers {
     }
 
     //функция распределения дивидендов (пассивных доходов) - будет работать после подключения инстансов контрактов Цвета и Пикселя
-    function _distributeDividends(uint[] _pixels, uint _color) internal {
-        
-        //require(ownerOfColor[_color] != address(0), "There is no such color");
+    function _distributeDividends(uint[] _pixels, uint _color, bytes32 _refLink32) internal {
 
-        //25% дивидендов распределяем организаторам (может быть смарт контракт)
-        withdrawalBalances[founders] = withdrawalBalances[founders].add(dividendsBank.div(4)); 
-    
-        //25% дивидендов распределяем бенефециарию цвета
-        withdrawalBalances[colorInstance.ownerOf[_color]] += dividendsBank.div(4);
-    
-        //25% дивидендов распределяем бенефециарию пикселя
-        //withdrawalBalances[ownerOfPixel] += dividendsBank.div(4);
+        //if no reflink provided
+        if (_refLink32 == "0x00000000000000000000000000000000") { 
 
-        for (uint i = 0; i < _pixel.length; i++) {
-            withdrawalBalances[pixelInstance.ownerOf[i]] += dividendsBank.div(_pixel.length).div(4);
+            withdrawalBalances[founders] = withdrawalBalances[founders].add(dividendsBank.div(3)); 
+            withdrawalBalances[colorInstance.ownerOf[_color]] += dividendsBank.div(3);
+
+            for (uint i = 0; i < _pixel.length; i++) {
+                withdrawalBalances[pixelInstance.ownerOf[i]] += dividendsBank.div(_pixel.length).div(3);
+            }
         }
-    
-        //25% дивидендов распределяем реферреру, если он есть
-        // withdrawalBalances[referrer] += dividendsBank.mul(25).div(100);
+
+        else {
+
+            //25% дивидендов распределяем организаторам (может быть смарт контракт)
+            withdrawalBalances[founders] = withdrawalBalances[founders].add(dividendsBank.div(4)); 
+
+            //25% дивидендов распределяем бенефециарию цвета
+            withdrawalBalances[colorInstance.ownerOf[_color]] += dividendsBank.div(4);
+
+            //25% дивидендов распределяем бенефециариям пикселей
+            for (uint i = 0; i < _pixel.length; i++) {
+                withdrawalBalances[pixelInstance.ownerOf[i]] += dividendsBank.div(_pixel.length).div(4);
+            }
+
+            //25% дивидендов распределяем реферу
+            withdrawalBalances[refLinkToUser[_refLink32]] += dividendsBank.div(4);
+        }
     }
 
     modifier isRegistered(string _refLink) {
         //если пользователь еще не зарегистрирован
         if (isRegisteredUser[msg.sender] != true) {
-            bytes32 refLink = Utils.toBytes32(_refLink);
+            bytes32 refLink32 = Utils.toBytes32(_refLink);
             //если такая реф ссылка действительно существует 
-            if (refLinkExists[refLink]) { 
-                address referrer = refLinkToUser[refLink];
+            if (refLinkExists[refLink32]) { 
+                address referrer = refLinkToUser[refLink32];
                 referrerToReferrals[referrer].push(msg.sender);
                 referralToReferrer[msg.sender] = referrer;
                 hasReferrer[msg.sender] = true;
