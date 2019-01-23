@@ -212,6 +212,11 @@ contract StorageV1 is StorageV0 {
 
     mapping (uint => bool) public timeBankDrawnForRound;
 
+    //количество пользователей принимавших участие за раунд
+    mapping (uint => uint) public usersCounterForRound;
+    //входит ли пользователь в число учтенных пользователей за раунд
+    mapping (uint => mapping (address => bool)) isUserCountedForRound;
+
    // Events
 
     event CBPDistributed(uint indexed round, uint indexed cbIteration, address indexed winner, uint prize);

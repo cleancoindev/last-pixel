@@ -106,7 +106,11 @@ contract Game is PaintDiscount, PaintsPool, Modifiers {
             paintsCounterForColor[_color] ++; //счетчик закрашивания конкретным цветом
             counterToPainter[paintsCounter] = msg.sender; //счетчик закрашивания => пользователь
             counterToPainterForColor[_color][paintsCounterForColor[_color]] = msg.sender; //счетчик закрашивания конкретным цветом => пользователь
-            
+
+            if (isUsersCountedForRound[currentRound][msg.sender] == false) {
+                usersCounterForRound[currentRound] =  usersCounterForRound[currentRound].add(1);
+                isUserCountedForRound[currentRound][msg.sender] = true;
+            }
         }
 
     }   
