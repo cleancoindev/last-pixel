@@ -7,7 +7,7 @@ contract Initializer is StorageV1 {
     function _initializer(address _pixelDeployed, address _colorDeployed) internal {
     //function _initializer() internal {
 
-        pixelInstance = PixelFactory(_pixelDeployed);
+        pixelInstance = Pixel(_pixelDeployed);
         colorInstance = Color(_colorDeployed);
         totalColorsNumber = colorInstance.totalSupply();
         //totalColorsNumber = 8;

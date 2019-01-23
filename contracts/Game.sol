@@ -73,7 +73,7 @@ contract Game is PaintDiscount, PaintsPool, Modifiers {
         require(_color > 0 && _color <= totalColorsNumber, "The color with such id does not exist."); 
 
         bytes32 refLink32 = Utils.toBytes32(_refLink);
-        require(_refLink == "" || refLinkExists[refLink32] == true, "No such referral link exists.");
+        require(keccak256(_refLink) == keccak256("")|| refLinkExists[refLink32] == true, "No such referral link exists.");
         
        //проверяем не прошло ли 20 минут с последней раскраски для розыгрыша банка времени
         if ((now - lastPaintTimeForRound[currentRound]) > 20 minutes && 
@@ -94,7 +94,7 @@ contract Game is PaintDiscount, PaintsPool, Modifiers {
             }
             
             //распределяем дивиденды (пассивный доход) бенефециариам
-            _distributeDividends(_pixels, _color, refLink32);
+            _distributeDividends(_pixels, _color, _refLink);
         
             //сохраняем значение потраченных пользователем денег на покупку краски данного цвета
             _setMoneySpentByUserForColor(_color); 
@@ -107,7 +107,7 @@ contract Game is PaintDiscount, PaintsPool, Modifiers {
             counterToPainter[paintsCounter] = msg.sender; //счетчик закрашивания => пользователь
             counterToPainterForColor[_color][paintsCounterForColor[_color]] = msg.sender; //счетчик закрашивания конкретным цветом => пользователь
 
-            if (isUsersCountedForRound[currentRound][msg.sender] == false) {
+            if (isUserCountedForRound[currentRound][msg.sender] == false) {
                 usersCounterForRound[currentRound] = usersCounterForRound[currentRound].add(1);
                 isUserCountedForRound[currentRound][msg.sender] = true;
             }
@@ -121,7 +121,7 @@ contract Game is PaintDiscount, PaintsPool, Modifiers {
         //устанавливаем значения для краски в пуле и цену вызова функции paint
         _fillPaintsPool(_color);
 
-        require(_pixel > 0 && _pixel <= 10000 "The pixel with such id does not exist.");
+        require(_pixel > 0 && _pixel <= 10000, "The pixel with such id does not exist.");
 
         require(pixelToColorForRound[currentRound][_pixel] != _color, "This pixel is already of this color.");
         //require(colorToPaintedPixelsAmountForRound[currentRound][_color] != 10000, "The game field is filled with one color.");
@@ -225,34 +225,36 @@ contract Game is PaintDiscount, PaintsPool, Modifiers {
     }
 
     //функция распределения дивидендов (пассивных доходов) - будет работать после подключения инстансов контрактов Цвета и Пикселя
-    function _distributeDividends(uint[] _pixels, uint _color, bytes32 _refLink32) internal {
+    function _distributeDividends(uint[] _pixels, uint _color, string _refLink) internal {
 
         //if no reflink provided
-        if (_refLink32 == "0x00000000000000000000000000000000") { 
+        if (keccak256(_refLink) == keccak256("")) { 
 
             withdrawalBalances[founders] = withdrawalBalances[founders].add(dividendsBank.div(3)); 
-            withdrawalBalances[colorInstance.ownerOf[_color]] += dividendsBank.div(3);
+            withdrawalBalances[colorInstance.ownerOf(_color)] += dividendsBank.div(3);
 
-            for (uint i = 0; i < _pixel.length; i++) {
-                withdrawalBalances[pixelInstance.ownerOf[i]] += dividendsBank.div(_pixel.length).div(3);
+            for (uint i = 0; i < _pixels.length; i++) {
+                withdrawalBalances[pixelInstance.ownerOf(i)] += dividendsBank.div(_pixels.length).div(3);
             }
         }
 
         else {
 
+            bytes32 refLink32 = Utils.toBytes32(_refLink);
+
             //25% дивидендов распределяем организаторам (может быть смарт контракт)
             withdrawalBalances[founders] = withdrawalBalances[founders].add(dividendsBank.div(4)); 
 
             //25% дивидендов распределяем бенефециарию цвета
-            withdrawalBalances[colorInstance.ownerOf[_color]] += dividendsBank.div(4);
+            withdrawalBalances[colorInstance.ownerOf(_color)] += dividendsBank.div(4);
 
             //25% дивидендов распределяем бенефециариям пикселей
-            for (uint i = 0; i < _pixel.length; i++) {
-                withdrawalBalances[pixelInstance.ownerOf[i]] += dividendsBank.div(_pixel.length).div(4);
+            for (i = 0; i < _pixels.length; i++) {
+                withdrawalBalances[pixelInstance.ownerOf(i)] += dividendsBank.div(_pixels.length).div(4);
             }
 
             //25% дивидендов распределяем реферу
-            withdrawalBalances[refLinkToUser[_refLink32]] += dividendsBank.div(4);
+            withdrawalBalances[refLinkToUser[refLink32]] += dividendsBank.div(4);
         }
     }
 

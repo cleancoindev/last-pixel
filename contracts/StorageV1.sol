@@ -1,7 +1,7 @@
 pragma solidity ^0.4.24;
 import "./StorageV0.sol";
 import "./IColor.sol";
-import "./IPixelFactory.sol";
+import "./IPixel.sol";
 
 contract StorageV1 is StorageV0 {
 
