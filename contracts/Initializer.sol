@@ -4,11 +4,11 @@ import "./StorageV1.sol";
 contract Initializer is StorageV1 {
 
     //constructor
-    function _initializer(address _pixelFactoryDeployed, address _colorDeployed) internal {
+    function _initializer(address _pixelDeployed, address _colorDeployed) internal {
     //function _initializer() internal {
 
+        pixelInstance = PixelFactory(_pixelDeployed);
         colorInstance = Color(_colorDeployed);
-        pixelFactoryInstance = PixelFactory(_pixelFactoryDeployed);
         totalColorsNumber = colorInstance.totalSupply();
         //totalColorsNumber = 8;
 
