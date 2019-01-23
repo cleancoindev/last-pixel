@@ -203,7 +203,7 @@ contract StorageV1 is StorageV0 {
     mapping(address => bool) public isAdmin;
 
     Color colorInstance;
-    PixelFactory pixelFactoryInstance;
+    Pixel pixelInstance;
 
     uint public totalColorsNumber; // 8
 
