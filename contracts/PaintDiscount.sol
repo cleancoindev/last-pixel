@@ -21,6 +21,7 @@ contract PaintDiscount is StorageV1 {
     function _setMoneySpentByUserForColor(uint _color) internal {
         
         moneySpentByUserForColor[_color][msg.sender] += msg.value;
+        moneySpentByUser[msg.sender] += msg.value;
 
         if (moneySpentByUserForColor[_color][msg.sender] >= 1 ether)
             hasPaintDiscountForColor[_color][msg.sender] = true;

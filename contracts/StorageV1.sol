@@ -73,6 +73,9 @@ contract StorageV1 is StorageV0 {
     
     //общее количество денег потраченных пользователем на покупку краски данного цвета
     mapping (uint => mapping (address => uint)) public moneySpentByUserForColor;
+
+    //общее количество денег потраченных пользователем на покупку краски любого цвета
+    mapping (address => uint) public moneySpentByUser;
     
     //маппинг хранящий булевое значение о том, имеет ли пользователь какую либо скидку на покупку краски определенного цвета
     mapping (uint => mapping (address => bool)) public hasPaintDiscountForColor;
@@ -171,7 +174,7 @@ contract StorageV1 is StorageV0 {
     mapping (uint => address) public ownerOfColor;
 
      //балансы доступные для вывода (накопленный пассивный доход за все раунды)
-    mapping (address => uint) public withdrawalBalances; 
+    mapping (address => uint) public pendingWithdrawals; 
     
     //время последнего вывода пассивного дохода для адреса для любого раунда (адрес => время)
     mapping (address => uint) addressToLastWithdrawalTime; 
@@ -191,7 +194,7 @@ contract StorageV1 is StorageV0 {
     Claim[] public claims;
 
     // захардкоженные адреса для тестирования функции claimDividens()
-    // в продакшене это будут адреса бенефециариев Цветов и Пикселей : withdrawalBalances[ownerOf(_pixel)], withdrawalBalances[ownerOf(_color)]
+    // в продакшене это будут адреса бенефециариев Цветов и Пикселей : pendingWithdrawals[ownerOf(_pixel)], pendingWithdrawals[ownerOf(_color)]
     address public ownerOfPixel = 0xca35b7d915458ef540ade6068dfe2f44e8fa733c;
     address public founders = 0x3e4d187df7d8a0820eaf4174d17b160157610912;
 

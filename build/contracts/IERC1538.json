@@ -1,0 +1,707 @@
+{
+  "contractName": "IERC1538",
+  "abi": [
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "name": "message",
+          "type": "string"
+        }
+      ],
+      "name": "CommitMessage",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "name": "functionId",
+          "type": "bytes4"
+        },
+        {
+          "indexed": true,
+          "name": "oldDelegate",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "name": "newDelegate",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "name": "functionSignature",
+          "type": "string"
+        }
+      ],
+      "name": "FunctionUpdate",
+      "type": "event"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_delegate",
+          "type": "address"
+        },
+        {
+          "name": "_functionSignatures",
+          "type": "string"
+        },
+        {
+          "name": "commitMessage",
+          "type": "string"
+        }
+      ],
+      "name": "updateContract",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "sourceMap": "",
+  "deployedSourceMap": "",
+  "source": "pragma solidity ^0.4.24;\n\ninterface IERC1538 {\n    event CommitMessage(string message);\n    event FunctionUpdate(bytes4 indexed functionId, address indexed oldDelegate, address indexed newDelegate, string functionSignature);\n    function updateContract(address _delegate, string _functionSignatures, string commitMessage) external;\n}",
+  "sourcePath": "/Users/Amir/last-pixel-contracts/contracts/IERC1538.sol",
+  "ast": {
+    "absolutePath": "/Users/Amir/last-pixel-contracts/contracts/IERC1538.sol",
+    "exportedSymbols": {
+      "IERC1538": [
+        2422
+      ]
+    },
+    "id": 2423,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 2398,
+        "literals": [
+          "solidity",
+          "^",
+          "0.4",
+          ".24"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:24:8"
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "documentation": null,
+        "fullyImplemented": false,
+        "id": 2422,
+        "linearizedBaseContracts": [
+          2422
+        ],
+        "name": "IERC1538",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "anonymous": false,
+            "documentation": null,
+            "id": 2402,
+            "name": "CommitMessage",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 2401,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 2400,
+                  "indexed": false,
+                  "name": "message",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2402,
+                  "src": "71:14:8",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 2399,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "71:6:8",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "70:16:8"
+            },
+            "src": "51:36:8"
+          },
+          {
+            "anonymous": false,
+            "documentation": null,
+            "id": 2412,
+            "name": "FunctionUpdate",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 2411,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 2404,
+                  "indexed": true,
+                  "name": "functionId",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2412,
+                  "src": "113:25:8",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes4",
+                    "typeString": "bytes4"
+                  },
+                  "typeName": {
+                    "id": 2403,
+                    "name": "bytes4",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "113:6:8",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes4",
+                      "typeString": "bytes4"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 2406,
+                  "indexed": true,
+                  "name": "oldDelegate",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2412,
+                  "src": "140:27:8",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 2405,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "140:7:8",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 2408,
+                  "indexed": true,
+                  "name": "newDelegate",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2412,
+                  "src": "169:27:8",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 2407,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "169:7:8",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 2410,
+                  "indexed": false,
+                  "name": "functionSignature",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2412,
+                  "src": "198:24:8",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 2409,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "198:6:8",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "112:111:8"
+            },
+            "src": "92:132:8"
+          },
+          {
+            "body": null,
+            "documentation": null,
+            "id": 2421,
+            "implemented": false,
+            "isConstructor": false,
+            "isDeclaredConst": false,
+            "modifiers": [],
+            "name": "updateContract",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 2419,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 2414,
+                  "name": "_delegate",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2421,
+                  "src": "253:17:8",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 2413,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "253:7:8",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 2416,
+                  "name": "_functionSignatures",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2421,
+                  "src": "272:26:8",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_calldata_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 2415,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "272:6:8",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 2418,
+                  "name": "commitMessage",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2421,
+                  "src": "300:20:8",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_calldata_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 2417,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "300:6:8",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "252:69:8"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 2420,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "330:0:8"
+            },
+            "scope": 2422,
+            "src": "229:102:8",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "external"
+          }
+        ],
+        "scope": 2423,
+        "src": "26:307:8"
+      }
+    ],
+    "src": "0:333:8"
+  },
+  "legacyAST": {
+    "absolutePath": "/Users/Amir/last-pixel-contracts/contracts/IERC1538.sol",
+    "exportedSymbols": {
+      "IERC1538": [
+        2422
+      ]
+    },
+    "id": 2423,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 2398,
+        "literals": [
+          "solidity",
+          "^",
+          "0.4",
+          ".24"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:24:8"
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "documentation": null,
+        "fullyImplemented": false,
+        "id": 2422,
+        "linearizedBaseContracts": [
+          2422
+        ],
+        "name": "IERC1538",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "anonymous": false,
+            "documentation": null,
+            "id": 2402,
+            "name": "CommitMessage",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 2401,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 2400,
+                  "indexed": false,
+                  "name": "message",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2402,
+                  "src": "71:14:8",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 2399,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "71:6:8",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "70:16:8"
+            },
+            "src": "51:36:8"
+          },
+          {
+            "anonymous": false,
+            "documentation": null,
+            "id": 2412,
+            "name": "FunctionUpdate",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 2411,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 2404,
+                  "indexed": true,
+                  "name": "functionId",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2412,
+                  "src": "113:25:8",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes4",
+                    "typeString": "bytes4"
+                  },
+                  "typeName": {
+                    "id": 2403,
+                    "name": "bytes4",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "113:6:8",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes4",
+                      "typeString": "bytes4"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 2406,
+                  "indexed": true,
+                  "name": "oldDelegate",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2412,
+                  "src": "140:27:8",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 2405,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "140:7:8",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 2408,
+                  "indexed": true,
+                  "name": "newDelegate",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2412,
+                  "src": "169:27:8",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 2407,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "169:7:8",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 2410,
+                  "indexed": false,
+                  "name": "functionSignature",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2412,
+                  "src": "198:24:8",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 2409,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "198:6:8",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "112:111:8"
+            },
+            "src": "92:132:8"
+          },
+          {
+            "body": null,
+            "documentation": null,
+            "id": 2421,
+            "implemented": false,
+            "isConstructor": false,
+            "isDeclaredConst": false,
+            "modifiers": [],
+            "name": "updateContract",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 2419,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 2414,
+                  "name": "_delegate",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2421,
+                  "src": "253:17:8",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 2413,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "253:7:8",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 2416,
+                  "name": "_functionSignatures",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2421,
+                  "src": "272:26:8",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_calldata_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 2415,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "272:6:8",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 2418,
+                  "name": "commitMessage",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2421,
+                  "src": "300:20:8",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_calldata_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 2417,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "300:6:8",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "252:69:8"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 2420,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "330:0:8"
+            },
+            "scope": 2422,
+            "src": "229:102:8",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "external"
+          }
+        ],
+        "scope": 2423,
+        "src": "26:307:8"
+      }
+    ],
+    "src": "0:333:8"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.4.25+commit.59dbf8f1.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "2.0.2",
+  "updatedAt": "2019-02-06T10:44:40.944Z"
+}

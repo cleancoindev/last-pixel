@@ -22,4 +22,10 @@ contract Referral is Modifiers {
     function getReferralsForUser(address _user) external view returns (address[]) {
         return referrerToReferrals[_user];
     }
+
+    function getReferralData(address _user) external view returns (uint registrationTime, uint moneySpent) {
+        registrationTime = registrationTimeForUser[_user];
+        moneySpent = moneySpentByUser[_user];
+    }
+    
 }

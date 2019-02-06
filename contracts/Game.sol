@@ -233,22 +233,22 @@ contract Game is PaintDiscount, PaintsPool, Modifiers {
         if (refLinkExists[refLink32] == true) { 
 
             //25% дивидендов распределяем организаторам (может быть смарт контракт)
-            withdrawalBalances[founders] = withdrawalBalances[founders].add(dividendsBank.div(4)); 
+            pendingWithdrawals[founders] = pendingWithdrawals[founders].add(dividendsBank.div(4)); 
 
             //25% дивидендов распределяем бенефециарию цвета
-            withdrawalBalances[colorInstance.ownerOf(_color)] += dividendsBank.div(4);
+            pendingWithdrawals[colorInstance.ownerOf(_color)] += dividendsBank.div(4);
 
-            withdrawalBalances[ownerOfPixel] += dividendsBank.div(4);
+            pendingWithdrawals[ownerOfPixel] += dividendsBank.div(4);
 
             //25% дивидендов распределяем реферу
-            withdrawalBalances[refLinkToUser[refLink32]] += dividendsBank.div(4);
+            pendingWithdrawals[refLinkToUser[refLink32]] += dividendsBank.div(4);
         }
 
         else {
 
-            withdrawalBalances[founders] = withdrawalBalances[founders].add(dividendsBank.div(3)); 
-            withdrawalBalances[colorInstance.ownerOf(_color)] += dividendsBank.div(3);
-            withdrawalBalances[ownerOfPixel] += dividendsBank.div(3);
+            pendingWithdrawals[founders] = pendingWithdrawals[founders].add(dividendsBank.div(3)); 
+            pendingWithdrawals[colorInstance.ownerOf(_color)] += dividendsBank.div(3);
+            pendingWithdrawals[ownerOfPixel] += dividendsBank.div(3);
         }
     }
 

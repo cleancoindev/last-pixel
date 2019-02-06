@@ -8,7 +8,7 @@ contract DividendsDistributor is Modifiers {
     
     function claimDividends() external {
         //функция не может быть вызвана, если баланс для вывода пользователя равен нулю
-        require(withdrawalBalances[msg.sender] != 0, "Your withdrawal balance is zero.");
+        require(pendingWithdrawals[msg.sender] != 0, "Your withdrawal balance is zero.");
         claimId = claimId.add(1);
         Claim memory c;
         c.id = claimId;
@@ -28,10 +28,10 @@ contract DividendsDistributor is Modifiers {
         address claimer = claim.claimer;
 
         //Checks-Effects-Interactions pattern
-        uint withdrawalAmount = withdrawalBalances[claimer];
+        uint withdrawalAmount = pendingWithdrawals[claimer];
 
         //обнуляем баланс для вывода для пользователя
-        withdrawalBalances[claimer] = 0;
+        pendingWithdrawals[claimer] = 0;
 
         //перевести пользователю баланс для вывода
         claimer.transfer(withdrawalAmount);
