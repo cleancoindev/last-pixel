@@ -5,14 +5,8 @@ const COLOR_CONTRACT_ADDRESS = process.env.COLOR_CONTRACT_ADDRESS;
 
 module.exports = async function(deployer) {
   deployer.deploy(ERC1538Delegate).then(function() {
-    return deployer.deploy(
-      Router,
-      ERC1538Delegate.address,
-      PIXEL_CONTRACT_ADDRESS,
-      COLOR_CONTRACT_ADDRESS,
-      {
-        value: web3.toWei(1)
-      }
-    );
+    return deployer.deploy(Router, ERC1538Delegate.address, {
+      value: web3.toWei("0.2") //for tests to run easily
+    });
   });
 };

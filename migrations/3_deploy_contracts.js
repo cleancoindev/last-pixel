@@ -9,7 +9,7 @@ var GameMock = artifacts.require("GameMock");
 let Helpers = artifacts.require("Helpers");
 
 module.exports = async function(deployer) {
-  deployer.deploy(Game, { gas: 5500000 });
+  deployer.deploy(Game, { gas: 6000000 });
   deployer.deploy(ColorTeam);
   deployer.deploy(TimeTeam);
   deployer.deploy(DividendsDistributor);

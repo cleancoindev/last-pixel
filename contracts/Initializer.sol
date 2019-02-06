@@ -4,16 +4,17 @@ import "./StorageV1.sol";
 contract Initializer is StorageV1 {
 
     //constructor
-    function _initializer(address _pixelDeployed, address _colorDeployed) internal {
-    //function _initializer() internal {
+    function _initializer() internal {
 
-        pixelInstance = Pixel(_pixelDeployed);
-        colorInstance = Color(_colorDeployed);
-        totalColorsNumber = colorInstance.totalSupply();
-        //totalColorsNumber = 8;
-
+        // pixelInstance = Pixel(_pixelDeployed);
+        // colorInstance = Color(_colorDeployed);
+        // totalColorsNumber = colorInstance.totalSupply();
+        refLinkPrice = 0.1 ether;
+        totalColorsNumber = 8;
+        totalPixelsNumber = 225;
+        
         isAdmin[msg.sender] = true;
-        maxPaintsInPool = 10000; 
+        maxPaintsInPool = totalPixelsNumber; 
         currentRound = 1;
         cbIteration = 1;
         tbIteration = 1;

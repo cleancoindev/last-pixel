@@ -8,7 +8,7 @@ contract DividendsDistributor is Modifiers {
     
     function claimDividends() external {
         //функция не может быть вызвана, если баланс для вывода пользователя равен нулю
-        require(withdrawalBalances[msg.sender] != 0, "Your withdrawal balance is zero...");
+        require(withdrawalBalances[msg.sender] != 0, "Your withdrawal balance is zero.");
         claimId = claimId.add(1);
         Claim memory c;
         c.id = claimId;

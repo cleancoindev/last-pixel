@@ -141,7 +141,7 @@ module.exports = async function(deployer) {
       console.log("Adding functions from Referral.sol");
       return wrapper.updateContract(
         referral.address,
-        "buyRefLink(string)",
+        "buyRefLink(string)getReferralsForUser(address)",
         "Added functions from Referral.sol"
       );
     })

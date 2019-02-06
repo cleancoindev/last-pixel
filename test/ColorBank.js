@@ -73,11 +73,18 @@ contract("Color Bank Distribution Test", async accounts => {
     console.log("Prize", +prize);
     let cbp = await wrapper.painterToCBP(cbIteration - 1, winner);
     let amount = colorBankAfterLastPaint.toNumber() + prize;
+
+    let painterInFirstRound = await wrapper.usersCounterForRound(
+      currentRound - 1
+    );
+    console.log("Users count in 1 round:", +painterInFirstRound);
     assert.equal(+cbp, amount);
   });
 
   it("The new round should start and all pixels should be transparent in it", async () => {
     let currentRound = await wrapper.currentRound.call();
+    let painterInSecondRound = await wrapper.usersCounterForRound(currentRound);
+    console.log("Users count in 2 round:", +painterInSecondRound);
     let transparentColor = 0;
     console.log("Current round:", currentRound.toNumber());
     console.log(

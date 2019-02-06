@@ -23,6 +23,7 @@ contract Wrapper is Modifiers {
 
     //Referral.sol
     function buyRefLink(string _refLink) external payable {}
+    function getReferralsForUser(address _user) external view returns (address[]) {}
 
     //Roles.sol
     function addAdmin(address _new) external {}

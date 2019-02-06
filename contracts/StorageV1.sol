@@ -206,6 +206,13 @@ contract StorageV1 is StorageV0 {
     Pixel pixelInstance;
 
     uint public totalColorsNumber; // 8
+    uint public totalPixelsNumber; //225 in V1
+
+    //цена приобретения реферальной ссылки
+    uint public refLinkPrice; 
+
+    //время регистрации пользователя
+    mapping (address => uint) public registrationTimeForUser;
 
     mapping (address => uint) public lastPaintTimeOfUser;
     mapping (uint => mapping (address => uint)) public lastPaintTimeOfUserForColor;

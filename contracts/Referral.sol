@@ -8,7 +8,7 @@ contract Referral is Modifiers {
     
     //функция для покупки реферальной ссылки для пользователя (длина в диапазоне от 4 до 8 символов)
     function buyRefLink(string _refLink) isValidRefLink (_refLink) external payable {
-        require(msg.value == 0.1 ether, "Setting referral link costs 0.1 ETH.");
+        require(msg.value == refLinkPrice, "Setting referral link costs 0.1 ETH.");
         require(hasRefLink[msg.sender] == false, "You have already generated your ref link.");
         bytes32 refLink32 = Utils.toBytes32(_refLink);
         require(refLinkExists[refLink32] != true, "This referral link already exists, try different one.");
@@ -16,5 +16,10 @@ contract Referral is Modifiers {
         userToRefLink[msg.sender] = _refLink;
         refLinkExists[refLink32] = true;
         refLinkToUser[refLink32] = msg.sender;
+    }
+
+    //функция возвращающая список реферралов для пользователя _user
+    function getReferralsForUser(address _user) external view returns (address[]) {
+        return referrerToReferrals[_user];
     }
 }
