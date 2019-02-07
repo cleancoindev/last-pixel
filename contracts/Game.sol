@@ -102,6 +102,10 @@ contract Game is PaintDiscount, PaintsPool, Modifiers {
             //сохраняем значение скидки на покупку краски данного цвета для пользователя
             _setUsersPaintDiscountForColor(_color);
 
+            if (paintsCounterForColor[_color] == 0) {
+                paintGenToEndTimeForColor[_color][currentPaintGenForColor[_color] - 1] = now;
+            }
+
             paintsCounter++; //счетчик закрашивания любым цветом
             paintsCounterForColor[_color] ++; //счетчик закрашивания конкретным цветом
             counterToPainter[paintsCounter] = msg.sender; //счетчик закрашивания => пользователь
@@ -236,7 +240,7 @@ contract Game is PaintDiscount, PaintsPool, Modifiers {
             pendingWithdrawals[founders] = pendingWithdrawals[founders].add(dividendsBank.div(4)); 
 
             //25% дивидендов распределяем бенефециарию цвета
-            pendingWithdrawals[colorInstance.ownerOf(_color)] += dividendsBank.div(4);
+            pendingWithdrawals[ownerOfColor[_color]] += dividendsBank.div(4);
 
             pendingWithdrawals[ownerOfPixel] += dividendsBank.div(4);
 
@@ -247,7 +251,7 @@ contract Game is PaintDiscount, PaintsPool, Modifiers {
         else {
 
             pendingWithdrawals[founders] = pendingWithdrawals[founders].add(dividendsBank.div(3)); 
-            pendingWithdrawals[colorInstance.ownerOf(_color)] += dividendsBank.div(3);
+            pendingWithdrawals[ownerOfColor[_color]] += dividendsBank.div(3);
             pendingWithdrawals[ownerOfPixel] += dividendsBank.div(3);
         }
     }

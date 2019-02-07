@@ -25,7 +25,7 @@ contract Initializer is StorageV1 {
             nextCallPriceForColor[i] = callPriceForColor[i];
             paintGenToAmountForColor[i][currentPaintGenForColor[i]] = maxPaintsInPool;
             paintGenStartedForColor[i][currentPaintGenForColor[i]] = true;
-            paintGenToEndTimeForColor[i][currentPaintGenForColor[i] - 1] = now;
+           // paintGenToEndTimeForColor[i][currentPaintGenForColor[i] - 1] = now;
             paintGenToStartTimeForColor[i][currentPaintGenForColor[i]] = now;
         }
         

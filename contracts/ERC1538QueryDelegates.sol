@@ -1,5 +1,4 @@
 pragma solidity ^0.4.24;
-pragma experimental "v0.5.0";
 /******************************************************************************\
 * 
 * Contains functions for retrieving function signatures and delegate contract

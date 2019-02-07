@@ -15,18 +15,16 @@ contract PaintsPool is StorageV1 {
         emit CallPriceUpdated(callPriceForColor[_color]);
     }
     
-    
     //функция пополнения пула краски
     function _fillPaintsPool(uint _color) internal {
-        
+
+        //следующее поколение краски
+        uint nextPaintGen = currentPaintGenForColor[_color].add(1);
         //каждые полторы минуты пул дополняется новой краской
         if (now - paintGenToEndTimeForColor[_color][currentPaintGenForColor[_color] - 1] >= 1.5 minutes) { 
             
             //сколько краски остается в поколении
             uint paintsRemain = paintGenToAmountForColor[_color][currentPaintGenForColor[_color]]; 
-            
-            //следующее поколение краски
-            uint nextPaintGen = currentPaintGenForColor[_color].add(1); 
             
             //если прошло полторы минуты и след. поколение краски все еще не создано     
             if (paintGenStartedForColor[_color][nextPaintGen] == false) {
@@ -55,9 +53,23 @@ contract PaintsPool is StorageV1 {
                 //цена вызова закрашивания краской текущего поколения
                 callPriceForColor[_color] = nextCallPriceForColor[_color];
 
+                if (paintGenToAmountForColor[_color][nextPaintGen] == 0) {
+                    paintGenToAmountForColor[_color][nextPaintGen] = maxPaintsInPool;
+                }
                 //переходим на использование следующего поколения краски
                 currentPaintGenForColor[_color] = nextPaintGen;
             }
+        }
+        ///если не прошло полторы минуты
+        else {
+
+            if (paintGenToAmountForColor[_color][currentPaintGenForColor[_color]] == 0) {
+               
+                paintGenToAmountForColor[_color][nextPaintGen] = maxPaintsInPool;
+                //переходим на использование следующего поколения краски
+                currentPaintGenForColor[_color] = nextPaintGen;
+            }
+
         }
     }
 }
