@@ -199,7 +199,7 @@ contract StorageV1 is StorageV0 {
     address public founders = 0x3e4d187df7d8a0820eaf4174d17b160157610912;
 
     bool public isGamePaused;
-    //todo - internal
+    
     bool public isCBPDistributable;
     bool public isTBPDistributable;
     
@@ -237,4 +237,5 @@ contract StorageV1 is StorageV0 {
     event TimeBankPlayed(address winnerOfRound, uint indexed round);
     event CallPriceUpdated(uint indexed newCallPrice);
     event TBPDistributed(uint indexed round, uint indexed tbIteration, address indexed winner, uint prize);
+    event EtherWithdrawn(uint balance, uint colorBank, uint timeBank, uint timestamp);
 }

@@ -133,7 +133,7 @@ module.exports = async function(deployer) {
       console.log("Adding functions from GameStateController.sol");
       return wrapper.updateContract(
         gameStateController.address,
-        "pauseGame()resumeGame()",
+        "pauseGame()resumeGame()withdrawEther()",
         "Added functions from GameStateController.sol"
       );
     })

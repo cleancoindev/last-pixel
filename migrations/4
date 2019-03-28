@@ -1,0 +1,37 @@
+const ERC1538Delegate = artifacts.require("ERC1538Delegate");
+const Router = artifacts.require("Router");
+const Game = artifacts.require("Game");
+const ColorTeam = artifacts.require("ColorTeam");
+const TimeTeam = artifacts.require("TimeTeam");
+const DividendsDistributor = artifacts.require("DividendsDistributor");
+const GameStateController = artifacts.require("GameStateController");
+const Referral = artifacts.require("Referral");
+const Roles = artifacts.require("Roles");
+const Wrapper = artifacts.require("Wrapper");
+const GameMock = artifacts.require("GameMock");
+const Helpers = artifacts.require("helpers");
+
+// Contract instances
+let erc1538Delegate = "0x73e0741c879c3a79309f6ab002b123bc497b1332";
+let router = "0xf87c119434b7fa3f225d1ba553bf77c525ba9e2e";
+let game = "0x606aea5113168e3128153c0fc9d7d5f836b82080";
+let colorTeam = "0x9aa39bed9a1ae6f5de9ed607fac3cd02f6037f9a";
+let timeTeam = "0x8147f7863a8103653b1e78248116e5557fc4b3d9";
+let dividendsDistributor = "0xb6b1b2327308698e393bfda896e2c179a15565b5";
+let gameStateController = "0x52cc60f7a36e926ab54256c56979847eab61ae00";
+let referral = "0x989ed0518a4f1426861f47590b1807b6484c5367";
+let roles = "0xe81c6640385c2c83702a9954882d848ff3710462";
+let wrapperInstance;
+let helpers = "0xb7f25b3fa0cf49d83a0e5612fc06e4b006158d27";
+
+module.exports = async function(deployer) {
+  deployer.then(function() {
+    wrapperInstance = Wrapper.at(router);
+    console.log("Adding functions from Helpers.sol");
+    return wrapperInstance.updateContract(
+      helpers,
+      "getPixelColor(uint256)addNewColor()",
+      "Added functions from Helpers.sol"
+    );
+  });
+};

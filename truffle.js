@@ -11,7 +11,7 @@ module.exports = {
   networks: {
     development: {
       host: "localhost",
-      port: 8545,
+      port: 9545,
       gas: 4600000,
       network_id: "*" // Match any network id
     },
@@ -22,8 +22,8 @@ module.exports = {
           "https://rinkeby.infura.io/" + INFURA_KEY
         );
       },
-      network_id: "*"
-      //,gas: 5000000
+      network_id: "*",
+      gasPrice: 5000000000
     },
     live: {
       network_id: 1,
@@ -33,8 +33,7 @@ module.exports = {
           "https://mainnet.infura.io/" + INFURA_KEY
         );
       },
-      gas: 4000000,
-      gasPrice: 50000000000
+      gasPrice: 7000000000
     }
   },
   compilers: {

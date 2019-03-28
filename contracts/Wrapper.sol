@@ -20,6 +20,7 @@ contract Wrapper is Modifiers {
     //GameStateController.sol
     function pauseGame() external {}
     function resumeGame() external {}
+    function withdrawEther() external returns (bool) {}
 
     //Referral.sol
     function buyRefLink(string _refLink) external payable {}

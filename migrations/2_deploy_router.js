@@ -5,8 +5,6 @@ var Router = artifacts.require("Router");
 
 module.exports = async function(deployer) {
   deployer.deploy(ERC1538Delegate).then(function() {
-    return deployer.deploy(Router, ERC1538Delegate.address, {
-      value: web3.toWei("0.2") //for tests to run easily
-    });
+    return deployer.deploy(Router, ERC1538Delegate.address);
   });
 };
