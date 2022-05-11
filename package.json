@@ -21,7 +21,7 @@
   "dependencies": {
     "ganache-cli": "^6.2.5",
     "openzeppelin-solidity": "^2.1.2",
-    "truffle": "^4.1.15",
+    "truffle": "^4.1.17",
     "truffle-hdwallet-provider": "^0.0.6"
   },
   "devDependencies": {},
