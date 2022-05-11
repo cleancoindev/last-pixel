@@ -20,7 +20,7 @@
   "homepage": "https://github.com/amiromayer/last-pixel#readme",
   "dependencies": {
     "ganache-cli": "^6.2.5",
-    "openzeppelin-solidity": "^2.1.2",
+    "openzeppelin-solidity": "^2.5.1",
     "truffle": "^4.1.15",
     "truffle-hdwallet-provider": "^0.0.6"
   },
